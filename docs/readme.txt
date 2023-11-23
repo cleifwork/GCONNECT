@@ -43,6 +43,11 @@ INVOLVED APPS:
 
 
 1. ** SHOULD HAVE AN ANDROID PHONE
+   BRAND/MODELS:
+   Highly Recommended: Nexus, HTC, Pixels, Android One, Nokia, Sony, Other newer vendors
+   Recommended: RealMe, Blackview, Oppo, Vivo, Lenovo, Meizu, Asus, Xiaomi
+   Not So Recommended: Huawei, Samsung, OnePlus
+
    1.1  Install MacroDroid (voucher code generator)
    1.2  Download MacroDroid config here => https://drive.google.com/drive/folders/1QfV7-ELD7QrVR5gsQI3qZu3njGw3SMYV
 
