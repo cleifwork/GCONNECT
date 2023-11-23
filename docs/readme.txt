@@ -53,6 +53,8 @@ INVOLVED APPS:
 
 
 2. ** SHOULD HAVE A WINDOWS PC/LAPTOP
+   TESTED: Windows 10, Windows 11
+
    2.1  Install python : Download here => https://www.python.org/downloads/
    2.2  Install node.js : Download here => https://nodejs.org/en/download/
         2.2.1  (CMD) Execute after installation: npm install --global http-server
