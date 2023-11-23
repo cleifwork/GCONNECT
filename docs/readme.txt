@@ -11,7 +11,7 @@ INVOLVED APPS:
 *** REQUIREMENTS ***
 ------------------------------------------------------------------
 
-0. SHOULD HAVE A GOOGLE ACCOUNT
+0. ** SHOULD HAVE A GOOGLE ACCOUNT
    0.1  Google Drive API needs to be ENABLED.
    0.2  Create Service Account 
    0.3  Save Service Account API KEY (service_account.json) in your VOUCHER WIFI APP root folder (../Desktop/GCONNECT).
@@ -42,12 +42,12 @@ INVOLVED APPS:
         0.7.7  (99php_vouchers.txt) => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
 
 
-1. SHOULD HAVE AN ANDROID PHONE
+1. ** SHOULD HAVE AN ANDROID PHONE
    1.1  Install MacroDroid (voucher code generator)
    1.2  Download MacroDroid config here => https://drive.google.com/drive/folders/1QfV7-ELD7QrVR5gsQI3qZu3njGw3SMYV
 
 
-2. SHOULD HAVE A WINDOWS PC/LAPTOP
+2. ** SHOULD HAVE A WINDOWS PC/LAPTOP
    2.1  Install python : Download here => https://www.python.org/downloads/
    2.2  Install node.js : Download here => https://nodejs.org/en/download/
         2.2.1  (CMD) Execute after installation: npm install --global http-server
@@ -58,7 +58,7 @@ INVOLVED APPS:
    2.4  (CMD) pip install Pillow
    2.5  (CMD) pip install google-auth
    2.6  (CMD) pip install google-api-python-client
-   2.7  Download GConnect WiFi Voucher App & extract folder to Desktop
+   2.7  Download WiFi Voucher App & extract folder to Desktop
         2.7.1 Download here => https://github.com/cleifwork/GCONNECT
         2.7.2 Rename root folder to GCONNECT
 ------------------------------------------------------------------
