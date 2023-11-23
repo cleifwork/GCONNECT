@@ -14,7 +14,7 @@ INVOLVED APPS:
 0. ** SHOULD HAVE A GOOGLE ACCOUNT
    0.1  Google Drive API needs to be ENABLED.
    0.2  Create Service Account 
-   0.3  Save Service Account API KEY (service_account.json) in your VOUCHER WIFI APP root folder (../Desktop/GCONNECT).
+   0.3  Save Service Account API KEY (service_account.json) in your WiFi Voucher App root folder: "%USERPROFILE%\Desktop\GCONNECT\"
    0.4  Create these folders in My Drive: > VOUCHER_WIFI_NAME/vouchers (e.g. My Drive/GCONNECT/vouchers).
    0.5  Upload empty text files named like the ff. to GCONNECT/vouchers.
         0.5.1  5php_vouchers.txt
@@ -73,9 +73,8 @@ INVOLVED APPS:
 ------------------------------------------------------------------
 
 *** VERY IMPORTANT ***
-Downloaded CSV file from Omada website 
-should be place in the ff. path: "%USERPROFILE%\Desktop\WIFI_NAME_HERE\raw_csv"
-Example: "%USERPROFILE%\Desktop\GCONNECT\raw_csv"
+Exported vouchers (.csv) from Omada Cloud Controller website, 
+should be placed here: "%USERPROFILE%\Desktop\GCONNECT\raw_csv"
 ------------------------------------------------------------------
 
 *** IDEAL VOUCHER PRINTING PREFERENCE ***
