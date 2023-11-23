@@ -55,7 +55,9 @@ INVOLVED APPS:
    2.4  (CMD) pip install Pillow
    2.5  (CMD) pip install google-auth
    2.6  (CMD) pip install google-api-python-client
-   2.7  Download GConnect WiFi Voucher App & extract folder to Desktop : Download here => https://github.com/cleifwork/GCONNECT
+   2.7  Download GConnect WiFi Voucher App & extract folder to Desktop
+        2.7.1 Download here => https://github.com/cleifwork/GCONNECT
+        2.7.2 Rename root folder to GCONNECT
 ------------------------------------------------------------------
 
 *** VERY IMPORTANT ***
