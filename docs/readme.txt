@@ -1,4 +1,4 @@
-CUSTOM WIFI VOUCHER + APP + GCASH SETUP
+WiFi Voucher App + GCash Config
 
 INVOLVED APPS:
 1. Omada Cloud Controller (Web)
@@ -44,13 +44,16 @@ INVOLVED APPS:
 
 1. SHOULD HAVE AN ANDROID PHONE
    1.1  Install MacroDroid (voucher code generator)
+   1.2  Download MacroDroid config here => https://drive.google.com/drive/folders/1QfV7-ELD7QrVR5gsQI3qZu3njGw3SMYV
 
 
 2. SHOULD HAVE A WINDOWS PC/LAPTOP
    2.1  Install python : Download here => https://www.python.org/downloads/
    2.2  Install node.js : Download here => https://nodejs.org/en/download/
         2.2.1  (CMD) Execute after installation: npm install --global http-server
-        2.2.2  (CMD) Empty cache & hard reload page only if "http-server" is not working properly (dev tools, ctrl + right click)
+        2.2.2  (CMD) Type "http-server" to check if working properly
+        2.2.3  Execute below ONLY IF "http-server" is not working
+               2.2.3.1  (Browser) Empty cache & hard reload page (dev tools, ctrl + right click) 
    2.3  (CMD) pip install customtkinter
    2.4  (CMD) pip install Pillow
    2.5  (CMD) pip install google-auth
