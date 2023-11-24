@@ -14,9 +14,9 @@ INVOLVED APPS:
 0. ** SHOULD HAVE A GOOGLE ACCOUNT
    0.1  Google Drive API needs to be ENABLED.
    0.2  Create Service Account 
-   0.3  Save Service Account API KEY (service_account.json) in your WiFi Voucher App root folder: "%USERPROFILE%\Desktop\GCONNECT\"
+   0.3  Save Service Account API KEY (.json) in the WiFi Voucher App main folder: "%USERPROFILE%\Desktop\GCONNECT\"
    0.4  Create these folders in My Drive: > VOUCHER_WIFI_NAME/vouchers (e.g. My Drive/GCONNECT/vouchers).
-   0.5  Upload empty text files named like the ff. to GCONNECT/vouchers.
+   0.5  Upload empty text files named like the ff. to GCONNECT/vouchers folder.
         0.5.1  5php_vouchers.txt
         0.5.2  10php_vouchers.txt
         0.5.3  15php_vouchers.txt
@@ -27,19 +27,19 @@ INVOLVED APPS:
    
    0.6  Get "GCONNECT/vouchers" folder ID.
         **NOTES: It's the string in between "https://drive.google.com/drive/folders/" and "?usp=sharing"
-
-        0.6.1  (GCONNECT/vouchers) => https://drive.google.com/drive/folders/FOLDER_ID_HERE?usp=sharing
+        **Example:
+        0.6.1  For "GCONNECT/vouchers" => https://drive.google.com/drive/folders/FOLDER_ID_HERE?usp=sharing
    
    0.7  Get each text file's ID, (should look like the ff. URL sample, will vary per google account)
         **NOTES: It's the string in between "https://drive.google.com/file/d/" and "/view?usp=sharing"
-
-        0.7.1  ( 5php_vouchers.txt) => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
-        0.7.2  (10php_vouchers.txt) => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
-        0.7.3  (15php_vouchers.txt) => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
-        0.7.4  (20php_vouchers.txt) => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
-        0.7.5  (30php_vouchers.txt) => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
-        0.7.6  (50php_vouchers.txt) => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
-        0.7.7  (99php_vouchers.txt) => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
+        **Example:
+        0.7.1  For " 5php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
+        0.7.2  For "10php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
+        0.7.3  For "15php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
+        0.7.4  For "20php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
+        0.7.5  For "30php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
+        0.7.6  For "50php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
+        0.7.7  For "99php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
 
 
 1. ** SHOULD HAVE AN ANDROID PHONE
