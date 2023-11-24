@@ -63,7 +63,7 @@ INVOLVED APPS:
         * NOTES: It's the string in between "https://drive.google.com/drive/folders/" and "?usp=sharing"
         * Example:
         2.6.1  For "GCONNECT/vouchers" => https://drive.google.com/drive/folders/FOLDER_ID_HERE?usp=sharing
-        2.6.2  Paste Folder ID inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_folder_id_here.txt
+        2.6.2  (PC) Paste Folder ID inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_folder_id_here.txt
    
    2.7  Get each text file's ID, (should look like the ff. URL sample, will vary per google account)
         * NOTES: It's the string in between "https://drive.google.com/file/d/" and "/view?usp=sharing"
@@ -103,4 +103,4 @@ INVOLVED APPS:
 5. Headers and Footers = unchecked (disabled)
 6. Background Graphics = checked (only if you have a logo)
 
-** INFO:THIS CAN PRINT UP TO 32 VOUCHERS IN 1 PAGE
+  * THIS CAN PRINT UP TO 32 VOUCHERS IN 1 PAGE
