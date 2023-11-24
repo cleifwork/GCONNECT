@@ -42,12 +42,13 @@ INVOLVED APPS:
                1.3.1.1  Export List: Voucher Codes  
                1.3.1.2  Format: CSV 
                1.3.1.3  Portal: "Your WiFi Name" 
+               1.3.1.4  Save file to this folder: %USERPROFILE%\Desktop\GCONNECT\raw_csv
 
 
 2. ** SHOULD HAVE A GOOGLE ACCOUNT
    2.1  Google Drive API needs to be ENABLED.
    2.2  Create Service Account 
-   2.3  Save Service Account API KEY (.json) in the WiFi Voucher App main folder: "%USERPROFILE%\Desktop\GCONNECT\"
+   2.3  Save Service Account API KEY (.json) in the WiFi Voucher App main folder: %USERPROFILE%\Desktop\GCONNECT
    2.4  Create these folders in My Drive: > VOUCHER_WIFI_NAME/vouchers (e.g. My Drive/GCONNECT/vouchers).
    2.5  Upload empty text files named like the ff. to GCONNECT/vouchers folder.
         2.5.1   5php_vouchers.txt
@@ -90,13 +91,8 @@ INVOLVED APPS:
                3.3.2.1  Configure Webhook
                         3.3.2.1.1  Add Identifier: {sync_vouchers}
                         3.3.2.1.2  Copy the URL
-                        3.3.2.1.3  (PC) Go to your WiFi Voucher App main folder: %USERPROFILE%\Desktop\GCONNECT\
+                        3.3.2.1.3  (PC) Go to your WiFi Voucher App main folder: %USERPROFILE%\Desktop\GCONNECT
                         3.3.2.1.4  (PC) Put the URL inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt
-------------------------------------------------------------------
-
-*** VERY IMPORTANT ***
-Exported vouchers (.csv) from Omada Cloud Controller website, 
-should be placed here: "%USERPROFILE%\Desktop\GCONNECT\raw_csv"
 ------------------------------------------------------------------
 
 *** IDEAL VOUCHER PRINTING PREFERENCE ***
