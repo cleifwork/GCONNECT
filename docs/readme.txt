@@ -63,7 +63,7 @@ INVOLVED APPS:
         * NOTES: It's the string in between "https://drive.google.com/drive/folders/" and "?usp=sharing"
         * Example:
         2.6.1  For "GCONNECT/vouchers" => https://drive.google.com/drive/folders/FOLDER_ID_HERE?usp=sharing
-        2.6.2  (PC) Paste Folder ID inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_folder_id_here.txt
+        2.6.2  Paste Folder ID inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_folder_id_here.txt
    
    2.7  Get each text file's ID, (should look like the ff. URL sample, will vary per google account)
         * NOTES: It's the string in between "https://drive.google.com/file/d/" and "/view?usp=sharing"
@@ -93,6 +93,9 @@ INVOLVED APPS:
                         3.3.2.1.2  Copy the URL
                         3.3.2.1.3  (PC) Go to your WiFi Voucher App main folder: %USERPROFILE%\Desktop\GCONNECT
                         3.3.2.1.4  (PC) Put the URL inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt
+        3.3.3  Update existing ACTION (second IF CLAUSE)
+               3.3.3.1  Configure and change Trigger Fired to the newly added Webhook
+        3.3.4  Save changes then enable the macro
 ------------------------------------------------------------------
 
 *** IDEAL VOUCHER PRINTING PREFERENCE ***
