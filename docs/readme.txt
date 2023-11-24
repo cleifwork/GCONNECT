@@ -70,6 +70,19 @@ INVOLVED APPS:
         2.7.2 Code > Download Zip
         2.7.3 Extract main folder to your Desktop
         2.7.4 Rename main folder to GCONNECT
+
+
+3. ** OMADA CLOUD CONTROLLER ACCOUNT 
+   **NOTES: Not tested using SDN Controller and OC200. 
+            But if the exported vouchers (.csv) has the same format as the Cloud Controller it should still work.
+   
+   3.1  Login to your Omada Cloud Controller: https://omada.tplinkcloud.com/
+   3.2  Launch your Controller
+   3.3  Go to Settings (Global)
+        3.3.1  Select Exporta Data
+               3.3.1.1  Export List: Vouchers  
+               3.3.1.2  Format: .csv
+               3.3.1.3  Portal: "Your WiFi Name" 
 ------------------------------------------------------------------
 
 *** VERY IMPORTANT ***
