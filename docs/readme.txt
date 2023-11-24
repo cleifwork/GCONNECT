@@ -49,7 +49,7 @@ INVOLVED APPS:
    Not So Recommended: Huawei, Samsung, OnePlus
 
    1.1  Install MacroDroid (voucher code generator)
-   1.2  Download MacroDroid config here => https://drive.google.com/drive/folders/1QfV7-ELD7QrVR5gsQI3qZu3njGw3SMYV
+   1.2  Download MacroDroid macro here => https://drive.google.com/drive/folders/1QfV7-ELD7QrVR5gsQI3qZu3njGw3SMYV
 
 
 2. ** SHOULD HAVE A WINDOWS PC/LAPTOP
