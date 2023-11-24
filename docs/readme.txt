@@ -26,13 +26,13 @@ INVOLVED APPS:
         0.5.7  99php_vouchers.txt
    
    0.6  Get "GCONNECT/vouchers" folder ID.
-        **NOTES: It's the string in between "https://drive.google.com/drive/folders/" and "?usp=sharing"
-        **Example:
+        * NOTES: It's the string in between "https://drive.google.com/drive/folders/" and "?usp=sharing"
+        * Example:
         0.6.1  For "GCONNECT/vouchers" => https://drive.google.com/drive/folders/FOLDER_ID_HERE?usp=sharing
    
    0.7  Get each text file's ID, (should look like the ff. URL sample, will vary per google account)
-        **NOTES: It's the string in between "https://drive.google.com/file/d/" and "/view?usp=sharing"
-        **Example:
+        * NOTES: It's the string in between "https://drive.google.com/file/d/" and "/view?usp=sharing"
+        * Example:
         0.7.1  For " 5php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
         0.7.2  For "10php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
         0.7.3  For "15php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
@@ -43,17 +43,18 @@ INVOLVED APPS:
 
 
 1. ** SHOULD HAVE AN ANDROID PHONE
-   BRAND/MODELS:
-   Highly Recommended: Nexus, HTC, Pixels, Android One, Nokia, Sony, Other newer vendors
-   Recommended: RealMe, Blackview, Oppo, Vivo, Lenovo, Meizu, Asus, Xiaomi
+    * BRAND/MODELS:
+   Highly Recommended: Nexus, HTC, Pixels, Android One, Nokia, Sony, Other Newer Vendors
+   Recommended       : RealMe, Blackview, Oppo, Vivo, Lenovo, Meizu, Asus, Xiaomi
    Not So Recommended: Huawei, Samsung, OnePlus
 
-   1.1  Install MacroDroid (PlayStore)
+   1.1  Install MacroDroid (Google Play Store)
    1.2  Download macro here => https://drive.google.com/drive/folders/1QfV7-ELD7QrVR5gsQI3qZu3njGw3SMYV
+        1.2.1  Import macro to MacroDroid
 
 
 2. ** SHOULD HAVE A WINDOWS PC/LAPTOP
-   TESTED: Windows 10, Windows 11
+    * TESTED: Windows 10, Windows 11
 
    2.1  Install python : Download here => https://www.python.org/downloads/
    2.2  Install node.js : Download here => https://nodejs.org/en/download/
@@ -73,10 +74,10 @@ INVOLVED APPS:
 
 
 3. ** OMADA CLOUD CONTROLLER ACCOUNT 
-   **NOTES: Not tested using SDN Controller and OC200. 
+    * NOTES: Not tested using SDN Controller and OC200. 
             But if the exported vouchers (.csv) has the same format as the Cloud Controller it should still work.
    
-   3.1  Login to your Omada Cloud Controller: https://omada.tplinkcloud.com/
+   3.1  Login to your Omada Cloud Controller => https://omada.tplinkcloud.com/
    3.2  Launch your Controller
    3.3  Go to Settings (Global)
         3.3.1  Select Export Data
