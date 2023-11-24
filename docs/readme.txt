@@ -68,7 +68,7 @@ INVOLVED APPS:
    2.6  (CMD) pip install google-api-python-client
    2.7  Download WiFi Voucher App
         2.7.1 Download here => https://github.com/cleifwork/GCONNECT
-        2.7.2 Code > Download Zip
+        2.7.2 Click Code > Download Zip
         2.7.3 Extract main folder to your Desktop
         2.7.4 Rename main folder to GCONNECT
 
