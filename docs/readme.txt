@@ -79,9 +79,9 @@ INVOLVED APPS:
    3.1  Login to your Omada Cloud Controller: https://omada.tplinkcloud.com/
    3.2  Launch your Controller
    3.3  Go to Settings (Global)
-        3.3.1  Select Exporta Data
-               3.3.1.1  Export List: Vouchers  
-               3.3.1.2  Format: .csv
+        3.3.1  Select Export Data
+               3.3.1.1  Export List: Voucher Codes  
+               3.3.1.2  Format: CSV 
                3.3.1.3  Portal: "Your WiFi Name" 
 ------------------------------------------------------------------
 
