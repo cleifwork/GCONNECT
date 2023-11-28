@@ -33,7 +33,7 @@ INVOLVED APPS:
 
 1. ** OMADA CLOUD CONTROLLER ACCOUNT
     * NOTES: Not tested using SDN Controller and OC200. 
-            But if the exported vouchers (CSV) has the same columns as the Cloud Controller it should still work.
+             IF the exported vouchers (CSV) has the same columns as the Cloud Controller it should still work.
    
    1.1  Login to your Omada Cloud Controller => https://omada.tplinkcloud.com/
    1.2  Launch your Controller
@@ -76,9 +76,9 @@ INVOLVED APPS:
 
 3. ** SHOULD HAVE AN ANDROID PHONE
     * BRAND/MODELS:
-   Highly Recommended: Nexus, HTC, Pixels, Android One, Nokia, Sony, Other Newer Vendors
-   Recommended       : RealMe, Blackview, Oppo, Vivo, Lenovo, Meizu, Asus, Xiaomi
-   Not So Recommended: Huawei, Samsung, OnePlus
+      Highly Recommended: Nexus, HTC, Pixels, Android One, Nokia, Sony, Other Newer Vendors
+      Recommended       : RealMe, Blackview, Oppo, Vivo, Lenovo, Meizu, Asus, Xiaomi
+      Not So Recommended: Huawei, Samsung, OnePlus
 
    3.1  Install MacroDroid (Google Play Store)
    3.2  Download macro here => https://drive.google.com/drive/folders/1QfV7-ELD7QrVR5gsQI3qZu3njGw3SMYV
