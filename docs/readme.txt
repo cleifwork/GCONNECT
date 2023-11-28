@@ -74,6 +74,8 @@ INVOLVED APPS:
         2.7.2  Insert the FILE_ID in this URL => https://www.googleapis.com/drive/v3/files/INSERT_FILE_ID_HERE?alt=media
         * NOTES:  Same goes to the rest of the FILE_IDs
 
+        2.7.3 Save these URLs for later use
+
 
 3. ** SHOULD HAVE AN ANDROID PHONE
     * BRAND/MODELS:
