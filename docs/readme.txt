@@ -71,7 +71,7 @@ INVOLVED APPS:
         * Example: For " 5php_vouchers.txt" => https://drive.google.com/file/d/GET_FILE_ID_HERE/view?usp=sharing
         * NOTES:  Same goes to the rest of the text files
         
-        2.7.3  Insert the FILE_ID in this URL => https://www.googleapis.com/drive/v3/files/INSERT_FILE_ID_HERE?alt=media
+        2.7.2  Insert the FILE_ID in this URL => https://www.googleapis.com/drive/v3/files/INSERT_FILE_ID_HERE?alt=media
         * NOTES:  Same goes to the rest of the FILE_IDs
 
 
