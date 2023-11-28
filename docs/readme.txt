@@ -65,16 +65,14 @@ INVOLVED APPS:
         2.6.1  For "GCONNECT/vouchers" => https://drive.google.com/drive/folders/FOLDER_ID_HERE?usp=sharing
         2.6.2  Paste Folder ID inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_folder_id_here.txt
    
-   2.7  Get each text file's ID, (should look like the ff. URL sample, will vary per google account)
+   2.7  Get each text file's ID by sharing the file to EVERYONE WITH LINK.
+        2.7.1  Get the LINK
         * NOTES: It's the string in between "https://drive.google.com/file/d/" and "/view?usp=sharing"
-        * Example:
-        2.7.1  For " 5php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
-        2.7.2  For "10php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
-        2.7.3  For "15php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
-        2.7.4  For "20php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
-        2.7.5  For "30php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
-        2.7.6  For "50php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
-        2.7.7  For "99php_vouchers.txt" => https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
+        * Example: For " 5php_vouchers.txt" => https://drive.google.com/file/d/GET_FILE_ID_HERE/view?usp=sharing
+        * NOTES:  Same goes to the rest of the text files
+        
+        2.7.3  Insert the FILE_ID in this URL => https://www.googleapis.com/drive/v3/files/INSERT_FILE_ID_HERE?alt=media
+        * NOTES:  Same goes to the rest of the FILE_IDs
 
 
 3. ** SHOULD HAVE AN ANDROID PHONE
