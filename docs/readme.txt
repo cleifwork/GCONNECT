@@ -63,13 +63,12 @@ INVOLVED APPS:
         * NOTES: It's the string in between "https://drive.google.com/drive/folders/" and "?usp=sharing"
         * Example:
         2.6.1  For "GCONNECT/vouchers" => https://drive.google.com/drive/folders/FOLDER_ID_HERE?usp=sharing
-        2.6.2  Paste Folder ID inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_folder_id_here.txt
+        2.6.2  Paste FOLDER_ID inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_folder_id_here.txt
    
-   2.7  Get each text file's ID by sharing the file to EVERYONE WITH LINK.
+   2.7  Get each text file's FILE_ID by sharing the file to EVERYONE WITH LINK.
         2.7.1  Get the LINK
         * NOTES: It's the string in between "https://drive.google.com/file/d/" and "/view?usp=sharing"
         * Example: For " 5php_vouchers.txt" => https://drive.google.com/file/d/GET_FILE_ID_HERE/view?usp=sharing
-        * NOTES:  Same goes to the rest of the text files
         
         2.7.2  Insert the FILE_ID in this URL => https://www.googleapis.com/drive/v3/files/INSERT_FILE_ID_HERE?alt=media
         * NOTES:  Same goes to the rest of the FILE_IDs
