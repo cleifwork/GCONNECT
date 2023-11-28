@@ -59,21 +59,18 @@ INVOLVED APPS:
         2.5.6  50php_vouchers.txt
         2.5.7  99php_vouchers.txt
    
-   2.6  Get "GCONNECT/vouchers" Folder ID.
+   2.6  Get "GCONNECT/vouchers" FOLDER_ID by sharing the folder to EVERYONE WITH LINK.
         * NOTES: It's the string in between "https://drive.google.com/drive/folders/" and "?usp=sharing"
-        * Example:
-        2.6.1  For "GCONNECT/vouchers" => https://drive.google.com/drive/folders/FOLDER_ID_HERE?usp=sharing
-        2.6.2  Paste FOLDER_ID inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_folder_id_here.txt
+        * Example: For "GCONNECT/vouchers" => https://drive.google.com/drive/folders/GET_FOLDER_ID_HERE?usp=sharing
+        
+        2.6.1  Paste FOLDER_ID inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_folder_id_here.txt
    
    2.7  Get each text file's FILE_ID by sharing the file to EVERYONE WITH LINK.
         2.7.1  Get the LINK
         * NOTES: It's the string in between "https://drive.google.com/file/d/" and "/view?usp=sharing"
         * Example: For " 5php_vouchers.txt" => https://drive.google.com/file/d/GET_FILE_ID_HERE/view?usp=sharing
-        
-        2.7.2  Insert the FILE_ID in this URL => https://www.googleapis.com/drive/v3/files/INSERT_FILE_ID_HERE?alt=media
-        * NOTES:  Same goes to the rest of the FILE_IDs
 
-        2.7.3 Save these URLs for later use
+        2.7.2 Save these FILE_IDs for later use
 
 
 3. ** SHOULD HAVE AN ANDROID PHONE
@@ -94,7 +91,7 @@ INVOLVED APPS:
                         3.3.2.1.4  (PC) Put the URL inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt
         3.3.3  Update existing ACTION (second IF CLAUSE)
                3.3.3.1  Configure and change Trigger Fired to the newly added Webhook
-        3.3.4  Save changes then enable the macro
+        3.3.4  Save changes then enable the macro        
 ------------------------------------------------------------------
 
 *** IDEAL VOUCHER PRINTING PREFERENCE ***
