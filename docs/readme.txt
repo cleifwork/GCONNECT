@@ -46,7 +46,7 @@ INVOLVED APPS:
 
 
 2. ** SHOULD HAVE A GOOGLE ACCOUNT
-   2.1  Google Drive API needs to be ENABLED.
+   2.1  Enable Google Drive API here => https://developers.google.com/drive/api/guides/enable-sdk
    2.2  Create Service Account 
    2.3  Save Service Account API KEY (.json) in the WiFi Voucher App main folder: %USERPROFILE%\Desktop\GCONNECT
    2.4  Create these folders in My Drive: > VOUCHER_WIFI_NAME/vouchers (e.g. My Drive/GCONNECT/vouchers).
@@ -91,7 +91,10 @@ INVOLVED APPS:
                         3.3.2.1.4  (PC) Put the URL inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt
         3.3.3  Update existing ACTION (second IF CLAUSE)
                3.3.3.1  Configure and change Trigger Fired to the newly added Webhook
-        3.3.4  Save changes then enable the macro        
+        3.3.4  Save changes then enable the macro    
+        3.3.5  Configure each voucher's HTTP Request (under second IF CLAUSE)
+               3.3.5.1  Paste each FILE_ID accordingly in the URL (Settings tab)
+               3.3.5.2  Add your Google Drive API key (Query Params tab)   
 ------------------------------------------------------------------
 
 *** IDEAL VOUCHER PRINTING PREFERENCE ***
