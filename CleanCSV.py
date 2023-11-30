@@ -79,49 +79,49 @@ with open(csv_file, "r") as file:
     with open(output_file5, "w") as file:
         for code in codes_5:
             file.write(code + "\n")
-    print("Codes saved to", output_file5)
+    print("Voucher Codes saved to", output_file5)
     time.sleep(1)
 
     with open(output_file10, "w") as file:
         for code in codes_10:
             file.write(code + "\n")
-    print("Codes saved to", output_file10)
+    print("Voucher Codes saved to", output_file10)
     time.sleep(1)
 
     with open(output_file15, "w") as file:
         for code in codes_15:
             file.write(code + "\n")
-    print("Codes saved to", output_file15)
+    print("Voucher Codes saved to", output_file15)
     time.sleep(1)
 
     with open(output_file20, "w") as file:
         for code in codes_20:
             file.write(code + "\n")
-    print("Codes saved to", output_file20)
+    print("Voucher Codes saved to", output_file20)
     time.sleep(1)
 
     with open(output_file30, "w") as file:
         for code in codes_30:
             file.write(code + "\n")
-    print("Codes saved to", output_file30)
+    print("Voucher Codes saved to", output_file30)
     time.sleep(1)
 
     with open(output_file50, "w") as file:
         for code in codes_50:
             file.write(code + "\n")
-    print("Codes saved to", output_file50)
+    print("Voucher Codes saved to", output_file50)
     time.sleep(1)
 
     with open(output_file99, "w") as file:
         for code in codes_99:
             file.write(code + "\n")
-    print("Codes saved to", output_file99)
+    print("Voucher Codes saved to", output_file99)
     time.sleep(1)
 
     with open(output_expired, "w") as file:
         for code in codes_expired:
             file.write(code + "\n")
-    print("Codes saved to", output_expired)
+    print("Voucher Codes saved to", output_expired)
     time.sleep(1)
 
     print("\nDone...")
