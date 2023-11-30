@@ -41,7 +41,7 @@ INVOLVED APPS:
         1.3.1  Select Export Data
                1.3.1.1  Export List: Voucher Codes  
                1.3.1.2  Format: CSV 
-               1.3.1.3  Portal: "Your WiFi Name" 
+               1.3.1.3  Portal: "Your Voucher WiFi Name" 
                1.3.1.4  Save file to this folder: %USERPROFILE%\Desktop\GCONNECT\raw_csv
 
 
