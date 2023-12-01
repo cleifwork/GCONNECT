@@ -1,5 +1,6 @@
 import os
 import time
+from tkinter import messagebox
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
 from googleapiclient.http import MediaFileUpload
@@ -70,8 +71,41 @@ def get_file_id(service, file_name, folder_id):
 if __name__ == "__main__":
     main()
 
+def list_files_in_folder(service, folder_id, output_file):
+    try:
+        # List files in the folder
+        results = service.files().list(
+            q=f"'{folder_id}' in parents",
+            fields="files(id, name)"
+        ).execute()
+
+        files = results.get('files', [])
+
+        # Check if the folder contains any files
+        if not files:
+            messagebox.showwarning("Error", "Specified folder does not contain any files.")
+            return
+
+        # Reverse the order of files
+        reversed_files = reversed(files)
+
+        # Write only file_ids to the text file
+        with open(output_file, 'w') as file:
+            for file_info in reversed_files:
+                file.write(f"{file_info['id']}\n")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Write file_ids to text file
+output_file = 'put_file_ids_here.txt'
+
+# Create the service and list files
+service = create_drive_service()
+list_files_in_folder(service, destination_folder_id, output_file)
+
 print("\nDone...")
 time.sleep(1)
 
 print("Exiting process...")
-time.sleep(1)     
+time.sleep(1)
