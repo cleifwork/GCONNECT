@@ -38,10 +38,10 @@ def create_folder(folder_name, parent_id=None):
     folder = drive_service.files().create(body=folder_metadata, fields='id').execute()
     return folder.get('id')
 
-def share_folder(folder_id):
+def share_folder(folder_id, role='writer'):
     drive_service.permissions().create(
         fileId=folder_id,
-        body={'type': 'anyone', 'role': 'writer'},
+        body={'type': 'anyone', 'role': role},
         fields='id'
     ).execute()
 
@@ -59,7 +59,13 @@ subfolder_id = create_folder('vouchers', parent_id=main_folder_id)
 share_folder(main_folder_id)
 share_folder(subfolder_id)
 
-# Save the main folder ID to the text file
+# Create the subfolder 'macro' inside 'VWIFI-MAIN' or use existing if present
+macro_folder_id = create_folder('macro', parent_id=main_folder_id)
+
+# Share 'macro' folder with anyone with the link and reader role
+share_folder(macro_folder_id, role='reader')
+
+# Save the subfolder 'vouchers' ID to the text file
 save_folder_id_to_file(subfolder_id)
 
 url = f"https://drive.google.com/drive/u/0/folders/{subfolder_id}"
