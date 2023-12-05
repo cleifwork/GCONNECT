@@ -2,7 +2,7 @@ WiFi Voucher App + GCash Config
 
 INVOLVED APPS:
 1. Omada Cloud Controller (Web)
-2. Voucher WiFi App (Desktop)
+2. GConnect App (Desktop)
 3. Google Drive (Web)
 4. MacroDroid (Mobile)
 5. GCash (Mobile)
@@ -49,7 +49,7 @@ INVOLVED APPS:
 2. ** SHOULD HAVE A GOOGLE ACCOUNT
    2.1  Login to to your google account
    2.2  Enable Google Drive API here => https://console.cloud.google.com/
-   2.3  Create a NEW PROJECT (just use your voucher wifi portal name)
+   2.3  Create a NEW PROJECT (you use your voucher wifi portal name)
    2.4  Goto APIs & Services
         2.4.1  +ENABLE APIS & SERVICES 
         2.4.2  Select Google Drive
@@ -70,8 +70,7 @@ INVOLVED APPS:
                2.5.4.2  Create new key
                2.5.4.3  Key type: JSON 
                2.5.4.4  CREATE
-               2.5.4.5  Rename to => service_account (.json)
-               2.5.4.6  Save to => %USERPROFILE%\Desktop\GCONNECT
+               2.5.4.5  Rename file to "service_account" (.json) before saving to => %USERPROFILE%\Desktop\GCONNECT
         2.5.5  Go back to +CREATE CREDENTIALS
                2.5.5.1  Select API KEY
                2.5.5.2  Copy API KEY first
@@ -104,6 +103,7 @@ INVOLVED APPS:
         3.2.3  Update existing ACTION (second IF CLAUSE)
                3.2.3.1  Configure and change Trigger Fired to the newly added Webhook
         3.2.4  Save changes then enable the macro  
+        3.2.5  (GCONNECT APP) Click EXTRUP + SYNC
 ------------------------------------------------------------------
 
 *** IDEAL VOUCHER PRINTING PREFERENCE ***
