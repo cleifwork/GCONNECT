@@ -38,7 +38,7 @@ class App(customtkinter.CTk):
         self.logo_frame = MyLogoFrame(self, " STREAM | PLAY | ENJOY ", logo_path="./img/launchpad_logo.png")
         self.logo_frame.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="nsew")      
 
-        self.button_1 = customtkinter.CTkButton(self, text="INITIAL CONFIG", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.clean_csv)
+        self.button_1 = customtkinter.CTkButton(self, text="RUN INITIAL CONFIG", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.clean_csv)
         self.button_1.grid(row=1, column=0, padx=10, pady=5, sticky="ew")
 
         self.button_2 = customtkinter.CTkButton(self, text="EXTRUP VCODES", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.upload_voucher)
