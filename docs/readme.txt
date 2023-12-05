@@ -79,10 +79,10 @@ INVOLVED APPS:
                2.5.5.5  Check Google Drive API > OK > SAVE
                2.5.5.6  Paste API KEY to this file => %USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt      
    
-   2.6  (GCONNECT APP) Click INITIAL Config
-      * NOTES: Wait for the browser to open and shows the macro file and the voucher folder
+   2.6  (GCONNECT APP) Click "INITIAL CONFIG" button
+      * NOTES: Wait for the browser to open, showing the macro file and voucher folder
 
-   2.7  Download the macro and transfer to your android phone
+   2.7  Download the macro file and transfer to your android phone
 
 
 3. ** SHOULD HAVE AN ANDROID PHONE
@@ -96,10 +96,9 @@ INVOLVED APPS:
         3.2.1  Go inside the imported macro
         3.2.2  Add TRIGGER (search: Webhook)
                3.2.2.1  Configure Webhook
-                        3.3.2.1.1  Add Identifier: {sync_vouchers}
+                        3.3.2.1.1  Add this identifier: {sync_vouchers}
                         3.3.2.1.2  Copy the URL > Click OK
-                        3.3.2.1.3  (PC) Goto GCONNECT APP main folder: %USERPROFILE%\Desktop\GCONNECT
-                        3.3.2.1.4  (PC) Put the URL inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt
+                        3.3.2.1.3  (PC) Put the URL inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt
         3.2.3  Update existing ACTION (second IF CLAUSE)
                3.2.3.1  Configure and change Trigger Fired to the newly added Webhook
         3.2.4  Save changes then enable the macro  
