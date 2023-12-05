@@ -160,7 +160,7 @@ if __name__ == "__main__":
         if modified_content == original_content:
             messagebox.showwarning("Warning", "Seems like File IDs and API Key are already added...")
         else:
-            print("\nInjecting FILE_IDs and API Key, please wait...")
+            print("\nConfiguring your macro, please wait...")
 
             with open(source_file_path, 'w') as file:
                 file.write(modified_content)

@@ -151,7 +151,7 @@ def upload_file(service, file_path, folder_id):
         # If the file exists, update its content
         media = MediaFileUpload(file_path, resumable=True)
         file = service.files().update(fileId=existing_file_id, media_body=media).execute()
-        print(f"Updated '{file_name}' in Google Drive with ID: {file['id']}")
+        print(f"Updated '{file_name}' in GDrive with ID: {file['id']}")
     else:
         # If the file does not exist, create a new one
         file_metadata = {
@@ -160,7 +160,7 @@ def upload_file(service, file_path, folder_id):
         }
         media = MediaFileUpload(file_path, resumable=True)
         file = service.files().create(body=file_metadata, media_body=media, fields="id").execute()
-        print(f"Uploaded '{file_name}' to Google Drive with ID: {file['id']}")
+        print(f"Uploaded '{file_name}' to GDrive with ID: {file['id']}")
 
     # Set the permission to anyone with the link
     service.permissions().create(
