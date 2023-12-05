@@ -28,8 +28,8 @@ INVOLVED APPS:
         0.7.1 Download here => https://github.com/cleifwork/GCONNECT
         0.7.2 Click Code > Download Zip
         0.7.3 Extract main folder to your Desktop
-        0.7.4 Rename main folder to GCONNECT
-   0.8  Launch the app thru LaunchPad.bat file
+        0.7.4 Rename main folder to "GCONNECT"
+   0.8  Launch GCONNECT APP thru LaunchPad.bat file
 
 
 1. ** OMADA CLOUD CONTROLLER ACCOUNT
@@ -49,7 +49,7 @@ INVOLVED APPS:
 2. ** SHOULD HAVE A GOOGLE ACCOUNT
    2.1  Login to to your google account
    2.2  Enable Google Drive API here => https://console.cloud.google.com/
-   2.3  Create a NEW PROJECT (you use your voucher wifi portal name)
+   2.3  Create a NEW PROJECT (use your voucher wifi portal name)
    2.4  Goto APIs & Services
         2.4.1  +ENABLE APIS & SERVICES 
         2.4.2  Select Google Drive
@@ -74,9 +74,9 @@ INVOLVED APPS:
         2.5.5  Go back to +CREATE CREDENTIALS
                2.5.5.1  Select API KEY
                2.5.5.2  Copy API KEY first
-               2.5.5.3  Click Edit API key link in pop-up window
-               2.5.5.4  Click Restrict API key under API restrictions
-               2.5.5.5  Select Google Drive API > OK > SAVE
+               2.5.5.3  Click "Edit API key" in the pop-up window
+               2.5.5.4  Select "Restrict API key" under API restrictions
+               2.5.5.5  Check Google Drive API > OK > SAVE
                2.5.5.6  Paste API KEY to this file => %USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt      
    
    2.6  (GCONNECT APP) Click INITIAL Config
