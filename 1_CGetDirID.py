@@ -1,6 +1,9 @@
+
+import time
+import webbrowser
+from tkinter import messagebox
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
-import webbrowser
 
 # Path to the service account key JSON file
 credentials_path = 'service_account.json'
@@ -15,6 +18,17 @@ credentials = service_account.Credentials.from_service_account_file(credentials_
 # Create Google Drive API service
 drive_service = build('drive', API_VERSION, credentials=credentials)
 
+def create_and_share_folder(folder_name, parent_id=None, role='writer'):
+    # Create or get the folder ID
+    folder_id = find_folder_id(folder_name, parent_id)
+    if not folder_id:
+        folder_id = create_folder(folder_name, parent_id)
+
+    # Share the folder with anyone with the link and the specified role
+    share_folder(folder_id, role=role)
+
+    return folder_id
+
 def find_folder_id(folder_name, parent_id=None):
     # Search for a folder with the given name in the specified parent folder
     query = f"name='{folder_name}' and mimeType='application/vnd.google-apps.folder'"
@@ -25,10 +39,6 @@ def find_folder_id(folder_name, parent_id=None):
     return folders[0]['id'] if folders else None
 
 def create_folder(folder_name, parent_id=None):
-    existing_folder_id = find_folder_id(folder_name, parent_id)
-    if existing_folder_id:
-        return existing_folder_id
-
     folder_metadata = {
         'name': folder_name,
         'mimeType': 'application/vnd.google-apps.folder',
@@ -45,28 +55,28 @@ def share_folder(folder_id, role='writer'):
         fields='id'
     ).execute()
 
-def save_folder_id_to_file(folder_id):
-    with open('put_folder_id_here.txt', 'w') as file:
+def save_folder_id_to_file(folder_id, file_name):
+    with open(file_name, 'w') as file:
         file.write(folder_id)
 
-# Create the main folder 'VWIFI-MAIN' or use existing if present
-main_folder_id = create_folder('VWIFI-MAIN')
+# Create and share the main folder 'VWIFI-MAIN'
+main_folder_id = create_and_share_folder('VWIFI-MAIN', role='writer')
 
-# Create the subfolder 'vouchers' inside 'VWIFI-MAIN' or use existing if present
-subfolder_id = create_folder('vouchers', parent_id=main_folder_id)
-
-# Share both folders with anyone with the link and writer role
-share_folder(main_folder_id)
-share_folder(subfolder_id)
-
-# Create the subfolder 'macro' inside 'VWIFI-MAIN' or use existing if present
-macro_folder_id = create_folder('macro', parent_id=main_folder_id)
-
-# Share 'macro' folder with anyone with the link and reader role
-share_folder(macro_folder_id, role='reader')
+# Create and share the subfolder 'vouchers' inside 'VWIFI-MAIN'
+subfolder_id = create_and_share_folder('vouchers', parent_id=main_folder_id)
 
 # Save the subfolder 'vouchers' ID to the text file
-save_folder_id_to_file(subfolder_id)
+save_folder_id_to_file(subfolder_id, 'put_folder_id_here.txt')
+
+# Save the main folder 'VWIFI-MAIN' ID to the text file
+save_folder_id_to_file(main_folder_id, 'main_folder_id.txt')
+
+messagebox.showinfo("Success", "Main folder and voucher folder successfully created...")
+
+print("Opening voucher folder...")
+time.sleep(2)
 
 url = f"https://drive.google.com/drive/u/0/folders/{subfolder_id}"
 webbrowser.open(url)
+
+
