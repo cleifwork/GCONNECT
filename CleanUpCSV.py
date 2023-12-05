@@ -2,7 +2,6 @@ import csv
 import glob
 import os
 import time
-import webbrowser
 from tkinter import messagebox
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -182,10 +181,4 @@ print("\nDone...")
 time.sleep(1)
 
 print("Exiting process...")
-time.sleep(1)      
-
-# Open the text file and read the content
-with open('put_md_url_here.txt', 'r') as file:
-    # Read the content and remove any leading or trailing whitespace
-    url = file.read().strip()
-    webbrowser.open(url)     
+time.sleep(1)   

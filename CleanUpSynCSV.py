@@ -2,7 +2,24 @@ import csv
 import glob
 import os
 import time
+import webbrowser
 from tkinter import messagebox
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
+from googleapiclient.http import MediaFileUpload
+
+# Replace 'credentials.json' with the path to your service account key JSON file
+credentials_file = "service_account.json"
+
+# Open the text file and read the content
+with open('put_folder_id_here.txt', 'r') as file:
+    # Read the content and remove any leading or trailing whitespace
+    destination_folder_id = file.read().strip()
+
+# Define the function to authenticate and create a Drive service
+def create_drive_service():
+    credentials = service_account.Credentials.from_service_account_file(credentials_file, scopes=["https://www.googleapis.com/auth/drive"])
+    return build("drive", "v3", credentials=credentials)
 
 # Specify the voucher wifi app folder name
 wifi_name = 'GCONNECT'
@@ -80,53 +97,95 @@ with open(csv_file, "r") as file:
         for code in codes_5:
             file.write(code + "\n")
     print("Voucher Codes saved to", output_file5)
-    time.sleep(1)
 
     with open(output_file10, "w") as file:
         for code in codes_10:
             file.write(code + "\n")
     print("Voucher Codes saved to", output_file10)
-    time.sleep(1)
 
     with open(output_file15, "w") as file:
         for code in codes_15:
             file.write(code + "\n")
     print("Voucher Codes saved to", output_file15)
-    time.sleep(1)
 
     with open(output_file20, "w") as file:
         for code in codes_20:
             file.write(code + "\n")
     print("Voucher Codes saved to", output_file20)
-    time.sleep(1)
 
     with open(output_file30, "w") as file:
         for code in codes_30:
             file.write(code + "\n")
     print("Voucher Codes saved to", output_file30)
-    time.sleep(1)
 
     with open(output_file50, "w") as file:
         for code in codes_50:
             file.write(code + "\n")
     print("Voucher Codes saved to", output_file50)
-    time.sleep(1)
 
     with open(output_file99, "w") as file:
         for code in codes_99:
             file.write(code + "\n")
     print("Voucher Codes saved to", output_file99)
-    time.sleep(1)
 
     with open(output_expired, "w") as file:
         for code in codes_expired:
             file.write(code + "\n")
     print("Voucher Codes saved to", output_expired)
-    time.sleep(1)
 
-    print("\nDone...")
-    time.sleep(1)
+def main():
+    service = create_drive_service()
 
-    print("Exiting process...")
-    time.sleep(1)
+    # Upload the output files to Google Drive
+    upload_files = [output_file5, output_file10, output_file15, output_file20,
+                    output_file30, output_file50, output_file99]
+
+    for upload_file_path in upload_files:
+        upload_file(service, upload_file_path, destination_folder_id)
+
+def upload_file(service, file_path, folder_id):
+    file_name = os.path.basename(file_path)
+    existing_file_id = get_file_id(service, file_name, folder_id)
     
+    if existing_file_id:
+        # If the file exists, update its content
+        media = MediaFileUpload(file_path, resumable=True)
+        file = service.files().update(fileId=existing_file_id, media_body=media).execute()
+        print(f"Updated '{file_name}' in Google Drive with ID: {file['id']}")
+    else:
+        # If the file does not exist, create a new one
+        file_metadata = {
+            "name": file_name,
+            "parents": [folder_id]
+        }
+        media = MediaFileUpload(file_path, resumable=True)
+        file = service.files().create(body=file_metadata, media_body=media, fields="id").execute()
+        print(f"Uploaded '{file_name}' to Google Drive with ID: {file['id']}")
+
+    # Set the permission to anyone with the link
+    service.permissions().create(
+        fileId=file["id"],
+        body={"role": "reader", "type": "anyone", "withLink": True},
+        fields="id"
+    ).execute()
+
+def get_file_id(service, file_name, folder_id):
+    # Retrieve the file ID by name in the specified folder
+    results = service.files().list(q=f"'{folder_id}' in parents and name = '{file_name}'", fields="files(id)").execute()
+    items = results.get('files', [])
+    return items[0]['id'] if items else None
+
+if __name__ == "__main__":
+    main()
+
+print("\nDone...")
+time.sleep(1)
+
+print("Launch browser to sync...")
+time.sleep(2)      
+
+# Open the text file and read the content
+with open('put_md_url_here.txt', 'r') as file:
+    # Read the content and remove any leading or trailing whitespace
+    url = file.read().strip()
+    webbrowser.open(url)     

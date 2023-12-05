@@ -114,7 +114,7 @@ if __name__ == "__main__":
     subfolder_id = manager.create_and_share_folder('vouchers', parent_id=main_folder_id)
     manager.save_folder_id_to_file(subfolder_id, 'put_folder_id_here.txt')
     manager.save_folder_id_to_file(main_folder_id, 'main_folder_id.txt')
-    print("Main folder and voucher folder successfully created...")
+    print("Main folder and voucher folder successfully created...\n")
     time.sleep(1)
 
     # 2nd Task
@@ -160,7 +160,7 @@ if __name__ == "__main__":
         if modified_content == original_content:
             messagebox.showwarning("Warning", "Seems like File IDs and API Key are already added...")
         else:
-            print("Injecting FILE_IDs and API Key, please wait...")
+            print("\nInjecting FILE_IDs and API Key, please wait...")
 
             with open(source_file_path, 'w') as file:
                 file.write(modified_content)
@@ -191,11 +191,11 @@ if __name__ == "__main__":
                     fields='id'
                 ).execute()
 
-                print("New macro successfully pushed to GDrive!")
+                print("Modified macro successfully pushed to GDrive!")
                 time.sleep(1)
 
-            print("Opening macro link...")
-            time.sleep(2)
+            print("Opening macro download link...")
+            time.sleep(3)
 
             with open('main_folder_id.txt', 'r') as file:
                 folder_id = file.read().strip()
