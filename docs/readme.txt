@@ -24,11 +24,12 @@ INVOLVED APPS:
    0.4  (CMD) pip install Pillow
    0.5  (CMD) pip install google-auth
    0.6  (CMD) pip install google-api-python-client
-   0.7  Download WiFi Voucher App
+   0.7  Download GCONNECT APP
         0.7.1 Download here => https://github.com/cleifwork/GCONNECT
         0.7.2 Click Code > Download Zip
         0.7.3 Extract main folder to your Desktop
         0.7.4 Rename main folder to GCONNECT
+   0.8  Launch the app thru LaunchPad.bat file
 
 
 1. ** OMADA CLOUD CONTROLLER ACCOUNT
@@ -46,56 +47,63 @@ INVOLVED APPS:
 
 
 2. ** SHOULD HAVE A GOOGLE ACCOUNT
-   2.1  Enable Google Drive API here => https://developers.google.com/drive/api/guides/enable-sdk
-   2.2  Take NOTE of your API KEY for later use
-   2.3  Create Service Account 
-   2.4  Save Service Account Key (.json) in the WiFi Voucher App main folder: %USERPROFILE%\Desktop\GCONNECT
-   2.5  Create these folders in your GDrive: My Drive/VOUCHER_WIFI_NAME/vouchers (e.g. My Drive/GCONNECT/vouchers)
-   2.6  Upload empty text files named like the ff. to GCONNECT/vouchers folder.
-        2.6.1   5php_vouchers.txt
-        2.6.2  10php_vouchers.txt
-        2.6.3  15php_vouchers.txt
-        2.6.4  20php_vouchers.txt
-        2.6.5  30php_vouchers.txt
-        2.6.6  50php_vouchers.txt
-        2.6.7  99php_vouchers.txt
-   
-   2.7  Get "GCONNECT/vouchers" FOLDER_ID by sharing the folder to EVERYONE WITH LINK.
-        * NOTES: It's the string in between "https://drive.google.com/drive/folders/" and "?usp=sharing"
-        * Example: For "GCONNECT/vouchers" => https://drive.google.com/drive/folders/GET_FOLDER_ID_HERE?usp=sharing
-        
-        2.6.1  Paste FOLDER_ID inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_folder_id_here.txt
-   
-   2.8  Get each text file's FILE_ID by sharing the file to EVERYONE WITH LINK.
-        2.8.1  Get the LINK
-        * NOTES: It's the string in between "https://drive.google.com/file/d/" and "/view?usp=sharing"
-        * Example: For " 5php_vouchers.txt" => https://drive.google.com/file/d/GET_FILE_ID_HERE/view?usp=sharing
+   2.1  Login to to your google account
+   2.2  Enable Google Drive API here => https://console.cloud.google.com/
+   2.3  Create a NEW PROJECT (just use your voucher wifi portal name)
+   2.4  Goto APIs & Services
+        2.4.1  +ENABLE APIS & SERVICES 
+        2.4.2  Select Google Drive
+        2.4.3  ENABLE
 
-        2.8.2 Save these FILE_IDs for later use
+   2.5  Goto Credentials (with key icon)
+        2.5.1  +CREATE CREDENTIALS
+        2.5.2  Select Service Account
+               2.5.2.1  Give it Account Name (OPTIONAL)
+               2.5.2.2  Give it Account ID (REQUIRED)
+               2.5.2.3  Give it Description (OPTIONAL)
+               2.5.2.4  CREATE AND CONTINUE
+               2.5.2.5  Give it an "OWNER" role
+               2.5.2.5  DONE
+        2.5.3  Select the newly created Service Account
+        2.5.4  Goto KEYS tab
+               2.5.4.1  Click ADD KEY
+               2.5.4.2  Create new key
+               2.5.4.3  Key type: JSON 
+               2.5.4.4  CREATE
+               2.5.4.5  Rename to => service_account (.json)
+               2.5.4.6  Save to => %USERPROFILE%\Desktop\GCONNECT
+        2.5.5  Go back to +CREATE CREDENTIALS
+               2.5.5.1  Select API KEY
+               2.5.5.2  Copy API KEY first
+               2.5.5.3  Click Edit API key link in pop-up window
+               2.5.5.4  Click Restrict API key under API restrictions
+               2.5.5.5  Select Google Drive API > OK > SAVE
+               2.5.5.6  Paste API KEY to this file => %USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt      
+   
+   2.6  (GCONNECT APP) Click INITIAL Config
+      * NOTES: Wait for the browser to open and shows the macro file and the voucher folder
+
+   2.7  Download the macro and transfer to your android phone
 
 
 3. ** SHOULD HAVE AN ANDROID PHONE
-    * BRAND/MODELS:
+    * BRAND | MODELS:
       Highly Recommended: Nexus, HTC, Pixels, Android One, Nokia, Sony, Other Newer Vendors
       Recommended       : RealMe, Blackview, Oppo, Vivo, Lenovo, Meizu, Asus, Xiaomi
       Not So Recommended: Huawei, Samsung, OnePlus
-
+  
    3.1  Install MacroDroid (Google Play Store)
-   3.2  Download macro here => https://drive.google.com/drive/folders/1QfV7-ELD7QrVR5gsQI3qZu3njGw3SMYV
-   3.3  Import downloaded macro to MacroDroid
-        3.3.1  Go inside the imported macro
-        3.3.2  Add TRIGGER (Webhook)
-               3.3.2.1  Configure Webhook
+   3.2  Import downloaded macro to MacroDroid or Import via Google Drive 
+        3.2.1  Go inside the imported macro
+        3.2.2  Add TRIGGER (search: Webhook)
+               3.2.2.1  Configure Webhook
                         3.3.2.1.1  Add Identifier: {sync_vouchers}
-                        3.3.2.1.2  Copy the URL
-                        3.3.2.1.3  (PC) Go to your WiFi Voucher App main folder: %USERPROFILE%\Desktop\GCONNECT
+                        3.3.2.1.2  Copy the URL > Click OK
+                        3.3.2.1.3  (PC) Goto GCONNECT APP main folder: %USERPROFILE%\Desktop\GCONNECT
                         3.3.2.1.4  (PC) Put the URL inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt
-        3.3.3  Update existing ACTION (second IF CLAUSE)
-               3.3.3.1  Configure and change Trigger Fired to the newly added Webhook
-        3.3.4  Save changes then enable the macro    
-        3.3.5  Configure each voucher's HTTP Request (under second IF CLAUSE)
-               3.3.5.1  Paste each FILE_ID accordingly in the URL (Settings tab)
-               3.3.5.2  Add your Google Drive API key (Query Params tab)   
+        3.2.3  Update existing ACTION (second IF CLAUSE)
+               3.2.3.1  Configure and change Trigger Fired to the newly added Webhook
+        3.2.4  Save changes then enable the macro  
 ------------------------------------------------------------------
 
 *** IDEAL VOUCHER PRINTING PREFERENCE ***
