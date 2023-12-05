@@ -96,7 +96,10 @@ INVOLVED APPS:
         3.2.1  Go inside the imported macro
         3.2.2  Add TRIGGER (search: Webhook)
                3.2.2.1  Configure Webhook
-                        3.3.2.1.1  Add this identifier: {sync_vouchers}
+                        3.3.2.1.1  Add Identifier
+                                   3.3.2.1.1.1  Click "..."
+                                   3.3.2.1.1.2  Select *Notification title > OK
+                                   3.3.2.1.1.3  Replace {not_title} with {sync_voucher}
                         3.3.2.1.2  Copy the URL > Click OK
                         3.3.2.1.3  (PC) Put the URL inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt
         3.2.3  Update existing ACTION (second IF CLAUSE)
