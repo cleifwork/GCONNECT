@@ -94,20 +94,14 @@ INVOLVED APPS:
   
    3.1  Install MacroDroid (Google Play Store)
    3.2  Import downloaded macro to MacroDroid or Import via Google Drive 
-        3.2.1  Go inside the imported macro
-        3.2.2  Add TRIGGER (search: Webhook)
-               3.2.2.1  Configure Webhook
-                        3.3.2.1.1  Add Identifier
-                                   3.3.2.1.1.1  Click "..."
-                                   3.3.2.1.1.2  Select *Notification title > Press OK
-                                   3.3.2.1.1.3  Replace {not_title} with {sync_voucher}
-                        3.3.2.1.2  Copy the URL > Press OK
-                        3.3.2.1.3  (PC) Put the URL inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt
-                                 * NOTES: URL should look like this: https://trigger.macrodroid.com/DEVICE_ID/{sync_voucher}
-        3.2.3  Update existing ACTION (second IF CLAUSE)
-               3.2.3.1  Configure and change Trigger Fired to the newly added Webhook
-        3.2.4  Save changes then enable the macro  
-        3.2.5  (GCONNECT APP) Click EXTRUP + SYNC
+        3.2.1  Tap the imported macro
+        3.2.2  Tap on the Webhook trigger
+               3.2.2.1  Tap Configure
+               3.2.2.2  Copy the URL > Press OK
+               3.2.2.3  (PC) Put the URL inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt
+                                 * NOTES: URL should look like this: https://trigger.macrodroid.com/DEVICE_ID/sync_voucher
+        3.2.3  Tap on the import button (≡+) then enable the macro  
+        3.2.4  (GCONNECT APP) Click EXTRUP + SYNC
 ------------------------------------------------------------------
 
 *** IDEAL VOUCHER PRINTING PREFERENCE ***
