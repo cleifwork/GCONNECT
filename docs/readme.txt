@@ -93,14 +93,18 @@ INVOLVED APPS:
   
    3.1  Install MacroDroid (Google Play Store)
    3.2  Import downloaded macro to MacroDroid or Import via Google Drive 
-        3.2.1  Tap on the imported macro
-        3.2.2  Tap on the Webhook trigger
+        3.2.1  Launch MacroDroid
+        3.2.2  (HOME) Tap on Export/Import
+        3.2.3  Tap on Storage under Import
+        3.2.4  Browse macro in your local storage or via GDrive (Same Google account must be logged to your Android & PC) 
+        3.2.5  Open the imported macro
+        3.2.6  Tap on the Webhook trigger
                3.2.2.1  Tap Configure
-               3.2.2.2  Copy the URL > Press OK
-               3.2.2.3  (PC) Put the URL inside this text file: %USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt
-                                 * NOTES: URL should look like this: https://trigger.macrodroid.com/DEVICE_ID/sync_voucher
-        3.2.3  Tap on the import button (≡+) then enable the macro  
-        3.2.4  (GCONNECT APP) Click EXTRUP + SYNC
+               3.2.2.2  Copy the URL > Press Back button
+               3.2.2.3  Send URL to your PC (looks like this => https://trigger.macrodroid.com/DEVICE_ID/sync_voucher)
+               3.2.2.3  (PC) Put the URL inside this text file => %USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt
+        3.2.7  Tap on the import button (≡+) then enable the macro  
+        3.2.8  (GCONNECT APP) Click EXTRUP + SYNC
 ------------------------------------------------------------------
 
 *** IDEAL VOUCHER PRINTING PREFERENCE ***
