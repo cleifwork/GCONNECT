@@ -7,6 +7,30 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
+# List to store error messages
+error_messages = []
+
+# Check 1: Check if "service_account.json" is present
+if not os.path.isfile("service_account.json"):
+    error_messages.append("Please add the service_account.json file to your root folder.")
+
+# Check 2: Check if "put_folder_id_here.txt" is not empty
+with open("put_folder_id_here.txt", "r") as folder_id_file:
+    folder_id = folder_id_file.read().strip()
+
+if not folder_id:
+    error_messages.append("No folder ID found, RUN INITIAL CONFIG first.")
+
+# Display all error messages in a single prompt
+if error_messages:
+    error_message = "\n".join(error_messages)
+    messagebox.showerror("Error", error_message)
+    exit()
+
+# Continue with the rest of your script if all checks pass
+print("All initial checks passed. Proceeding...")
+time.sleep(1)
+
 # Replace 'credentials.json' with the path to your service account key JSON file
 credentials_file = "service_account.json"
 

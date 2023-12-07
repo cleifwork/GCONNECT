@@ -6,6 +6,30 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
+# List to store error messages
+error_messages = []
+
+# Check 1: Check if "service_account.json" is present
+if not os.path.isfile("service_account.json"):
+    error_messages.append("Please add the service_account.json file to your root folder.")
+
+# Check 2: Check if "put_api_key_here.txt" is not empty
+with open("put_api_key_here.txt", "r") as api_key_file:
+    api_key = api_key_file.read().strip()
+
+if not api_key:
+    error_messages.append("Please add your GDrive API Key to put_api_key_here.txt.")
+
+# Display all error messages in a single prompt
+if error_messages:
+    error_message = "\n".join(error_messages)
+    messagebox.showerror("Error", error_message)
+    exit()
+
+# Continue with the rest of your script if all checks pass
+print("All initial checks passed. Proceeding...")
+time.sleep(1)
+
 class GoogleDriveManager:
     def __init__(self, credentials_path='service_account.json'):
         self.credentials_path = credentials_path
