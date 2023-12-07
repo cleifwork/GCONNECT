@@ -77,13 +77,12 @@ INVOLVED APPS:
                2.5.5.3  Click "Edit API key" in the pop-up window
                2.5.5.4  Select "Restrict API key" under API restrictions
                2.5.5.5  Check Google Drive API > OK > SAVE
-               2.5.5.6  Paste API KEY to this file => %USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt
-               2.5.5.7        
+               2.5.5.6  Paste API KEY to this file => %USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt       
    
    2.6  (GCONNECT APP) Click "INITIAL CONFIG" button
       * NOTES: Wait for the browser to open, showing the macro file and voucher folder
 
-   2.7  Download the macro file and transfer to your android phone
+   2.7  Download the macro file then transfer to your android phone
 
 
 3. ** SHOULD HAVE AN ANDROID PHONE
@@ -94,7 +93,7 @@ INVOLVED APPS:
   
    3.1  Install MacroDroid (Google Play Store)
    3.2  Import downloaded macro to MacroDroid or Import via Google Drive 
-        3.2.1  Tap the imported macro
+        3.2.1  Tap on the imported macro
         3.2.2  Tap on the Webhook trigger
                3.2.2.1  Tap Configure
                3.2.2.2  Copy the URL > Press OK

@@ -110,11 +110,14 @@ if __name__ == "__main__":
     manager = GoogleDriveManager()
 
     # 1st Task
-    main_folder_id = manager.create_and_share_folder('VWIFI-MAIN', role='writer')
-    subfolder_id = manager.create_and_share_folder('vouchers', parent_id=main_folder_id)
+    main_folder_name = 'VWIFI-MAIN'
+    vouchers_folder_name = 'vouchers'
+
+    main_folder_id = manager.create_and_share_folder(main_folder_name, role='writer')
+    subfolder_id = manager.create_and_share_folder(vouchers_folder_name, parent_id=main_folder_id)
     manager.save_folder_id_to_file(subfolder_id, 'put_folder_id_here.txt')
     manager.save_folder_id_to_file(main_folder_id, 'main_folder_id.txt')
-    print("Main folder and voucher folder successfully created...\n")
+    print(f"{main_folder_name} folder and {vouchers_folder_name} folder successfully created...\n")
     time.sleep(1)
 
     # 2nd Task
@@ -136,7 +139,8 @@ if __name__ == "__main__":
     # 3rd Task
     file_ids_path = 'put_file_ids_here.txt'
     api_key_path = 'put_api_key_here.txt'
-    source_file_path = 'VWiFi_Name_-_GCash.macro'
+    source_file_path = 'temp.macro'
+    modified_macro_file_path = 'VWiFi_Name_-_GCash.macro'
 
     if not (os.path.exists(file_ids_path) and os.path.exists(api_key_path) and os.path.exists(source_file_path)):
         messagebox.showwarning("Error", "One or more source files do not exist.")
@@ -162,27 +166,26 @@ if __name__ == "__main__":
         else:
             print("\nConfiguring your macro, please wait...")
 
-            with open(source_file_path, 'w') as file:
+            with open(modified_macro_file_path, 'w') as file:
                 file.write(modified_content)
 
-            with open('main_folder_id.txt', 'r') as file:
-                main_folder_id = file.read().strip()
+            file_metadata = {'name': os.path.basename(modified_macro_file_path), 'parents': [main_folder_id]}
+            media = MediaFileUpload(modified_macro_file_path, resumable=True)
 
-            file_path = 'VWiFi_Name_-_GCash.macro'
-            file_metadata = {'name': os.path.basename(file_path), 'parents': [main_folder_id]}
             existing_files = manager.drive_service.files().list(
                 q=f"name='{file_metadata['name']}' and '{main_folder_id}' in parents"
             ).execute().get('files', [])
 
             if existing_files:
                 existing_file_id = existing_files[0]['id']
-                media = MediaFileUpload(file_path, resumable=True)
-                manager.drive_service.files().update(fileId=existing_file_id, media_body=media).execute()
-                print(f"Macro successfully updated in GDrive with ID: {existing_file_id}")
+                updated_file = manager.drive_service.files().update(
+                    fileId=existing_file_id, media_body=media, **file_metadata
+                ).execute()
+                print(f"Macro successfully updated with ID: {updated_file['id']}")
             else:
-                media = MediaFileUpload(file_path, resumable=True)
                 uploaded_file = manager.drive_service.files().create(
-                    body=file_metadata, media_body=media, fields='id, webContentLink'
+                    body={**file_metadata, 'name': os.path.basename(modified_macro_file_path)},
+                    media_body=media, fields='id, webContentLink'
                 ).execute()
 
                 manager.drive_service.permissions().create(
@@ -191,10 +194,10 @@ if __name__ == "__main__":
                     fields='id'
                 ).execute()
 
-                print("Modified macro successfully pushed to GDrive!")
+                print("New macro was successfully configured with ID:", uploaded_file['id'])
                 time.sleep(1)
 
-            print("Opening macro download link...")
+            print("\nOpening macro download folder...")
             time.sleep(3)
 
             with open('main_folder_id.txt', 'r') as file:
