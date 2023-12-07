@@ -169,7 +169,7 @@ if __name__ == "__main__":
             with open(modified_macro_file_path, 'w') as file:
                 file.write(modified_content)
 
-            file_metadata = {'name': os.path.basename(modified_macro_file_path), 'parents': [main_folder_id]}
+            file_metadata = {'name': os.path.basename(modified_macro_file_path)}
             media = MediaFileUpload(modified_macro_file_path, resumable=True)
 
             existing_files = manager.drive_service.files().list(
@@ -178,13 +178,23 @@ if __name__ == "__main__":
 
             if existing_files:
                 existing_file_id = existing_files[0]['id']
+                
+                # Get the parents of the existing file
+                existing_parents = manager.drive_service.files().get(
+                    fileId=existing_file_id, fields="parents"
+                ).execute().get('parents', [])
+
+                # Convert the list of parents to a string
+                existing_parents_str = ",".join(existing_parents)
+
                 updated_file = manager.drive_service.files().update(
-                    fileId=existing_file_id, media_body=media, **file_metadata
+                    fileId=existing_file_id, media_body=media,
+                    addParents=main_folder_id, removeParents=existing_parents_str
                 ).execute()
                 print(f"Macro successfully updated with ID: {updated_file['id']}")
             else:
                 uploaded_file = manager.drive_service.files().create(
-                    body={**file_metadata, 'name': os.path.basename(modified_macro_file_path)},
+                    body={**file_metadata, 'parents': [main_folder_id]},
                     media_body=media, fields='id, webContentLink'
                 ).execute()
 
