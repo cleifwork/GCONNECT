@@ -1,4 +1,4 @@
-WiFi Voucher App + GCash Config
+Voucher WiFi App + GCash Config
 
 INVOLVED APPS:
 1. Omada Cloud Controller (Web)
