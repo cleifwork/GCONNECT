@@ -69,8 +69,7 @@ class App(customtkinter.CTk):
         subprocess.run(["python", "CleanUpCSV.py"])
 
     def sync_gdrivemd(self):
-        script_path = os.path.join(directory, "SyncGDriveMD.bat")
-        subprocess.run([script_path])   
+        subprocess.run(["python", "SyncGDriveMD.py"]) 
 
     def cleanup_csv(self):
         subprocess.run(["python", "CleanUpSynCSV.py"])        
