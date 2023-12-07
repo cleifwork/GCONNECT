@@ -79,7 +79,7 @@ INVOLVED APPS:
                2.5.5.5  Check Google Drive API > OK > SAVE
                2.5.5.6  Paste API KEY to this file => %USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt       
    
-   2.6  (GCONNECT APP) Click "INITIAL CONFIG" button
+   2.6  (GCONNECT APP) Click "RUN INITIAL CONFIG" button
       * NOTES: Wait for the browser to open, showing the macro file and voucher folder
 
    2.7  Download the macro file then transfer to your android phone
