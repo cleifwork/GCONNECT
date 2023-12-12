@@ -96,7 +96,7 @@ INVOLVED APPS:
 3. ** SHOULD HAVE AN ANDROID DEVICE (Voucher Server Phone)
     * SOME REQUIREMENTS: 
       => Phone must not be rooted
-      => Phone must have sim card, available service and SMS credits (load for texting)
+      => Phone must have a sim card, available service and SMS credits (load for texting)
       => Phone must be connected to WiFi always
       => Phone must have separate GCash account installed
       => Phone must be able to receive GCash realtime notification
