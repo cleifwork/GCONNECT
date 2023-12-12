@@ -134,7 +134,16 @@ if __name__ == "__main__":
     manager = GoogleDriveManager()
 
     # 1st Task
-    main_folder_name = 'VWIFI-MAIN'
+    main_folder_name_file = 'main_folder_name.txt'
+
+    # Check if the file exists
+    if os.path.exists(main_folder_name_file):
+        with open(main_folder_name_file, 'r') as file:
+            main_folder_name = file.read().strip()
+    else:
+        print(f"Error: The file {main_folder_name_file} does not exist.")
+        # Handle the error or exit the program as needed
+
     vouchers_folder_name = 'vouchers'
 
     main_folder_id = manager.create_and_share_folder(main_folder_name, role='writer')
