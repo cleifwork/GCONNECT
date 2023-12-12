@@ -94,11 +94,6 @@ INVOLVED APPS:
 
 
 3. ** SHOULD HAVE AN ANDROID PHONE
-    * BRAND | MODELS:
-      Highly Recommended: Nexus, HTC, Pixels, Android One, Nokia, Sony, Other Newer Vendors
-      Recommended       : RealMe, Blackview, Oppo, Vivo, Lenovo, Meizu, Asus, Xiaomi
-      Not So Recommended: Huawei, Samsung, OnePlus
-  
    3.1  Install MacroDroid (Google Play Store)
    3.2  Import downloaded macro to MacroDroid or Import via Google Drive 
         3.2.1  Launch MacroDroid
