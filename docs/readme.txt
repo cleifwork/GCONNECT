@@ -69,8 +69,9 @@ INVOLVED APPS:
                2.5.4.1  Click ADD KEY
                2.5.4.2  Create new key
                2.5.4.3  Key type: JSON 
-               2.5.4.4  CREATE
-               2.5.4.5  Rename file to "service_account" (.json) before saving to => %USERPROFILE%\Desktop\GCONNECT
+               2.5.4.4  CREATE (file will be downloaded)
+               2.5.4.5  Rename file to "service_account" (.json)
+               2.5.4.6  Save to => %USERPROFILE%\Desktop\GCONNECT
         2.5.5  Go back to +CREATE CREDENTIALS
                2.5.5.1  Select API KEY
                2.5.5.2  Copy API KEY first
@@ -83,6 +84,13 @@ INVOLVED APPS:
       * NOTES: Wait for the browser to open, showing the macro file and voucher folder
 
    2.7  Download the macro file then transfer to your android phone
+      * NOTES: Below are applicable only if you're using the same Google Acount in your PC & Android
+        2.7.1  (ANDROID) Launch Google Drive App
+        2.7.2  (ANDROID) Goto 'Shared' tab
+        2.7.3  (ANDROID) Go inside 'GCONNECT' folder
+        2.7.4  (ANDROID) Tap more option (⋮) beside the macro file
+        2.7.5  (ANDROID) Tap 'Open with' (should open the macro with MacroDroid automatically)
+        2.7.6  Proceed to STEP: 3.2.6
 
 
 3. ** SHOULD HAVE AN ANDROID PHONE
@@ -96,7 +104,7 @@ INVOLVED APPS:
         3.2.1  Launch MacroDroid
         3.2.2  (HOME) Tap on Export/Import
         3.2.3  Tap on Storage under Import
-        3.2.4  Browse macro in your local storage or via GDrive (Same Google account must be logged to your Android & PC) 
+        3.2.4  Browse macro in your local storage 
         3.2.5  Open the imported macro
         3.2.6  Tap on the Webhook trigger
                3.2.2.1  Tap Configure
