@@ -103,11 +103,10 @@ INVOLVED APPS:
 
    3.1  Install MacroDroid (Google Play Store)
         3.1.1  Recommended permission for MacroDroid
-               3.1.1.1  Give admin rights
+               3.1.1.1  Give app admin rights
                3.1.1.2  Disable battery optimization
                3.1.1.3  Allow background autostart
-               3.1.1.4  Give all permission access
-               3.1.1.5  Give notification access
+               3.1.1.4  Give app notification access
    3.2  Import downloaded macro to MacroDroid or Import via Google Drive 
         3.2.1  Launch MacroDroid
         3.2.2  (HOME) Tap on Export/Import
@@ -124,7 +123,7 @@ INVOLVED APPS:
 
 
 4. ** PERFORM TESTING
-   4.1  Send a GCash amount (ex: 5.00 pesos) to the Server Phone's GCash number
+   4.1  Send a GCash amount to the Server Phone's GCash number (ex: 5.00 pesos)
         4.1.1  Sender should be able to receive WiFi Voucher automatically
 ------------------------------------------------------------------
 
