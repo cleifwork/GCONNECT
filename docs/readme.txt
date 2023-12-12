@@ -93,8 +93,21 @@ INVOLVED APPS:
         2.7.6  Proceed to STEP: 3.2.6
 
 
-3. ** SHOULD HAVE AN ANDROID PHONE
+3. ** SHOULD HAVE AN ANDROID DEVICE (Voucher Server Phone)
+    * SOME REQUIREMENTS: 
+      => Phone must not be rooted
+      => Phone must have sim card, available service and SMS credits (load for texting)
+      => Phone must be connected to WiFi always
+      => Phone must have separate GCash account installed
+      => Phone must be able to receive GCash realtime notification
+
    3.1  Install MacroDroid (Google Play Store)
+        3.1.1  Recommended permission for MacroDroid
+               3.1.1.1  Give admin rights
+               3.1.1.2  Disable battery optimization
+               3.1.1.3  Allow background autostart
+               3.1.1.4  Give all permission access
+               3.1.1.5  Give notification access
    3.2  Import downloaded macro to MacroDroid or Import via Google Drive 
         3.2.1  Launch MacroDroid
         3.2.2  (HOME) Tap on Export/Import
@@ -108,6 +121,11 @@ INVOLVED APPS:
                3.2.2.3  (PC) Put the URL inside this text file => %USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt
         3.2.7  Tap on the import button (≡+) then enable the macro  
         3.2.8  (GCONNECT APP) Click EXTRUP + SYNC
+
+
+4. ** PERFORM TESTING
+   4.1  Send a GCash amount (ex: 5.00 pesos) to the Server Phone's GCash number
+        4.1.1  Sender should be able to receive WiFi Voucher automatically
 ------------------------------------------------------------------
 
 *** IDEAL VOUCHER PRINTING PREFERENCE ***
