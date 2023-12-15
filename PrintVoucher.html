@@ -56,6 +56,7 @@
 
         // Extract the necessary information
         const code = columns[0] ? columns[0].replace(/"/g, "") : "";
+        const price = columns[8] ? columns[8].replace(/"/g, "") : ""; // New column for price
         const notes = columns[9] ? columns[9].replace(/"/g, "").trim() : "";
         const duration = columns[10] ? columns[10].replace(/"/g, "").replace(".0", "").replace("Minutes"," Minutes").replace("Hours"," Hours") : "";
         const type = columns[12] ? columns[12].replace(/"/g, "") : "";
@@ -70,7 +71,7 @@
           // Add the voucher content
           const voucherTitle = document.createElement("div");
           voucherTitle.classList.add("voucher-title");
-          voucherTitle.textContent = "Voucher Code";
+          voucherTitle.textContent = `${price} Voucher`; // Display price in title
           voucher.appendChild(voucherTitle);
 
           const voucherCode = document.createElement("div");
