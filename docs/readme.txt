@@ -21,15 +21,16 @@ INVOLVED APPS:
         0.2.3  Execute below ONLY IF "http-server" is not working
                0.2.3.1  (Browser) Empty cache & hard reload page (dev tools, ctrl + right click) 
    0.3  (CMD) pip install customtkinter
-   0.4  (CMD) pip install Pillow
-   0.5  (CMD) pip install google-auth
-   0.6  (CMD) pip install google-api-python-client
-   0.7  Download GCONNECT APP
-        0.7.1 Download here => https://github.com/cleifwork/GCONNECT
-        0.7.2 Click Code > Download Zip
-        0.7.3 Extract main folder to your Desktop
-        0.7.4 Rename main folder to "GCONNECT"
-   0.8  Launch GCONNECT APP thru LaunchPad.bat file
+   0.4  (CMD) pip install packaging
+   0.5  (CMD) pip install Pillow
+   0.6  (CMD) pip install google-auth
+   0.7  (CMD) pip install google-api-python-client
+   0.8  Download GCONNECT APP
+        0.8.1 Download here => https://github.com/cleifwork/GCONNECT
+        0.8.2 Click Code > Download Zip
+        0.8.3 Extract main folder to your Desktop
+        0.8.4 Rename main folder to "GCONNECT"
+   0.9  Launch GCONNECT APP thru LaunchPad.bat file
 
 
 1. ** OMADA CLOUD CONTROLLER ACCOUNT
