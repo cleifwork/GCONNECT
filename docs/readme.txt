@@ -123,8 +123,8 @@ INVOLVED APPS:
 
 
 4. ** PERFORM TESTING
-   4.1  Send a GCash amount to the Server Phone's GCash number (ex: 5.00 pesos)
-        4.1.1  Sender should be able to receive WiFi Voucher automatically
+   4.1  Send a GCash amount (5.00) to the Server Phone's GCash number.
+        4.1.1  Sender should receive WiFi Voucher via SMS 
 ------------------------------------------------------------------
 
 *** IDEAL VOUCHER PRINTING PREFERENCE ***
