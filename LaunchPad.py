@@ -7,10 +7,10 @@ from PIL import Image
 user_profile = os.environ['USERPROFILE']
     
 # Specify the wifi folder name as a variable
-wifi_name = 'GCONNECT'
+app_name = 'GCONNECT'
     
 # Construct the full path
-directory = os.path.join(user_profile, 'Desktop', wifi_name)
+directory = os.path.join(user_profile, 'Desktop', app_name)
 
 class MyLogoFrame(customtkinter.CTkFrame):
     def __init__(self, master, title, logo_path):
@@ -75,8 +75,7 @@ class App(customtkinter.CTk):
         subprocess.run(["python", "CleanUpSynCSV.py"])        
 
     def print_voucher(self):
-        script_path = os.path.join(directory, "PrintVoucherServer.bat")
-        subprocess.run([script_path])
+        subprocess.run(["python", "PrintVoucherServer.py"])
 
 app = App()
 app.mainloop()

@@ -2,6 +2,7 @@ import csv
 import glob
 import os
 import time
+import subprocess
 import webbrowser
 from tkinter import messagebox
 from google.oauth2 import service_account
@@ -10,29 +11,37 @@ from googleapiclient.http import MediaFileUpload
 
 # List to store error messages
 error_messages = []
+actions_to_take = []
 
 # Check 1: Check if "service_account.json" is present
 if not os.path.isfile("service_account.json"):
-    error_messages.append("Please add the service_account.json file to your root folder.")
+    error_messages.append("Please execute RUN INITIAL CONFIG first.")
 
 # Check 2: Check if "put_folder_id_here.txt" is not empty
 with open("put_folder_id_here.txt", "r") as folder_id_file:
     folder_id = folder_id_file.read().strip()
 
-if not folder_id:
-    error_messages.append("No folder ID found, RUN INITIAL CONFIG first.")
+    if not folder_id:
+        error_messages.append("No folder ID found!")
 
 # Check 3: Check if "put_md_url_here.txt" is not empty and contains a valid URL
 with open("put_md_url_here.txt", "r") as md_url_file:
     md_url = md_url_file.read().strip()
 
-if not md_url or not md_url.startswith("http"):
-    error_messages.append("Please check your md_url file for a valid URL.")
+    if not md_url or not md_url.startswith("http"):
+        error_messages.append("Please check 'put_md_url_here.txt' for a valid URL.")
+        text_file_path = "put_md_url_here.txt"
+        actions_to_take.append(lambda: subprocess.run(['notepad.exe', text_file_path], check=True))        
 
 # Display all error messages in a single prompt
 if error_messages:
     error_message = "\n".join(error_messages)
     messagebox.showerror("Error", error_message)
+
+    # Execute actions
+    for action in actions_to_take:
+        action()
+
     exit()
 
 # Continue with the rest of your script if all checks pass
@@ -53,10 +62,10 @@ def create_drive_service():
     return build("drive", "v3", credentials=credentials)
 
 # Specify the voucher wifi app folder name
-wifi_name = 'GCONNECT'
+app_name = 'GCONNECT'
 
 # Specify the directory where the CSV file is located
-directory = os.path.join(os.environ['USERPROFILE'], 'Desktop', wifi_name, 'raw_csv')
+directory = os.path.join(os.environ['USERPROFILE'], 'Desktop', app_name, 'raw_csv')
 
 # Search for CSV files in the directory
 csv_files = glob.glob(os.path.join(directory, '*.csv'))

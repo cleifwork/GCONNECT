@@ -1,4 +1,5 @@
 import os
+import subprocess
 import webbrowser
 from tkinter import messagebox
 
@@ -14,4 +15,8 @@ if os.path.getsize(filename) > 0:
     except webbrowser.Error:
         print("Invalid URL. Please check and try again.")
 else:
-    messagebox.showerror("Error", "Please check your md_url file for a valid URL.")
+    messagebox.showerror("Error", "Please check 'put_md_url_here.txt' for a valid URL.")
+
+    # Open text file after the error
+    subprocess.run(['notepad.exe', filename], check=True)
+    exit()

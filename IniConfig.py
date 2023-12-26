@@ -1,29 +1,43 @@
 import os
 import time
+import subprocess
 import webbrowser
 from tkinter import messagebox
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
-# List to store error messages
+# List to store error messages and actions
 error_messages = []
+actions_to_take = []
 
 # Check 1: Check if "service_account.json" is present
 if not os.path.isfile("service_account.json"):
-    error_messages.append("Please add the service_account.json file to your root folder.")
+    error_messages.append("Please add 'service_account.json' to your root folder.")
+    folder_path = os.path.join(os.path.expanduser("~"), "Desktop", "GCONNECT")
+    actions_to_take.append(lambda: os.startfile(folder_path))
 
 # Check 2: Check if "put_api_key_here.txt" is not empty
-with open("put_api_key_here.txt", "r") as api_key_file:
-    api_key = api_key_file.read().strip()
+if os.path.isfile("put_api_key_here.txt"):
+    with open("put_api_key_here.txt", "r") as api_key_file:
+        api_key = api_key_file.read().strip()
 
-if not api_key:
-    error_messages.append("Please add your GDrive API Key to put_api_key_here.txt.")
+    if not api_key:
+        error_messages.append("Please add your GDrive API Key to 'put_api_key_here.txt'")
+        text_file_path = "put_api_key_here.txt"
+        actions_to_take.append(lambda: subprocess.run(['notepad.exe', text_file_path], check=True))
+else:
+    error_messages.append("The file 'put_api_key_here.txt' is missing.")
 
 # Display all error messages in a single prompt
 if error_messages:
     error_message = "\n".join(error_messages)
     messagebox.showerror("Error", error_message)
+
+    # Execute actions
+    for action in actions_to_take:
+        action()
+
     exit()
 
 # Continue with the rest of your script if all checks pass
