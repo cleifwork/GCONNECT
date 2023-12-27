@@ -2,7 +2,6 @@ import csv
 import glob
 import os
 import time
-import subprocess
 from tkinter import messagebox
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -10,7 +9,6 @@ from googleapiclient.http import MediaFileUpload
 
 # List to store error messages
 error_messages = []
-actions_to_take = []
 
 # Check 1: Check if "service_account.json" is present
 if not os.path.isfile("service_account.json"):
@@ -21,25 +19,12 @@ with open("put_folder_id_here.txt", "r") as folder_id_file:
     folder_id = folder_id_file.read().strip()
 
     if not folder_id:
-        error_messages.append("No folder ID found!")
-
-# Check 3: Check if "put_md_url_here.txt" is not empty and contains a valid URL
-with open("put_md_url_here.txt", "r") as md_url_file:
-    md_url = md_url_file.read().strip()
-
-    if not md_url or not md_url.startswith("http"):
-        error_messages.append("Please check 'put_md_url_here.txt' for a valid URL.")
-        text_file_path = "put_md_url_here.txt"
-        actions_to_take.append(lambda: subprocess.run(['notepad.exe', text_file_path], check=True))        
+        error_messages.append("No folder ID found!")      
 
 # Display all error messages in a single prompt
 if error_messages:
     error_message = "\n".join(error_messages)
     messagebox.showerror("Error", error_message)
-
-    # Execute actions
-    for action in actions_to_take:
-        action()
 
     exit()
 
