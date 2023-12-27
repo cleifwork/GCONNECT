@@ -15,22 +15,27 @@ INVOLVED APPS:
     * TESTED: Windows 10, Windows 11
 
    0.1  Install python : Download here => https://www.python.org/downloads/
+        ** Recommended version: python-3.11.4
+
    0.2  Install node.js : Download here => https://nodejs.org/en/download/
+        ** Recommended version: node-v18.16.1
+
         0.2.1  (CMD) Execute after installation: npm install --global http-server
         0.2.2  (CMD) Type "http-server" to check if working properly
         0.2.3  Execute below ONLY IF "http-server" is not working
-               0.2.3.1  (Browser) Empty cache & hard reload page (dev tools, ctrl + right click) 
+               0.2.3.1  (BROWSER) Empty cache & hard reload page (dev tools, ctrl + right click) 
    0.3  (CMD) pip install customtkinter
    0.4  (CMD) pip install packaging
    0.5  (CMD) pip install Pillow
    0.6  (CMD) pip install google-auth
    0.7  (CMD) pip install google-api-python-client
-   0.8  Download GCONNECT APP
-        0.8.1 Download here => https://github.com/cleifwork/GCONNECT
-        0.8.2 Click Code > Download Zip
-        0.8.3 Extract main folder to your Desktop
-        0.8.4 Rename main folder to "GCONNECT"
-   0.9  Launch GCONNECT APP thru LaunchPad.bat file
+   0.8  (CMD) pip install pywin32
+   0.9  Download GCONNECT APP
+        0.9.1 Download here => https://github.com/cleifwork/GCONNECT
+        0.9.2 Click Code > Download Zip
+        0.9.3 Extract main folder to your Desktop
+        0.9.4 Rename main folder to "GCONNECT"
+   0.10 Launch GCONNECT APP thru "LaunchPad.pyw" file
 
 
 1. ** OMADA CLOUD CONTROLLER ACCOUNT
