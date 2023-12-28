@@ -16,7 +16,7 @@ if "node.exe" in subprocess.check_output('tasklist /FI "IMAGENAME eq node.exe" 2
     time.sleep(2)
 
 # Start http-server
-subprocess.Popen('start "" /min cmd /k "C:/Users/cleif/anaconda3/envs/env311/node.exe C:/Users/cleif/anaconda3/envs/env311/node_modules/http-server/bin/http-server"', shell=True)
+subprocess.Popen('start "" /min cmd /k "http-server"', shell=True)
 
 # Wait for 2 seconds
 time.sleep(2)
