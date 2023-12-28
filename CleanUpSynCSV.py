@@ -5,6 +5,7 @@ import time
 import subprocess
 import webbrowser
 from tkinter import messagebox
+import win32com.client as win32
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
@@ -228,4 +229,12 @@ time.sleep(2)
 with open('put_md_url_here.txt', 'r') as file:
     # Read the content and remove any leading or trailing whitespace
     url = file.read().strip()
-    webbrowser.open(url)     
+    webbrowser.open(url)   
+
+# Create WScript Shell Object to access filesystem.
+WshShell = win32.Dispatch("WScript.Shell")
+
+# Allocate 5 seconds loading time before closing the tab
+time.sleep(5)
+WshShell.SendKeys("^w")    
+
