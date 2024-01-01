@@ -6,7 +6,7 @@ import win32com.client as win32
 
 # Check if VoucherList.csv is present in the root folder
 if not os.path.isfile("VoucherList.csv"):
-    messagebox.showerror("Error", "No 'VoucherList.csv' file found!")
+    messagebox.showerror("Error", "No 'VoucherList.csv' file found! \nPlease run 'EXTRUP + SYNC' first.")
     exit()
 
 # Check if http-server is already running
