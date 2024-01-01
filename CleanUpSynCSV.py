@@ -16,7 +16,7 @@ actions_to_take = []
 
 # Check 1: Check if "service_account.json" is present
 if not os.path.isfile("service_account.json"):
-    error_messages.append("Please execute RUN INITIAL CONFIG first.")
+    error_messages.append("Please execute 'RUN INITIAL CONFIG' first.")
 
 # Check 2: Check if "put_folder_id_here.txt" is not empty
 with open("put_folder_id_here.txt", "r") as folder_id_file:
