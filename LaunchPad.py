@@ -1,6 +1,6 @@
 import os
 import customtkinter
-import subprocess
+import subprocess as sub
 from PIL import Image
 
 # Get the user's profile directory
@@ -41,11 +41,11 @@ class App(customtkinter.CTk):
         self.button_1 = customtkinter.CTkButton(self, text="RUN INITIAL CONFIG", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.clean_csv)
         self.button_1.grid(row=1, column=0, padx=10, pady=5, sticky="ew")
 
-        self.button_2 = customtkinter.CTkButton(self, text="EXTRUP VCODES", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.upload_voucher)
-        self.button_2.grid(row=2, column=0, padx=10, pady=5, sticky="ew")        
+        # self.button_2 = customtkinter.CTkButton(self, text="EXTRUP VCODES", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.upload_voucher)
+        # self.button_2.grid(row=2, column=0, padx=10, pady=5, sticky="ew")        
 
-        self.button_3 = customtkinter.CTkButton(self, text="SYNC GDRIVE-MD", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.sync_gdrivemd)
-        self.button_3.grid(row=3, column=0, padx=10, pady=5, sticky="ew")        
+        # self.button_3 = customtkinter.CTkButton(self, text="SYNC GDRIVE-MD", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.sync_gdrivemd)
+        # self.button_3.grid(row=3, column=0, padx=10, pady=5, sticky="ew")        
 
         self.button_4 = customtkinter.CTkButton(self, text="EXTRUP + SYNC", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.cleanup_csv)
         self.button_4.grid(row=4, column=0, padx=10, pady=5, sticky="ew")
@@ -63,19 +63,19 @@ class App(customtkinter.CTk):
         self.footer_label.pack()
 
     def clean_csv(self):
-        subprocess.run(["python", "IniConfig.py"])        
+        sub.run(["python", "IniConfig.py"])        
 
-    def upload_voucher(self):
-        subprocess.run(["python", "CleanUpCSV.py"])
+    # def upload_voucher(self):
+    #     sub.run(["python", "CleanUpCSV.py"])
 
-    def sync_gdrivemd(self):
-        subprocess.run(["python", "SyncGDriveMD.py"]) 
+    # def sync_gdrivemd(self):
+    #     sub.run(["python", "SyncGDriveMD.py"]) 
 
     def cleanup_csv(self):
-        subprocess.run(["python", "CleanUpSynCSV.py"])        
+        sub.run(["python", "CleanUpSynCSV.py"])        
 
     def print_voucher(self):
-        subprocess.run(["python", "PrintVoucherServer.py"])
+        sub.run(["python", "PrintVoucherServer.py"])
 
 app = App()
 app.mainloop()
