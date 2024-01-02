@@ -33,9 +33,9 @@ INVOLVED APPS:
    0.9  Download GCONNECT APP
         0.9.1 Download here => https://github.com/cleifwork/GCONNECT
         0.9.2 Click Code > Download Zip
-        0.9.3 Extract main folder to your Desktop
+        0.9.3 Extract main folder to your 2Desktop
         0.9.4 Rename main folder to "GCONNECT"
-   0.10 Launch GCONNECT APP thru "LaunchPad.bat" or the "GConnect App" shortcut.
+   0.10 Launch the app thru "LaunchPad.bat" or the "GConnect App" shortcut.
 
 
 1. ** OMADA CLOUD CONTROLLER ACCOUNT
