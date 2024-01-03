@@ -39,7 +39,7 @@ INVOLVED APPS:
    0.4  Download GCONNECT APP
         0.9.1 Download here => https://github.com/cleifwork/GCONNECT
         0.9.2 Click Code > Download Zip
-        0.9.3 Extract main folder to your 2Desktop
+        0.9.3 Extract main folder to your Desktop
         0.9.4 Rename main folder to "GCONNECT"
 		
    0.5 Launch the app thru "LaunchPad.bat" or the "GConnect App" shortcut.
@@ -70,31 +70,34 @@ INVOLVED APPS:
         2.4.2  Select Google Drive
         2.4.3  ENABLE
 
-   2.5  Goto Credentials (with key icon)
-        2.5.1  +CREATE CREDENTIALS
-			   2.5.1.1  Service Account Creation:
-						2.5.1.1  Select Service Account
-							     2.5.1.1.1  Give it Account Name (OPTIONAL)
-							     2.5.1.1.2  Give it Account ID (REQUIRED)
-							     2.5.1.1.3  Give it Description (OPTIONAL)
-							     2.5.1.1.4  CREATE AND CONTINUE
-							     2.5.1.1.5  Give it an "OWNER" role
-							     2.5.1.1.6  DONE
-						2.5.1.2  Click the newly created Service Account
-						2.5.1.3  Goto KEYS tab
-							     2.5.1.3.1  Click ADD KEY
-							     2.5.1.3.2  Create new key
-							     2.5.1.3.3  Key type: JSON 
-							     2.5.1.3.4  CREATE (file will be downloaded)
-							     2.5.1.3.5  Rename file to "service_account" (.json)
-							     2.5.1.3.6  Save to => "%USERPROFILE%\Desktop\GCONNECT".
-        2.5.5  Go back to +CREATE CREDENTIALS
-               2.5.5.1  Select API KEY
-               2.5.5.2  Copy API KEY first
-               2.5.5.3  Click "Edit API key" in the pop-up window
-               2.5.5.4  Select "Restrict API key" under API restrictions
-               2.5.5.5  Check Google Drive API > OK > SAVE
-               2.5.5.6  Paste API KEY to this file => "%USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt".      
+   2.5  Credentials Configuration
+        2.5.1  Service Account Creation:
+               2.5.1.1  Goto "Credentials" (with the key icon)
+               2.5.1.2  Click "+CREATE CREDENTIALS"
+			2.5.1.3  Select Service Account
+			2.5.1.4  Give it Account Name (OPTIONAL)
+			2.5.1.5  Give it Account ID (REQUIRED)
+			2.5.1.6  Give it Description (OPTIONAL)
+			2.5.1.7  CREATE AND CONTINUE
+			2.5.1.8  Give it an "Owner" role
+			2.5.1.9  DONE
+			2.5.1.10 Click the newly created Service Account
+			2.5.1.11 Goto "KEYS" tab
+			2.5.1.12 Click ADD KEY
+			2.5.1.13 Create new key
+			2.5.1.14 Key type: JSON 
+			2.5.1.15 CREATE (file will be downloaded)
+			2.5.1.16 Rename file to "service_account" (.json)
+			2.5.1.17 Save to => "%USERPROFILE%\Desktop\GCONNECT".
+
+	   2.5.2  API Key Creation:
+               2.5.2.1  Go back to +CREATE CREDENTIALS
+               2.5.2.2  Select API KEY
+               2.5.2.3  Copy API KEY first
+               2.5.2.4  Click "Edit API key" in the pop-up window
+               2.5.2.5  Select "Restrict API key" under API restrictions
+               2.5.2.6  Check Google Drive API > OK > SAVE
+               2.5.2.7  Paste API KEY to this file => "%USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt".      
    
    2.6  (GCONNECT APP) Click "RUN INITIAL CONFIG" button
       * NOTES: Wait for the browser to open, showing the macro file and voucher folder
