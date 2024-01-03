@@ -90,14 +90,14 @@ INVOLVED APPS:
 	       2.5.1.16 Rename file to "service_account" (.json)
 	       2.5.1.17 Save to => "%USERPROFILE%\Desktop\GCONNECT".
 
-	 2.5.2  API Key Creation:
-              2.5.2.1  Go back to +CREATE CREDENTIALS
-              2.5.2.2  Select API KEY
-              2.5.2.3  Copy API KEY first
-              2.5.2.4  Click "Edit API key" in the pop-up window
-              2.5.2.5  Select "Restrict API key" under API restrictions
-              2.5.2.6  Check Google Drive API > OK > SAVE
-              2.5.2.7  Paste API KEY to this file => "%USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt".      
+	2.5.2  API Key Creation:
+               2.5.2.1  Go back to +CREATE CREDENTIALS
+               2.5.2.2  Select API KEY
+               2.5.2.3  Copy API KEY first
+               2.5.2.4  Click "Edit API key" in the pop-up window
+               2.5.2.5  Select "Restrict API key" under API restrictions
+               2.5.2.6  Check Google Drive API > OK > SAVE
+               2.5.2.7  Paste API KEY to this file => "%USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt".      
    
    2.6  (GCONNECT APP) Click "RUN INITIAL CONFIG" button
       * NOTES: Wait for the browser to open, showing the macro file and voucher folder
