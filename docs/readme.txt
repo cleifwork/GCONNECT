@@ -22,20 +22,29 @@ INVOLVED APPS:
 
         0.2.1  (CMD) Execute after installation: npm install --global http-server
         0.2.2  (CMD) Type "http-server" to check if working properly
+		       0.2.2.1  If "Windows Security Alert" window pops
+			            0.2.2.1.1  Click "Allow access"
+						
         0.2.3  Execute below ONLY IF "http-server" is not working
                0.2.3.1  (BROWSER) Empty cache & hard reload page (dev tools, ctrl + right click) 
-   0.3  (CMD) pip install customtkinter
-   0.4  (CMD) pip install packaging
-   0.5  (CMD) pip install Pillow
-   0.6  (CMD) pip install google-auth
-   0.7  (CMD) pip install google-api-python-client
-   0.8  (CMD) pip install pywin32
-   0.9  Download GCONNECT APP
+			   
+   0.3  Install the following libraries in via CMD
+	    0.3.1  pip install customtkinter
+	    0.3.2  pip install packaging
+	    0.3.3  pip install Pillow
+	    0.3.4  pip install google-auth
+	    0.3.5  pip install google-api-python-client
+	    0.3.6  pip install pywin32
+		
+   0.4  Download GCONNECT APP
         0.9.1 Download here => https://github.com/cleifwork/GCONNECT
         0.9.2 Click Code > Download Zip
         0.9.3 Extract main folder to your 2Desktop
         0.9.4 Rename main folder to "GCONNECT"
-   0.10 Launch the app thru "LaunchPad.bat" or the "GConnect App" shortcut.
+		
+   0.5 Launch the app thru "LaunchPad.bat" or the "GConnect App" shortcut.
+	    0.5.1  If "Windows protected..." SmartScreen window pops
+				0.5.1.1  Click "More info" > Run anyway
 
 
 1. ** OMADA CLOUD CONTROLLER ACCOUNT
@@ -63,28 +72,29 @@ INVOLVED APPS:
 
    2.5  Goto Credentials (with key icon)
         2.5.1  +CREATE CREDENTIALS
-        2.5.2  Select Service Account
-               2.5.2.1  Give it Account Name (OPTIONAL)
-               2.5.2.2  Give it Account ID (REQUIRED)
-               2.5.2.3  Give it Description (OPTIONAL)
-               2.5.2.4  CREATE AND CONTINUE
-               2.5.2.5  Give it an "OWNER" role
-               2.5.2.5  DONE
-        2.5.3  Select the newly created Service Account
-        2.5.4  Goto KEYS tab
-               2.5.4.1  Click ADD KEY
-               2.5.4.2  Create new key
-               2.5.4.3  Key type: JSON 
-               2.5.4.4  CREATE (file will be downloaded)
-               2.5.4.5  Rename file to "service_account" (.json)
-               2.5.4.6  Save to => %USERPROFILE%\Desktop\GCONNECT
+			   2.5.1.1  Service Account Creation:
+						2.5.1.1  Select Service Account
+							     2.5.1.1.1  Give it Account Name (OPTIONAL)
+							     2.5.1.1.2  Give it Account ID (REQUIRED)
+							     2.5.1.1.3  Give it Description (OPTIONAL)
+							     2.5.1.1.4  CREATE AND CONTINUE
+							     2.5.1.1.5  Give it an "OWNER" role
+							     2.5.1.1.6  DONE
+						2.5.1.2  Click the newly created Service Account
+						2.5.1.3  Goto KEYS tab
+							     2.5.1.3.1  Click ADD KEY
+							     2.5.1.3.2  Create new key
+							     2.5.1.3.3  Key type: JSON 
+							     2.5.1.3.4  CREATE (file will be downloaded)
+							     2.5.1.3.5  Rename file to "service_account" (.json)
+							     2.5.1.3.6  Save to => "%USERPROFILE%\Desktop\GCONNECT".
         2.5.5  Go back to +CREATE CREDENTIALS
                2.5.5.1  Select API KEY
                2.5.5.2  Copy API KEY first
                2.5.5.3  Click "Edit API key" in the pop-up window
                2.5.5.4  Select "Restrict API key" under API restrictions
                2.5.5.5  Check Google Drive API > OK > SAVE
-               2.5.5.6  Paste API KEY to this file => %USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt       
+               2.5.5.6  Paste API KEY to this file => "%USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt".      
    
    2.6  (GCONNECT APP) Click "RUN INITIAL CONFIG" button
       * NOTES: Wait for the browser to open, showing the macro file and voucher folder
@@ -92,10 +102,10 @@ INVOLVED APPS:
    2.7  Download the macro file then transfer to your android phone
       * NOTES: Below are applicable only if you're using the same Google Acount in your PC & Android
         2.7.1  (ANDROID) Launch Google Drive App
-        2.7.2  (ANDROID) Goto 'Shared' tab
-        2.7.3  (ANDROID) Go inside 'GCONNECT' folder
+        2.7.2  (ANDROID) Goto "Shared" tab
+        2.7.3  (ANDROID) Go inside "GCONNECT" folder
         2.7.4  (ANDROID) Tap more option (⋮) beside the macro file
-        2.7.5  (ANDROID) Tap 'Open with' (should open the macro with MacroDroid automatically)
+        2.7.5  (ANDROID) Tap "Open with" (should open with MacroDroid automatically)
         2.7.6  Proceed to STEP: 3.2.6
 
 
@@ -123,7 +133,7 @@ INVOLVED APPS:
                3.2.2.1  Tap Configure
                3.2.2.2  Copy the URL > Press Back button
                3.2.2.3  Send URL to your PC (looks like this => https://trigger.macrodroid.com/DEVICE_ID/sync_voucher)
-               3.2.2.3  (PC) Put the URL inside this text file => %USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt
+               3.2.2.3  (PC) Put the URL inside this text file => "%USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt"
         3.2.7  Tap on the import button (≡+) then enable the macro  
         3.2.8  (GCONNECT APP) Click EXTRUP + SYNC
 
