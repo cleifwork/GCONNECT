@@ -74,21 +74,21 @@ INVOLVED APPS:
         2.5.1  Service Account Creation:
                2.5.1.1  Goto "Credentials" (with the key icon)
                2.5.1.2  Click "+CREATE CREDENTIALS"
-			2.5.1.3  Select Service Account
-			2.5.1.4  Give it Account Name (OPTIONAL)
-			2.5.1.5  Give it Account ID (REQUIRED)
-			2.5.1.6  Give it Description (OPTIONAL)
-			2.5.1.7  CREATE AND CONTINUE
-			2.5.1.8  Give it an "Owner" role
-			2.5.1.9  DONE
-			2.5.1.10 Click the newly created Service Account
-			2.5.1.11 Goto "KEYS" tab
-			2.5.1.12 Click ADD KEY
-			2.5.1.13 Create new key
-			2.5.1.14 Key type: JSON 
-			2.5.1.15 CREATE (file will be downloaded)
-			2.5.1.16 Rename file to "service_account" (.json)
-			2.5.1.17 Save to => "%USERPROFILE%\Desktop\GCONNECT".
+		2.5.1.3  Select Service Account
+		2.5.1.4  Give it Account Name (OPTIONAL)
+		2.5.1.5  Give it Account ID (REQUIRED)
+		2.5.1.6  Give it Description (OPTIONAL)
+		2.5.1.7  CREATE AND CONTINUE
+		2.5.1.8  Give it an "Owner" role
+		2.5.1.9  DONE
+		2.5.1.10 Click the newly created Service Account
+		2.5.1.11 Goto "KEYS" tab
+		2.5.1.12 Click ADD KEY
+		2.5.1.13 Create new key
+		2.5.1.14 Key type: JSON 
+		2.5.1.15 CREATE (file will be downloaded)
+		2.5.1.16 Rename file to "service_account" (.json)
+		2.5.1.17 Save to => "%USERPROFILE%\Desktop\GCONNECT".
 
 	   2.5.2  API Key Creation:
                   2.5.2.1  Go back to +CREATE CREDENTIALS
