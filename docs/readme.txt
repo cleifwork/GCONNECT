@@ -37,10 +37,10 @@ INVOLVED APPS:
 	    0.3.6  pip install pywin32
 		
    0.4  Download GCONNECT APP
-        0.9.1 Download here => https://github.com/cleifwork/GCONNECT
-        0.9.2 Click Code > Download Zip
-        0.9.3 Extract main folder to your Desktop
-        0.9.4 Rename main folder to "GCONNECT"
+        0.4.1 Download here => https://github.com/cleifwork/GCONNECT
+        0.4.2 Click Code > Download Zip
+        0.4.3 Extract main folder to your Desktop
+        0.4.4 Rename main folder to "GCONNECT"
 		
    0.5 Launch the app thru "LaunchPad.bat" or the "GConnect App" shortcut.
 	    0.5.1  If "Windows protected..." SmartScreen window pops
@@ -133,10 +133,10 @@ INVOLVED APPS:
         3.2.4  Browse macro in your local storage 
         3.2.5  Open the imported macro
         3.2.6  Tap on the Webhook trigger
-               3.2.2.1  Tap Configure
-               3.2.2.2  Copy the URL > Press Back button
-               3.2.2.3  Send URL to PC (looks like this => https://trigger.macrodroid.com/DEVICE_ID/sync_voucher)
-               3.2.2.3  (PC) Put the URL inside this text file => "%USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt"
+               3.2.6.1  Tap Configure
+               3.2.6.2  Copy the URL > Press Back button
+               3.2.6.3  Send URL to PC (looks like this => https://trigger.macrodroid.com/DEVICE_ID/sync_voucher)
+               3.2.6.4  (PC) Put the URL inside this text file => "%USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt"
         3.2.7  Tap on the import button (≡+) then enable the macro  
         3.2.8  (GCONNECT APP) Click EXTRUP + SYNC
 
