@@ -35,7 +35,7 @@ class App(customtkinter.CTk):
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
 
-        self.logo_frame = MyLogoFrame(self, " STREAM | PLAY | ENJOY ", logo_path="./img/launchpad_logo.png")
+        self.logo_frame = MyLogoFrame(self, "OMADA WIFI VOUCHER", logo_path="./img/launchpad_logo.png")
         self.logo_frame.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="nsew")      
 
         self.button_1 = customtkinter.CTkButton(self, text="RUN INITIAL CONFIG", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.clean_csv)
