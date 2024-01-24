@@ -115,7 +115,9 @@ INVOLVED APPS:
 3. ** SHOULD HAVE AN ANDROID DEVICE (Voucher Server Phone)
     * SOME REQUIREMENTS: 
       => Phone must not be rooted
-      => Phone must have a sim card, available service and SMS credits (load for texting)
+      => Phone must have a active sim card 
+      => Phone must have available service (signal)
+      => Phone must have SMS credits (load for texting)
       => Phone must be connected to WiFi always
       => Phone must have separate GCash account installed
       => Phone must be able to receive GCash realtime notification
@@ -126,6 +128,7 @@ INVOLVED APPS:
                3.1.1.2  Disable battery optimization
                3.1.1.3  Allow background autostart
                3.1.1.4  Give app notification access
+               3.1.1.5  Lock app in recent app tray memory
    3.2  Import downloaded macro to MacroDroid or Import via Google Drive 
         3.2.1  Launch MacroDroid
         3.2.2  (HOME) Tap on Export/Import
