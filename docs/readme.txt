@@ -115,7 +115,7 @@ INVOLVED APPS:
 3. ** SHOULD HAVE AN ANDROID DEVICE (Voucher Server Phone)
     * SOME REQUIREMENTS: 
       => Phone must not be rooted
-      => Phone must have a active sim card 
+      => Phone must have an active sim card 
       => Phone must have available service (signal)
       => Phone must have SMS credits (load for texting)
       => Phone must be connected to WiFi always
