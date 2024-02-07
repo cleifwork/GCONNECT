@@ -27,6 +27,9 @@ INVOLVED APPS:
 						
         0.2.3  Execute below ONLY IF "http-server" is not working
                0.2.3.1  (BROWSER) Empty cache & hard reload page (dev tools, ctrl + right click) 
+
+        0.2.4  Execute below ONLY IF voucher is not displaying
+               0.2.4.1  Restart browser or restart PC       
 			   
    0.3  Install the following libraries in via CMD
 	    0.3.1  pip install customtkinter
