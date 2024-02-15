@@ -222,7 +222,7 @@ if __name__ == "__main__":
 print("\nDone...")
 time.sleep(1)
 
-print("Launch browser to sync...")
+print("Launching browser to sync...")
 time.sleep(2)      
 
 # Open the text file and read the content
