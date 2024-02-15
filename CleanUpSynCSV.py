@@ -113,8 +113,8 @@ with open(csv_file, "r") as file:
         notes = row["Notes"]
 
         # Add leading zeroes if code length is not 10
-        if len(code) != 10:
-            code = code.zfill(10)
+        # if len(code) != 10:
+        #     code = code.zfill(10)
 
         if type != "Expired" and notes != "PRINT VOUCHER":
             if duration == "30.0Minutes":
