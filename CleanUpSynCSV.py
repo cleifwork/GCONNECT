@@ -112,7 +112,7 @@ with open(csv_file, "r") as file:
         code = row["Code"]
         notes = row["Notes"]
 
-        # Add leading zeroes if code length is not 10
+        # Add leading zeroes if code length is not 10 (DISABLED)
         # if len(code) != 10:
         #     code = code.zfill(10)
 
