@@ -1,6 +1,6 @@
+import os
 import csv
 import glob
-import os
 import time
 import subprocess
 import webbrowser
@@ -46,7 +46,7 @@ if error_messages:
     exit()
 
 # Continue with the rest of your script if all checks pass
-print("All initial checks passed. Proceeding...")
+print("All initial checks passed. Proceeding...\n")
 time.sleep(1)
 
 # Replace 'credentials.json' with the path to your service account key JSON file
@@ -62,8 +62,21 @@ def create_drive_service():
     credentials = service_account.Credentials.from_service_account_file(credentials_file, scopes=["https://www.googleapis.com/auth/drive"])
     return build("drive", "v3", credentials=credentials)
 
-# Specify the voucher wifi app folder name
-app_name = 'GCONNECT'
+# Get the folder name from the file
+main_folder_name_file = 'main_folder_name.txt'
+
+# Check if the file exists
+if os.path.exists(main_folder_name_file):
+    with open(main_folder_name_file, 'r') as file:
+        app_name = file.read().strip()
+
+    # Check if app_name is empty
+    if not app_name:
+        print(f"Error: The folder name in {main_folder_name_file} is empty.")
+        # Handle the error or exit the program as needed
+else:
+    print(f"Error: The file {main_folder_name_file} does not exist.")
+    # Handle the error or exit the program as needed
 
 # Specify the directory where the CSV file is located
 directory = os.path.join(os.environ['USERPROFILE'], 'Desktop', app_name, 'raw_csv')
@@ -84,104 +97,82 @@ else:
     messagebox.showerror("No CSV File Found", "No CSV file found in the directory.")
     exit()
 
+# Read the amounts from the input file
+with open("put_voucher_amt_here.txt", "r") as input_file:
+    amounts = [line.strip() for line in input_file]
+
+# Check if the amounts list is empty
+if not amounts:
+    error_message = "The input file is empty. \nPlease provide voucher amounts in 'put_voucher_amt_here.txt'."
+    messagebox.showerror("Error", error_message)
+
+    # Open the file for editing
+    file_path = "put_voucher_amt_here.txt"
+    os.system(f"notepad.exe {file_path}")
+
+    exit()
+
+# Define the output file names dynamically based on the amounts
+output_files = [f"{amount}php_vouchers.txt" for amount in amounts]
+
+# Define the code arrays dynamically based on the amounts
+code_arrays = {amount: [] for amount in amounts}
+
 csv_file = "VoucherList.csv"
-output_file5 = "5php_vouchers.txt"
-output_file10 = "10php_vouchers.txt"
-output_file15 = "15php_vouchers.txt"
-output_file20 = "20php_vouchers.txt"
-output_file30 = "30php_vouchers.txt"
-output_file50 = "50php_vouchers.txt"
-output_file99 = "99php_vouchers.txt"
 output_expired = "expired_vouchers.txt"
 
+# Initialize lists to store voucher codes based on duration and type
+codes_expired = []
+
+# Open the CSV file for reading
 with open(csv_file, "r") as file:
+    # Create a CSV reader
     reader = csv.DictReader(file)
 
-    codes_5 = []
-    codes_10 = []
-    codes_15 = []
-    codes_20 = []
-    codes_30 = []
-    codes_50 = []
-    codes_99 = []
-    codes_expired = []
-
+    # Iterate over each row in the CSV file
     for row in reader:
+        # Extract relevant information from the row
+        code = row["Code"]
+        price = row["Price"]
+        notes = row["Notes"]
         duration = row["Duration"]
         type = row["Type"]
-        code = row["Code"]
-        notes = row["Notes"]
 
         # Add leading zeroes if code length is not 10 (DISABLED)
         # if len(code) != 10:
         #     code = code.zfill(10)
 
-        if type != "Expired" and notes != "PRINT VOUCHER":
-            if duration == "30.0Minutes":
-                codes_5.append(code)
-            elif duration == "60.0Minutes":
-                codes_10.append(code)
-            elif duration == "3.0Hours":
-                codes_15.append(code)
-            elif duration == "6.0Hours":
-                codes_20.append(code)
-            elif duration == "12.0Hours":
-                codes_30.append(code)
-            elif duration == "72.0Hours":
-                codes_50.append(code)
-            elif duration == "168.0Hours":
-                codes_99.append(code)
-        elif type == "Expired":
+        # Categorize voucher codes based on duration and type
+        for amount in amounts: 
+            if type != "Expired" and notes != "PRINT VOUCHER" and price[3:] == amount:
+                code_arrays[amount].append(code)
+        
+        if type == "Expired":
             codes_expired.append(code)
 
-    with open(output_file5, "w") as file:
-        for code in codes_5:
+# Write voucher codes to separate output files based on amounts
+for amount, output_file in zip(amounts, output_files):
+    with open(output_file, "w") as file:
+        for code in code_arrays[amount]:
             file.write(code + "\n")
-    print("Voucher Codes saved to", output_file5)
+        print(f"Voucher Codes for {amount} saved to {output_file}")
+        time.sleep(1)
 
-    with open(output_file10, "w") as file:
-        for code in codes_10:
-            file.write(code + "\n")
-    print("Voucher Codes saved to", output_file10)
-
-    with open(output_file15, "w") as file:
-        for code in codes_15:
-            file.write(code + "\n")
-    print("Voucher Codes saved to", output_file15)
-
-    with open(output_file20, "w") as file:
-        for code in codes_20:
-            file.write(code + "\n")
-    print("Voucher Codes saved to", output_file20)
-
-    with open(output_file30, "w") as file:
-        for code in codes_30:
-            file.write(code + "\n")
-    print("Voucher Codes saved to", output_file30)
-
-    with open(output_file50, "w") as file:
-        for code in codes_50:
-            file.write(code + "\n")
-    print("Voucher Codes saved to", output_file50)
-
-    with open(output_file99, "w") as file:
-        for code in codes_99:
-            file.write(code + "\n")
-    print("Voucher Codes saved to", output_file99)
-
-    with open(output_expired, "w") as file:
-        for code in codes_expired:
-            file.write(code + "\n")
-    print("Voucher Codes saved to", output_expired)
+# Write expired voucher codes to a separate output file
+with open(output_expired, "w") as file:
+    for code in codes_expired:
+        file.write(code + "\n")
+print(f"Expired Vouchers Codes saved to {output_expired} \n")
 
 def main():
     service = create_drive_service()
 
-    # Upload the output files to Google Drive
-    upload_files = [output_file5, output_file10, output_file15, output_file20,
-                    output_file30, output_file50, output_file99]
+    # Read voucher filenames from voucher_logger.txt
+    voucher_filenames_file = 'voucher_logger.txt'
+    with open(voucher_filenames_file, 'r') as file:
+        voucher_files = [line.strip() for line in file]
 
-    for upload_file_path in upload_files:
+    for upload_file_path in voucher_files:
         upload_file(service, upload_file_path, destination_folder_id)
 
 def upload_file(service, file_path, folder_id):
