@@ -168,7 +168,8 @@ pip install pywin32
       => Give app notification access
       => Lock app in recent app tray
       => Intall MacroDroid Helper (Play Store)
-      => Grant [WRITE_SECURE_SETTINGS](https://www.youtube.com/watch?v=_WLbhtpC5ls&ab_channel=JacobL)
+      => Grant MD WRITE_SECURE_SETTINGS
+##### Grant [WRITE_SECURE_SETTINGS](https://www.youtube.com/watch?v=_WLbhtpC5ls&ab_channel=JacobL)
 -   Import downloaded macro to MacroDroid or Import via Google Drive 
 -   Launch MacroDroid
     -   (Home Tab) Tap on Export/Import
@@ -180,7 +181,7 @@ pip install pywin32
         -   Copy the URL > Press Back button
         -   Send URL to PC 
 ```bash        
-looks like this => https://trigger.macrodroid.com/DEVICE_ID/sync_voucher
+looks like this => 'https://trigger.macrodroid.com/DEVICE_ID/sync_voucher'
 ````
 
 -   (PC) Put the URL inside this text file => "%USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt"
