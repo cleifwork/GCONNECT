@@ -169,7 +169,7 @@ pip install pywin32
       => Lock app in recent app tray
       => Intall MacroDroid Helper (Play Store)
       => Grant MD WRITE_SECURE_SETTINGS
-##### Grant [WRITE_SECURE_SETTINGS](https://www.youtube.com/watch?v=_WLbhtpC5ls&ab_channel=JacobL)
+##### Grant [WRITE_SECURE_SETTINGS](https://www.youtube.com/watch?v=_WLbhtpC5ls&ab_channel=JacobL) (OPTIONAL)
 -   Import downloaded macro to MacroDroid or Import via Google Drive 
 -   Launch MacroDroid
     -   (Home Tab) Tap on Export/Import
