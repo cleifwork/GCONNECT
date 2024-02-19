@@ -47,7 +47,7 @@ class App(customtkinter.CTk):
         # self.button_3 = customtkinter.CTkButton(self, text="SYNC GDRIVE-MD", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.sync_gdrivemd)
         # self.button_3.grid(row=3, column=0, padx=10, pady=5, sticky="ew")        
 
-        self.button_4 = customtkinter.CTkButton(self, text="EXTRUP + SYNC", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.cleanup_csv)
+        self.button_4 = customtkinter.CTkButton(self, text="EXTRUP & SYNC", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.cleanup_csv)
         self.button_4.grid(row=4, column=0, padx=10, pady=5, sticky="ew")
         
         self.button_5 = customtkinter.CTkButton(self, text="PRINT VOUCHERS", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.print_voucher)
