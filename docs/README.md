@@ -17,7 +17,8 @@ The GCONNECT APP is a powerful middleware solution designed to streamline the vo
 Experience unparalleled automation and efficiency with the GCONNECT APP, your go-to solution for optimizing voucher workflows and enhancing productivity in the dynamic landscape of network management.
 ## Demo
 
-[GConnect App Demo](https://www.youtube.com/watch?v=eXLdvv9VYJA)
+-   [GConnect App Demo](https://www.youtube.com/watch?v=eXLdvv9VYJA)
+-   [GConnect Installation & Configuration](https://www.youtube.com/watch?v=fOBG7ZszJXA)
 
 
 ## Authors
