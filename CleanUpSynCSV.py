@@ -62,7 +62,7 @@ def create_drive_service():
     credentials = service_account.Credentials.from_service_account_file(credentials_file, scopes=["https://www.googleapis.com/auth/drive"])
     return build("drive", "v3", credentials=credentials)
 
-# Specify the WiFi Voucher App folder name
+# Specify the voucher wifi app folder name
 app_name = 'GCONNECT'
 
 # Specify the directory where the CSV file is located
