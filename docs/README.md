@@ -96,7 +96,7 @@ pip install pywin32
 -   Export List: Voucher Codes  
     - Format: CSV 
     - Portal: "Your Voucher WiFi Name" 
-    - Save file to: %USERPROFILE%\Desktop\GCONNECT\raw_csv
+    - Save file to => "%USERPROFILE%\Desktop\GCONNECT\raw_csv"
 
 
 #### 3. SHOULD HAVE A GOOGLE ACCOUNT
@@ -182,7 +182,7 @@ pip install pywin32
         -   Copy the URL > Press Back button
         -   Send URL to PC 
 ```bash        
-looks like this => 'https://trigger.macrodroid.com/DEVICE_ID/sync_voucher'
+looks like this => "https://trigger.macrodroid.com/DEVICE_ID/sync_voucher"
 ````
 
 -   (PC) Put the URL inside this text file => "%USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt"
