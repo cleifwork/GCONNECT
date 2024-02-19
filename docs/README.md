@@ -36,7 +36,7 @@ To run this project, you will need to add the following environment variables to
 ## Installation & Configuration
 
 
-#### INVOLVED APPS:
+### INVOLVED APPS:
 - Omada Cloud Controller (Web)
 - GConnect App (Desktop)
 - Google Drive (Web)
@@ -60,10 +60,10 @@ To run this project, you will need to add the following environment variables to
 http-server
 ```
 
-#### NOTES: If "Windows Security Alert" window pops
+#### NOTE: If "Windows Security Alert" window pops
 -   Click "Allow access"
 						
-#### NOTES: Execute the following commands ONLY IF "http-server" is not working or vouchers are not displaying
+#### NOTE: Execute the following commands ONLY IF "http-server" is not working or vouchers are not displaying
 -   (BROWSER) Empty cache & hard reload page
 -   Restart browser 
 -   Restart PC       
@@ -84,11 +84,11 @@ pip install pywin32
 -   Rename main folder to "GCONNECT"
 -   Launch the app thru "LaunchPad.bat" or the "GConnect App" shortcut.
 
-#### NOTES: If "Windows protected..." SmartScreen window pops
+#### NOTE: If "Windows protected..." SmartScreen window pops
 -   Click "More info" > Run anyway
 
 #### 2. OMADA CLOUD CONTROLLER ACCOUNT
-##### NOTE: Although not tested with SDN and OC200, it should still function properly as long as their exported CSV file adheres to the CBC formatting.
+#### NOTE: Although not tested with SDN and OC200, it should still function properly as long as their exported CSV file adheres to the CBC formatting.
 - Login to your [Omada Cloud Controller](https://omada.tplinkcloud.com/)
 -   Launch your Controller
 -   Go to Settings (Global)
@@ -140,9 +140,9 @@ pip install pywin32
  ##### GCONNECT INITIALIZATION  
 -   (GCONNECT APP) Click "RUN INITIAL CONFIG" button
 
-##### NOTES: Wait for the browser to open, showing the macro file and voucher folder
+#### NOTE: Wait for the browser to open, showing the macro file and voucher folder
 -   Download the macro file then transfer to your android phone
-##### NOTES: Below are applicable only if you're using the same Google Acount in your PC & Android
+#### NOTE: Below are applicable ONLY IF you're using the same Google Acount in your PC & Android
 -   (ANDROID) Launch Google Drive App
 -   (ANDROID) Goto "Shared" tab
 -   (ANDROID) Go inside "GCONNECT" folder
