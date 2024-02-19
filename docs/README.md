@@ -198,16 +198,11 @@ looks like this => https://trigger.macrodroid.com/DEVICE_ID/sync_voucher
 
 
 
-## Logo
-![Logo](https://drive.google.com/file/d/14zHLP4RtP3AGtXHzxwrmhHE-WVivqmlh/view?usp=sharing)
 ## Optimizations
 
-What optimizations did you make in your code? E.g. refactors, performance improvements, accessibility
-
-
-## Roadmap
-
-- Mobile support
+-   Refactored code removing redundancy
+-   Reduced macro size from 229kb to 44kb, by restructuring multiple IF/ELSE statement and putting similar variables to one dictionary/array 
+-   Reducing file asset needed by automatically extracting the required data from the source file
 
 
 ## Screenshots
