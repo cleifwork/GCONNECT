@@ -2,10 +2,6 @@
 # GCONNECT APP: Wi-Fi Voucher Automation Middleware
 
 The GCONNECT APP is a powerful middleware solution designed to streamline the voucher management process between Omada Cloud Controller exports and MacroDroid's pre-configured macros. This application acts as a bridge, automating the segregation of voucher data based on pricing and facilitating seamless transmission to MacroDroid.
-Key Features:
-
-Experience unparalleled automation and efficiency with the GCONNECT APP, your go-to solution for optimizing voucher workflows and enhancing productivity in the dynamic landscape of network management.
-
 ## Key Features
 
 - Automated Voucher Segregation: GCONNECT intelligently categorizes, and segregates voucher data exported from Omada Cloud Controller, ensuring efficient organization based on pricing tiers.
@@ -18,10 +14,10 @@ Experience unparalleled automation and efficiency with the GCONNECT APP, your go
 
 - User-Friendly Interface: The application features a very simple interface, ensuring ease of use for both novice and experienced users. It simplifies complex processes, making voucher management more accessible.
 
-
+Experience unparalleled automation and efficiency with the GCONNECT APP, your go-to solution for optimizing voucher workflows and enhancing productivity in the dynamic landscape of network management.
 ## Demo
 
-Insert gif or link to demo
+[GConnect App Demo](https://www.youtube.com/watch?v=eXLdvv9VYJA)
 
 
 ## Authors
@@ -39,7 +35,7 @@ To run this project, you will need to add the following environment variables to
 ## Installation & Configuration
 
 
-### INVOLVED APPS:
+#### INVOLVED APPS:
 - Omada Cloud Controller (Web)
 - GConnect App (Desktop)
 - Google Drive (Web)
@@ -90,9 +86,8 @@ pip install pywin32
 #### NOTES: If "Windows protected..." SmartScreen window pops
 -   Click "More info" > Run anyway
 
-
 #### 2. OMADA CLOUD CONTROLLER ACCOUNT
-##### NOTES: Not tested using SDN and OC200, BUT should still work provided thatmexported CSV file has the same columns as CBC.
+##### NOTE: Although not tested with SDN and OC200, it should still function properly as long as their exported CSV file adheres to the CBC formatting.
 - Login to your [Omada Cloud Controller](https://omada.tplinkcloud.com/)
 -   Launch your Controller
 -   Go to Settings (Global)
@@ -200,15 +195,14 @@ looks like this => https://trigger.macrodroid.com/DEVICE_ID/sync_voucher
 
 ## Optimizations
 
--   Refactored code removing redundancy
--   Reduced macro size from 229kb to 44kb, by restructuring multiple IF/ELSE statement and putting similar variables to one dictionary/array 
--   Reducing file asset needed by automatically extracting the required data from the source file
-
-
+-   Refactored the code to eliminate redundancy.
+-   Successfully reduced the macro size from 229KB to 44KB by restructuring multiple IF/ELSE statements and consolidating similar variables into a single dictionary/array.
+-   Optimized file asset usage by automatically extracting the necessary data from the source file.
 ## Screenshots
 
-![App Screenshot](https://drive.google.com/file/d/1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF/view?usp=sharing)
+![App Screenshot](https://drive.google.com/thumbnail?id=1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF)
 
+[Zoom App Screenshot](https://drive.google.com/uc?id=1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF)
 
 ## Support
 
