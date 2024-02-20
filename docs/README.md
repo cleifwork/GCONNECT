@@ -35,8 +35,7 @@ To run this project, you will need to add the following environment variables to
 
 ## Installation & Configuration
 
-
-### INVOLVED APPS:
+**INVOLVED APPS:**
 - Omada Cloud Controller (Web)
 - GConnect App (Desktop)
 - Google Drive (Web)
@@ -67,12 +66,12 @@ http-server
 - Click _"Allow access"_
 						
 > [!NOTE] 
-> Execute the following commands **ONLY IF** _"http-server"_ is not working or vouchers are not displaying
+> Execute the following commands **ONLY IF** _"http-server"_ is not working or vouchers are not displaying properly
 - (BROWSER) Empty cache & hard reload page
 - Restart browser 
 - Restart PC       
 
-#### Install the following libraries via CMD
+**Install the following libraries via CMD**
 ```
 pip install customtkinter
 pip install packaging
@@ -82,7 +81,7 @@ pip install google-api-python-client
 pip install pywin32
 ```
 		
--   Download [GCONNECT APP](https://github.com/cleifwork/GCONNECT)
+-   Download the **[GCONNECT APP](https://github.com/cleifwork/GCONNECT)**
 -   Click Code > Download Zip
 -   Extract main folder to your Desktop
 -   Rename main folder to **"GCONNECT"**
@@ -108,7 +107,9 @@ pip install pywin32
 **3. SHOULD HAVE A GOOGLE ACCOUNT**
 -   Login to to your google account
 -   Enable [Google Drive API](https://console.cloud.google.com/)
--   Create a NEW PROJECT (use your voucher wifi portal name)
+-   Create a **NEW PROJECT** 
+> [!TIP]
+> You can use your Voucher WiFi Portal Name here
 -   Goto APIs & Services
     -   ENABLE APIS & SERVICES 
     -   Select Google Drive
@@ -117,16 +118,16 @@ pip install pywin32
 _CREDENTIALS CONFIGURATION_
 -   **Service Account Creation:**
     -   Goto _"Credentials"_ (with the key icon)
-    -   Click _"+CREATE CREDENTIALS"_
+    -   Click **"+CREATE CREDENTIALS"**
 	-   Select Service Account
 	-   Give it Account Name _(OPTIONAL)_
-	-   Give it Account ID _**(REQUIRED)**_
+	-   Give it Account ID **(REQUIRED)**
 	-   Give it Description _(OPTIONAL)_
 	-   CREATE AND CONTINUE
 	-   Give it an _"Owner"_ role
 	-   DONE
     -   Click the newly created Service Account
-	-   Goto _"KEYS"_ tab
+	-   Goto **"KEYS"** tab
 	-   Click ADD KEY
 	-   Create new key
 	-   Key type: **JSON** 
@@ -144,7 +145,7 @@ _CREDENTIALS CONFIGURATION_
     -   Paste API KEY to this file => _"%USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt"_      
    
 _GCONNECT INITIALIZATION_  
--   (GCONNECT APP) Click _**"RUN INITIAL CONFIG"**_ button
+-   (GCONNECT APP) Click **"RUN INITIAL CONFIG"** button
 
 > [!NOTE]
 > Wait for the browser to open, showing the macro file and voucher folder
@@ -181,14 +182,14 @@ _GCONNECT INITIALIZATION_
 - Give app notification access
 - Lock app in recent app tray
 - Intall MacroDroid Helper (Play Store)
-- Grant Macrodroid WRITE_SECURE_SETTINGS (OPTIONAL)
+- Grant MacroDroid WRITE_SECURE_SETTINGS (OPTIONAL)
 ```
 > [!TIP]
 > **How to grant [WRITE_SECURE_SETTINGS](https://www.youtube.com/watch?v=_WLbhtpC5ls&ab_channel=JacobL)**
 
 - Import downloaded macro to MacroDroid or Import via Google Drive 
 - Launch MacroDroid
-    - (Home Tab) Tap on Export/Import
+    - (Home Tab) Tap on **Export/Import**
     - Tap on Storage under Import
     - Browse macro in your local storage 
     - Open the imported macro
@@ -198,12 +199,12 @@ _GCONNECT INITIALIZATION_
         - Send URL to PC 
         
 > [!NOTE]
-> **Looks like this:**
-    "https://trigger.macrodroid.com/DEVICE_ID/sync_voucher"
+> **Looks like this:** _"https://trigger.macrodroid.com/DEVICE_ID/sync_voucher"_
+
 
 -   (PC) Put the URL inside this text file => _"%USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt"_
 -   (MD) Tap on the import button **(≡+)** then enable the macro  
--   (GCONNECT APP) Click _**EXTRUP & SYNC**_
+-   (GCONNECT APP) Click **EXTRUP & SYNC**
 ## Running Tests
 
 -   Send a GCash amount PHP 5.00 to the Server Phone's GCash number.
