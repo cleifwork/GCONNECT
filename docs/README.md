@@ -232,14 +232,13 @@ _GRANT [WRITE_SECURE_SETTINGS](https://www.youtube.com/watch?v=_WLbhtpC5ls&ab_ch
 ## Related
 
 > [!TIP] 
-> Ideal Voucher Printing Preference
-    Layout              : Landscape
-    Paper Size          : Letter (short)
-    Margin              : None   
-    Scale               : Custom (93%)
-    Headers & Footers   : Unchecked (disabled)
-    Background Graphics : Checked (if you have logo)
-
+> **Ideal Voucher Printing Preference**
+- Layout              : **Landscape**
+- Paper Size          : **Letter** _(short)_
+- Margin              : **None**   
+- Scale               : **Custom (93%)**
+- Headers & Footers   : **Unchecked (disabled)**
+- Background Graphics : **Checked** _(if you have logo)_
 > [!NOTE]
 > This can print up to 32 vouchers in 1 page.
 
