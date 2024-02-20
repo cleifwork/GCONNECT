@@ -1,7 +1,9 @@
 
 # GCONNECT APP: Wi-Fi Voucher Automation Middleware
 
-The GCONNECT APP is a powerful middleware solution designed to streamline the voucher management process between Omada Cloud Controller exports and MacroDroid's pre-configured macros. This application acts as a bridge, automating the segregation of voucher data based on pricing and facilitating seamless transmission to MacroDroid.
+The **GCONNECT APP** is a powerful middleware solution designed to streamline the voucher management process between Omada Cloud Controller exports and MacroDroid's pre-configured macros. This application acts as a bridge, automating the segregation of voucher data based on pricing and facilitating seamless transmission to MacroDroid.
+
+**MacroDroid** then effortlessly utilizes **SMS and push notifications from e-wallet apps** to activate predefined actions, creating a flexible and responsive system for managing vouchers.
 ## Key Features
 
 - **Automated Voucher Segregation:** GCONNECT intelligently categorizes, and segregates voucher data exported from Omada Cloud Controller, ensuring efficient organization based on pricing tiers.
@@ -14,7 +16,7 @@ The GCONNECT APP is a powerful middleware solution designed to streamline the vo
 
 - **User-Friendly Interface:** The application features a very simple interface, ensuring ease of use for both novice and experienced users. It simplifies complex processes, making voucher management more accessible.
 
-Experience unparalleled automation and efficiency with the GCONNECT APP, your go-to solution for optimizing voucher workflows and enhancing productivity in the dynamic landscape of network management.
+_Experience unparalleled automation and efficiency with the GCONNECT APP, your go-to solution for optimizing voucher workflows and enhancing productivity in the dynamic landscape of network management._
 ## Demo
 
 -   [GConnect App Demo](https://www.youtube.com/watch?v=eXLdvv9VYJA)
