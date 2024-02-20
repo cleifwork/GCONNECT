@@ -240,5 +240,5 @@ _GRANT [WRITE_SECURE_SETTINGS](https://www.youtube.com/watch?v=_WLbhtpC5ls&ab_ch
 - Headers & Footers   : **Unchecked (disabled)**
 - Background Graphics : **Checked** _(if you have logo)_
 > [!NOTE]
-> This can print up to 32 vouchers in 1 page.
+> _This can print up to 32 vouchers in a single page_
 
