@@ -111,7 +111,7 @@ pip install pywin32
 -   Enable [Google Drive API](https://console.cloud.google.com/)
 -   Create a **NEW PROJECT** 
 > [!TIP]
-> You can use your Voucher WiFi Portal Name here
+> You can use your voucher wifi portal as project name
 -   Goto APIs & Services
     -   ENABLE APIS & SERVICES 
     -   Select Google Drive
