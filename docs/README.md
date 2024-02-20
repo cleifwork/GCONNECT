@@ -4,15 +4,15 @@
 The GCONNECT APP is a powerful middleware solution designed to streamline the voucher management process between Omada Cloud Controller exports and MacroDroid's pre-configured macros. This application acts as a bridge, automating the segregation of voucher data based on pricing and facilitating seamless transmission to MacroDroid.
 ## Key Features
 
-- Automated Voucher Segregation: GCONNECT intelligently categorizes, and segregates voucher data exported from Omada Cloud Controller, ensuring efficient organization based on pricing tiers.
+- **Automated Voucher Segregation:** GCONNECT intelligently categorizes, and segregates voucher data exported from Omada Cloud Controller, ensuring efficient organization based on pricing tiers.
 
-- MacroDroid Integration: With seamless integration with MacroDroid, GCONNECT directly transmits pre-configured macros, optimizing the execution of tasks and workflows associated with voucher management.
+- **MacroDroid Integration:** With seamless integration with MacroDroid, GCONNECT directly transmits pre-configured macros, optimizing the execution of tasks and workflows associated with voucher management.
 
-- Dynamic Macro Configuration: The app dynamically generates and configures macros based on the pricing information derived from the exported voucher data, eliminating manual intervention, and reducing the risk of errors.
+- **Dynamic Macro Configuration:** The app dynamically generates and configures macros based on the pricing information derived from the exported voucher data, eliminating manual intervention, and reducing the risk of errors.
 
-- Customizable Printouts: GCONNECT offers a user-friendly interface to customize Wi-Fi voucher printouts directly from the CSV file, providing flexibility and adaptability to unique printing requirements.
+- **Customizable Printouts:** GCONNECT offers a user-friendly interface to customize Wi-Fi voucher printouts directly from the CSV file, providing flexibility and adaptability to unique printing requirements.
 
-- User-Friendly Interface: The application features a very simple interface, ensuring ease of use for both novice and experienced users. It simplifies complex processes, making voucher management more accessible.
+- **User-Friendly Interface:** The application features a very simple interface, ensuring ease of use for both novice and experienced users. It simplifies complex processes, making voucher management more accessible.
 
 Experience unparalleled automation and efficiency with the GCONNECT APP, your go-to solution for optimizing voucher workflows and enhancing productivity in the dynamic landscape of network management.
 ## Demo
@@ -26,7 +26,7 @@ Experience unparalleled automation and efficiency with the GCONNECT APP, your go
 - [@cleifwork](https://www.github.com/cleifwork)
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your 'put_api_key_here.txt' file and GCONNECT folder.
+To run this project, you will need to add the following environment variables to your _**'put_api_key_here.txt'**_ file and **GCONNECT** folder.
 
 `API_KEY`
 
@@ -45,61 +45,67 @@ To run this project, you will need to add the following environment variables to
 
 
 ### REQUIREMENTS:
-#### 1. SHOULD HAVE A WINDOWS PC/LAPTOP (tested on: Win10, Win11)
+**1. SHOULD HAVE A WINDOWS PC/LAPTOP** 
+> [!NOTE] 
+> Tested in Windows 10 and Windows 11
 
-- [Install python](https://www.python.org/downloads/) (recommended version: python-3.11.4)
-- [Install node.js](https://nodejs.org/en/download/) (recommended version: node-v18.16.1)
+- [Install python](https://www.python.org/downloads/) (recommended version: _**python-3.11.4**_)
+- [Install node.js](https://nodejs.org/en/download/) (recommended version: _**node-v18.16.1**_)
 
 - (CMD) Execute after installation: 
         
-```bash
+```
   npm install --global http-server
 ```
 - (CMD) Run the following to check if working properly
-```bash
+```
 http-server
 ```
 
-#### NOTE: If "Windows Security Alert" window pops
--   Click "Allow access"
+> [!NOTE] 
+> If _"Windows Security Alert"_ window pops
+- Click _"Allow access"_
 						
-#### NOTE: Execute the following commands ONLY IF "http-server" is not working or vouchers are not displaying
--   (BROWSER) Empty cache & hard reload page
--   Restart browser 
--   Restart PC       
+> [!NOTE] 
+> Execute the following commands **ONLY IF** _"http-server"_ is not working or vouchers are not displaying
+- (BROWSER) Empty cache & hard reload page
+- Restart browser 
+- Restart PC       
 
 #### Install the following libraries via CMD
-```bash
+```
 pip install customtkinter
 pip install packaging
 pip install Pillow
 pip install google-auth
 pip install google-api-python-client
 pip install pywin32
-````
+```
 		
 -   Download [GCONNECT APP](https://github.com/cleifwork/GCONNECT)
 -   Click Code > Download Zip
 -   Extract main folder to your Desktop
--   Rename main folder to "GCONNECT"
--   Launch the app thru "LaunchPad.bat" or the "GConnect App" shortcut.
+-   Rename main folder to **"GCONNECT"**
+-   Launch the app thru _"LaunchPad.bat"_ or the _"GConnect App"_ shortcut.
 
-#### NOTE: If "Windows protected..." SmartScreen window pops
--   Click "More info" > Run anyway
+> [!NOTE] 
+> If _"Windows protected..."_ SmartScreen window pops
+-   Click _"More info"_ > Run anyway
 
-#### 2. OMADA CLOUD CONTROLLER ACCOUNT
-#### NOTE: Although not tested with SDN and OC200, it should still function properly as long as their exported CSV file adheres to the CBC formatting.
+**2. OMADA CLOUD CONTROLLER ACCOUNT**
+> [!NOTE] 
+> Although not tested with SDN and OC200, it should still function properly as long as their exported CSV file adheres to the CBC formatting.
 - Login to your [Omada Cloud Controller](https://omada.tplinkcloud.com/)
 -   Launch your Controller
 -   Go to Settings (Global)
 -   Select Export Data
 -   Export List: Voucher Codes  
     - Format: CSV 
-    - Portal: "Your Voucher WiFi Name" 
-    - Save file to => "%USERPROFILE%\Desktop\GCONNECT\raw_csv"
+    - Portal: _"Your Voucher WiFi Name"_ 
+    - Save file to => _"%USERPROFILE%\Desktop\GCONNECT\raw_csv"_
 
 
-#### 3. SHOULD HAVE A GOOGLE ACCOUNT
+**3. SHOULD HAVE A GOOGLE ACCOUNT**
 -   Login to to your google account
 -   Enable [Google Drive API](https://console.cloud.google.com/)
 -   Create a NEW PROJECT (use your voucher wifi portal name)
@@ -108,51 +114,53 @@ pip install pywin32
     -   Select Google Drive
     -   ENABLE
 
-##### CREDENTIALS CONFIGURATION
--   Service Account Creation:
-    -   Goto "Credentials" (with the key icon)
-    -   Click "+CREATE CREDENTIALS"
+_CREDENTIALS CONFIGURATION_
+-   **Service Account Creation:**
+    -   Goto _"Credentials"_ (with the key icon)
+    -   Click _"+CREATE CREDENTIALS"_
 	-   Select Service Account
-	-   Give it Account Name (OPTIONAL)
-	-   Give it Account ID (REQUIRED)
-	-   Give it Description (OPTIONAL)
+	-   Give it Account Name _(OPTIONAL)_
+	-   Give it Account ID _**(REQUIRED)**_
+	-   Give it Description _(OPTIONAL)_
 	-   CREATE AND CONTINUE
-	-   Give it an "Owner" role
+	-   Give it an _"Owner"_ role
 	-   DONE
     -   Click the newly created Service Account
-	-   Goto "KEYS" tab
+	-   Goto _"KEYS"_ tab
 	-   Click ADD KEY
 	-   Create new key
-	-   Key type: JSON 
-	-   CREATE (file will be downloaded)
-	-   Rename file to "service_account" (.json)
-	-   Save to => "%USERPROFILE%\Desktop\GCONNECT".
+	-   Key type: **JSON** 
+	-   CREATE _(file will be downloaded)_
+	-   Rename file to _"service_account"_ (.json)
+	-   Save to => _"%USERPROFILE%\Desktop\GCONNECT"_
 
--   API Key Creation:
+-   **API Key Creation:**
     -   Go back to +CREATE CREDENTIALS
     -   Select API KEY
     -   Copy API KEY first
-    -   Click "Edit API key" in the pop-up window
-    -   Select "Restrict API key" under API restrictions
+    -   Click _"Edit API key"_ in the pop-up window
+    -   Select _"Restrict API key"_ under API restrictions
     -   Check Google Drive API > OK > SAVE
-    -   Paste API KEY to this file => "%USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt"      
+    -   Paste API KEY to this file => _"%USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt"_      
    
- ##### GCONNECT INITIALIZATION  
--   (GCONNECT APP) Click "RUN INITIAL CONFIG" button
+_GCONNECT INITIALIZATION_  
+-   (GCONNECT APP) Click _**"RUN INITIAL CONFIG"**_ button
 
-#### NOTE: Wait for the browser to open, showing the macro file and voucher folder
+> [!NOTE]
+> Wait for the browser to open, showing the macro file and voucher folder
 -   Download the macro file then transfer to your android phone
-#### NOTE: Below are applicable ONLY IF you're using the same Google Acount in your PC & Android
+> [!NOTE]
+> Below are applicable ONLY IF you're using the same Google Acount in your PC & Android
 -   (ANDROID) Launch Google Drive App
--   (ANDROID) Goto "Shared" tab
--   (ANDROID) Go inside "GCONNECT" folder
--   (ANDROID) Tap more option (⋮) beside the macro file
--   (ANDROID) Tap "Open with" (should open with MacroDroid automatically)
--   Proceed to STEP: 3.2.6
+-   (ANDROID) Goto _"Shared"_ tab
+-   (ANDROID) Go inside **"GCONNECT"** folder
+-   (ANDROID) Tap more option **(⋮)** beside the macro file
+-   (ANDROID) Tap _"Open with"_ (should open with MacroDroid automatically)
+-   Proceed to **STEP: 3.2.6**
 
 
-#### 4. SHOULD HAVE AN ANDROID DEVICE (Voucher Server Phone)
-    * SOME REQUIREMENTS: 
+**4. SHOULD HAVE AN ANDROID DEVICE** (Voucher Server Phone)
+> SOME REQUIREMENTS: 
       => Phone must not be rooted
       => Phone must have an active sim card 
       => Phone must have available service (signal)
@@ -161,8 +169,8 @@ pip install pywin32
       => Phone must have separate GCash account installed
       => Phone must be able to receive GCash realtime notification
 
-##### Install MacroDroid (Google Play Store)
-    * Recommended permissions for MacroDroid:
+**Install MacroDroid (Google Play Store)**
+> RECOMMENDED PERMISSIONS:
       => Give app admin rights
       => Disable battery optimization
       => Allow background autostart
@@ -170,24 +178,25 @@ pip install pywin32
       => Lock app in recent app tray
       => Intall MacroDroid Helper (Play Store)
       => Grant MD WRITE_SECURE_SETTINGS
-##### Grant [WRITE_SECURE_SETTINGS](https://www.youtube.com/watch?v=_WLbhtpC5ls&ab_channel=JacobL) (OPTIONAL)
+_GRANT [WRITE_SECURE_SETTINGS](https://www.youtube.com/watch?v=_WLbhtpC5ls&ab_channel=JacobL) (OPTIONAL)_
 -   Import downloaded macro to MacroDroid or Import via Google Drive 
 -   Launch MacroDroid
     -   (Home Tab) Tap on Export/Import
     -   Tap on Storage under Import
     -   Browse macro in your local storage 
     -   Open the imported macro
-    -   STEP: 3.2.6  Tap on the Webhook trigger
+    -   **STEP: 3.2.6**  Tap on the Webhook trigger
         -   Tap Configure
         -   Copy the URL > Press Back button
         -   Send URL to PC 
-```bash        
-looks like this => "https://trigger.macrodroid.com/DEVICE_ID/sync_voucher"
-````
+        
+> [!NOTE]
+> **Looks like this:**
+    "https://trigger.macrodroid.com/DEVICE_ID/sync_voucher"
 
--   (PC) Put the URL inside this text file => "%USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt"
--   (MD) Tap on the import button (≡+) then enable the macro  
--   (GCONNECT APP) Click EXTRUP & SYNC
+-   (PC) Put the URL inside this text file => _"%USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt"_
+-   (MD) Tap on the import button **(≡+)** then enable the macro  
+-   (GCONNECT APP) Click _**EXTRUP & SYNC**_
 ## Running Tests
 
 -   Send a GCash amount PHP 5.00 to the Server Phone's GCash number.
