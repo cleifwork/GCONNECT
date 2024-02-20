@@ -150,7 +150,7 @@ _GCONNECT INITIALIZATION_
 > Wait for the browser to open, showing the macro file and voucher folder
 -   Download the macro file then transfer to your android phone
 > [!NOTE]
-> Below are applicable ONLY IF you're using the same Google Acount in your PC & Android
+> Below are applicable **ONLY IF** you're using the same Google Acount in your PC & Android
 -   (ANDROID) Launch Google Drive App
 -   (ANDROID) Goto _"Shared"_ tab
 -   (ANDROID) Go inside **"GCONNECT"** folder
@@ -231,12 +231,14 @@ _GRANT [WRITE_SECURE_SETTINGS](https://www.youtube.com/watch?v=_WLbhtpC5ls&ab_ch
 
 ## Related
 
-### Ideal Voucher Printing Preference
+> [!TIP] 
+> Ideal Voucher Printing Preference
     Layout              : Landscape
     Paper Size          : Letter (short)
     Margin              : None   
     Scale               : Custom (93%)
     Headers & Footers   : Unchecked (disabled)
     Background Graphics : Checked (if you have logo)
-#### NOTES: This can print up to 32 vouchers in 1 page.
+> [!NOTES]
+> This can print up to 32 vouchers in 1 page.
 
