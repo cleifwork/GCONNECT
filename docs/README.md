@@ -239,6 +239,7 @@ _GRANT [WRITE_SECURE_SETTINGS](https://www.youtube.com/watch?v=_WLbhtpC5ls&ab_ch
     Scale               : Custom (93%)
     Headers & Footers   : Unchecked (disabled)
     Background Graphics : Checked (if you have logo)
-> [!NOTES]
+
+> [!NOTE]
 > This can print up to 32 vouchers in 1 page.
 
