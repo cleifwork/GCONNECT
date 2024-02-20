@@ -162,6 +162,7 @@ _GCONNECT INITIALIZATION_
 **4. SHOULD HAVE AN ANDROID DEVICE** (Voucher Server Phone)
 > [!IMPORTANT]
 > SOME REQUIREMENTS: 
+```
 - Phone must not be rooted
 - Phone must have an active sim card 
 - Phone must have available service (signal)
@@ -169,28 +170,32 @@ _GCONNECT INITIALIZATION_
 - Phone must be connected to WiFi always
 - Phone must have separate GCash account installed
 - Phone must be able to receive GCash realtime notification
-
+```
 **Install MacroDroid (Google Play Store)**
 > [!IMPORTANT]
 > RECOMMENDED PERMISSIONS:
+```
 - Give app admin rights
 - Disable battery optimization
 - Allow background autostart
 - Give app notification access
 - Lock app in recent app tray
 - Intall MacroDroid Helper (Play Store)
-- Grant MD WRITE_SECURE_SETTINGS
-_GRANT [WRITE_SECURE_SETTINGS](https://www.youtube.com/watch?v=_WLbhtpC5ls&ab_channel=JacobL) (OPTIONAL)_
--   Import downloaded macro to MacroDroid or Import via Google Drive 
--   Launch MacroDroid
-    -   (Home Tab) Tap on Export/Import
-    -   Tap on Storage under Import
-    -   Browse macro in your local storage 
-    -   Open the imported macro
-    -   **STEP: 3.2.6**  Tap on the Webhook trigger
-        -   Tap Configure
-        -   Copy the URL > Press Back button
-        -   Send URL to PC 
+- Grant Macrodroid WRITE_SECURE_SETTINGS (OPTIONAL)
+```
+> [!TIP]
+> **How to grant [WRITE_SECURE_SETTINGS](https://www.youtube.com/watch?v=_WLbhtpC5ls&ab_channel=JacobL)**
+
+- Import downloaded macro to MacroDroid or Import via Google Drive 
+- Launch MacroDroid
+    - (Home Tab) Tap on Export/Import
+    - Tap on Storage under Import
+    - Browse macro in your local storage 
+    - Open the imported macro
+    - **STEP: 3.2.6**  Tap on the Webhook trigger
+        - Tap Configure
+        - Copy the URL > Press Back button
+        - Send URL to PC 
         
 > [!NOTE]
 > **Looks like this:**
