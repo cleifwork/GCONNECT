@@ -117,7 +117,7 @@ pip install pywin32
     -   Select Google Drive
     -   ENABLE
 
-_CREDENTIALS CONFIGURATION_
+**> CREDENTIALS CONFIGURATION**
 -   **Service Account Creation:**
     -   Goto _"Credentials"_ (with the key icon)
     -   Click **"+CREATE CREDENTIALS"**
@@ -146,7 +146,9 @@ _CREDENTIALS CONFIGURATION_
     -   Check Google Drive API > OK > SAVE
     -   Paste API KEY to this file => _"%USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt"_      
    
-_GCONNECT INITIALIZATION_  
+**> GCONNECT INITIALIZATION**  
+-   Input your voucher amounts in _**"put_voucher_amt_here.txt**"_
+-   Input your voucher code length in _**"put_vcodlen_here.txt"**_
 -   (GCONNECT APP) Click **"RUN INITIAL CONFIG"** button
 
 > [!NOTE]
