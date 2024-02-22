@@ -103,7 +103,7 @@ pip install pywin32
 -   Export List: Voucher Codes  
     - Format: CSV 
     - Portal: _"Your Voucher WiFi Name"_ 
-    - Save file _**'%USERPROFILE%\Desktop\GCONNECT\raw_csv'**_
+    - Save file to _**'%USERPROFILE%\Desktop\GCONNECT\raw_csv'**_
 
 
 **3. SHOULD HAVE A GOOGLE ACCOUNT**
@@ -126,7 +126,7 @@ pip install pywin32
 	-   Give it Account ID **(REQUIRED)**
 	-   Give it Description _(OPTIONAL)_
 	-   CREATE AND CONTINUE
-	-   Give it an _"Owner"_ role
+	-   Give it an **"Owner"** role
 	-   DONE
     -   Click the newly created Service Account
 	-   Goto **"KEYS"** tab
