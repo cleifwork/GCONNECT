@@ -86,8 +86,8 @@ pip install pywin32
 -   Download the **[GCONNECT APP](https://github.com/cleifwork/GCONNECT)**
 -   Click Code > Download Zip
 -   Extract main folder to your Desktop
--   Rename main folder to **"GCONNECT"**
--   Launch the app thru _"LaunchPad.bat"_ or the _"GConnect App"_ shortcut.
+-   Rename main folder to **'GCONNECT'**
+-   Launch the app thru _'LaunchPad.bat'_ or the _"GConnect App"_ shortcut.
 
 > [!NOTE] 
 > If _"Windows protected..."_ SmartScreen window pops
@@ -103,7 +103,7 @@ pip install pywin32
 -   Export List: Voucher Codes  
     - Format: CSV 
     - Portal: _"Your Voucher WiFi Name"_ 
-    - Save file to => _"%USERPROFILE%\Desktop\GCONNECT\raw_csv"_
+    - Save file _**'%USERPROFILE%\Desktop\GCONNECT\raw_csv'**_
 
 
 **3. SHOULD HAVE A GOOGLE ACCOUNT**
@@ -135,7 +135,7 @@ pip install pywin32
 	-   Key type: **JSON** 
 	-   CREATE _(file will be downloaded)_
 	-   Rename file to _"service_account"_ (.json)
-	-   Save to => _"%USERPROFILE%\Desktop\GCONNECT"_
+	-   Save to _**'%USERPROFILE%\Desktop\GCONNECT'**_
 
 -   **API Key Creation:**
     -   Go back to +CREATE CREDENTIALS
@@ -144,11 +144,11 @@ pip install pywin32
     -   Click _"Edit API key"_ in the pop-up window
     -   Select _"Restrict API key"_ under API restrictions
     -   Check Google Drive API > OK > SAVE
-    -   Paste API KEY to this file => _"%USERPROFILE%\Desktop\GCONNECT\put_api_key_here.txt"_      
+    -   Paste API KEY to this file _**'put_api_key_here.txt'**_      
    
 **> GCONNECT INITIALIZATION**  
--   Input your voucher amounts in _**"put_voucher_amt_here.txt**"_
--   Input your voucher code length in _**"put_vcodlen_here.txt"**_
+-   Input your voucher amounts in _**'put_voucher_amt_here.txt**'_
+-   Input your voucher code length in _**'put_vcodlen_here.txt'**_
 -   (GCONNECT APP) Click **"RUN INITIAL CONFIG"** button
 
 > [!NOTE]
@@ -203,10 +203,10 @@ pip install pywin32
         - Send URL to PC 
         
 > [!NOTE]
-> **Looks like this:** _"https://trigger.macrodroid.com/DEVICE_ID/sync_voucher"_
+> **Looks like this:** _**'https://trigger.macrodroid.com/DEVICE_ID/sync_voucher'**_
 
 
--   (PC) Put the URL inside this text file => _"%USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt"_
+-   (PC) Put the URL inside this text file _**'put_md_url_here.txt'**_
 -   (MD) Tap on the import button **(≡+)** then enable the macro  
 -   (GCONNECT APP) Click **EXTRUP & SYNC**
 ## Running Tests
