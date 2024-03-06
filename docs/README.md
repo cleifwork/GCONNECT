@@ -68,7 +68,7 @@ http-server
 - Click _"Allow access"_
 						
 > [!NOTE] 
-> Execute the following commands **ONLY IF** _"http-server"_ is not working or vouchers are not displaying properly
+> Execute the following **ONLY IF** _"http-server"_ is not working or vouchers are not displaying properly
 - (BROWSER) Empty cache & hard reload page
 - Restart browser 
 - Restart PC       
@@ -173,7 +173,7 @@ pip install pywin32
 - Phone must have available service (signal)
 - Phone must have SMS credits (load for texting)
 - Phone must be connected to WiFi always
-- Phone must have separate GCash account installed
+- Phone is recommended to have separate GCash account (not a must)
 - Phone must be able to receive GCash realtime notification
 ```
 **Install MacroDroid (Google Play Store)**
