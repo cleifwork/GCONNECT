@@ -211,7 +211,7 @@ pip install pywin32
 -   (GCONNECT APP) Click **EXTRUP & SYNC**
 ## Running Tests
 -   (MD) Click on **'Local Variables'** to verify if the voucher codes have been successfully added to their respective voucher variables.
--   Send a GCash amount PHP 5.00 to the Server Phone's GCash number.
+-   Send a GCash amount (PHP 5.00) to the Server Phone's GCash number.
     -   Sender should receive 5PHP WiFi Voucher via SMS. 
 
 
