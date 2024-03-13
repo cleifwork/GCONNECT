@@ -147,15 +147,14 @@ pip install pywin32
     -   Paste API KEY to this file _**'put_api_key_here.txt'**_      
    
 **> GCONNECT INITIALIZATION**  
--   Input your voucher amounts in _**'put_voucher_amt_here.txt**'_
--   Input your voucher code length in _**'put_vcodlen_here.txt'**_
+-   Input your voucher code length in _**'put_vcodlen_here.txt'**_ (OPTIONAL)
 -   (GCONNECT APP) Click **"RUN INITIAL CONFIG"** button
 
 > [!NOTE]
 > Wait for the browser to open, showing the macro file and voucher folder
 -   Download the macro file then transfer to your android phone
 > [!NOTE]
-> Below are applicable **ONLY IF** you're using the same Google Acount in your PC & Android
+> Below are applicable **ONLY IF** you're using the same Google Acount in your PC & Android, and you already have MacroDroid installed in your phone.
 -   (ANDROID) Launch Google Drive App
 -   (ANDROID) Goto _"Shared"_ tab
 -   (ANDROID) Go inside **"GCONNECT"** folder
