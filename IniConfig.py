@@ -1,6 +1,6 @@
 import os
-import re
 import csv
+import sys
 import glob
 import time
 import subprocess
@@ -38,7 +38,7 @@ if error_messages:
     for action in actions_to_take:
         action()
 
-    exit()
+    sys.exit()
 
 # Continue with the rest of your script if all checks pass
 print("All initial checks passed. Proceeding...\n")
@@ -46,96 +46,100 @@ time.sleep(1)
 
 # Creating CSV processing function for better readability
 def process_csv(csv_file):
-    unique_prices = set()
+    # Extract unique voucher data (Price, Duration, Type) from the CSV file and store them in a set
+    unique_data = set()
     with open(csv_file, "r") as file:
         reader = csv.DictReader(file)
         for row in reader:
+            # Extract relevant data from the row
             price = ''.join(char for char in row["Price"] if char.isdigit())
-            if price:
-                unique_prices.add(price)
+            duration = row["Duration"].replace(".0", " ")
+            voucher_type = ''.join(char for char in row["Type"] if char.isdigit())
 
-    if not unique_prices:
-        messagebox.showerror("Error", f"No valid prices found in the CSV file: {csv_file}.")
+            # Check if the duration ends with "Hours" and if it's greater than 24 and divisible by 24
+            if duration.endswith("Hours") and int(duration[:-5]) > 24 and int(duration[:-5]) % 24 == 0:
+                # Calculate the equivalent days            
+                days = int(duration[:-5]) / 24
+
+                # Create the duration text for display
+                duration_text = f"{int(days)} Days"
+            else:
+                # If the conditions are not met, use the original duration
+                duration_text = f"{duration}"
+
+            # Add data to the set only if the Type is not "Expired"
+            if price and voucher_type != "":
+                unique_data.add((price, duration_text, voucher_type))
+
+    # Display an error message if no valid data is found in the CSV file
+    if not unique_data:
+        messagebox.showerror("Error", f"No valid data found in the CSV file: {csv_file}.")
+        return
+    elif len(unique_data) > 9:
+        messagebox.showerror("Error", "This program can only handle up to 9 voucher price variants.")
+        return
     else:
+        # Write the unique voucher data to a text file and print a success message
         with open("put_voucher_amt_here.txt", "w") as output_file:
-            output_file.write("\n".join(map(str, sorted(unique_prices, key=int))))
-            print("Successfully added voucher prices from the CSV file!")
+            # Use a comma to separate the values in the output file
+            output_file.write("\n".join(",".join(map(str, data)) for data in sorted(unique_data, key=lambda x: int(x[0]))))
+            print("Successfully added voucher data from the CSV file!")
             time.sleep(1)
 
-# Read the amounts from the input file "put_voucher_amt_here.txt"
-with open("put_voucher_amt_here.txt", "r") as input_file:
-    amounts = [line.strip() for line in input_file]
+# Get the folder name from the file
+main_folder_name_file = 'main_folder_name.txt'
 
-# Check if the amounts list is empty
-if not amounts:
-    print("The input file is empty. Proceed getting prices from the CSV file...")
-    time.sleep(1)
+# Check if the file exists
+if os.path.exists(main_folder_name_file):
+    with open(main_folder_name_file, 'r') as file:
+        app_name = file.read().strip()
 
-    # Get the folder name from the file
-    main_folder_name_file = 'main_folder_name.txt'
-
-    # Check if the file exists
-    if os.path.exists(main_folder_name_file):
-        with open(main_folder_name_file, 'r') as file:
-            app_name = file.read().strip()
-
-        # Check if app_name is empty
-        if not app_name:
-            print(f"Error: The folder name in {main_folder_name_file} is empty.")
-            # Handle the error or exit the program as needed
-    else:
-        print(f"Error: The file {main_folder_name_file} does not exist.")
+    # Check if app_name is empty
+    if not app_name:
+        print(f"Error: The folder name in {main_folder_name_file} is empty.")
         # Handle the error or exit the program as needed
-
-    # Specify the directory where the CSV file is located
-    directory = os.path.join(os.environ['USERPROFILE'], 'Desktop', app_name, 'raw_csv')
-
-    # Search for CSV files in the directory
-    csv_files = glob.glob(os.path.join(directory, '*.csv'))
-
-    # Check if there are CSV files in the directory
-    if not csv_files:
-        error_message = "Please provide voucher amounts in 'put_voucher_amt_here.txt'."
-        messagebox.showerror("Error", error_message)
-
-        # Open the file for editing
-        file_path = "put_voucher_amt_here.txt"
-        os.system(f"notepad.exe {file_path}")
-
-        exit()
-    else:
-        # Take the first CSV file found
-        csv_file = csv_files[0]
-        print(f"Processing CSV file: '{csv_file}'...")
-        time.sleep(1)
-        process_csv(csv_file)
-
-        # Re-read the amounts from the input file "put_voucher_amt_here.txt"
-        with open("put_voucher_amt_here.txt", "r") as input_file:
-            amounts = [line.strip() for line in input_file]
 else:
-    # Check if all elements in the amounts list are numbers
-    if not all(amount.isdigit() for amount in amounts):
-        messagebox.showerror("Error", "Please provide valid voucher amounts.")
+    print(f"Error: The file {main_folder_name_file} does not exist.")
+    # Handle the error or exit the program as needed
 
-        # Open the file for editing
-        file_path = "put_voucher_amt_here.txt"
-        os.system(f"notepad.exe {file_path}")
+# Specify the directory where the CSV file is located
+directory = os.path.join(os.environ['USERPROFILE'], 'Desktop', app_name, 'raw_csv')
 
-        exit()
+# Search for CSV files in the directory
+csv_files = glob.glob(os.path.join(directory, '*.csv'))
+
+# Check if there are CSV files in the directory
+if not csv_files:
+    error_message = "No CSV file found in your 'raw_csv' folder."
+    messagebox.showerror("Error", error_message)
+    sys.exit()
+else:
+    # Take the first CSV file found
+    csv_file = csv_files[0]
+    print(f"Processing CSV file: '{csv_file}'...")
+    time.sleep(1)
+    process_csv(csv_file)
+
+    # Read the amounts from the input file "put_voucher_amt_here.txt"
+    with open("put_voucher_amt_here.txt", "r") as input_file:
+        # Split each line into a tuple (Price, Duration, Type)
+        data = [tuple(line.strip().split(',')) for line in input_file]
 
 # Create text files based on the amounts
 with open("voucher_logger.txt", "w") as logger_file:
-    for amount in amounts:
+    for row in data:
+        # Extract the Price from the tuple
+        amount = row[0]
+
         # Create the file name
         file_name = f"{amount}php_vouchers.txt"
 
         # Write content to the file (you can customize this part based on your requirements)
         with open(file_name, "w") as output_file:
-            output_file.write(f"This file will contain {amount} PHP vouchers.")
+            output_file.write(f"This file will contain {amount} PHP vouchers.")        
 
-        # Write the file_name to the logger file
-        logger_file.write(f"{file_name}\n")
+        # Append the amount to the logger file
+        logger_file.write(file_name + '\n')
 
 print("Voucher files and logger created successfully!")
 
@@ -308,7 +312,7 @@ if __name__ == "__main__":
                 # If the content is not a valid voucher code length, show an error message
                 else:
                     messagebox.showerror("Error", "Specify valid voucher code length in 'put_vcodlen_here.txt'.")
-                    exit()
+                    sys.exit()
         
         # If the specified file does not exist
         else:
@@ -345,11 +349,11 @@ if __name__ == "__main__":
             else:
                 # Display an error message if no CSV files are found
                 print("Error: No .csv file found!")
-                exit()
+                sys.exit()
         else:
             # Print an error message if the CSV folder path does not exist
             print("Error: CSV folder path does not exist!")
-            exit()
+            sys.exit()
 
     # Function to check a specific CSV file
     def check_csv_str_len(csv_file):
@@ -384,7 +388,7 @@ if __name__ == "__main__":
                 return [line.strip() for line in file]
         except FileNotFoundError:
             messagebox.showwarning("Error", f"File not found: {file_path}")
-            exit()
+            sys.exit()
         
     # File paths for source files and destination macro file
     file_ids_path = 'put_file_ids_here.txt'
@@ -400,46 +404,92 @@ if __name__ == "__main__":
     voucher_amounts = read_file_lines(voucher_amt_path)
 
     # Check if all source files exist
-    if not (file_ids and api_key and original_content):
+    if not (file_ids and api_key and original_content and voucher_amounts):
         messagebox.showwarning("Error", "One or more source files do not exist!")
     else:
         modified_content = original_content[0]
 
-        # Replace placeholders with actual content
+        # Replace placeholders with actual content for file IDs
         for file_id in file_ids:
             modified_content = modified_content.replace("PASTE_FILE_ID_HERE", file_id, 1)
 
-        modified_content = modified_content.replace("PASTE_API_KEY_HERE", api_key[0])
+        # Replace each occurrence of PASTE_API_KEY_HERE with a different API key
+        for i in range(len(file_ids)):
+            api_key_to_use = api_key[i % len(api_key)]  # Use modulo to cycle through the available API keys
+            modified_content = modified_content.replace("PASTE_API_KEY_HERE", api_key_to_use, 1)
+
+        duration_string = '","variable":{"textValue":"0 minutes'
+        type_string = '","variable":{"textValue":"0'
+        replace_string = '","variable":{"textValue":"'
+
+        macro_action1_path = os.path.join(os.environ['USERPROFILE'], 'Desktop', 'GCONNECT', 'macro_mod', 'action_1')
+        macro_action2_path = os.path.join(os.environ['USERPROFILE'], 'Desktop', 'GCONNECT', 'macro_mod', 'action_2')
+
+        replacements = {}  # Initialize the replacements dictionary
 
         with open(voucher_amt_path, "r") as amount_file:
-            voucher_amounts = [line.strip() for line in amount_file]
+            for i, line in enumerate(amount_file, start=1):
+                price, duration, type = line.strip().split(',')  # Assuming the tuple is Price, Duration, Type
+                replacements.update({
+                    f"VCOD_0{i}": f"VCOD_{price}" if i <= len(voucher_amounts) else f"VCOD_0{i}",
+                    f"0{i}PHP": f"{price}PHP" if i <= len(voucher_amounts) else f"0{i}PHP",
+                    f"PHP0{i}{duration_string}": f"PHP{price}{replace_string}{duration}" if i <= len(voucher_amounts) else f"PHP0{i}",
+                    f"PHP0{i}{type_string}": f"PHP{price}{replace_string}{type}" if i <= len(voucher_amounts) else f"PHP0{i}",
+                    f"PHP0{i}": f"PHP{price}" if i <= len(voucher_amounts) else f"PHP0{i}",
+                    f"PHP 0{i}.00": f"PHP {price}.00" if i <= len(voucher_amounts) else f"PHP 0{i}.00"
+                })
 
-        # Define patterns and replacements
-        patterns_and_replacements = [
-            (fr"\bVCOD_{i}\b", f"VCOD_{voucher_amounts[i-1] if i <= len(voucher_amounts) else i}") for i in range(9, 0, -1)
-        ] + [
-            (fr"\b{i}PHP\b", f"{voucher_amounts[i-1] if i <= len(voucher_amounts) else i}PHP") for i in range(9, 0, -1)
-        ] + [
-            (fr"\bPHP{i}\b", f"PHP{voucher_amounts[i-1] if i <= len(voucher_amounts) else i}") for i in range(9, 0, -1)
-        ] + [
-            (fr"\bPHP {i}.00\b", f"PHP {voucher_amounts[i-1] if i <= len(voucher_amounts) else i}.00") for i in range(9, 0, -1)
-        ]
+            loop_stopped = i + 1    
+
+            def replace_content_in_file(search_path, replace_path, main_content):
+                if os.path.exists(search_path) and os.path.exists(replace_path):
+                    with open(search_path, 'r') as search_file, open(replace_path, 'r') as replace_file:
+                        search_str = search_file.read()
+                        replace_str = replace_file.read()
+
+                    # Perform the replacement in the main content
+                    modified_content = main_content.replace(search_str, replace_str)
+                    return modified_content
+
+                return None
+
+            modified_content_temp = modified_content  # Use a separate variable
+
+            while loop_stopped < 10:
+                # Generate replacement paths for action_1
+                search_path_action1 = os.path.join(macro_action1_path, f"e_php_{loop_stopped}.macro")
+                replace_path_action1 = os.path.join(macro_action1_path, f"d_php_{loop_stopped}.macro")
+
+                # Generate replacement paths for action_2
+                search_path_action2 = os.path.join(macro_action2_path, f"e_vcod_{loop_stopped}.macro")
+                replace_path_action2 = os.path.join(macro_action2_path, f"d_vcod_{loop_stopped}.macro")
+
+                # Perform replacement for action_1
+                modified_content_temp = replace_content_in_file(search_path_action1, replace_path_action1, modified_content_temp)
+
+                # Perform replacement for action_2
+                modified_content_temp = replace_content_in_file(search_path_action2, replace_path_action2, modified_content_temp)
+
+                loop_stopped += 1
+
+            # After the loop, assign the modified content back to the original variable
+            modified_content = modified_content_temp
 
         print("\nConfiguring your macro, please wait...")
         time.sleep(1)
 
-        # Perform replacements in modified_content
-        for search_pattern, replace_pattern in patterns_and_replacements:
-            modified_content = re.sub(search_pattern, replace_pattern, modified_content)
+        # Perform all replacements in a single pass
+        for placeholder, replacement in replacements.items():
+            modified_content = modified_content.replace(placeholder, replacement)
 
-        # Write the modified content back to GConnect_-_GCash.macro
-        with open(modified_macro_file_path, "w") as macro_file:
-            macro_file.write(modified_content)
+        # Save the modified content to the destination file
+        with open(modified_macro_file_path, "w") as modified_file:
+            modified_file.write(modified_content)
 
         check_file_vcodlen("put_vcodlen_here.txt") 
 
         print("Macro configuration completed successfully!")
-        time.sleep(1)      
+        time.sleep(1)    
 
         file_metadata = {'name': os.path.basename(modified_macro_file_path)}
         media = MediaFileUpload(modified_macro_file_path, resumable=True)
