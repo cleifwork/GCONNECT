@@ -28,13 +28,13 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - [@cleifwork](https://www.github.com/cleifwork)
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your _**'put_api_key_here.txt'**_ file and **GCONNECT** folder.
+To run this project, you will need to add the following environment variables to your **GCONNECT** folder.
 
-`put_api_key_here.txt`
+`put_api_key_here.txt` (Contains GDrive API KEY)
 
-`service_account.json`
+`service_account.json` (Contains GDrive Service Account)
 
-`put_md_url_here.txt`
+`put_md_url_here.txt` (Contains MacroDroid WebHook URL)
 
 ## Installation & Configuration
 
