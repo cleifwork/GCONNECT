@@ -1,5 +1,6 @@
 import os
 import csv
+import sys
 import glob
 import time
 import subprocess
@@ -43,7 +44,7 @@ if error_messages:
     for action in actions_to_take:
         action()
 
-    exit()
+    sys.exit()
 
 # Continue with the rest of your script if all checks pass
 print("All initial checks passed. Proceeding...\n")
@@ -95,11 +96,12 @@ if csv_files:
     os.rename(current_filename, new_filename)
 else:
     messagebox.showerror("No CSV File Found", "No CSV file found in the directory.")
-    exit()
+    sys.exit()
 
 # Read the amounts from the input file
 with open("put_voucher_amt_here.txt", "r") as input_file:
-    amounts = [line.strip() for line in input_file]
+    # Extract only the first element (Amount) from each line
+    amounts = [line.strip().split(',')[0] for line in input_file]
 
 # Check if the amounts list is empty
 if not amounts:
@@ -110,7 +112,7 @@ if not amounts:
     file_path = "put_voucher_amt_here.txt"
     os.system(f"notepad.exe {file_path}")
 
-    exit()
+    sys.exit()
 
 # Define the output file names dynamically based on the amounts
 output_files = [f"{amount}php_vouchers.txt" for amount in amounts]
