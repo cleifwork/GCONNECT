@@ -223,28 +223,6 @@ class GoogleDriveManager:
         items = results.get('files', [])
         return items[0]['id'] if items else None
 
-    def list_files_in_folder(self, service, folder_id, output_file):
-        try:
-            results = service.files().list(
-                q=f"'{folder_id}' in parents",
-                fields="files(id, name)"
-            ).execute()
-
-            files = results.get('files', [])
-
-            if not files:
-                messagebox.showwarning("Error", "Specified folder does not contain any files.")
-                return
-
-            reversed_files = reversed(files)
-
-            with open(output_file, 'w') as file:
-                for file_info in reversed_files:
-                    file.write(f"{file_info['id']}\n")
-
-        except Exception as e:
-            print(f"An error occurred: {e}")
-
 if __name__ == "__main__":
     manager = GoogleDriveManager()
 
