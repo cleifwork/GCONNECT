@@ -30,10 +30,11 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 To run this project, you will need to add the following environment variables to your _**'put_api_key_here.txt'**_ file and **GCONNECT** folder.
 
-`API_KEY`
+`put_api_key_here.txt`
 
 `service_account.json`
 
+`put_md_url_here.txt`
 
 ## Installation & Configuration
 
