@@ -57,9 +57,9 @@ def process_csv(csv_file):
             voucher_type = ''.join(char for char in row["Type"] if char.isdigit())
 
             # Check if the duration ends with "Hours" and if it's greater than 24 and divisible by 24
-            if duration.endswith("Hours") and int(duration[:-5]) > 24 and int(duration[:-5]) % 24 == 0:
+            if duration.endswith("Hours") and float(duration[:-5]) > 24 and float(duration[:-5]) % 24 == 0:
                 # Calculate the equivalent days            
-                days = int(duration[:-5]) / 24
+                days = float(duration[:-5]) / 24
 
                 # Create the duration text for display
                 duration_text = f"{int(days)} Days"
@@ -216,6 +216,8 @@ class GoogleDriveManager:
             fields="id"
         ).execute()
 
+        return file['id']
+
     def get_file_id(self, service, file_name, folder_id):
         results = service.files().list(q=f"'{folder_id}' in parents and name = '{file_name}'", fields="files(id)").execute()
         items = results.get('files', [])
@@ -278,11 +280,17 @@ if __name__ == "__main__":
     with open(voucher_filenames_file, 'r') as file:
         voucher_files = [line.strip() for line in file]
 
+    # Loop over voucher files and upload each file
+    file_ids = []
     for upload_file_path in voucher_files:
-        manager.upload_file(service, upload_file_path, destination_folder_id)
+        file_id = manager.upload_file(service, upload_file_path, destination_folder_id)
+        file_ids.append(file_id)
 
-    manager.list_files_in_folder(service, destination_folder_id, 'put_file_ids_here.txt')
-    print("Voucher files successfully uploaded!")
+    # Write the file IDs to put_file_ids_here.txt
+    with open('put_file_ids_here.txt', 'w') as file:
+        for file_id in file_ids:
+            file.write(f"{file_id}\n")     
+    print("Voucher files successfully uploaded!")   
     time.sleep(1)
 
     # 3RD TASK
