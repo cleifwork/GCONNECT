@@ -164,7 +164,7 @@ for amount, output_file in zip(amounts, output_files):
 with open(output_expired, "w") as file:
     for code in codes_expired:
         file.write(code + "\n")
-print(f"Expired Vouchers Codes saved to {output_expired} \n")
+print(f"Expired Voucher Codes saved to {output_expired} \n")
 
 def main():
     service = create_drive_service()
