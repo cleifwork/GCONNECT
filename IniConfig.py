@@ -407,6 +407,17 @@ if __name__ == "__main__":
         duration_string = '","variable":{"textValue":"0 minutes'
         type_string = '","variable":{"textValue":"0'
         replace_string = '","variable":{"textValue":"'
+        s_rcvamt_string = '","variable":{"textValue":"received PHP 0'
+        r_rcvamt_string = '","variable":{"textValue":"received PHP '
+        s_vamtx_string = '","variable":{"textValue":"Here is your '
+
+        key_string = '{"key":"PHP0'
+        vcodkey_string = '{"key":"VCOD_0'
+        rcvamt_string = '","variable":{"textValue":"received PHP 0.00","variableType":2,"type":"StringValue"},"variableType":11,"type":"DictionaryEntry"}'
+        vamtx_string = r'","variable":{"textValue":"Here is your PHP voucher\nCode :","variableType":2,"type":"StringValue"},"variableType":11,"type":"DictionaryEntry"}'
+        vchcd_string = '","variable":{"textValue":"","variableType":2,"type":"StringValue"},"variableType":11,"type":"DictionaryEntry"}'
+        vdrt_string = '","variable":{"textValue":"0 minutes","variableType":2,"type":"StringValue"},"variableType":11,"type":"DictionaryEntry"}'
+        vusr_string = '","variable":{"textValue":"0 device","variableType":2,"type":"StringValue"},"variableType":11,"type":"DictionaryEntry"}'
 
         macro_action1_path = os.path.join(os.environ['USERPROFILE'], 'Desktop', 'GCONNECT', 'macro_mod', 'action_1')
         macro_action2_path = os.path.join(os.environ['USERPROFILE'], 'Desktop', 'GCONNECT', 'macro_mod', 'action_2')
@@ -419,6 +430,8 @@ if __name__ == "__main__":
                 replacements.update({
                     f"VCOD_0{i}": f"VCOD_{price}" if i <= len(voucher_amounts) else f"VCOD_0{i}",
                     f"0{i}PHP": f"{price}PHP" if i <= len(voucher_amounts) else f"0{i}PHP",
+                    f"{key_string}{i}{s_rcvamt_string}": f"{key_string}{i}{r_rcvamt_string}{price}" if i <= len(voucher_amounts) else f"{key_string}{i}{s_rcvamt_string}",
+                    f"{key_string}{i}{s_vamtx_string}": f"{key_string}{i}{s_vamtx_string}{price}" if i <= len(voucher_amounts) else f"{key_string}{i}{s_vamtx_string}",
                     f"PHP0{i}{duration_string}": f"PHP{price}{replace_string}{duration}" if i <= len(voucher_amounts) else f"PHP0{i}",
                     f"PHP0{i}{type_string}": f"PHP{price}{replace_string}{type}" if i <= len(voucher_amounts) else f"PHP0{i}",
                     f"PHP0{i}": f"PHP{price}" if i <= len(voucher_amounts) else f"PHP0{i}",
@@ -427,14 +440,13 @@ if __name__ == "__main__":
 
             loop_stopped = i + 1    
 
-            def replace_content_in_file(search_path, replace_path, main_content):
-                if os.path.exists(search_path) and os.path.exists(replace_path):
-                    with open(search_path, 'r') as search_file, open(replace_path, 'r') as replace_file:
+            def replace_content_in_file(search_path, main_content):
+                if os.path.exists(search_path):
+                    with open(search_path, 'r') as search_file:
                         search_str = search_file.read()
-                        replace_str = replace_file.read()
 
                     # Perform the replacement in the main content
-                    modified_content = main_content.replace(search_str, replace_str)
+                    modified_content = main_content.replace(search_str, "")
                     return modified_content
 
                 return None
@@ -444,17 +456,33 @@ if __name__ == "__main__":
             while loop_stopped < 10:
                 # Generate replacement paths for action_1
                 search_path_action1 = os.path.join(macro_action1_path, f"e_php_{loop_stopped}.macro")
-                replace_path_action1 = os.path.join(macro_action1_path, f"d_php_{loop_stopped}.macro")
-
                 # Generate replacement paths for action_2
                 search_path_action2 = os.path.join(macro_action2_path, f"e_vcod_{loop_stopped}.macro")
-                replace_path_action2 = os.path.join(macro_action2_path, f"d_vcod_{loop_stopped}.macro")
 
-                # Perform replacement for action_1
-                modified_content_temp = replace_content_in_file(search_path_action1, replace_path_action1, modified_content_temp)
+                # Perform replacements
+                modified_content_temp = replace_content_in_file(search_path_action1, modified_content_temp)
+                modified_content_temp = replace_content_in_file(search_path_action2, modified_content_temp)
 
-                # Perform replacement for action_2
-                modified_content_temp = replace_content_in_file(search_path_action2, replace_path_action2, modified_content_temp)
+                if loop_stopped == 9:
+                    # Replace strings directly in modified_content_temp
+                    modified_content_temp = modified_content_temp.replace(f",{key_string}{str(loop_stopped)}{rcvamt_string}", "")
+                    modified_content_temp = modified_content_temp.replace(f",{key_string}{str(loop_stopped)}{vamtx_string}", "")
+                    
+                    modified_content_temp = modified_content_temp.replace(f",{vcodkey_string}{str(loop_stopped)}{vchcd_string}", "")
+                    modified_content_temp = modified_content_temp.replace(f",{key_string}{str(loop_stopped)}{vchcd_string}", "")
+                    
+                    modified_content_temp = modified_content_temp.replace(f",{key_string}{str(loop_stopped)}{vdrt_string}", "")
+                    modified_content_temp = modified_content_temp.replace(f",{key_string}{str(loop_stopped)}{vusr_string}", "")
+                else:
+                    # Replace strings directly in modified_content_temp
+                    modified_content_temp = modified_content_temp.replace(f"{key_string}{str(loop_stopped)}{rcvamt_string},", "")
+                    modified_content_temp = modified_content_temp.replace(f"{key_string}{str(loop_stopped)}{vamtx_string},", "")
+                    
+                    modified_content_temp = modified_content_temp.replace(f"{vcodkey_string}{str(loop_stopped)}{vchcd_string},", "")
+                    modified_content_temp = modified_content_temp.replace(f"{key_string}{str(loop_stopped)}{vchcd_string},", "")
+                    
+                    modified_content_temp = modified_content_temp.replace(f"{key_string}{str(loop_stopped)}{vdrt_string},", "")
+                    modified_content_temp = modified_content_temp.replace(f"{key_string}{str(loop_stopped)}{vusr_string},", "")
 
                 loop_stopped += 1
 
