@@ -22,6 +22,14 @@ del CreateShortcut.vbs
 endlocal
 
 echo Installing...
+timeout /t 1 >nul
+ren "%USERPROFILE%\Desktop\GCONNECT\PVOD.ini" "PVOD.html"
+timeout /t 1 >nul
+ren "%USERPROFILE%\Desktop\GCONNECT\PVOS.ini" "PVOS.html"
+timeout /t 1 >nul
+c: 
+attrib +h +r +s %USERPROFILE%\Desktop\GCONNECT\PVOD.html
+attrib +h +r +s %USERPROFILE%\Desktop\GCONNECT\PVOS.html
 setlocal enabledelayedexpansion
 for /l %%i in (5,-1,1) do (
     set /p "=%%i " <nul
@@ -34,3 +42,6 @@ echo Done.
 timeout /t 1 >nul
 echo Exiting...
 timeout /t 1 >nul
+explorer "%USERPROFILE%\Desktop"
+
+
