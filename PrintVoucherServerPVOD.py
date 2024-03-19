@@ -22,7 +22,7 @@ subprocess.Popen('start "" /min cmd /k "http-server"', shell=True)
 time.sleep(2)
 
 # Open the URL in the default browser
-subprocess.Popen('start "" "http://localhost:8080/PrintVoucher.html"', shell=True)
+subprocess.Popen('start "" "http://localhost:8080/PrintVoucherPVOD.html"', shell=True)
 
 # Allocate 3 seconds loading time to make sure web form has been rendered completely, allocate higher value for slow internet connection
 time.sleep(3)
