@@ -4,6 +4,7 @@
 <head>
     <style>
         .voucher {
+            /* color: #fff; */
             border: 1px solid #ccc;
             padding: 10px;
             width: 250px;
@@ -28,8 +29,8 @@
 
         .voucher-details {
             font-size: 12px;
+            color: #4a4a4a;
             /* color: #666666; */
-            color: #4a4a4a
         }
 
         .voucher-footer {
@@ -49,19 +50,6 @@
             // Get the container element for vouchers
             const vouchersContainer = document.getElementById("vouchers-container");
 
-            // // Mapping between price and background image filename
-            // const priceImageMap = {
-            //     "₱5": "vlogo1.png",
-            //     "₱10": "vlogo2.png",
-            //     "₱15": "vlogo3.png",
-            //     "₱20": "vlogo4.png",
-            //     "₱30": "vlogo5.png",
-            //     "₱50": "vlogo6.png",
-            //     "₱99": "vlogo7.png",
-            //     "₱150": "vlogo8.png",
-            //     "₱300": "vlogo9.png",
-            // };         
-
             // Iterate over each row (excluding the header)
             for (let i = 1; i < rows.length; i++) {
                 // Split the row by commas
@@ -80,11 +68,6 @@
                     // Create the voucher element
                     const voucher = document.createElement("div");
                     voucher.classList.add("voucher");
-
-                    // // Add background image based on price
-                    // if (price in priceImageMap) {
-                    //     voucher.style.backgroundImage = `url("./img/${priceImageMap[price]}")`;
-                    // }
 
                     // Add the voucher content
                     const voucherTitle = document.createElement("div");

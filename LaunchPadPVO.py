@@ -38,8 +38,8 @@ class App(customtkinter.CTk):
         self.logo_frame = MyLogoFrame(self, "WIFI VOUCHER SOLUTION", logo_path="./img/launchpad_logo.png")
         self.logo_frame.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="nsew")      
 
-        self.button_1 = customtkinter.CTkButton(self, text="RUN INITIAL CONFIG", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.clean_csv)
-        self.button_1.grid(row=1, column=0, padx=10, pady=5, sticky="ew")
+        # self.button_1 = customtkinter.CTkButton(self, text="RUN INITIAL CONFIG", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.clean_csv)
+        # self.button_1.grid(row=1, column=0, padx=10, pady=5, sticky="ew")
 
         # self.button_2 = customtkinter.CTkButton(self, text="EXTRUP VCODES", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.upload_voucher)
         # self.button_2.grid(row=2, column=0, padx=10, pady=5, sticky="ew")        
@@ -47,8 +47,8 @@ class App(customtkinter.CTk):
         # self.button_3 = customtkinter.CTkButton(self, text="SYNC GDRIVE-MD", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.sync_gdrivemd)
         # self.button_3.grid(row=3, column=0, padx=10, pady=5, sticky="ew")        
 
-        self.button_4 = customtkinter.CTkButton(self, text="EXTRUP & SYNC", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.cleanup_csv)
-        self.button_4.grid(row=4, column=0, padx=10, pady=5, sticky="ew")
+        # self.button_4 = customtkinter.CTkButton(self, text="EXTRUP & SYNC", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.cleanup_csv)
+        # self.button_4.grid(row=4, column=0, padx=10, pady=5, sticky="ew")
         
         self.button_5 = customtkinter.CTkButton(self, text="PRINT VOUCHERS", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.print_voucher)
         self.button_5.grid(row=5, column=0, padx=10, pady=5, sticky="ew")
@@ -58,12 +58,12 @@ class App(customtkinter.CTk):
         self.footer_frame.grid(row=6, column=0, padx=10, pady=(5, 10), sticky="ew")
 
         self.footer_label = customtkinter.CTkLabel(self.footer_frame, 
-                                                   text="\nCopyright © 2023 Toto's Digital Services Ltd. \nAll rights reserved. \n",
+                                                   text="\nCopyright © 2024 Toto's Digital Services Ltd. \nAll rights reserved. \n",
                                                    font=("Arial", 9))
         self.footer_label.pack()
 
-    def clean_csv(self):
-        sub.run(["python", "IniConfig.py"])        
+    # def clean_csv(self):
+    #     sub.run(["python", "IniConfig.py"])        
 
     # def upload_voucher(self):
     #     sub.run(["python", "CleanUpCSV.py"])
@@ -71,8 +71,8 @@ class App(customtkinter.CTk):
     # def sync_gdrivemd(self):
     #     sub.run(["python", "SyncGDriveMD.py"]) 
 
-    def cleanup_csv(self):
-        sub.run(["python", "CleanUpSynCSV.py"])        
+    # def cleanup_csv(self):
+    #     sub.run(["python", "CleanUpSynCSV.py"])        
 
     def print_voucher(self):
         sub.run(["python", "PrintVoucherServer.py"])
