@@ -7,7 +7,7 @@ from PIL import Image
 user_profile = os.environ['USERPROFILE']
     
 # Specify the wifi folder name as a variable
-app_name = 'GCONNECT'
+app_name = 'GCONNECT-PVO'
     
 # Construct the full path
 directory = os.path.join(user_profile, 'Desktop', app_name)
@@ -30,7 +30,7 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("GConnect V2")
+        self.title("GConnect PVO")
         self.geometry("300x600")
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
@@ -49,8 +49,11 @@ class App(customtkinter.CTk):
 
         # self.button_4 = customtkinter.CTkButton(self, text="EXTRUP & SYNC", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.cleanup_csv)
         # self.button_4.grid(row=4, column=0, padx=10, pady=5, sticky="ew")
+
+        self.button_4 = customtkinter.CTkButton(self, text="PRINT VOUCHERS (S-LGO)", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.print_voucherPVOS)
+        self.button_4.grid(row=4, column=0, padx=10, pady=5, sticky="ew")        
         
-        self.button_5 = customtkinter.CTkButton(self, text="PRINT VOUCHERS", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.print_voucher)
+        self.button_5 = customtkinter.CTkButton(self, text="PRINT VOUCHERS (D-LGO)", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.print_voucherPVOD)
         self.button_5.grid(row=5, column=0, padx=10, pady=5, sticky="ew")
 
         # Footer
@@ -74,8 +77,11 @@ class App(customtkinter.CTk):
     # def cleanup_csv(self):
     #     sub.run(["python", "CleanUpSynCSV.py"])        
 
-    def print_voucher(self):
-        sub.run(["python", "PrintVoucherServer.py"])
+    def print_voucherPVOS(self):
+        sub.run(["python", "PrintVoucherServerPVOS.py"])
+
+    def print_voucherPVOD(self):
+        sub.run(["python", "PrintVoucherServerPVOD.py"])        
 
 app = App()
 app.mainloop()
