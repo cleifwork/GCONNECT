@@ -28,7 +28,7 @@
 - [Install python](https://www.python.org/downloads/) (recommended version: _**python-3.11.4**_)
 - [Install node.js](https://nodejs.org/en/download/) (recommended version: _**node-v18.16.1**_)
 
-- Run _'InitialConfig.bat'_ inside **'GCONNECT'** folder
+- Run _**'InitialConfig.bat'**_ inside **'GCONNECT'** folder
 
 > [!NOTE] 
 > If _"Windows Security Alert"_ window pops
@@ -44,7 +44,7 @@
 -   Click Code > Download Zip
 -   Extract main folder to your Desktop
 -   Rename main folder to **'GCONNECT'**
--   Run _'Install.bat'_ inside the **'GCONNECT'** folder.
+-   Run _**'Install.bat'**_ inside the **'GCONNECT'** folder.
 -   Launch _"GConnect App"_ shortcut from the Desktop.
 
 > [!NOTE] 
