@@ -1,5 +1,6 @@
 import os
 import time
+import shutil
 import subprocess
 from tkinter import messagebox
 import win32com.client as win32
@@ -7,10 +8,15 @@ import win32com.client as win32
 # Get the path of the root folder
 root_folder = os.getcwd()
 
-# Remove the existing 'VoucherList.csv' file if it exists
+# Create a folder to store processed CSV files if it doesn't exist
+processed_folder = os.path.join(root_folder, "processed_csv")
+if not os.path.exists(processed_folder):
+    os.makedirs(processed_folder)
+
+# Move the existing 'VoucherList.csv' file to the processed folder if it exists
 voucher_list_path = os.path.join(root_folder, "VoucherList.csv")
 if os.path.exists(voucher_list_path):
-    os.remove(voucher_list_path)
+    shutil.move(voucher_list_path, os.path.join(processed_folder, "VoucherList.csv"))    
 
 # List all CSV files in the root folder
 csv_files = [file for file in os.listdir(root_folder) if file.endswith('.csv')]
