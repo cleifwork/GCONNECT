@@ -5,12 +5,10 @@
 
 - **User-Friendly Interface:** The application features a very simple interface, ensuring ease of use for both novice and experienced users. It simplifies complex processes, making voucher management more accessible.
 
-_Experience unparalleled automation and efficiency with the GCONNECT APP, your go-to solution for optimizing voucher workflows and enhancing productivity in the dynamic landscape of network management._
 ## Demo
 
 -   [GConnect App Demo](https://www.youtube.com/watch?v=eXLdvv9VYJA)
 -   [GConnect Installation & Configuration](https://www.youtube.com/watch?v=fOBG7ZszJXA)
-
 
 ## Authors
 
@@ -20,7 +18,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 **INVOLVED APPS:**
 - Omada Cloud Controller (Web)
-- GConnect App (Desktop)
+- GConnect App PVO (Desktop)
 
 ### REQUIREMENTS:
 **1. SHOULD HAVE A WINDOWS PC/LAPTOP** 
@@ -60,11 +58,12 @@ pip install google-api-python-client
 pip install pywin32
 ```
 		
--   Download the **[GCONNECT APP](https://github.com/cleifwork/GCONNECT)**
+-   Download the **[GCONNECT PVO](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-PVO)**
 -   Click Code > Download Zip
 -   Extract main folder to your Desktop
 -   Rename main folder to **'GCONNECT'**
--   Launch the app thru _'LaunchPad.bat'_ or the _"GConnect App"_ shortcut.
+-   Run Install.bat inside the **'GCONNECT'** folder.
+-   Launch _"GConnect App"_ shortcut from the Desktop.
 
 > [!NOTE] 
 > If _"Windows protected..."_ SmartScreen window pops
@@ -80,16 +79,15 @@ pip install pywin32
 -   Export List: Voucher Codes  
     - Format: CSV 
     - Portal: _"Your Voucher WiFi Name"_ 
-    - Save file to _**'%USERPROFILE%\Desktop\GCONNECT\raw_csv'**_
+    - Save file to **'GCONNECT'** folder
 
 ## Running Tests
--   (GCONNECT) Click on **'Local Variables'** to verify if the voucher codes have been successfully added to their respective voucher variables.
+-   (GCONNECT) Launch the app.
+-   (GCONNECT) Click the buttons to check if can now print vouchers automatically
 
 ## Optimizations
+-   Created second button with dynamic background depending on voucher amount.
 
--   Refactored the code to eliminate redundancy.
--   Successfully reduced the macro size from 229KB to 44KB by restructuring multiple IF/ELSE statements and consolidating similar variables into a single dictionary/array.
--   Optimized file asset usage by automatically extracting the necessary data from the source file.
 ## Screenshots
 
 ![App Screenshot](https://drive.google.com/thumbnail?id=1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF)
