@@ -28,15 +28,7 @@
 - [Install python](https://www.python.org/downloads/) (recommended version: _**python-3.11.4**_)
 - [Install node.js](https://nodejs.org/en/download/) (recommended version: _**node-v18.16.1**_)
 
-- (CMD) Execute after installation: 
-        
-```
-  npm install --global http-server
-```
-- (CMD) Run the following to check if working properly
-```
-http-server
-```
+- Run _'InitialConfig.bat'_ inside **'GCONNECT'** folder
 
 > [!NOTE] 
 > If _"Windows Security Alert"_ window pops
@@ -47,22 +39,12 @@ http-server
 - (BROWSER) Empty cache & hard reload page
 - Restart browser 
 - Restart PC       
-
-**Install the following libraries via CMD**
-```
-pip install customtkinter
-pip install packaging
-pip install Pillow
-pip install google-auth
-pip install google-api-python-client
-pip install pywin32
-```
 		
 -   Download the **[GCONNECT PVO](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-PVO)**
 -   Click Code > Download Zip
 -   Extract main folder to your Desktop
 -   Rename main folder to **'GCONNECT'**
--   Run Install.bat inside the **'GCONNECT'** folder.
+-   Run _'Install.bat'_ inside the **'GCONNECT'** folder.
 -   Launch _"GConnect App"_ shortcut from the Desktop.
 
 > [!NOTE] 
