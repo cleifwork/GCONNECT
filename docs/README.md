@@ -38,14 +38,16 @@
 
 > [!NOTE] 
 > If _"Windows Security Alert"_ window pops
-```Click _"Allow access"_```
+```
+> Click _"Allow access"_
+```
 						
 > [!NOTE] 
 > Execute the following **ONLY IF** _"http-server"_ is not working or vouchers are not displaying properly
 ```
-(BROWSER) Empty cache & hard reload page
-IF NOT Restart browser 
-IF NOT Restart PC       
+> (BROWSER) Empty cache & hard reload page
+> IF NOT Restart browser 
+> IF NOT Restart PC       
 ```
 **2. OMADA CLOUD CONTROLLER ACCOUNT**
 > [!NOTE] 
@@ -64,7 +66,10 @@ IF NOT Restart PC
 
 > [!NOTE] 
 > If _"Windows protected..."_ SmartScreen window pops
-```Click _"More info"_ > Run anyway```
+```
+> Click _"More info"_  
+> Run anyway
+```
 
 - (GCONNECT) Click the **"PRINT VOUCHERS"** button to check if it can now print vouchers automatically
 
