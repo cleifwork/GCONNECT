@@ -65,7 +65,7 @@
 
 ## Running Tests
 -   (GCONNECT) Launch the app.
--   (GCONNECT) Click the buttons to check if can now print vouchers automatically
+-   (GCONNECT) Click the buttons to check if it can now print vouchers automatically
 
 ## Optimizations
 -   Created second button with dynamic background depending on voucher amount.
