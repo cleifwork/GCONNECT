@@ -15,7 +15,7 @@ if os.path.exists(voucher_list_path):
 # List all CSV files in the root folder
 csv_files = [file for file in os.listdir(root_folder) if file.endswith('.csv')]
 
-if not os.path.isfile("VoucherList.csv"):
+if not csv_files:
     messagebox.showerror("Error", "No 'VoucherList.csv' file found! \nPlease run 'EXTRUP + SYNC' first.")
     exit()
 
