@@ -73,9 +73,9 @@
 
 ## Screenshots
 
-![App Screenshot](https://drive.google.com/thumbnail?id=1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF)
+![App Screenshot](https://drive.google.com/thumbnail?id=1w-nk1QCgyCH2ZYK-dEdqrKQn7a80_Vmd)
 
-[Zoom App Screenshot](https://drive.google.com/uc?id=1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF)
+[Zoom App Screenshot](https://drive.google.com/uc?id=1w-nk1QCgyCH2ZYK-dEdqrKQn7a80_Vmd)
 
 ## Support
 
