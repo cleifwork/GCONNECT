@@ -34,12 +34,6 @@
 - Extract main folder to your Desktop
 - Rename main folder to **'GCONNECT'**
 - Run _**'Install.bat'**_ inside the **'GCONNECT'** folder
-- Launch _"GConnect App"_ shortcut from the Desktop
-
-> [!NOTE] 
-> If _"Windows protected..."_ SmartScreen window pops
-- Click _"More info"_ > Run anyway
-
 - Run _**'InitialConfig.bat'**_ inside **'GCONNECT'** folder
 
 > [!NOTE] 
@@ -65,7 +59,11 @@
     - Save file to **'GCONNECT'** folder
 
 ## Running Tests
--   (GCONNECT) Click the **"PRINT VOUCHERS"** button to check if it can now print vouchers automatically
+- (GCONNECT) Launch _"GConnect App"_ shortcut from the Desktop
+> [!NOTE] 
+> If _"Windows protected..."_ SmartScreen window pops
+- Click _"More info"_ > Run anyway
+- (GCONNECT) Click the **"PRINT VOUCHERS"** button to check if it can now print vouchers automatically
 
 ## Optimizations
 -   Created second button with dynamic background depending on voucher amount
