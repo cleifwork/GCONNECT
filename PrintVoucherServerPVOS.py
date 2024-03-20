@@ -22,7 +22,7 @@ if os.path.exists(voucher_list_path):
 csv_files = [file for file in os.listdir(root_folder) if file.endswith('.csv')]
 
 if not csv_files:
-    messagebox.showerror("Error", "No 'VoucherList.csv' file found! \nPlease run 'EXTRUP + SYNC' first.")
+    messagebox.showerror("Error", "No CSV file found!")
     exit()
 
 # Determine the latest CSV file based on modification time
