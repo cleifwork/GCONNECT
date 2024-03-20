@@ -60,9 +60,11 @@
 
 ## Running Tests
 - (GCONNECT) Launch _"GConnect App"_ shortcut from the Desktop
+
 > [!NOTE] 
 > If _"Windows protected..."_ SmartScreen window pops
-- Click _"More info"_ > Run anyway
+    - Click _"More info"_ > Run anyway
+
 - (GCONNECT) Click the **"PRINT VOUCHERS"** button to check if it can now print vouchers automatically
 
 ## Optimizations
