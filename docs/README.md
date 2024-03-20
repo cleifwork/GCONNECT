@@ -39,7 +39,8 @@
 - (BROWSER) Empty cache & hard reload page
 - Restart browser 
 - Restart PC       
-		
+
+**DOWNLOAD THE APP**		
 -   Download the **[GCONNECT PVO](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-PVO)**
 -   Click Code > Download Zip
 -   Extract main folder to your Desktop
