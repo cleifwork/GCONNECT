@@ -39,7 +39,7 @@
 > [!NOTE] 
 > If _"Windows Security Alert"_ window pops
 ```
-> Click _"Allow access"_
+> Click "Allow access"
 ```
 						
 > [!NOTE] 
@@ -67,7 +67,7 @@
 > [!NOTE] 
 > If _"Windows protected..."_ SmartScreen window pops
 ```
-> Click _"More info"_  
+> Click "More info"  
 > Run anyway
 ```
 
