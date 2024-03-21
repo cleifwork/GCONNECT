@@ -84,7 +84,7 @@ pip install google-api-python-client
 pip install pywin32
 ```
 		
--   Download the **[GCONNECT APP](https://github.com/cleifwork/GCONNECT)**
+-   Download the **[GCONNECT-V2](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-V2)**
 -   Click Code > Download Zip
 -   Extract main folder to your Desktop
 -   Rename main folder to **'GCONNECT'**
