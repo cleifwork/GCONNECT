@@ -7,7 +7,7 @@
 
 ## Demo
 
--   [GConnect App Demo](https://www.youtube.com/watch?v=eXLdvv9VYJA)
+-   [GConnect App Demo](https://www.youtube.com/watch?v=zLjZ7r3ee9w)
 -   [GConnect Installation & Configuration](https://www.youtube.com/watch?v=fOBG7ZszJXA)
 
 ## Authors
