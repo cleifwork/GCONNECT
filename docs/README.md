@@ -29,7 +29,7 @@
 - [Install node.js](https://nodejs.org/en/download/) (recommended version: _**node-v18.16.1**_)
 
 **DOWNLOAD THE APP**		
-- Download the **[GCONNECT PVO](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-PVO)**
+- Download the **[GCONNECT-PVO](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-PVO)**
 - Click Code > Download Zip
 - Extract main folder to your Desktop
 - Rename main folder to **'GCONNECT'**
