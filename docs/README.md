@@ -20,7 +20,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 ## Demo
 
 -   [GConnect App Demo](https://www.youtube.com/watch?v=eXLdvv9VYJA)
--   [GConnect Installation & Configuration](https://www.youtube.com/watch?v=fOBG7ZszJXA)
+-   [GConnect Installation & Configuration](https://www.youtube.com/watch?v=hjWmLe4AmSo)
 
 
 ## Authors
@@ -106,7 +106,6 @@ pip install pywin32
     - Portal: _"Your Voucher WiFi Name"_ 
     - Save file to _**'%USERPROFILE%\Desktop\GCONNECT\raw_csv'**_
 
-
 **3. SHOULD HAVE A GOOGLE ACCOUNT**
 -   Login to to your google account
 -   Enable [Google Drive API](https://console.cloud.google.com/)
@@ -163,7 +162,6 @@ pip install pywin32
 -   (ANDROID) Tap _"Open with"_ (should open with MacroDroid automatically)
 -   Proceed to **STEP: 3.2.6**
 
-
 **4. SHOULD HAVE AN ANDROID DEVICE** (Voucher Server Phone)
 > [!IMPORTANT]
 > SOME REQUIREMENTS: 
@@ -205,7 +203,6 @@ pip install pywin32
 > [!NOTE]
 > **Looks like this:** _**'https://trigger.macrodroid.com/DEVICE_ID/sync_voucher'**_
 
-
 -   (PC) Put the URL inside this text file _**'put_md_url_here.txt'**_
 -   (MD) Tap on the import button **(≡+)** then enable the macro  
 -   (GCONNECT APP) Click **EXTRUP & SYNC**
@@ -213,8 +210,6 @@ pip install pywin32
 -   (MD) Click on **'Local Variables'** to verify if the voucher codes have been successfully added to their respective voucher variables.
 -   Send a GCash amount (PHP 5.00) to the Server Phone's GCash number.
     -   Sender should receive 5PHP WiFi Voucher via SMS. 
-
-
 
 ## Optimizations
 
