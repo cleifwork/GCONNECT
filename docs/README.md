@@ -178,11 +178,12 @@ pip install pywin32
 > [!IMPORTANT]
 > RECOMMENDED PERMISSIONS:
 ```
-- Give app admin rights
-- Disable battery optimization
-- Allow background autostart
-- Give app notification access
-- Lock app in recent app tray
+- Give app admin rights (Android Settings)
+- Disable battery optimization (MD Settings)
+- Enable MacroDroid in Accessibility (MD Settings)
+- Allow background autostart (Android Settings)
+- Give app notification access (App Settings)
+- Lock app in recent app tray (Recent App Tray)
 - Intall MacroDroid Helper (Play Store)
 - Grant MacroDroid WRITE_SECURE_SETTINGS (OPTIONAL)
 ```
