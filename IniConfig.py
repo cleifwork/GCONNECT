@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import csv
 import sys
@@ -370,18 +371,18 @@ if __name__ == "__main__":
     # 3rd Task : Function to read lines from a file and handle FileNotFoundError
     def read_file_lines(file_path):
         try:
-            with open(file_path, 'r') as file:
+            with open(file_path, 'r', encoding="utf-8") as file:
                 return [line.strip() for line in file]
         except FileNotFoundError:
             messagebox.showwarning("Error", f"File not found: {file_path}")
             sys.exit()
-        
+
     # File paths for source files and destination macro file
     file_ids_path = 'put_file_ids_here.txt'
     api_key_path = 'put_api_key_here.txt'
     voucher_amt_path = 'put_voucher_amt_here.txt'
     source_file_path = 'temp.macro'
-    modified_macro_file_path = 'GConnect_-_GCash.macro'
+    modified_macro_file_path = 'GConnect_-_GCash_-_Maya.macro'
 
     # Read content from source files
     file_ids = read_file_lines(file_ids_path)
@@ -409,11 +410,14 @@ if __name__ == "__main__":
         replace_string = '","variable":{"textValue":"'
         s_rcvamt_string = '","variable":{"textValue":"received PHP 0'
         r_rcvamt_string = '","variable":{"textValue":"received PHP '
+        s_rcvmya_string = '","variable":{"textValue":"received ₱0'
+        r_rcvmya_string = '","variable":{"textValue":"received ₱'        
         s_vamtx_string = '","variable":{"textValue":"Here is your '
 
         key_string = '{"key":"PHP0'
         vcodkey_string = '{"key":"VCOD_0'
         rcvamt_string = '","variable":{"textValue":"received PHP 0.00","variableType":2,"type":"StringValue"},"variableType":11,"type":"DictionaryEntry"}'
+        rcvmya_string = '","variable":{"textValue":"received ₱0.00","variableType":2,"type":"StringValue"},"variableType":11,"type":"DictionaryEntry"}'
         vamtx_string = r'","variable":{"textValue":"Here is your PHP voucher\nCode :","variableType":2,"type":"StringValue"},"variableType":11,"type":"DictionaryEntry"}'
         vchcd_string = '","variable":{"textValue":"","variableType":2,"type":"StringValue"},"variableType":11,"type":"DictionaryEntry"}'
         vdrt_string = '","variable":{"textValue":"0 minutes","variableType":2,"type":"StringValue"},"variableType":11,"type":"DictionaryEntry"}'
@@ -424,25 +428,25 @@ if __name__ == "__main__":
 
         replacements = {}  # Initialize the replacements dictionary
 
-        with open(voucher_amt_path, "r") as amount_file:
+        with open(voucher_amt_path, "r", encoding="utf-8") as amount_file:
             for i, line in enumerate(amount_file, start=1):
                 price, duration, type = line.strip().split(',')  # Assuming the tuple is Price, Duration, Type
                 replacements.update({
                     f"VCOD_0{i}": f"VCOD_{price}" if i <= len(voucher_amounts) else f"VCOD_0{i}",
                     f"0{i}PHP": f"{price}PHP" if i <= len(voucher_amounts) else f"0{i}PHP",
                     f"{key_string}{i}{s_rcvamt_string}": f"{key_string}{i}{r_rcvamt_string}{price}" if i <= len(voucher_amounts) else f"{key_string}{i}{s_rcvamt_string}",
+                    f"{key_string}{i}{s_rcvmya_string}": f"{key_string}{i}{r_rcvmya_string}{price}" if i <= len(voucher_amounts) else f"{key_string}{i}{s_rcvmya_string}",
                     f"{key_string}{i}{s_vamtx_string}": f"{key_string}{i}{s_vamtx_string}{price}" if i <= len(voucher_amounts) else f"{key_string}{i}{s_vamtx_string}",
                     f"PHP0{i}{duration_string}": f"PHP{price}{replace_string}{duration}" if i <= len(voucher_amounts) else f"PHP0{i}",
                     f"PHP0{i}{type_string}": f"PHP{price}{replace_string}{type}" if i <= len(voucher_amounts) else f"PHP0{i}",
-                    f"PHP0{i}": f"PHP{price}" if i <= len(voucher_amounts) else f"PHP0{i}",
-                    f"PHP 0{i}.00": f"PHP {price}.00" if i <= len(voucher_amounts) else f"PHP 0{i}.00"
+                    f"PHP0{i}": f"PHP{price}" if i <= len(voucher_amounts) else f"PHP0{i}"
                 })
 
             loop_stopped = i + 1    
 
             def replace_content_in_file(search_path, main_content):
                 if os.path.exists(search_path):
-                    with open(search_path, 'r') as search_file:
+                    with open(search_path, 'r', encoding="utf-8") as search_file:
                         search_str = search_file.read()
 
                     # Perform the replacement in the main content
@@ -464,23 +468,21 @@ if __name__ == "__main__":
                 modified_content_temp = replace_content_in_file(search_path_action2, modified_content_temp)
 
                 if loop_stopped == 9:
-                    # Replace strings directly in modified_content_temp
+                    # Replace unused strings with empty string directly in modified_content_temp without the comma ","
                     modified_content_temp = modified_content_temp.replace(f",{key_string}{str(loop_stopped)}{rcvamt_string}", "")
+                    modified_content_temp = modified_content_temp.replace(f",{key_string}{str(loop_stopped)}{rcvmya_string}", "")
                     modified_content_temp = modified_content_temp.replace(f",{key_string}{str(loop_stopped)}{vamtx_string}", "")
-                    
                     modified_content_temp = modified_content_temp.replace(f",{vcodkey_string}{str(loop_stopped)}{vchcd_string}", "")
-                    modified_content_temp = modified_content_temp.replace(f",{key_string}{str(loop_stopped)}{vchcd_string}", "")
-                    
+                    modified_content_temp = modified_content_temp.replace(f",{key_string}{str(loop_stopped)}{vchcd_string}", "")               
                     modified_content_temp = modified_content_temp.replace(f",{key_string}{str(loop_stopped)}{vdrt_string}", "")
                     modified_content_temp = modified_content_temp.replace(f",{key_string}{str(loop_stopped)}{vusr_string}", "")
                 else:
-                    # Replace strings directly in modified_content_temp
+                    # Replace unused strings with empty string directly in modified_content_temp adding with the comma ","
                     modified_content_temp = modified_content_temp.replace(f"{key_string}{str(loop_stopped)}{rcvamt_string},", "")
-                    modified_content_temp = modified_content_temp.replace(f"{key_string}{str(loop_stopped)}{vamtx_string},", "")
-                    
+                    modified_content_temp = modified_content_temp.replace(f"{key_string}{str(loop_stopped)}{rcvmya_string},", "")
+                    modified_content_temp = modified_content_temp.replace(f"{key_string}{str(loop_stopped)}{vamtx_string},", "")            
                     modified_content_temp = modified_content_temp.replace(f"{vcodkey_string}{str(loop_stopped)}{vchcd_string},", "")
-                    modified_content_temp = modified_content_temp.replace(f"{key_string}{str(loop_stopped)}{vchcd_string},", "")
-                    
+                    modified_content_temp = modified_content_temp.replace(f"{key_string}{str(loop_stopped)}{vchcd_string},", "")                    
                     modified_content_temp = modified_content_temp.replace(f"{key_string}{str(loop_stopped)}{vdrt_string},", "")
                     modified_content_temp = modified_content_temp.replace(f"{key_string}{str(loop_stopped)}{vusr_string},", "")
 
@@ -497,10 +499,10 @@ if __name__ == "__main__":
             modified_content = modified_content.replace(placeholder, replacement)
 
         # Save the modified content to the destination file
-        with open(modified_macro_file_path, "w") as modified_file:
+        with open(modified_macro_file_path, "w", encoding="utf-8") as modified_file:
             modified_file.write(modified_content)
 
-        check_file_vcodlen("put_vcodlen_here.txt") 
+        # check_file_vcodlen("put_vcodlen_here.txt") 
 
         print("Macro configuration completed successfully!")
         time.sleep(1)    
