@@ -16,6 +16,7 @@ INVOLVED APPS:
 
    0.1  Install python : Download here => https://www.python.org/downloads/
         ** Recommended version: python-3.11.4
+        ** IMPORTANT: Make sure to check "Use admin privilege..." and "Add python.exe to PATH" during installation
 
    0.2  Install node.js : Download here => https://nodejs.org/en/download/
         ** Recommended version: node-v18.16.1
