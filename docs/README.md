@@ -52,6 +52,8 @@ To run this project, you will need to add the following environment variables to
 > Tested in Windows 10 and Windows 11
 
 - [Install python](https://www.python.org/downloads/) (recommended version: _**python-3.11.4**_)
+> [!NOTE] 
+> Remember to check "Use admin privilege..." and "Add python.exe to PATH" during installation
 - [Install node.js](https://nodejs.org/en/download/) (recommended version: _**node-v18.16.1**_)
 
 - (CMD) Execute after installation: 
