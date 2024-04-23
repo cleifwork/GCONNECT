@@ -1,4 +1,4 @@
-Voucher WiFi App + GCash Config
+GCONNECT APP INSTALLATION | CONFIGURATION
 
 INVOLVED APPS:
 1. Omada Cloud Controller (Web)
