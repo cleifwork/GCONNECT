@@ -84,13 +84,13 @@ INVOLVED APPS:
 	       2.5.1.6  Give it Description (OPTIONAL)
 	       2.5.1.7  CREATE AND CONTINUE
 	       2.5.1.8  Give it an "Owner" role
-	       2.5.1.9  DONE
+	       2.5.1.9  Click DONE
 	       2.5.1.10 Click the newly created Service Account
 	       2.5.1.11 Goto "KEYS" tab
 	       2.5.1.12 Click ADD KEY
 	       2.5.1.13 Create new key
 	       2.5.1.14 Key type: JSON 
-	       2.5.1.15 CREATE (file will be downloaded)
+	       2.5.1.15 Click CREATE (file will be downloaded)
 	       2.5.1.16 Rename file to "service_account" (.json)
 	       2.5.1.17 Save to => "%USERPROFILE%\Desktop\GCONNECT".
 
@@ -133,6 +133,8 @@ INVOLVED APPS:
                3.1.1.3  Allow background autostart
                3.1.1.4  Give app notification access
                3.1.1.5  Lock app in recent app tray
+               3.1.1.6  Install MacroDroid Helper (PlayStore)
+               3.1.1.7  Grant MacroDroid WRITE_SECURE_SETTINGS (OPTIONAL)
    3.2  Import downloaded macro to MacroDroid or Import via Google Drive 
         3.2.1  Launch MacroDroid
         3.2.2  (HOME) Tap on Export/Import
@@ -145,7 +147,7 @@ INVOLVED APPS:
                3.2.6.3  Send URL to PC (looks like this => https://trigger.macrodroid.com/DEVICE_ID/sync_voucher)
                3.2.6.4  (PC) Put the URL inside this text file => "%USERPROFILE%\Desktop\GCONNECT\put_md_url_here.txt"
         3.2.7  Tap on the import button (≡+) then enable the macro  
-        3.2.8  (GCONNECT APP) Click EXTRUP + SYNC
+        3.2.8  (GCONNECT APP) Click EXTRUP & SYNC
 
 
 4. ** PERFORM TESTING
