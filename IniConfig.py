@@ -502,7 +502,7 @@ if __name__ == "__main__":
         with open(modified_macro_file_path, "w", encoding="utf-8") as modified_file:
             modified_file.write(modified_content)
 
-        # check_file_vcodlen("put_vcodlen_here.txt") 
+        check_file_vcodlen("put_vcodlen_here.txt") 
 
         print("Macro configuration completed successfully!")
         time.sleep(1)    
