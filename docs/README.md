@@ -49,7 +49,7 @@ To run this project, you will need to add the following environment variables to
 ### REQUIREMENTS:
 **1. SHOULD HAVE A WINDOWS PC/LAPTOP** 
 > [!NOTE] 
-> Tested in Windows 10 and Windows 11
+> Tested in Windows 10 and Windows 11 (64-BIT)
 
 - Download the **[GCONNECT-V3](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-V3)**
 - Click Code > Download Zip
