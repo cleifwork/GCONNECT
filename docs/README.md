@@ -64,9 +64,8 @@ To run this project, you will need to add the following environment variables to
     - Click _"Yes"_
 
 > [!TIP]     
-- You can launch the app thru _'LaunchPad.bat'_ or the _"GConnect App"_ Desktop shortcut
-
-- (CMD) To check if server is workingRun the following command to check if working properly
+> You can launch the app thru _'LaunchPad.bat'_ or the _"GConnect App"_ Desktop shortcut
+> To check if server is properly working, run the following command in CMD
 ```
 http-server
 ```
