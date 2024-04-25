@@ -58,12 +58,17 @@ To run this project, you will need to add the following environment variables to
 - Run _'install.bat'_ as Administrator
 
 > [!NOTE] 
-> If _"Windows protected..."_ SmartScreen window pops
+> If SmartScreen window pops _"Windows protected..."_
 - Click _"More info"_ > Run anyway
 
 > [!NOTE]
-> If User Acount Control window pops "Do you want to allow this app..."
+> If User Acount Control window pops _"Do you want to allow this app..."_
 - Click _"Yes"_
+
+> [!NOTE]
+> If Open File - Security Warning window pops _"Do you want to open this file?"_
+- Click _"Yes"_
+- Uncheck _"Always ask before opening..."_ checkbox
 
 > [!TIP]     
 > You can launch the app thru _'LaunchPad.bat'_ or the _"GConnect App"_ Desktop shortcut. 
