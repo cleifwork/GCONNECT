@@ -60,9 +60,9 @@ To run this project, you will need to add the following environment variables to
 > [!NOTE] 
 > If _"Windows protected..."_ SmartScreen window pops
 - Click _"More info"_ > Run anyway
-> If User Acount Control window pops "Do you want to allow this app..."
-- Click _"Yes"_
-> You can launch the app thru _'LaunchPad.bat'_ or the _"GConnect App"_ Desktop shortcut
+- If User Acount Control window pops "Do you want to allow this app..."
+    - Click _"Yes"_
+- You can launch the app thru _'LaunchPad.bat'_ or the _"GConnect App"_ Desktop shortcut
 
 - (CMD) Run the following command to check if working properly
 ```
