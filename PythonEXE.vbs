@@ -16,7 +16,7 @@ WScript.Sleep 2000
 WshShell.SendKeys "+{TAB}"
 WScript.Sleep 2000
 WshShell.SendKeys "{ENTER}"
-WScript.Sleep 40000
+WScript.Sleep 60000
 WshShell.SendKeys "+{TAB}"
 WScript.Sleep 2000
 WshShell.SendKeys "{ENTER}"
