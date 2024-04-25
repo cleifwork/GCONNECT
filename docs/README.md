@@ -55,12 +55,14 @@ To run this project, you will need to add the following environment variables to
 - Click Code > Download Zip
 - Extract main folder to your Desktop
 - Rename main folder to **'GCONNECT'**
-- Run _'install.bat'_
-- Launch the app thru _'LaunchPad.bat'_ or the _"GConnect App"_ shortcut.
+- Run _'install.bat'_ as Administrator
 
 > [!NOTE] 
 > If _"Windows protected..."_ SmartScreen window pops
--   Click _"More info"_ > Run anyway
+- Click _"More info"_ > Run anyway
+> If User Acount Control window pops "Do you want to allow this app..."
+- Click _"Yes"_
+> You can launch the app thru _'LaunchPad.bat'_ or the _"GConnect App"_ Desktop shortcut
 
 - (CMD) Run the following command to check if working properly
 ```
