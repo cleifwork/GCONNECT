@@ -98,3 +98,21 @@ timeout /t 1 >nul
 echo Exiting...
 timeout /t 1 >nul
 explorer "%USERPROFILE%\Desktop"
+
+:: GCONNECT APP
+echo Launching GConnect App...
+timeout /t 1 >nul
+setlocal enabledelayedexpansion
+
+for /l %%i in (1,1,5) do (
+    set "dots="
+    for /l %%j in (1,1,%%i) do (
+        set "dots=!dots!. "
+    )
+    <nul set /p "=!dots!"
+    ping -n 2 127.0.0.1 >nul
+)
+
+endlocal
+
+start "" "%USERPROFILE%\Desktop\GCONNECT\LaunchPad.bat"
