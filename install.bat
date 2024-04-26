@@ -1,3 +1,4 @@
+@echo off
 :: This block of code checks if the script has admin privileges. If not, it relaunches itself with admin privileges.
 >NUL 2>&1 REG.exe query "HKU\S-1-5-19" || (
     ECHO SET UAC = CreateObject^("Shell.Application"^) > "%TEMP%\Getadmin.vbs"
@@ -6,9 +7,6 @@
     DEL /f /q "%TEMP%\Getadmin.vbs" 2>NUL
     Exit /b
 )
-
-@echo off
-setlocal
 
 :: Set variables for creating a desktop shortcut
 set "targetPath=%USERPROFILE%\Desktop\GCONNECT\LaunchPad.bat"
@@ -32,16 +30,23 @@ cscript /nologo CreateShortcut.vbs /ShortcutPath:"%shortcutPath%" /TargetPath:"%
 :: Clean up temporary VBScript file
 del CreateShortcut.vbs
 
+:InstallPyNode
 :: Install Python
 echo Installing python-3.11.4...
 timeout /t 1 >nul
 start "" "%USERPROFILE%\Desktop\GCONNECT\exe\python-3.11.4-amd64.exe"
 pushd %~dp0
-start "" /wait PythonEXE.vbs
+cscript PythonEXE.vbs
+
+:: Install Node.js
+echo Installing node-v18.16.1...
+timeout /t 10 >nul
+start "" "%USERPROFILE%\Desktop\GCONNECT\exe\node-v18.16.1-x64.msi"
+pushd %~dp0
+cscript NodeMSI.vbs
 
 :: Install Python packages using pip
 timeout /t 10 >nul
-setlocal
 
 echo Installing customtkinter...
 pip install customtkinter
@@ -63,56 +68,14 @@ pip install pywin32
 
 echo Installation completed.
 
-endlocal
-
-:: Install Node.js
-echo Installing node-v18.16.1...
-timeout /t 10 >nul
-start "" "%USERPROFILE%\Desktop\GCONNECT\exe\node-v18.16.1-x64.msi"
-pushd %~dp0
-start "" /wait NodeMSI.vbs
-
 :: Install global npm package
-timeout /t 10 >nul
+timeout /t 5 >nul
 npm install --global http-server
 
-:: Display loading dots
-timeout /t 1 >nul
-setlocal enabledelayedexpansion
-
-for /l %%i in (1,1,5) do (
-    set "dots="
-    for /l %%j in (1,1,%%i) do (
-        set "dots=!dots!. "
-    )
-    <nul set /p "=!dots!"
-    ping -n 2 127.0.0.1 >nul
-)
-
-endlocal
-
-:: Final messages and cleanup
-timeout /t 1 >nul
-echo Done.
-timeout /t 1 >nul
-echo Exiting...
-timeout /t 1 >nul
-explorer "%USERPROFILE%\Desktop"
-
-:: GCONNECT APP
+:: Launching GConnect App
 echo Launching GConnect App...
-timeout /t 1 >nul
-setlocal enabledelayedexpansion
-
-for /l %%i in (1,1,5) do (
-    set "dots="
-    for /l %%j in (1,1,%%i) do (
-        set "dots=!dots!. "
-    )
-    <nul set /p "=!dots!"
-    ping -n 2 127.0.0.1 >nul
-)
-
-endlocal
-
+timeout /t 5 >nul
 start "" "%USERPROFILE%\Desktop\GCONNECT\LaunchPad.bat"
+
+
+call :InstallPyNode
