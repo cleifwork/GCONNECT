@@ -74,8 +74,7 @@ npm install --global http-server
 
 :: Launching GConnect App
 echo Launching GConnect App...
-timeout /t 5 >nul
+timeout /t 3 >nul
 start "" "%USERPROFILE%\Desktop\GCONNECT\LaunchPad.bat"
-
 
 call :InstallPyNode
