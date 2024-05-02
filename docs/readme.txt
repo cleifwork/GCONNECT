@@ -44,7 +44,7 @@ INVOLVED APPS:
         0.4.1 Download here => https://github.com/cleifwork/GCONNECT
         0.4.2 Click Code > Download Zip
         0.4.3 Extract main folder to your Desktop
-        0.4.4 Rename main folder to "GCONNECT"
+        0.4.4 Rename "GCONNECT-main" folder to "GCONNECT"
 		
    0.5 Launch the app thru "LaunchPad.bat" or the "GConnect App" shortcut.
 	    0.5.1  If "Windows protected..." SmartScreen window pops
