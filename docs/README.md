@@ -175,8 +175,32 @@ pip install pywin32
 - Phone must be connected to WiFi always
 - Phone is recommended to have separate GCash account (not a must)
 - Phone must be able to receive GCash realtime notification
-- Phone must be running Android 10 and up (recommended) 
+- Phone must be running Android 9 and up (recommended) 
 ```
+> [!TIP]
+> RECOMMENDED MODELS - Based on [dontkillmyapp](https://dontkillmyapp.com/)
+```
+- HTC
+- Nokia (Android One)
+- AOSP (Android One, Pixel, Nexus)
+- Sony
+- Unihertz
+- Realme
+- Blackview
+- Oppo / Vivo
+- Lenovo
+- Wiko
+- Asus
+- Meizu 
+```
+> LESS RECOMMENDED MODELS
+```
+- Samsung
+- Oneplus
+- Xiaomi
+- Huawei
+```
+
 **Install MacroDroid (Google Play Store)**
 > [!IMPORTANT]
 > RECOMMENDED PERMISSIONS:
