@@ -174,9 +174,11 @@ pip install pywin32
 - Phone must have SMS credits (load for texting)
 - Phone must be connected to WiFi always
 - Phone is recommended to have separate GCash account (not a must)
-- Phone must be able to receive GCash | Maya realtime notification
+- Phone must be able to receive GCash | Maya push notification
 - Phone must be running Android 9 and up (recommended) 
 ```
+What is _**'Push Notification'**_?
+> [Push Notification](https://www.facebook.com/photo/?fbid=7982287951782295&set=gm.1833817397086204&idorvanity=1776872022780742)
 > [!TIP]
 > RECOMMENDED MODELS - Based on [dontkillmyapp](https://dontkillmyapp.com/)
 ```
