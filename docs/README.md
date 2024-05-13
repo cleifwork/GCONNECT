@@ -241,13 +241,14 @@ pip install pywin32
 ## Running Tests
 -   (MD) Click on **'Local Variables'** to verify if the voucher codes have been successfully added to their respective voucher variables.
 -   Send amount to the Server Phone's registered e-wallet (Gcash | Maya) number.
-    -   Sender should receive 5PHP WiFi Voucher via SMS. 
+    -   Sender should receive WiFi Voucher via SMS. 
 
 ## Optimizations
 
--   Refactored the code to eliminate redundancy.
--   Successfully reduced the macro size from 229KB to 44KB by restructuring multiple IF/ELSE statements and consolidating similar variables into a single dictionary/array.
--   Optimized file asset usage by automatically extracting the necessary data from the source file.
+- Refactored the code to eliminate redundancy.
+- Reduced macro size from 229KB to 44KB by restructuring multiple IF/ELSE statements and consolidating similar variables into a single dictionary/array.
+- Optimized file asset usage by automatically extracting the necessary data from the source file.
+- Added Maya payment support
 ## Screenshots
 
 ![App Screenshot](https://drive.google.com/thumbnail?id=1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF)
