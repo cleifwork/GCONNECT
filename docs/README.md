@@ -196,6 +196,7 @@ pip install pywin32
 - Wiko
 - Asus
 - Meizu 
+- Other brands
 ```
 > LESS RECOMMENDED MODELS
 ```
