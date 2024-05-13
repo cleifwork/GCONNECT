@@ -179,7 +179,7 @@ pip install pywin32
 ```
 > [!NOTE] 
 > What is _**'Push Notification'**_ ?
-- [Click to show sample](https://www.facebook.com/photo/?fbid=7982287951782295&set=gm.1833817397086204&idorvanity=1776872022780742)
+[Click to show sample](https://www.facebook.com/photo/?fbid=7982287951782295&set=gm.1833817397086204&idorvanity=1776872022780742)
 
 > [!TIP]
 > RECOMMENDED MODELS - Based on [dontkillmyapp](https://dontkillmyapp.com/)
