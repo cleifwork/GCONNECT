@@ -177,8 +177,9 @@ pip install pywin32
 - Phone must be able to receive GCash | Maya push notification
 - Phone must be running Android 9 and up (recommended) 
 ```
-What is _**'Push Notification'**_?
+> [!NOTE] What is _**'Push Notification'**_ ?
 > [Push Notification](https://www.facebook.com/photo/?fbid=7982287951782295&set=gm.1833817397086204&idorvanity=1776872022780742)
+
 > [!TIP]
 > RECOMMENDED MODELS - Based on [dontkillmyapp](https://dontkillmyapp.com/)
 ```
