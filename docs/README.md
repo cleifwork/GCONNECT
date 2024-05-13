@@ -43,7 +43,7 @@ To run this project, you will need to add the following environment variables to
 - GConnect App (Desktop)
 - Google Drive (Web)
 - MacroDroid (Mobile)
-- GCash (Mobile)
+- GCash | Maya (Mobile)
 
 
 ### REQUIREMENTS:
@@ -174,7 +174,7 @@ pip install pywin32
 - Phone must have SMS credits (load for texting)
 - Phone must be connected to WiFi always
 - Phone is recommended to have separate GCash account (not a must)
-- Phone must be able to receive GCash realtime notification
+- Phone must be able to receive GCash | Maya realtime notification
 - Phone must be running Android 9 and up (recommended) 
 ```
 > [!TIP]
@@ -236,7 +236,7 @@ pip install pywin32
 -   (GCONNECT APP) Click **EXTRUP & SYNC**
 ## Running Tests
 -   (MD) Click on **'Local Variables'** to verify if the voucher codes have been successfully added to their respective voucher variables.
--   Send a GCash amount (PHP 5.00) to the Server Phone's GCash number.
+-   Send amount to the Server Phone's registered e-wallet (Gcash | Maya) number.
     -   Sender should receive 5PHP WiFi Voucher via SMS. 
 
 ## Optimizations
