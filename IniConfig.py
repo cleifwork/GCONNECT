@@ -56,6 +56,7 @@ def process_csv(csv_file):
             price = ''.join(char for char in row["Price"] if char.isdigit())
             duration = row["Duration"].replace(".0", " ")
             voucher_type = ''.join(char for char in row["Type"] if char.isdigit())
+            notes = row["Notes"]
 
             # Check if the duration ends with "Hours" and if it's greater than 24 and divisible by 24
             if duration.endswith("Hours") and float(duration[:-5]) > 24 and float(duration[:-5]) % 24 == 0:
@@ -68,8 +69,8 @@ def process_csv(csv_file):
                 # If the conditions are not met, use the original duration
                 duration_text = f"{duration}"
 
-            # Add data to the set only if the Type is not "Expired"
-            if price and voucher_type != "":
+            # Add data to the set only if the Type is not "Expired" and not for "Printing"
+            if price and voucher_type != "" and notes != "PRINT VOUCHER":
                 unique_data.add((price, duration_text, voucher_type))
 
     # Display an error message if no valid data is found in the CSV file
