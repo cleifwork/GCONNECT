@@ -75,11 +75,11 @@ def process_csv(csv_file):
 
     # Display an error message if no valid data is found in the CSV file
     if not unique_data:
-        messagebox.showerror("Error", f"No valid data found in the CSV file: {csv_file}.")
-        return
+        messagebox.showerror("Error", f"No valid data found in the CSV file: {csv_file}.\nProbably your vouchers are PRINT VOUCHERS!")
+        sys.exit()
     elif len(unique_data) > 9:
         messagebox.showerror("Error", "This program can only handle up to 9 voucher price variants.")
-        return
+        sys.exit()
     else:
         # Write the unique voucher data to a text file and print a success message
         with open("put_voucher_amt_here.txt", "w") as output_file:
@@ -286,20 +286,19 @@ if __name__ == "__main__":
                     print("The file 'put_vcodlen_here.txt' is empty. \nProceed checking for exported vouchers in CSV file...")
                     time.sleep(1)
                     check_csv_file()
-                
                 # Check if the content is a digit and within the range 6-9
                 elif content.isdigit() and 6 <= int(content) <= 9:
                     # Call the function replace_str_in_temp_macro with the content as an argument
                     replace_str_in_temp_macro(content)
-                
                 # Check if the content is a digit and equals 10
                 elif content.isdigit() and int(content) == 10:
                     # Ignore and proceed to the next process (do nothing)
                     pass
-                
                 # If the content is not a valid voucher code length, show an error message
                 else:
                     messagebox.showerror("Error", "Specify valid voucher code length in 'put_vcodlen_here.txt'.")
+                    # Open the file before exiting
+                    os.startfile(code_length_path)
                     sys.exit()
         
         # If the specified file does not exist
@@ -329,8 +328,14 @@ if __name__ == "__main__":
 
             # Check if CSV files are found
             if csv_files:
-                # Take the first CSV file
-                csv_file = csv_files[0]
+                # Get the full paths of CSV files
+                csv_files_paths = [os.path.join(csv_folder_path, f) for f in csv_files]
+
+                # Sort CSV files based on modification time (most recent first)
+                csv_files_paths.sort(key=os.path.getmtime, reverse=True)
+
+                # Select the latest CSV file
+                csv_file = csv_files_paths[0]
 
                 # Call the function to check the specific CSV file
                 check_csv_str_len(csv_file)
@@ -343,18 +348,26 @@ if __name__ == "__main__":
             print("Error: CSV folder path does not exist!")
             sys.exit()
 
-    # Function to check a specific CSV file
+    # Function to check the max length of voucher code in the csv file
     def check_csv_str_len(csv_file):
         # Construct the full path to the CSV file
         csv_file_path = os.path.join(os.environ['USERPROFILE'], 'Desktop', 'GCONNECT', 'raw_csv', csv_file)
 
-        # Read the first 11 lines of the "code" column in the CSV file
+        codes = []
+
+        # Read all lines of the "Code" column in the CSV file
         with open(csv_file_path, 'r') as file:
             reader = csv.DictReader(file)
-            lines = [row["Code"].strip() for _, row in zip(range(11), reader)]
+            for row in reader:
+                code = row["Code"].strip()
+                codes.append(code)
 
         # Determine the maximum string length
-        max_strlen = max(len(code) for code in lines)
+        max_strlen = max(len(code) for code in codes)
+
+        # Write the max length found to the specified path
+        with open(code_length_path, 'w') as length_file:
+            length_file.write(str(max_strlen))        
 
         # Check if a maximum length is found
         if max_strlen:
@@ -382,6 +395,7 @@ if __name__ == "__main__":
     file_ids_path = 'put_file_ids_here.txt'
     api_key_path = 'put_api_key_here.txt'
     voucher_amt_path = 'put_voucher_amt_here.txt'
+    code_length_path = 'put_vcodlen_here.txt'
     source_file_path = 'temp.macro'
     modified_macro_file_path = 'GConnect_-_GCash_-_Maya.macro'
 
