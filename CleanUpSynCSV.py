@@ -120,8 +120,13 @@ output_files = [f"{amount}php_vouchers.txt" for amount in amounts]
 # Define the code arrays dynamically based on the amounts
 code_arrays = {amount: [] for amount in amounts}
 
-csv_file = "VoucherList.csv"
-output_expired = "expired_vouchers.txt"
+csv_file = 'VoucherList.csv'
+output_expired = 'expired_vouchers.txt'
+vcode_length = 'put_vcodlen_here.txt'
+
+# Read the voucher code length from "put_vcodlen_here.txt"
+with open('put_vcodlen_here.txt', 'r') as vcode_len_file:
+    vcode_length = int(vcode_len_file.read().strip())
 
 # Initialize lists to store voucher codes based on duration and type
 codes_expired = []
@@ -140,9 +145,9 @@ with open(csv_file, "r") as file:
         duration = row["Duration"]
         type = row["Type"]
 
-        # Add leading zeroes if code length is not 10 (DISABLED)
-        # if len(code) != 10:
-        #     code = code.zfill(10)
+        # Add leading zeroes based on the value in put_vcodlen_here.txt
+        if len(code) < vcode_length:
+            code = code.zfill(vcode_length)        
 
         # Categorize voucher codes based on duration and type
         for amount in amounts: 
