@@ -50,17 +50,26 @@
             return code;
         }
     
-        // Fetch the CSV file and generate vouchers
-        fetch("VoucherList.csv")
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("VoucherList.csv file not found");
-                }
-                return response.text();
+        function fetchVoucherList(path) {
+            return fetch(path)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`${path} file not found`);
+                    }
+                    return response.text();
+                });
+        }
+    
+        // Fetch the CSV file from the root folder
+        fetchVoucherList("VoucherList.csv")
+            .catch(error => {
+                console.log(error.message);
+                // If not found, fetch the CSV file from the raw_csv folder
+                return fetchVoucherList("./raw_csv/VoucherList.csv");
             })
             .then(csvData => {
                 // Read the voucher code length from "put_vcodlen_here.txt"
-                fetch("put_vcodlen_here.txt")
+                return fetch("put_vcodlen_here.txt")
                     .then(response => {
                         if (!response.ok) {
                             throw new Error("put_vcodlen_here.txt file not found");
@@ -68,120 +77,118 @@
                         return response.text();
                     })
                     .then(vcodeLengthStr => {
-                        // Parse voucher code length to integer
                         const vcodeLength = parseInt(vcodeLengthStr.trim());
-    
-                        // Split the CSV data by line breaks
-                        const rows = csvData.split("\n");
-    
-                        // Get the container element for vouchers
-                        const vouchersContainer = document.getElementById("vouchers-container");
-
-                        // // Mapping between price and background image filename
-                        // const priceImageMap = {
-                        //     "₱5": "vlogo1.png",
-                        //     "₱10": "vlogo2.png",
-                        //     "₱15": "vlogo3.png",
-                        //     "₱20": "vlogo4.png",
-                        //     "₱30": "vlogo5.png",
-                        //     "₱50": "vlogo6.png",
-                        //     "₱99": "vlogo7.png",
-                        //     "₱150": "vlogo8.png",
-                        //     "₱300": "vlogo9.png",
-                        // };         
-
-                        // Iterate over each row (excluding the header)
-                        for (let i = 1; i < rows.length; i++) {
-                            // Split the row by commas
-                            const columns = rows[i].split(",");
-    
-                            // Extract the necessary information
-                            let code = columns[0] ? columns[0].replace(/"/g, "") : "";
-                            const price = columns[8] ? columns[8].replace(/"/g, "").replace("PHP", "₱") : ""; // Replace "PHP" with "₱"
-                            const notes = columns[9] ? columns[9].replace(/"/g, "").trim() : "";
-                            const duration = columns[10] ? columns[10].replace(/"/g, "").replace(".0", " ") : "";
-                            const type = columns[12] ? columns[12].replace(/"/g, "") : "";
-                            const ssid = columns[13] ? columns[13].replace(/"/g, "").replace("[", "").replace("]", "") : "";
-    
-                            // Check if the voucher should be displayed
-                            if (notes === "PRINT VOUCHER" && type !== "Expired") {
-                                // Pad the voucher code with leading zeroes if its length is less than the specified value
-                                if (code.length < vcodeLength) {
-                                    code = padWithZeroes(code, vcodeLength);
-                                }
-    
-                                // Create the voucher element
-                                const voucher = document.createElement("div");
-                                voucher.classList.add("voucher");
-
-                                // // Add background image based on price
-                                // if (price in priceImageMap) {
-                                //     voucher.style.backgroundImage = `url("./img/${priceImageMap[price]}")`;
-                                // }
-    
-                                // Add the voucher content
-                                const voucherTitle = document.createElement("div");
-                                voucherTitle.classList.add("voucher-title");
-                                voucherTitle.textContent = `${price} Voucher`; // Display price in title
-                                voucher.appendChild(voucherTitle);
-    
-                                const voucherCode = document.createElement("div");
-                                voucherCode.classList.add("voucher-code");
-                                voucherCode.textContent = code;
-                                voucher.appendChild(voucherCode);
-    
-                                const voucherDetails1 = document.createElement("div");
-                                voucherDetails1.classList.add("voucher-details");
-    
-                                // Check if the duration is divisible by 24
-                                if (duration.endsWith("Hours") && parseInt(duration) > 24 && parseInt(duration) % 24 === 0) {
-                                    const days = parseInt(duration) / 24;
-                                    voucherDetails1.textContent = "Duration: " + days.toString().replace(".0", "") + " Days";
-                                } else {
-                                    voucherDetails1.textContent = "Duration: " + duration;
-                                }
-    
-                                voucher.appendChild(voucherDetails1);
-    
-                                const voucherDetails2 = document.createElement("div");
-                                voucherDetails2.classList.add("voucher-details");
-                                voucherDetails2.textContent = "Type: " + type;
-                                voucher.appendChild(voucherDetails2);
-    
-                                const voucherDetails3 = document.createElement("div");
-                                voucherDetails3.classList.add("voucher-details");
-    
-                                // Create a span for the WiFi Name
-                                const wifiNameSpan = document.createElement("span");
-                                wifiNameSpan.style.color = "#000";
-                                wifiNameSpan.textContent = "WiFi Name: ";
-    
-                                // Create a strong element for the SSID and apply the bold style
-                                const ssidStrong = document.createElement("strong");
-                                ssidStrong.style.color = "#000";
-                                ssidStrong.textContent = ssid;
-    
-                                // Append the strong element to the span
-                                wifiNameSpan.appendChild(ssidStrong);
-    
-                                // Append wifiNameSpan (containing WiFi Name and SSID) to voucherDetails3
-                                voucherDetails3.appendChild(wifiNameSpan);
-    
-                                voucher.appendChild(voucherDetails3);
-    
-                                // Append the voucher to the container
-                                vouchersContainer.appendChild(voucher);
-                            }
-                        }
-                    })
-                    .catch(error => {
-                        alert(error.message);
+                        return { csvData, vcodeLength };
                     });
+            })
+            .then(({ csvData, vcodeLength }) => {
+                // Split the CSV data by line breaks
+                const rows = csvData.split("\n");
+    
+                // Get the container element for vouchers
+                const vouchersContainer = document.getElementById("vouchers-container");
+
+                // // Mapping between price and background image filename
+                // const priceImageMap = {
+                //     "₱5": "vlogo1.png",
+                //     "₱10": "vlogo2.png",
+                //     "₱15": "vlogo3.png",
+                //     "₱20": "vlogo4.png",
+                //     "₱30": "vlogo5.png",
+                //     "₱50": "vlogo6.png",
+                //     "₱99": "vlogo7.png",
+                //     "₱150": "vlogo8.png",
+                //     "₱300": "vlogo9.png",
+                // };  
+    
+                // Iterate over each row (excluding the header)
+                for (let i = 1; i < rows.length; i++) {
+                    // Split the row by commas
+                    const columns = rows[i].split(",");
+    
+                    // Extract the necessary information
+                    let code = columns[0] ? columns[0].replace(/"/g, "") : "";
+                    const price = columns[8] ? columns[8].replace(/"/g, "").replace("PHP", "₱") : ""; // Replace "PHP" with "₱"
+                    const notes = columns[9] ? columns[9].replace(/"/g, "").trim() : "";
+                    const duration = columns[10] ? columns[10].replace(/"/g, "").replace(".0", " ") : "";
+                    const type = columns[12] ? columns[12].replace(/"/g, "") : "";
+                    const ssid = columns[13] ? columns[13].replace(/"/g, "").replace("[", "").replace("]", "") : "";
+    
+                    // Check if the voucher should be displayed
+                    if (notes === "PRINT VOUCHER" && type !== "Expired") {
+                        // Pad the voucher code with leading zeroes if its length is less than the specified value
+                        if (code.length < vcodeLength) {
+                            code = padWithZeroes(code, vcodeLength);
+                        }
+    
+                        // Create the voucher element
+                        const voucher = document.createElement("div");
+                        voucher.classList.add("voucher");
+
+                        // // Add background image based on price
+                        // if (price in priceImageMap) {
+                        //     voucher.style.backgroundImage = `url("./img/${priceImageMap[price]}")`;
+                        // }                        
+    
+                        // Add the voucher content
+                        const voucherTitle = document.createElement("div");
+                        voucherTitle.classList.add("voucher-title");
+                        voucherTitle.textContent = `${price} Voucher`; // Display price in title
+                        voucher.appendChild(voucherTitle);
+    
+                        const voucherCode = document.createElement("div");
+                        voucherCode.classList.add("voucher-code");
+                        voucherCode.textContent = code;
+                        voucher.appendChild(voucherCode);
+    
+                        const voucherDetails1 = document.createElement("div");
+                        voucherDetails1.classList.add("voucher-details");
+    
+                        // Check if the duration is divisible by 24
+                        if (duration.endsWith("Hours") && parseInt(duration) > 24 && parseInt(duration) % 24 === 0) {
+                            const days = parseInt(duration) / 24;
+                            voucherDetails1.textContent = "Duration: " + days.toString().replace(".0", "") + " Days";
+                        } else {
+                            voucherDetails1.textContent = "Duration: " + duration;
+                        }
+    
+                        voucher.appendChild(voucherDetails1);
+    
+                        const voucherDetails2 = document.createElement("div");
+                        voucherDetails2.classList.add("voucher-details");
+                        voucherDetails2.textContent = "Type: " + type;
+                        voucher.appendChild(voucherDetails2);
+    
+                        const voucherDetails3 = document.createElement("div");
+                        voucherDetails3.classList.add("voucher-details");
+    
+                        // Create a span for the WiFi Name
+                        const wifiNameSpan = document.createElement("span");
+                        wifiNameSpan.style.color = "#000";
+                        wifiNameSpan.textContent = "WiFi Name: ";
+    
+                        // Create a strong element for the SSID and apply the bold style
+                        const ssidStrong = document.createElement("strong");
+                        ssidStrong.style.color = "#000";
+                        ssidStrong.textContent = ssid;
+    
+                        // Append the strong element to the span
+                        wifiNameSpan.appendChild(ssidStrong);
+    
+                        // Append wifiNameSpan (containing WiFi Name and SSID) to voucherDetails3
+                        voucherDetails3.appendChild(wifiNameSpan);
+    
+                        voucher.appendChild(voucherDetails3);
+    
+                        // Append the voucher to the container
+                        vouchersContainer.appendChild(voucher);
+                    }
+                }
             })
             .catch(error => {
                 alert(error.message);
             });
-    </script>    
+    </script>       
 </body>
 
 </html>

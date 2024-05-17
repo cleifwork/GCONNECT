@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import subprocess
 from tkinter import messagebox
@@ -6,8 +7,12 @@ import win32com.client as win32
 
 # Check if VoucherList.csv is present in the root folder
 if not os.path.isfile("VoucherList.csv"):
-    messagebox.showerror("Error", "No 'VoucherList.csv' file found! \nPlease run 'EXTRUP + SYNC' first.")
-    exit()
+    # If not found, check the raw_csv folder
+    raw_csv_path = os.path.join("raw_csv", "VoucherList.csv")
+    if not os.path.isfile(raw_csv_path):
+        # If still not found, display an error message
+        messagebox.showerror("Error", "No 'VoucherList.csv' file found! \nPlease run 'EXTRUP + SYNC' first.")
+        sys.exit()
 
 # Check if http-server is already running
 if "node.exe" in subprocess.check_output('tasklist /FI "IMAGENAME eq node.exe" 2>NUL', shell=True).decode('utf-8'):
