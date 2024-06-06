@@ -124,8 +124,8 @@ pip install pywin32
     -   Goto _"Credentials"_ (with the key icon)
     -   Click **"+CREATE CREDENTIALS"**
 	-   Select Service Account
-	-   Give it Account Name _(OPTIONAL)_
-	-   Give it Account ID **(REQUIRED)**
+	-   Give it Account Name **(REQUIRED)**
+	-   Give it Account ID **(REQUIRED - _Auto Generated_)**
 	-   Give it Description _(OPTIONAL)_
 	-   CREATE AND CONTINUE
 	-   Give it an **"Owner"** role
