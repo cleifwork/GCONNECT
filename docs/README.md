@@ -172,7 +172,7 @@ pip install pywin32
 - Phone must have an active sim card 
 - Phone must have available service (signal)
 - Phone must have SMS credits (load for texting)
-- Phone must be connected to WiFi always
+- Phone must be connected to the internet always (Data or WiFi)
 - Phone is recommended to have separate GCash account (not a must)
 - Phone must be able to receive GCash | Maya push notification
 - Phone must be running Android 9 and up (recommended) 
