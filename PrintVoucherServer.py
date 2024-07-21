@@ -11,7 +11,7 @@ if not os.path.isfile("VoucherList.csv"):
     raw_csv_path = os.path.join("raw_csv", "VoucherList.csv")
     if not os.path.isfile(raw_csv_path):
         # If still not found, display an error message
-        messagebox.showerror("Error", "No 'VoucherList.csv' file found! \nPlease run 'EXTRUP + SYNC' first.")
+        messagebox.showerror("Error", "No 'VoucherList.csv' file found! \nPlease run 'EXTRUP & SYNC' first.")
         sys.exit()
 
 # Check if http-server is already running
