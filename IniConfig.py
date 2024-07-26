@@ -78,7 +78,7 @@ def process_csv(csv_file):
         messagebox.showerror("Error", f"No valid data found in the CSV file: {csv_file}.\nProbably your vouchers are PRINT VOUCHERS!")
         sys.exit()
     elif len(unique_data) > 9:
-        messagebox.showerror("Error", "This program can only handle up to 9 voucher price variants.")
+        messagebox.showerror("Error", "This program can handle up to 9 different voucher price variants.")
         sys.exit()
     else:
         # Write the unique voucher data to a text file and print a success message
