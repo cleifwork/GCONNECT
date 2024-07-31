@@ -237,4 +237,3 @@ WshShell = win32.Dispatch("WScript.Shell")
 # Allocate 5 seconds loading time before closing the tab
 time.sleep(5)
 WshShell.SendKeys("^w")    
-
