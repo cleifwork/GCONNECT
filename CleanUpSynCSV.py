@@ -11,29 +11,47 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
-# List to store error messages
+# List to store error messages and actions to take
 error_messages = []
 actions_to_take = []
 
+def check_file_exists(file_path, error_message):
+    if not os.path.isfile(file_path):
+        error_messages.append(error_message)
+
+def check_non_empty(file_path, error_message, additional_action=None):
+    with open(file_path, "r") as file:
+        content = file.read().strip()
+        if not content:
+            error_messages.append(error_message)
+            if additional_action:
+                additional_action()
+        return content
+
 # Check 1: Check if "service_account.json" is present
-if not os.path.isfile("service_account.json"):
-    error_messages.append("Please execute 'RUN INITIAL CONFIG' first.")
+check_file_exists("service_account.json", "Please execute 'RUN INITIAL CONFIG' first.")
 
 # Check 2: Check if "put_folder_id_here.txt" is not empty
-with open("put_folder_id_here.txt", "r") as folder_id_file:
-    folder_id = folder_id_file.read().strip()
-
-    if not folder_id:
-        error_messages.append("No folder ID found!")
+folder_id = check_non_empty("put_folder_id_here.txt", "No folder ID found!")
 
 # Check 3: Check if "put_md_url_here.txt" is not empty and contains a valid URL
-with open("put_md_url_here.txt", "r") as md_url_file:
-    md_url = md_url_file.read().strip()
+def open_md_url_file():
+    text_file_path = "put_md_url_here.txt"
+    actions_to_take.append(lambda: subprocess.run(['notepad.exe', text_file_path], check=True))
 
-    if not md_url or not md_url.startswith("http"):
-        error_messages.append("Please check 'put_md_url_here.txt' for a valid URL.")
-        text_file_path = "put_md_url_here.txt"
-        actions_to_take.append(lambda: subprocess.run(['notepad.exe', text_file_path], check=True))        
+md_url = check_non_empty("put_md_url_here.txt", "Please check 'put_md_url_here.txt' for a valid URL.", open_md_url_file)
+if md_url and not md_url.startswith("http"):
+    error_messages.append("Please check 'put_md_url_here.txt' for a valid URL.")
+    open_md_url_file()
+
+# Check if "put_voucher_amt_here.txt" is not empty and read amounts
+def open_voucher_amt_file():
+    text_file_path = "put_voucher_amt_here.txt"
+    actions_to_take.append(lambda: subprocess.run(['notepad.exe', text_file_path], check=True))
+
+amounts = check_non_empty("put_voucher_amt_here.txt", "The input file is empty. \nPlease provide voucher amounts in 'put_voucher_amt_here.txt'.", open_voucher_amt_file)
+if amounts:
+    amounts = [line.strip().split(',')[0] for line in amounts.splitlines()]
 
 # Display all error messages in a single prompt
 if error_messages:
@@ -44,7 +62,7 @@ if error_messages:
     for action in actions_to_take:
         action()
 
-    sys.exit()
+    sys.exit() 
 
 # Continue with the rest of your script if all checks pass
 print("All initial checks passed. Proceeding...\n")
@@ -96,22 +114,6 @@ if csv_files:
     os.rename(current_filename, new_filename)
 else:
     messagebox.showerror("No CSV File Found", "No CSV file found in the directory.")
-    sys.exit()
-
-# Read the amounts from the input file
-with open("put_voucher_amt_here.txt", "r") as input_file:
-    # Extract only the first element (Amount) from each line
-    amounts = [line.strip().split(',')[0] for line in input_file]
-
-# Check if the amounts list is empty
-if not amounts:
-    error_message = "The input file is empty. \nPlease provide voucher amounts in 'put_voucher_amt_here.txt'."
-    messagebox.showerror("Error", error_message)
-
-    # Open the file for editing
-    file_path = "put_voucher_amt_here.txt"
-    os.system(f"notepad.exe {file_path}")
-
     sys.exit()
 
 # Define the output file names dynamically based on the amounts
