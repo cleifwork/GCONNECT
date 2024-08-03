@@ -40,7 +40,7 @@
 
 <body>
     <div id="vouchers-container"></div>
-
+    
     <script>
         // Function to pad a string with leading zeroes
         function padWithZeroes(code, desiredLength) {
@@ -59,7 +59,7 @@
                     return response.text();
                 });
         }
-
+    
         // Function to check if an image exists IF NOT use the static background
         function imageExists(url) {
             return fetch(url, { method: 'HEAD' })
@@ -94,22 +94,37 @@
     
                 // Get the container element for vouchers
                 const vouchersContainer = document.getElementById("vouchers-container");
-
+    
+                // Extract the headers
+                const headers = rows[0].split(',');
+    
+                // Specify the headers you need
+                const neededHeaders = ['Code', 'Price', 'Notes', 'Duration', 'Type', 'Portals'];
+    
+                // Find the indices of the needed headers
+                const neededIndices = neededHeaders.map(header => headers.indexOf(header)).filter(index => index !== -1);
+    
                 // Mapping between price and background image filename, ENABLE TO USE DYNAMIC BG IMAGE
-                const priceImageMap = {};                  
+                const priceImageMap = {};        
     
                 // Iterate over each row (excluding the header)
                 for (let i = 1; i < rows.length; i++) {
                     // Split the row by commas
                     const columns = rows[i].split(",");
+                    
+                    // Create an object to hold the row data
+                    const row = {};
+                    neededHeaders.forEach((header, index) => {
+                        row[header] = columns[neededIndices[index]] ? columns[neededIndices[index]].replace(/"/g, "") : "";
+                    });
     
-                    // Extract the necessary information
-                    let code = columns[0] ? columns[0].replace(/"/g, "") : "";
-                    const price = columns[8] ? columns[8].replace(/"/g, "").replace("PHP", "₱") : ""; // Replace "PHP" with "₱"
-                    const notes = columns[9] ? columns[9].replace(/"/g, "").trim() : "";
-                    const duration = columns[10] ? columns[10].replace(/"/g, "").replace(".0", " ") : "";
-                    const type = columns[12] ? columns[12].replace(/"/g, "") : "";
-                    const ssid = columns[13] ? columns[13].replace(/"/g, "").replace("[", "").replace("]", "") : "";
+                    // Extract the necessary information using the header names
+                    let code = row['Code'];
+                    const price = row['Price'] ? row['Price'].replace("PHP", "₱") : ""; // Replace "PHP" with "₱"
+                    const notes = row['Notes'] ? row['Notes'].trim() : "";
+                    const duration = row['Duration'] ? row['Duration'].replace(".0", " ") : "";
+                    const type = row['Type'];
+                    const ssid = row['Portals'] ? row['Portals'].replace("[", "").replace("]", "") : "";
     
                     // Check if the voucher should be displayed
                     if (notes === "PRINT VOUCHER" && type !== "Expired") {
@@ -117,7 +132,7 @@
                         if (!(price in priceImageMap)) {
                             priceImageMap[price] = `vlogo${Object.keys(priceImageMap).length + 1}.png`;
                         }
-
+    
                         // Pad the voucher code with leading zeroes if its length is less than the specified value
                         if (code.length < vcodeLength) {
                             code = padWithZeroes(code, vcodeLength);
@@ -126,7 +141,7 @@
                         // Create the voucher element
                         const voucher = document.createElement("div");
                         voucher.classList.add("voucher");
-
+    
                         // Add background image based on price, ENABLE TO USE DYNAMIC BG IMAGE          
                         if (price in priceImageMap) {
                             const imagePath = `./img/vlogo/${priceImageMap[price]}`;
@@ -195,7 +210,8 @@
             .catch(error => {
                 alert(error.message);
             });
-    </script>       
+    </script>   
+
 </body>
 
 </html>
