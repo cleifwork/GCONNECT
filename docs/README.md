@@ -83,6 +83,8 @@ pip install packaging
 pip install Pillow
 pip install google-auth
 pip install google-api-python-client
+pip install numpy
+pip install opencv-python
 pip install pywin32
 ```
 		
