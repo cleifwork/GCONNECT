@@ -252,6 +252,8 @@ pip install pywin32
 - Reduced macro size from 229KB to 44KB by restructuring multiple IF/ELSE statements and consolidating similar variables into a single dictionary/array.
 - Optimized file asset usage by automatically extracting the necessary data from the source file.
 - Added Maya payment support
+- Added Logo and WiFi QR Code customization option when printing vouchers
+- Added automated backup for crucial files during initial configuration
 ## Screenshots
 
 ![App Screenshot](https://drive.google.com/thumbnail?id=1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF)
