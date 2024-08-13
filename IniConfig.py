@@ -4,6 +4,7 @@ import csv
 import sys
 import glob
 import time
+import shutil
 import subprocess
 import webbrowser
 from tkinter import messagebox
@@ -44,6 +45,38 @@ if error_messages:
 # Continue with the rest of your script if all checks pass
 print("All initial checks passed. Proceeding...\n")
 time.sleep(1)
+
+# Backup crucial files that might be overwritten accidentally
+def manage_backup_folder():
+    # List of files that need to be checked and backed up
+    files_to_check = [
+        'main_folder_id.txt',
+        'put_folder_id_here.txt',
+        'put_file_ids_here.txt',
+        'put_api_key_here.txt',
+        'put_md_url_here.txt',
+        'service_account.json'
+    ]
+
+    # Define the paths for the backup folder and the root folder (current working directory)
+    backup_folder = 'backup'
+    root_folder = os.getcwd()
+
+    # Check if the backup folder exists, if not, create it
+    if not os.path.exists(backup_folder):
+        print("Backing up crucial files...\n")
+        time.sleep(1)
+        os.makedirs(backup_folder)
+
+    # Iterate over each file in the list
+    for file_name in files_to_check:
+        # Define the full path for the file in the backup folder and in the root folder
+        backup_file_path = os.path.join(backup_folder, file_name)
+        root_file_path = os.path.join(root_folder, file_name)
+
+        # If the file is missing in the backup folder or is empty, copy it from the root folder
+        if not os.path.exists(backup_file_path) or os.path.getsize(backup_file_path) == 0:
+            shutil.copy(root_file_path, backup_file_path)
 
 # Creating CSV processing function for better readability
 def process_csv(csv_file):
@@ -390,7 +423,7 @@ if __name__ == "__main__":
         except FileNotFoundError:
             messagebox.showwarning("Error", f"File not found: {file_path}")
             sys.exit()
-
+        
     # File paths for source files and destination macro file
     file_ids_path = 'put_file_ids_here.txt'
     api_key_path = 'put_api_key_here.txt'
@@ -562,6 +595,9 @@ if __name__ == "__main__":
 
         print("\nOpening macro download folder...")
         time.sleep(3)
+
+        # Call backup function
+        manage_backup_folder()  
 
         with open('main_folder_id.txt', 'r') as file:
             folder_id = file.read().strip()
