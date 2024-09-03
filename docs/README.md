@@ -256,13 +256,11 @@ pip install pywin32
 - Added automated backup for crucial files during initial configuration
 ## Screenshots
 
-![App Screenshot](https://drive.google.com/thumbnail?id=1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF)
-
-[Zoom App Screenshot](https://drive.google.com/uc?id=1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF)
+![App Screenshot](https://drive.google.com/uc?export=view&id=1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF)
 
 ## Support
 
-#### For support, join our FB Group
+#### Join our FB Group
 [GConnect App (Omada Voucher Solution)](https://www.facebook.com/groups/1776872022780742) 
   
 #### Or subcribe to our YouTube Channel
