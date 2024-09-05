@@ -1,4 +1,4 @@
-> [!IMPORTANT]
+> [!WARNING]
 > **DO NOT USE JUST YET - STILL UNDER DEVELOPMENT** 
 
 # GCONNECT APP: Wi-Fi Voucher Automation Middleware
