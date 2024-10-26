@@ -29,7 +29,8 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 
 ## Environment Variables
-> [!IMPORTANT] To run this project, you will need to add the following environment variables to your **GCONNECT** folder.
+> [!IMPORTANT] 
+> To run this project, you will need to add the following environment variables to your **GCONNECT** folder.
 `put_api_key_here.txt` (File contains GDrive API KEY)
 
 `service_account.json` (File contains GDrive Service Account)
