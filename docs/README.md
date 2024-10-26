@@ -17,34 +17,31 @@ The **GCONNECT APP** is a powerful middleware solution designed to streamline th
 - **User-Friendly Interface:** The application features a very simple interface, ensuring ease of use for both novice and experienced users. It simplifies complex processes, making voucher management more accessible.
 
 _Experience unparalleled automation and efficiency with the GCONNECT APP, your go-to solution for optimizing voucher workflows and enhancing productivity in the dynamic landscape of network management._
-## Demo
 
+
+## Demo
 -   [GConnect App Demo](https://www.youtube.com/watch?v=eXLdvv9VYJA)
 -   [GConnect Installation & Configuration](https://www.youtube.com/watch?v=hjWmLe4AmSo)
 
 
 ## Authors
-
 - [@cleifwork](https://www.github.com/cleifwork)
+
+
 ## Environment Variables
-
-To run this project, you will need to add the following environment variables to your **GCONNECT** folder.
-
+> To run this project, you will need to add the following environment variables to your **GCONNECT** folder.
 `put_api_key_here.txt` (File contains GDrive API KEY)
-
 `service_account.json` (File contains GDrive Service Account)
-
 `put_md_url_here.txt` (File contains MacroDroid WebHook URL)
 
-## Installation & Configuration
 
+## Installation & Configuration
 **INVOLVED APPS:**
 - Omada Cloud Controller (Web)
 - GConnect App (Desktop)
 - Google Drive (Web)
 - MacroDroid (Mobile)
 - GCash | Maya (Mobile)
-
 
 ### REQUIREMENTS:
 **1. SHOULD HAVE A WINDOWS PC/LAPTOP** 
@@ -235,45 +232,47 @@ pip install pywin32
         - Copy the URL > Press Back button
         - Send URL to PC 
         
-> [!NOTE]
-> **Looks like this:** _**'https://trigger.macrodroid.com/DEVICE_ID/sync_voucher'**_
+> [!TIP]
+> **Looks like this:** _**'https://trigger.macrodroid.com/{DEVICE_ID}/sync_voucher'**_
 
 -   (PC) Put the URL inside this text file _**'put_md_url_here.txt'**_
 -   (MD) Tap on the import button **(≡+)** then enable the macro  
 -   (GCONNECT APP) Click **EXTRUP & SYNC**
+
+
 ## Running Tests
 -   (MD) Click on **'Local Variables'** to verify if the voucher codes have been successfully added to their respective voucher variables.
 -   Send amount to the Server Phone's registered e-wallet (Gcash | Maya) number.
     -   Sender should receive WiFi Voucher via SMS. 
 
-## Optimizations
 
+## Optimizations
 - Refactored the code to eliminate redundancy.
 - Reduced macro size from 229KB to 44KB by restructuring multiple IF/ELSE statements and consolidating similar variables into a single dictionary/array.
 - Optimized file asset usage by automatically extracting the necessary data from the source file.
 - Added Maya payment support
 - Added Logo and WiFi QR Code customization option when printing vouchers
 - Added automated backup for crucial files during initial configuration
-## Screenshots
 
+
+## Screenshots
 ![App Screenshot](https://drive.google.com/uc?export=view&id=1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF)
 
-## Support
 
+## Support
 #### Join our FB Group
 [GConnect App (Omada Voucher Solution)](https://www.facebook.com/groups/1776872022780742) 
   
 #### Or subcribe to our YouTube Channel
 [@JDIYMPH](https://www.youtube.com/channel/UC9O3ezuyjS7C6V7-ZAHCQrA)
+
+
 ## Tech Stack
-
 **Client:** Python, HTML, Batch
-
 **Server:** Node, GDrive, MacroDroid
 
 
 ## Related
-
 > [!TIP] 
 > **Ideal Voucher Printing Preference**
 - Layout              : **Landscape**
