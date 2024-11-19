@@ -60,7 +60,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - (CMD) Execute after installation: 
         
 ```
-  npm install --global http-server
+npm install --global http-server
 ```
 - (CMD) Run the following to check if working properly
 ```
