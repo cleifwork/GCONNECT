@@ -108,10 +108,12 @@ pip install pywin32
 -   Select Export Data
 -   Export List: Voucher Codes  
     - Format: CSV 
-    - Portal: _"Your Voucher WiFi Name"_ 
+    - Portal: _"Voucher WiFi Portal Name"_ 
     - Save file to _**'%USERPROFILE%\Desktop\GCONNECT\raw_csv'**_
 
 **3. SHOULD HAVE A GOOGLE ACCOUNT**
+> [!TIP]
+> **How to create [Service Account & API Key](https://www.youtube.com/watch?v=1Afr24gCKOo)**
 -   Login to to your google account
 -   Enable [Google Drive API](https://console.cloud.google.com/)
 -   Create a **NEW PROJECT** 
