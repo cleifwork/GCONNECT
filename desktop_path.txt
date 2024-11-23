@@ -1,1 +1,1 @@
-%USERPROFILE%\Desktop 
+%USERPROFILE%\Desktop
