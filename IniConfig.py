@@ -81,6 +81,16 @@ def manage_backup_folder():
         if not os.path.exists(backup_file_path) or os.path.getsize(backup_file_path) == 0:
             shutil.copy(root_file_path, backup_file_path)
 
+# Validate that the required columns exist in the CSV
+def validate_csv_columns(csv_file, required_columns):
+    with open(csv_file, "r") as file:
+        reader = csv.DictReader(file)
+        # Check if all required columns exist in the CSV file
+        missing_columns = [col for col in required_columns if col not in reader.fieldnames]
+        if missing_columns:
+            messagebox.showerror("Error", f"Missing required columns: {', '.join(missing_columns)}")
+            sys.exit()
+
 # Creating CSV processing function for better readability
 def process_csv(csv_file):
     # Extract unique voucher data (Price, Duration, Type) from the CSV file and store them in a set
@@ -146,12 +156,18 @@ directory = os.path.join(desktop_path, app_name, 'raw_csv')
 # Search for CSV files in the directory
 csv_files = glob.glob(os.path.join(directory, '*.csv'))
 
+# Specify the required columns
+required_columns = ["Code", "Price", "Duration", "Type"]
+
 # Check if there are CSV files in the directory
 if not csv_files:
     error_message = "No CSV file found in your 'raw_csv' folder."
     messagebox.showerror("Error", error_message)
     sys.exit()
 else:
+    # Validate the first CSV file found in the directory
+    validate_csv_columns(csv_files[0], required_columns)
+
     # Take the first CSV file found
     csv_file = csv_files[0]
     print(f"Processing CSV file: '{csv_file}'...")
