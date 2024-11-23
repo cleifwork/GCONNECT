@@ -9,6 +9,10 @@ from tkinter import messagebox
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
+from utils import load_desktop_path
+
+# Load the desktop path
+desktop_path = load_desktop_path()
 
 # List to store error messages and actions to take
 error_messages = []
@@ -97,7 +101,7 @@ else:
     # Handle the error or exit the program as needed
 
 # Specify the directory where the CSV file is located
-directory = os.path.join(os.environ['USERPROFILE'], 'Desktop', app_name, 'raw_csv')
+directory = os.path.join(desktop_path, app_name, 'raw_csv')
 
 # Search for CSV files in the directory
 csv_files = glob.glob(os.path.join(directory, '*.csv'))

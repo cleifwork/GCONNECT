@@ -2,15 +2,22 @@ import os
 import customtkinter
 import subprocess as sub
 from PIL import Image
+from utils import load_desktop_path
 
-# Get the user's profile directory
-user_profile = os.environ['USERPROFILE']
-    
-# Specify the wifi folder name as a variable
+# Load the desktop path and construct the app directory
+desktop_path = load_desktop_path()
+if not desktop_path:
+    exit("Unable to proceed without a valid desktop path.")
+
+# Specify the app folder name
 app_name = 'GCONNECT'
-    
-# Construct the full path
-directory = os.path.join(user_profile, 'Desktop', app_name)
+
+# Construct the full path to the app folder
+directory = os.path.join(desktop_path, app_name)
+
+# Check if the directory exists
+if not os.path.exists(directory):
+    exit(f"Error: {directory} does not exist. Please ensure the correct path.")
 
 class MyLogoFrame(customtkinter.CTkFrame):
     def __init__(self, master, title, logo_path):
@@ -39,13 +46,13 @@ class App(customtkinter.CTk):
         self.logo_frame.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="nsew")      
 
         self.button_1 = customtkinter.CTkButton(self, text="RUN INITIAL CONFIG", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.clean_csv)
-        self.button_1.grid(row=1, column=0, padx=10, pady=5, sticky="ew")
+        self.button_1.grid(row=1, column=0, padx=10, pady=5, sticky="ew")   
 
         # self.button_2 = customtkinter.CTkButton(self, text="EXTRUP VCODES", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.upload_voucher)
         # self.button_2.grid(row=2, column=0, padx=10, pady=5, sticky="ew")        
 
         # self.button_3 = customtkinter.CTkButton(self, text="SYNC GDRIVE-MD", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.sync_gdrivemd)
-        # self.button_3.grid(row=3, column=0, padx=10, pady=5, sticky="ew")        
+        # self.button_3.grid(row=3, column=0, padx=10, pady=5, sticky="ew")               
 
         self.button_4 = customtkinter.CTkButton(self, text="EXTRUP & SYNC", font=('Arial', 15), height=45, fg_color="#007dfe", hover_color="#0057b0", command=self.cleanup_csv)
         self.button_4.grid(row=4, column=0, padx=10, pady=5, sticky="ew")
@@ -58,7 +65,7 @@ class App(customtkinter.CTk):
         self.footer_frame.grid(row=6, column=0, padx=10, pady=(5, 10), sticky="ew")
 
         self.footer_label = customtkinter.CTkLabel(self.footer_frame, 
-                                                   text="\nCopyright © 2023 Toto's Digital Services Ltd. \nAll rights reserved. \n",
+                                                   text="\nCopyright © 2024 Toto's Digital Services Ltd. \nAll rights reserved. \n",
                                                    font=("Arial", 9))
         self.footer_label.pack()
 
@@ -69,7 +76,7 @@ class App(customtkinter.CTk):
     #     sub.run(["python", "CleanUpCSV.py"])
 
     # def sync_gdrivemd(self):
-    #     sub.run(["python", "SyncGDriveMD.py"]) 
+    #     sub.run(["python", "SyncGDriveMD.py"])         
 
     def cleanup_csv(self):
         sub.run(["python", "CleanUpSynCSV.py"])        

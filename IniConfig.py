@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import os
 import csv
 import sys
@@ -11,6 +10,10 @@ from tkinter import messagebox
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
+from utils import load_desktop_path
+
+# Load the desktop path
+desktop_path = load_desktop_path()
 
 # List to store error messages and actions
 error_messages = []
@@ -20,7 +23,7 @@ actions_to_take = []
 for file_name in ["service_account.json", "put_api_key_here.txt"]:
     if not os.path.isfile(file_name):
         error_messages.append(f"Please add '{file_name}' to your root folder.")
-        actions_to_take.append(lambda: os.startfile(os.path.join(os.path.expanduser("~"), "Desktop", "GCONNECT")))
+        actions_to_take.append(lambda: os.startfile(os.path.join(desktop_path, "GCONNECT")))
 
     elif file_name == "put_api_key_here.txt":
         with open(file_name, "r") as api_key_file:
@@ -138,7 +141,7 @@ else:
     # Handle the error or exit the program as needed
 
 # Specify the directory where the CSV file is located
-directory = os.path.join(os.environ['USERPROFILE'], 'Desktop', app_name, 'raw_csv')
+directory = os.path.join(desktop_path, app_name, 'raw_csv')
 
 # Search for CSV files in the directory
 csv_files = glob.glob(os.path.join(directory, '*.csv'))
@@ -352,7 +355,7 @@ if __name__ == "__main__":
     # Function to check the first CSV file found in a specific folder
     def check_csv_file():
         # Construct the path to the folder containing the CSV files
-        csv_folder_path = os.path.join(os.environ['USERPROFILE'], 'Desktop', 'GCONNECT', 'raw_csv')
+        csv_folder_path = os.path.join(desktop_path, 'GCONNECT', 'raw_csv')
 
         # Check if the CSV folder exists
         if os.path.exists(csv_folder_path):
@@ -471,8 +474,8 @@ if __name__ == "__main__":
         vdrt_string = '","variable":{"textValue":"0 minutes","variableType":2,"type":"StringValue"},"variableType":11,"type":"DictionaryEntry"}'
         vusr_string = '","variable":{"textValue":"0 device","variableType":2,"type":"StringValue"},"variableType":11,"type":"DictionaryEntry"}'
 
-        macro_action1_path = os.path.join(os.environ['USERPROFILE'], 'Desktop', 'GCONNECT', 'macro_mod', 'action_1')
-        macro_action2_path = os.path.join(os.environ['USERPROFILE'], 'Desktop', 'GCONNECT', 'macro_mod', 'action_2')
+        macro_action1_path = os.path.join(desktop_path, 'GCONNECT', 'macro_mod', 'action_1')
+        macro_action2_path = os.path.join(desktop_path, 'GCONNECT', 'macro_mod', 'action_2')
 
         replacements = {}  # Initialize the replacements dictionary
 
