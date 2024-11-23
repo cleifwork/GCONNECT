@@ -1,14 +1,14 @@
+import os
+
 def load_desktop_path():
     try:
         with open("desktop_path.txt", "r") as file:
-            return file.read().strip()
+            return os.path.expandvars(file.read().strip())
     except FileNotFoundError:
         raise FileNotFoundError("Error: 'desktop_path.txt' not found!")
     except Exception as e:
         raise Exception(f"Failed to load desktop path: {e}")
 
-
-# import os
 # import csv
 # import time
 # import subprocess
