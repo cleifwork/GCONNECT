@@ -387,7 +387,7 @@ if __name__ == "__main__":
     # Function to check the max length of voucher code in the csv file
     def check_csv_str_len(csv_file):
         # Construct the full path to the CSV file
-        csv_file_path = os.path.join(os.environ['USERPROFILE'], 'Desktop', 'GCONNECT', 'raw_csv', csv_file)
+        csv_file_path = os.path.join(desktop_path, 'GCONNECT', 'raw_csv', csv_file)
 
         codes = []
 
