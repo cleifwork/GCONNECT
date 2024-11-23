@@ -2,11 +2,12 @@ import os
 import sys
 import cv2
 import time
-import numpy as np
-from PIL import Image
 import subprocess
-from tkinter import messagebox
+import numpy as np
 import win32com.client as win32
+from PIL import Image
+from tkinter import messagebox
+from utils import load_desktop_path
 
 def check_voucher_list():
     # Check if VoucherList.csv is present in the root folder
@@ -151,8 +152,11 @@ def open_browser():
 def main():
     check_voucher_list()
 
-    # Define the base directory
-    base_dir = os.path.join(os.environ['USERPROFILE'], 'Desktop', 'GCONNECT', 'img')
+    # Use load_desktop_path to get the desktop path from the config file
+    desktop_path = load_desktop_path()
+
+    # Define the base directory using the loaded desktop path
+    base_dir = os.path.join(desktop_path, 'GCONNECT', 'img')
 
     # Define subfolder paths relative to the base directory
     subfolder_path = os.path.join(base_dir, 'put_qr_logo_here')
@@ -192,8 +196,7 @@ def main():
     # Resize the main image to 1283 x 750 pixels
     main_image = main_image.resize((1283, 750), Image.Resampling.LANCZOS)
 
-    # Define the coordinates of the gray rectangles
-    # left, top, right, bottom for the left rectangle
+    # Define the coordinates of the gray rectangles (left, top, right, bottom for the left rectangle)
     left_rectangle_coords = (40, 161, 330, 451)
 
     # Calculate the width and height of each rectangle
