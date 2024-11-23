@@ -259,6 +259,8 @@ pip install pywin32
 - Added Maya payment support
 - Added Logo and WiFi QR Code customization option when printing vouchers
 - Added automated backup for crucial files during initial configuration
+- Added Public Desktop as alternative path for GCONNECT
+- Added checks for all required columns (Code, Price, Duration, Type)
 
 
 ## Screenshots
