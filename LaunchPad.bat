@@ -1,2 +1,2 @@
 @echo off
-start "" "pythonw.exe" "%USERPROFILE%\Desktop\GCONNECT\LaunchPad.py" %*
+start "" app\python\python311\pythonw.exe app\launchpad.py %*
