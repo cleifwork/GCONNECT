@@ -1,5 +1,3 @@
-> [!WARNING]
-> **DO NOT USE JUST YET - STILL UNDER DEVELOPMENT** 
 
 # GCONNECT APP: Wi-Fi Voucher Automation Middleware
 
@@ -19,62 +17,52 @@ The **GCONNECT APP** is a powerful middleware solution designed to streamline th
 - **User-Friendly Interface:** The application features a very simple interface, ensuring ease of use for both novice and experienced users. It simplifies complex processes, making voucher management more accessible.
 
 _Experience unparalleled automation and efficiency with the GCONNECT APP, your go-to solution for optimizing voucher workflows and enhancing productivity in the dynamic landscape of network management._
-## Demo
 
+
+## Demo
 -   [GConnect App Demo](https://www.youtube.com/watch?v=eXLdvv9VYJA)
 -   [GConnect Installation & Configuration](https://www.youtube.com/watch?v=hjWmLe4AmSo)
 
 
 ## Authors
-
 - [@cleifwork](https://www.github.com/cleifwork)
+
+
 ## Environment Variables
+> [!IMPORTANT] 
+> To run this project, you will need to add the following environment variables to your **GCONNECT** folder.
 
-To run this project, you will need to add the following environment variables to your **GCONNECT** folder.
+`put_api_key_here.txt` (File should contain GDrive API KEY)
 
-`put_api_key_here.txt` (File contains GDrive API KEY)
+`service_account.json` (File should contain GDrive Service Account)
 
-`service_account.json` (File contains GDrive Service Account)
+`put_md_url_here.txt` (File should contain MacroDroid WebHook URL)
 
-`put_md_url_here.txt` (File contains MacroDroid WebHook URL)
 
 ## Installation & Configuration
-
 **INVOLVED APPS:**
 - Omada Cloud Controller (Web)
 - GConnect App (Desktop)
 - Google Drive (Web)
 - MacroDroid (Mobile)
-- GCash (Mobile)
-
+- GCash | Maya (Mobile)
 
 ### REQUIREMENTS:
 **1. SHOULD HAVE A WINDOWS PC/LAPTOP** 
 > [!NOTE] 
-> Tested in Windows 10 and Windows 11 (64-BIT)
+> Tested in Windows 10 and Windows 11
 
-- Download the **[GCONNECT-V3](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-V3)**
-- Click Code > Download Zip
-- Extract main folder to your Desktop
-- Rename main folder to **'GCONNECT'**
-- Run _'install.bat'_ as Administrator
-
+- [Install python](https://www.python.org/downloads/) (recommended version: _**python-3.11.4**_)
 > [!NOTE] 
-> If SmartScreen window pops _"Windows protected..."_
-- Click _"More info"_ > Run anyway
+> Always check "Use admin privilege..." and "Add python.exe to PATH" during installation to avoid PIP command error
+- [Install node.js](https://nodejs.org/en/download/) (recommended version: _**node-v18.16.1**_)
 
-> [!NOTE]
-> If User Acount Control window pops _"Do you want to allow this app..."_
-- Click _"Yes"_
-
-> [!NOTE]
-> If Open File - Security Warning window pops _"Do you want to open this file?"_
-- Click _"Yes"_
-- Uncheck _"Always ask before opening..."_ checkbox
-
-> [!TIP]     
-> You can launch the app thru _'LaunchPad.bat'_ or the _"GConnect App"_ Desktop shortcut. 
-> To check if server is properly working, run the following command in CMD
+- (CMD) Execute after installation: 
+        
+```
+npm install --global http-server
+```
+- (CMD) Run the following to check if working properly
 ```
 http-server
 ```
@@ -89,6 +77,27 @@ http-server
 - Restart browser 
 - Restart PC       
 
+**Install the following libraries via CMD**
+```
+pip install customtkinter
+pip install packaging
+pip install Pillow
+pip install google-auth
+pip install google-api-python-client
+pip install numpy
+pip install opencv-python
+pip install pywin32
+```
+		
+-   Download the **[GCONNECT-V2](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-V2)**
+-   Click Code > Download Zip
+-   Extract main folder to your Desktop
+-   Rename main folder to **'GCONNECT'**
+-   Launch the app thru _'LaunchPad.bat'_ or the _"GConnect App"_ shortcut.
+
+> [!NOTE] 
+> If _"Windows protected..."_ SmartScreen window pops
+-   Click _"More info"_ > Run anyway
 
 **2. OMADA CLOUD CONTROLLER ACCOUNT**
 > [!NOTE] 
@@ -99,10 +108,12 @@ http-server
 -   Select Export Data
 -   Export List: Voucher Codes  
     - Format: CSV 
-    - Portal: _"Your Voucher WiFi Name"_ 
+    - Portal: _"Voucher WiFi Portal Name"_ 
     - Save file to _**'%USERPROFILE%\Desktop\GCONNECT\raw_csv'**_
 
 **3. SHOULD HAVE A GOOGLE ACCOUNT**
+> [!TIP]
+> **How to create [Service Account & API Key](https://www.youtube.com/watch?v=1Afr24gCKOo)**
 -   Login to to your google account
 -   Enable [Google Drive API](https://console.cloud.google.com/)
 -   Create a **NEW PROJECT** 
@@ -118,8 +129,8 @@ http-server
     -   Goto _"Credentials"_ (with the key icon)
     -   Click **"+CREATE CREDENTIALS"**
 	-   Select Service Account
-	-   Give it Account Name _(OPTIONAL)_
-	-   Give it Account ID **(REQUIRED)**
+	-   Give it Account Name **(REQUIRED)**
+	-   Give it Account ID **(REQUIRED - _Auto Generated_)**
 	-   Give it Description _(OPTIONAL)_
 	-   CREATE AND CONTINUE
 	-   Give it an **"Owner"** role
@@ -166,10 +177,40 @@ http-server
 - Phone must have an active sim card 
 - Phone must have available service (signal)
 - Phone must have SMS credits (load for texting)
-- Phone must be connected to WiFi always
+- Phone must be connected to the internet always (Data or WiFi)
 - Phone is recommended to have separate GCash account (not a must)
-- Phone must be able to receive GCash realtime notification
+- Phone must be able to receive GCash | Maya push notification
+- Phone must be running Android 9 and up (recommended) 
 ```
+> [!NOTE] 
+> What is _**'Push Notification'**_ ?
+[Click to show sample](https://www.facebook.com/photo/?fbid=7982287951782295&set=gm.1833817397086204&idorvanity=1776872022780742)
+
+> [!TIP]
+> RECOMMENDED MODELS - Based on [dontkillmyapp](https://dontkillmyapp.com/)
+```
+- HTC
+- Nokia (Android One)
+- AOSP (Android One, Pixel, Nexus)
+- Sony
+- Unihertz
+- Realme
+- Blackview
+- Oppo / Vivo
+- Lenovo
+- Wiko
+- Asus
+- Meizu 
+- Other brands
+```
+> LESS RECOMMENDED MODELS
+```
+- Samsung
+- Oneplus
+- Xiaomi
+- Huawei
+```
+
 **Install MacroDroid (Google Play Store)**
 > [!IMPORTANT]
 > RECOMMENDED PERMISSIONS:
@@ -197,44 +238,49 @@ http-server
         - Copy the URL > Press Back button
         - Send URL to PC 
         
-> [!NOTE]
-> **Looks like this:** _**'https://trigger.macrodroid.com/DEVICE_ID/sync_voucher'**_
+> [!TIP]
+> **Looks like this:** _**'https://trigger.macrodroid.com/{DEVICE_ID}/sync_voucher'**_
 
 -   (PC) Put the URL inside this text file _**'put_md_url_here.txt'**_
 -   (MD) Tap on the import button **(≡+)** then enable the macro  
 -   (GCONNECT APP) Click **EXTRUP & SYNC**
+
+
 ## Running Tests
 -   (MD) Click on **'Local Variables'** to verify if the voucher codes have been successfully added to their respective voucher variables.
--   Send a GCash amount (PHP 5.00) to the Server Phone's GCash number.
-    -   Sender should receive 5PHP WiFi Voucher via SMS. 
+-   Send amount to the Server Phone's registered e-wallet (Gcash | Maya) number.
+    -   Sender should receive WiFi Voucher via SMS. 
+
 
 ## Optimizations
+- Refactored the code to eliminate redundancy.
+- Reduced macro size from 229KB to 44KB by restructuring multiple IF/ELSE statements and consolidating similar variables into a single dictionary/array.
+- Optimized file asset usage by automatically extracting the necessary data from the source file.
+- Added Maya payment support
+- Added Logo and WiFi QR Code customization option when printing vouchers
+- Added automated backup for crucial files during initial configuration
+- Added Public Desktop as alternative path for GCONNECT
+- Added checks for all required columns (Code, Price, Duration, Type)
 
--   Refactored the code to eliminate redundancy.
--   Successfully reduced the macro size from 229KB to 44KB by restructuring multiple IF/ELSE statements and consolidating similar variables into a single dictionary/array.
--   Optimized file asset usage by automatically extracting the necessary data from the source file.
+
 ## Screenshots
+![App Screenshot](https://drive.google.com/uc?export=view&id=1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF)
 
-![App Screenshot](https://drive.google.com/thumbnail?id=1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF)
-
-[Zoom App Screenshot](https://drive.google.com/uc?id=1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF)
 
 ## Support
-
-#### For support, join our FB Group
+#### Join our FB Group
 [GConnect App (Omada Voucher Solution)](https://www.facebook.com/groups/1776872022780742) 
   
 #### Or subcribe to our YouTube Channel
 [@JDIYMPH](https://www.youtube.com/channel/UC9O3ezuyjS7C6V7-ZAHCQrA)
+
+
 ## Tech Stack
-
 **Client:** Python, HTML, Batch
-
 **Server:** Node, GDrive, MacroDroid
 
 
 ## Related
-
 > [!TIP] 
 > **Ideal Voucher Printing Preference**
 - Layout              : **Landscape**
