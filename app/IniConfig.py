@@ -9,7 +9,7 @@ from tkinter import messagebox
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
-from utils import exe_dir, FILE_PATHS, check_file_exists, check_non_empty, open_in_notepad, execute_actions
+from utils import exe_dir, FILE_PATHS, check_file_exists, open_in_notepad, execute_actions
 
 # Initial Checks
 error_messages = []
@@ -184,14 +184,17 @@ with open(FILE_PATHS["voucher_log"], "w") as logger_file:
         # Extract the Price from the tuple
         amount = row[0]
 
-        # Create the file name
-        file_name = f"{amount}php_vouchers.txt"
+        # Create the full file path (for writing the content)
+        file_path = os.path.join(exe_dir, f"{amount}php_vouchers.txt")
 
-        # Write content to the file (you can customize this part based on your requirements)
-        with open(file_name, "w") as output_file:
+        # Write content to the file (using the full path)
+        with open(file_path, "w") as output_file:
             output_file.write(f"This file will contain {amount} PHP vouchers.")        
 
-        # Append the amount to the logger file
+        # Extract only the filename from the full path
+        file_name = os.path.basename(file_path)
+
+        # Append only the filename to the logger file
         logger_file.write(file_name + '\n')
 
 print("Voucher files and logger created successfully!")
@@ -336,30 +339,36 @@ if __name__ == "__main__":
     print(f"{main_folder_name} folder and {vouchers_folder_name} folder successfully created!\n")
     time.sleep(1)
 
-
     # 2ND TASK
     credentials_file = FILE_PATHS["service_account"]
     with open(FILE_PATHS["sub_folder_id"], 'r') as file:
         destination_folder_id = file.read().strip()
 
     service = manager.create_drive_service(credentials_file)
-    
+
     # Read voucher filenames from voucher_logger.txt
     voucher_filenames_file = FILE_PATHS["voucher_log"]
     with open(voucher_filenames_file, 'r') as file:
         voucher_files = [line.strip() for line in file]
 
+    # Construct full paths for the voucher files
+    voucher_files_full_paths = [os.path.join(exe_dir, file_name) for file_name in voucher_files]
+
     # Loop over voucher files and upload each file
     file_ids = []
-    for upload_file_path in voucher_files:
+    for upload_file_path in voucher_files_full_paths:
+        if not os.path.isfile(upload_file_path):
+            print(f"Error: File {upload_file_path} does not exist.")
+            continue
         file_id = manager.upload_file(service, upload_file_path, destination_folder_id)
         file_ids.append(file_id)
 
     # Write the file IDs to put_file_ids_here.txt
     with open(FILE_PATHS["file_ids"], 'w') as file:
         for file_id in file_ids:
-            file.write(f"{file_id}\n")     
-    print("Voucher files successfully uploaded!")   
+            file.write(f"{file_id}\n")
+
+    print("Voucher files successfully uploaded!")
     time.sleep(1)
 
 
