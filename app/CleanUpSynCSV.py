@@ -14,38 +14,54 @@ from utils import exe_dir, FILE_PATHS, check_file_exists, check_non_empty, open_
 error_messages = []
 actions_to_take = []
 
-# Check if "service_account.json" is present
+# Check 1: Check if "service_account.json" is present
 error = check_file_exists(FILE_PATHS["service_account"], "Please execute 'RUN INITIAL CONFIG' first.")
 if error:
     error_messages.append(error)
+    actions_to_take.append(lambda: os.startfile(exe_dir))
 
-# Check if "put_folder_id_here.txt" is not empty
-folder_id = check_non_empty(FILE_PATHS["sub_folder_id"], "No folder ID found!")
+# Check 2: Check if "put_folder_id_here.txt" is not empty
+error = check_non_empty(
+    FILE_PATHS["sub_folder_id"],
+    "No folder ID found!",
+    actions_to_take=actions_to_take  # Pass actions list
+)
+if error is None:  # If the file is missing or empty, error will be None
+    error_messages.append("No folder ID found!")
+    actions_to_take.append(lambda: os.startfile(exe_dir))
 
-# Check if "put_md_url_here.txt" is valid
+# Check 3: Check if "put_md_url_here.txt" is not empty and contains a valid URL
 md_url = check_non_empty(
     FILE_PATHS["md_url"],
     "Please check 'put_md_url_here.txt' for a valid URL.",
-    additional_action=lambda: open_in_notepad(FILE_PATHS["md_url"])
+    additional_action=lambda: open_in_notepad(FILE_PATHS["md_url"]),
+    actions_to_take=actions_to_take  # Pass actions list
 )
-if md_url and not md_url.startswith("http"):
+if md_url is None:  # If file is missing or empty
+    error_messages.append("Please check 'put_md_url_here.txt' for a valid URL.")
+elif md_url and not md_url.startswith("http"):
     error_messages.append("Please check 'put_md_url_here.txt' for a valid URL.")
 
-# Check if "put_voucher_amt_here.txt" is not empty
+# Check 4: Check if "put_voucher_amt_here.txt" is not empty and read amounts
 amounts = check_non_empty(
     FILE_PATHS["voucher_amt"],
     "The input file is empty. \nPlease provide voucher amounts in 'put_voucher_amt_here.txt'.",
-    additional_action=lambda: open_in_notepad("put_voucher_amt_here.txt")
+    additional_action=lambda: open_in_notepad(FILE_PATHS["voucher_amt"]),
+    actions_to_take=actions_to_take  # Pass actions list
 )
+if amounts is None:  # If file is missing or empty
+    error_messages.append("The input file is empty. \nPlease provide voucher amounts in 'put_voucher_amt_here.txt'.")
+
 if amounts:
     amounts = [line.strip().split(',')[0] for line in amounts.splitlines()]
 
-# Display all error messages
+# Display all error messages in a single prompt
 if error_messages:
     messagebox.showerror("Error", "\n".join(error_messages))
-    execute_actions(actions_to_take)
+    execute_actions(actions_to_take)  # Execute queued actions after the messagebox
     sys.exit()
 
+# Continue with the rest of your script if all checks pass
 print("All initial checks passed. Proceeding...\n")
 time.sleep(1)
 

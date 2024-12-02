@@ -9,7 +9,7 @@ from tkinter import messagebox
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
-from utils import exe_dir, FILE_PATHS, check_file_exists, open_in_notepad, execute_actions
+from utils import exe_dir, FILE_PATHS, check_file_exists, check_non_empty, open_in_notepad, execute_actions
 
 # Initial Checks
 error_messages = []
@@ -21,24 +21,22 @@ if error:
     error_messages.append(error)
     actions_to_take.append(lambda: os.startfile(exe_dir))
 
-# Check for API Key existence
-error = check_file_exists(FILE_PATHS["api_key"], "Please add 'put_api_key_here.txt' to your root folder.")
-if error:
-    error_messages.append(error)
-    actions_to_take.append(lambda: os.startfile(exe_dir))
-else:
-    # Check if API key file is non-empty
-    with open(FILE_PATHS["api_key"], "r") as api_key_file:
-        api_key = api_key_file.read().strip()
-        if not api_key:
-            error = "Please add your GDrive API Key to 'put_api_key_here.txt'"
-            error_messages.append(error)
-            actions_to_take.append(lambda: open_in_notepad(FILE_PATHS["api_key"]))
+# Check for API Key existence and validity
+api_key = check_non_empty(
+    FILE_PATHS["api_key"],
+    "Please add 'put_api_key_here.txt' to your root folder.",
+    additional_action=lambda: open_in_notepad(FILE_PATHS["api_key"]),
+    actions_to_take=actions_to_take  # Pass actions list
+)
+
+# If the API key is missing or empty, append the error message
+if api_key is None:
+    error_messages.append("Please add your GDrive API Key to 'put_api_key_here.txt'")
 
 # Display errors and execute actions
 if error_messages:
     messagebox.showerror("Error", "\n".join(error_messages))
-    execute_actions(actions_to_take)
+    execute_actions(actions_to_take)  # Execute queued actions after the messagebox
     sys.exit()
 
 print("All initial checks passed. Proceeding...\n")

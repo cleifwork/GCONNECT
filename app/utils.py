@@ -26,22 +26,29 @@ FILE_PATHS = {
     "file_ids": os.path.join(exe_dir, 'put_file_ids_here.txt')
 }
 
+# Get the script directory for relative file references
+exe_dir = os.path.dirname(os.path.abspath(__file__))
+python_exe = os.path.join(exe_dir, "python", "python311", "python.exe")
+
 def check_file_exists(file_path, error_message=None):
     if not os.path.isfile(file_path):
         return error_message
     return None
 
-def check_non_empty(file_path, error_message=None, additional_action=None):
+def check_non_empty(file_path, additional_action=None, actions_to_take=None):    
     if not os.path.isfile(file_path):
-        return None
+        return None  # Return None if file is missing
 
     with open(file_path, "r") as file:
         content = file.read().strip()
         if not content:
-            if additional_action:
-                additional_action()
-            return error_message
-        return content
+            if additional_action and actions_to_take is not None:
+                actions_to_take.append(additional_action)  # Queue the action
+            return None  # Return None if file is empty
+        return content  # Return the file content if non-empty
+
+def open_in_notepad(file_path):
+    subprocess.run(['notepad.exe', file_path], check=True)
 
 def execute_actions(actions):
     for action in actions:
@@ -49,19 +56,4 @@ def execute_actions(actions):
             action()
         except Exception as e:
             print(f"Error executing action: {e}")
-
-def open_in_notepad(file_path):
-    subprocess.run(['notepad.exe', file_path], check=True)
-
-
-# def get_path(filename):
-#     """Helper to get absolute paths based on app_dir."""
-#     return os.path.join(exe_dir, filename)
-
-# # Directory or File check
-# def check_dirfile_exists(file_path, error_message=None):
-#     if not os.path.exists(file_path):
-#         if error_message:
-#             print(error_message)
-#         return False
-#     return True
+            
