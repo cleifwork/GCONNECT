@@ -35,7 +35,7 @@ def check_file_exists(file_path, error_message=None):
         return error_message
     return None
 
-def check_non_empty(file_path, additional_action=None, actions_to_take=None):    
+def check_non_empty(file_path, error_message=None, additional_action=None, actions_to_take=None):    
     if not os.path.isfile(file_path):
         return None  # Return None if file is missing
 
@@ -56,4 +56,4 @@ def execute_actions(actions):
             action()
         except Exception as e:
             print(f"Error executing action: {e}")
-            
+
