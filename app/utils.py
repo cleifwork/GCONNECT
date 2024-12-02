@@ -26,10 +26,6 @@ FILE_PATHS = {
     "file_ids": os.path.join(exe_dir, 'put_file_ids_here.txt')
 }
 
-# Get the script directory for relative file references
-exe_dir = os.path.dirname(os.path.abspath(__file__))
-python_exe = os.path.join(exe_dir, "python", "python311", "python.exe")
-
 def check_file_exists(file_path, error_message=None):
     if not os.path.isfile(file_path):
         return error_message
