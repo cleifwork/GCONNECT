@@ -51,53 +51,15 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 **1. SHOULD HAVE A WINDOWS PC/LAPTOP** 
 > [!NOTE] 
 > Tested in Windows 10 and Windows 11
-
-- [Install python](https://www.python.org/downloads/) (recommended version: _**python-3.11.4**_)
-> [!NOTE] 
-> Always check "Use admin privilege..." and "Add python.exe to PATH" during installation to avoid PIP command error
-- [Install node.js](https://nodejs.org/en/download/) (recommended version: _**node-v18.16.1**_)
-
-- (CMD) Execute after installation: 
-        
-```
-npm install --global http-server
-```
-- (CMD) Run the following to check if working properly
-```
-http-server
-```
-
-> [!NOTE] 
-> If _"Windows Security Alert"_ window pops
-- Click _"Allow access"_
-						
-> [!NOTE] 
-> Execute the following **ONLY IF** _"http-server"_ is not working or vouchers are not displaying properly
-- (BROWSER) Empty cache & hard reload page
-- Restart browser 
-- Restart PC       
-
-**Install the following libraries via CMD**
-```
-pip install customtkinter
-pip install packaging
-pip install Pillow
-pip install google-auth
-pip install google-api-python-client
-pip install numpy
-pip install opencv-python
-pip install pywin32
-```
 		
--   Download the **[GCONNECT-V2](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-V2)**
--   Click Code > Download Zip
--   Extract main folder to your Desktop
--   Rename main folder to **'GCONNECT'**
--   Launch the app thru _'LaunchPad.bat'_ or the _"GConnect App"_ shortcut.
+- Download the **[GCONNECT-V3](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-V3)**
+- Click Code > Download Zip
+- Extract main folder to your Desktop
+- Launch the app thru _'LaunchPad.bat'_.
 
 > [!NOTE] 
 > If _"Windows protected..."_ SmartScreen window pops
--   Click _"More info"_ > Run anyway
+- Click _"More info"_ > Run anyway
 
 **2. OMADA CLOUD CONTROLLER ACCOUNT**
 > [!NOTE] 
@@ -224,6 +186,7 @@ pip install pywin32
 - Intall MacroDroid Helper (Play Store)
 - Grant MacroDroid WRITE_SECURE_SETTINGS (OPTIONAL)
 ```
+
 > [!TIP]
 > **How to grant [WRITE_SECURE_SETTINGS](https://www.youtube.com/watch?v=_WLbhtpC5ls&ab_channel=JacobL)**
 
@@ -237,7 +200,8 @@ pip install pywin32
         - Tap Configure
         - Copy the URL > Press Back button
         - Send URL to PC 
-        
+
+
 > [!TIP]
 > **Looks like this:** _**'https://trigger.macrodroid.com/{DEVICE_ID}/sync_voucher'**_
 
@@ -276,8 +240,8 @@ pip install pywin32
 
 
 ## Tech Stack
-**Client:** Python, HTML, Batch
-**Server:** Node, GDrive, MacroDroid
+**Client:** Python, HTML, Batch, JavaScript
+**Server:** Node.JS, GDrive, MacroDroid
 
 
 ## Related
