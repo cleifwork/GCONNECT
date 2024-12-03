@@ -203,7 +203,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 
 > [!TIP]
-> **Looks like this:** _**'https://trigger.macrodroid.com/{DEVICE_ID}/sync_voucher'**_
+> **Looks like this:** _**'https://trigger.macrodroid.com/{DEVICE_ID}/sync_vouchers'**_
 
 -   (PC) Put the URL inside this text file _**'put_md_url_here.txt'**_
 -   (MD) Tap on the import button **(≡+)** then enable the macro  
