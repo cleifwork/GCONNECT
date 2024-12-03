@@ -225,6 +225,9 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - Added automated backup for crucial files during initial configuration
 - Added Public Desktop as alternative path for GCONNECT
 - Added checks for all required columns (Code, Price, Duration, Type)
+- Optimized and refactored error handling 
+- Adding utility script for common paths and functions
+- The app is now portable no python and node.js intallation needed
 
 
 ## Screenshots
