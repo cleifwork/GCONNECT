@@ -50,7 +50,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 ### REQUIREMENTS:
 **1. SHOULD HAVE A WINDOWS PC/LAPTOP** 
 > [!NOTE] 
-> Tested in Windows 10 and Windows 11
+> _Tested in Windows 10 and Windows 11_
 		
 - Download the **[GCONNECT-V3](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-V3)**
 - Click Code > Download Zip
