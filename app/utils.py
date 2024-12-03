@@ -1,5 +1,4 @@
 import os
-import subprocess
 
 # Get the script directory for relative file references
 exe_dir = os.path.dirname(os.path.abspath(__file__))
@@ -32,25 +31,4 @@ def check_file_exists(file_path, error_message=None):
         return error_message
     return None
 
-def check_non_empty(file_path, error_message=None, additional_action=None, actions_to_take=None):    
-    if not os.path.isfile(file_path):
-        return None  # Return None if file is missing
-
-    with open(file_path, "r") as file:
-        content = file.read().strip()
-        if not content:
-            if additional_action and actions_to_take is not None:
-                actions_to_take.append(additional_action)  # Queue the action
-            return None  # Return None if file is empty
-        return content  # Return the file content if non-empty
-
-def open_in_notepad(file_path):
-    subprocess.run(['notepad.exe', file_path], check=True)
-
-def execute_actions(actions):
-    for action in actions:
-        try:
-            action()
-        except Exception as e:
-            print(f"Error executing action: {e}")
 

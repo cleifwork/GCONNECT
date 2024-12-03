@@ -4,61 +4,78 @@ import sys
 import glob
 import time
 import requests
+import subprocess
 from tkinter import messagebox
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
-from utils import exe_dir, FILE_PATHS, check_file_exists, check_non_empty, open_in_notepad, execute_actions
+from utils import exe_dir, FILE_PATHS
 
 # List to store error messages and actions to take
 error_messages = []
 actions_to_take = []
 
+# Utility Functions
+def check_file_exists(file_path, error_message):
+    if not os.path.isfile(file_path):
+        error_messages.append(error_message)
+
+def check_non_empty(file_path, error_message, additional_action=None):
+    if not os.path.isfile(file_path):  # Check if the file exists
+        error_messages.append(f"File not found: {file_path}")
+        if additional_action:
+            actions_to_take.append(additional_action)  # Queue the action
+        return None
+
+    with open(file_path, "r") as file:
+        content = file.read().strip()
+        if not content:  # Check if the file is empty
+            error_messages.append(error_message)
+            if additional_action:
+                actions_to_take.append(additional_action)  # Queue the action
+            return None
+        return content
+
+# Action Definitions
+def open_in_notepad(file_path):
+    return lambda: subprocess.run(['notepad.exe', file_path], check=True)
+
 # Check 1: Check if "service_account.json" is present
-error = check_file_exists(FILE_PATHS["service_account"], "Please execute 'RUN INITIAL CONFIG' first.")
-if error:
-    error_messages.append(error)
-    actions_to_take.append(lambda: os.startfile(exe_dir))
+check_file_exists(FILE_PATHS["service_account"], "Please execute 'RUN INITIAL CONFIG' first.")
 
 # Check 2: Check if "put_folder_id_here.txt" is not empty
-error = check_non_empty(
-    FILE_PATHS["sub_folder_id"],
-    "No folder ID found!",
-    actions_to_take=actions_to_take  # Pass actions list
+folder_id = check_non_empty(
+    FILE_PATHS["sub_folder_id"], 
+    "No folder ID found!"
 )
-if error is None:  # If the file is missing or empty, error will be None
-    error_messages.append("No folder ID found!")
-    actions_to_take.append(lambda: os.startfile(exe_dir))
 
 # Check 3: Check if "put_md_url_here.txt" is not empty and contains a valid URL
 md_url = check_non_empty(
     FILE_PATHS["md_url"],
     "Please check 'put_md_url_here.txt' for a valid URL.",
-    additional_action=lambda: open_in_notepad(FILE_PATHS["md_url"]),
-    actions_to_take=actions_to_take  # Pass actions list
+    additional_action=open_in_notepad(FILE_PATHS["md_url"])
 )
-if md_url is None:  # If file is missing or empty
-    error_messages.append("Please check 'put_md_url_here.txt' for a valid URL.")
-elif md_url and not md_url.startswith("http"):
+if md_url and not md_url.startswith("http"):
     error_messages.append("Please check 'put_md_url_here.txt' for a valid URL.")
 
 # Check 4: Check if "put_voucher_amt_here.txt" is not empty and read amounts
 amounts = check_non_empty(
     FILE_PATHS["voucher_amt"],
-    "The input file is empty. \nPlease provide voucher amounts in 'put_voucher_amt_here.txt'.",
-    additional_action=lambda: open_in_notepad(FILE_PATHS["voucher_amt"]),
-    actions_to_take=actions_to_take  # Pass actions list
+    "Please provide valid amounts in 'put_voucher_amt_here.txt'.",
+    additional_action=open_in_notepad(FILE_PATHS["voucher_amt"])
 )
-if amounts is None:  # If file is missing or empty
-    error_messages.append("The input file is empty. \nPlease provide voucher amounts in 'put_voucher_amt_here.txt'.")
-
 if amounts:
     amounts = [line.strip().split(',')[0] for line in amounts.splitlines()]
 
 # Display all error messages in a single prompt
 if error_messages:
-    messagebox.showerror("Error", "\n".join(error_messages))
-    execute_actions(actions_to_take)  # Execute queued actions after the messagebox
+    error_message = "\n".join(error_messages)
+    messagebox.showerror("Error", error_message)
+
+    # Execute queued actions
+    for action in actions_to_take:
+        action()
+
     sys.exit()
 
 # Continue with the rest of your script if all checks pass

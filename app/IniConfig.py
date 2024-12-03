@@ -4,46 +4,54 @@ import sys
 import glob
 import time
 import shutil
+import subprocess
 import webbrowser
 from tkinter import messagebox
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
-from utils import exe_dir, FILE_PATHS, check_file_exists, check_non_empty, open_in_notepad, execute_actions
+from utils import exe_dir, FILE_PATHS, check_file_exists
 
-# Initial Checks
+# List to store error messages and actions
 error_messages = []
 actions_to_take = []
 
-# Check for service_account.json
-error = check_file_exists(FILE_PATHS["service_account"], "Please add 'service_account.json' to your root folder.")
-if error:
-    error_messages.append(error)
-    actions_to_take.append(lambda: os.startfile(exe_dir))
+# Initial Checks
+for file_name in ["service_account.json", "put_api_key_here.txt"]:
+    # Construct the absolute file path
+    file_path = os.path.join(exe_dir, file_name)
+    
+    if not os.path.isfile(file_path):
+        error_messages.append(f"Please add '{file_name}' to your root folder.")
+        actions_to_take.append(lambda: os.startfile(exe_dir))
 
-# Check for API Key existence and validity
-api_key = check_non_empty(
-    FILE_PATHS["api_key"],
-    "Please add 'put_api_key_here.txt' to your root folder.",
-    additional_action=lambda: open_in_notepad(FILE_PATHS["api_key"]),
-    actions_to_take=actions_to_take  # Pass actions list
-)
+    elif file_name == "put_api_key_here.txt":  # Compare with just the filename
+        with open(file_path, "r") as api_key_file:  # Use the absolute file path
+            api_key = api_key_file.read().strip()
 
-# If the API key is missing or empty, append the error message
-if api_key is None:
-    error_messages.append("Please add your GDrive API Key to 'put_api_key_here.txt'")
+        if not api_key:
+            error_messages.append("Please add your GDrive API Key to 'put_api_key_here.txt'")
+            actions_to_take.append(lambda: subprocess.run(['notepad.exe', file_path], check=True))
 
-# Display errors and execute actions
+# Display all error messages in a single prompt
 if error_messages:
-    messagebox.showerror("Error", "\n".join(error_messages))
-    execute_actions(actions_to_take)  # Execute queued actions after the messagebox
+    error_message = "\n".join(error_messages)
+    messagebox.showerror("Error", error_message)
+
+    # Execute actions
+    for action in actions_to_take:
+        action()
+
     sys.exit()
 
+# Continue with the rest of your script if all checks pass
 print("All initial checks passed. Proceeding...\n")
 time.sleep(1)
 
 
+# Backup crucial files that might be overwritten accidentally
 def manage_backup_folder():
+    # Define the paths for the backup folder and the root folder (current working directory)
     backup_folder = FILE_PATHS['backup_folder']
     os.makedirs(backup_folder, exist_ok=True)
 
@@ -56,25 +64,28 @@ def manage_backup_folder():
         FILE_PATHS["md_url"]
     ]
 
-    # Iterate through the files and back them up
-    for src_path in files_to_backup:
+     # Iterate through the files and back them up
+    for file_name in files_to_backup:
         # Check if the source file exists
-        error_message = check_file_exists(src_path, f"Error: Source file not found: {src_path}")
+        error_message = check_file_exists(file_name, f"Error: Source file not found: {file_name}")
         if error_message:
             print(error_message)
+            time.sleep(1)
             continue
 
         # Construct the destination path in the backup folder
-        dest_path = os.path.join(backup_folder, os.path.basename(src_path))
+        dest_path = os.path.join(backup_folder, os.path.basename(file_name))
 
         # Check if the destination file is missing or empty
         if not os.path.exists(dest_path) or os.path.getsize(dest_path) == 0:
             try:
                 # Copy the file to the backup folder
-                shutil.copy(src_path, dest_path)
+                time.sleep(1)
+                shutil.copy(file_name, dest_path)
+                print(f"Backing up {os.path.basename(file_name)} to {backup_folder}")
             except Exception as e:
-                print(f"Error backing up {src_path} to {dest_path}: {e}")
-
+                print(f"Error backing up {os.path.basename(file_name)} to {backup_folder}: {e}")
+            
 
 # Validate that the required columns exist in the CSV
 def validate_csv_columns(csv_file, required_columns):
@@ -661,11 +672,11 @@ if __name__ == "__main__":
             print("New macro was successfully configured with ID:", uploaded_file['id'])
             time.sleep(1)
 
-        print("\nOpening macro download folder...")
-        time.sleep(3)
-
         # Call backup function
         manage_backup_folder()  
+
+        print("\nOpening macro download folder...")
+        time.sleep(3)
 
         with open(FILE_PATHS["main_folder_id"], 'r') as file:
             folder_id = file.read().strip()
