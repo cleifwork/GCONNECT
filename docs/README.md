@@ -63,7 +63,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 **2. OMADA CLOUD CONTROLLER ACCOUNT**
 > [!NOTE] 
-> Although not tested with SDN and OC200, it should still function properly as long as their exported CSV file adheres to the CBC formatting.
+> Although not tested with SDN and OC200, it should still function properly as long as their exported CSV file adheres to the Cloud-Based Controller format.
 - Login to your [Omada Cloud Controller](https://omada.tplinkcloud.com/)
 -   Launch your Controller
 -   Go to Settings (Global)
