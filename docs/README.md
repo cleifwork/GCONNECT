@@ -217,17 +217,10 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 
 ## Optimizations
-- Refactored the code to eliminate redundancy.
-- Reduced macro size from 229KB to 44KB by restructuring multiple IF/ELSE statements and consolidating similar variables into a single dictionary/array.
-- Optimized file asset usage by automatically extracting the necessary data from the source file.
-- Added Maya payment support
-- Added Logo and WiFi QR Code customization option when printing vouchers
-- Added automated backup for crucial files during initial configuration
-- Added Public Desktop as alternative path for GCONNECT
 - Added checks for all required columns (Code, Price, Duration, Type)
 - Optimized and refactored error handling 
 - Adding utility script for common paths and functions
-- The app is now portable no python and node.js intallation needed
+- The app is now portable no python and node.js intallation needed (launch anywhere)
 - Re-use running http-server instead of launching a new instance (performance boost)
 
 
