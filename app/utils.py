@@ -4,6 +4,7 @@ import subprocess
 # Get the script directory for relative file references
 exe_dir = os.path.dirname(os.path.abspath(__file__))
 python_exe = os.path.join(exe_dir, "python", "python311", "python.exe")
+pythonw_exe = os.path.join(exe_dir, "python", "python311", "pythonw.exe")
 
 FILE_PATHS = {
     "app": os.path.join(exe_dir, 'app'),

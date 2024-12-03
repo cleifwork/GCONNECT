@@ -73,7 +73,39 @@ class App(customtkinter.CTk):
             print(f"Error: {e}")
         except sub.CalledProcessError as e:
             print(f"Script error: {e}")                        
+   
+    # def ini_config(self):
+    #     try:
+    #         sub.Popen(
+    #             [python_exe, os.path.join(exe_dir, "IniConfig.py")],
+    #         )
+    #     except FileNotFoundError as e:
+    #         print(f"Error: {e}")
+    #     except Exception as e:
+    #         print(f"Unexpected error: {e}")
 
+
+    # def upsync_csv(self):
+    #     try:
+    #         sub.Popen(
+    #             [python_exe, os.path.join(exe_dir, "CleanUpSynCSV.py")],
+    #         )
+    #     except FileNotFoundError as e:
+    #         print(f"Error: {e}")
+    #     except Exception as e:
+    #         print(f"Unexpected error: {e}")  
+   
+   
+    # def print_voucher(self):
+    #     try:
+    #         sub.Popen(
+    #             [pythonw_exe, os.path.join(exe_dir, "PrintVoucherServer.py")],
+    #             stdout=sub.DEVNULL, stderr=sub.DEVNULL, stdin=sub.DEVNULL
+    #         )
+    #     except FileNotFoundError as e:
+    #         print(f"Error: {e}")
+    #     except Exception as e:
+    #         print(f"Unexpected error: {e}")
 
 app = App()
 app.mainloop()

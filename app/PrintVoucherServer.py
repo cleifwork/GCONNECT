@@ -162,22 +162,52 @@ def start_http_server():
     subprocess.Popen(f'start \"\" /min cmd /k \"{command}\"', shell=True)
 
 
+# def open_browser():
+
+#     print(f"Customizing Your Vouchers Now...")
+#     time.sleep(2)
+    
+#     # Open the URL in the default browser
+#     subprocess.Popen('start "" "http://localhost:8080/app/PrintVoucher.html"', shell=True)
+
+#     # Allocate 3 seconds loading time to make sure web form has been rendered completely, allocate higher value for slow internet connection
+#     time.sleep(3)
+
+#     # Create WScript Shell Object to access filesystem.
+#     WshShell = win32.Dispatch("WScript.Shell")
+
+#     # Select, or bring Focus to a window named `Google Chrome`
+#     WshShell.AppActivate("Google Chrome")
+
+#     # Wait for 2 sec then press Ctrl+P to open print window
+#     time.sleep(2)
+#     WshShell.SendKeys("^p")
+    
 def open_browser():
+    """
+    Opens the browser to the http-server URL with a cache-bypass query string.
+    """
+    print(f"Customizing Your Vouchers Now...")
+    time.sleep(2)
+    # Add a unique query string to bypass the browser cache
+    timestamp = int(time.time())  # Generate a unique timestamp
+    url = f"http://localhost:8080/app/PrintVoucher.html?cache_bypass={timestamp}"
+
     # Open the URL in the default browser
-    subprocess.Popen('start "" "http://localhost:8080/app/PrintVoucher.html"', shell=True)
+    subprocess.Popen(f'start "" "{url}"', shell=True)
 
     # Allocate 3 seconds loading time to make sure web form has been rendered completely, allocate higher value for slow internet connection
     time.sleep(3)
 
-    # Create WScript Shell Object to access filesystem.
+    # Create WScript Shell Object to access filesystem
     WshShell = win32.Dispatch("WScript.Shell")
 
-    # Select, or bring Focus to a window named `Google Chrome`
+    # Select, or bring focus to a window named `Google Chrome`
     WshShell.AppActivate("Google Chrome")
 
-    # Wait for 2 sec then press Ctrl+P to open print window
+    # Wait for 2 seconds, then press Ctrl+P to open the print window
     time.sleep(2)
-    WshShell.SendKeys("^p")
+    WshShell.SendKeys("^p")    
 
 
 def main():
