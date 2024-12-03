@@ -76,6 +76,7 @@ def manage_backup_folder():
         # Check if the source file is empty
         if os.path.getsize(file_name) == 0:
             print(f"Skipping backup: {os.path.basename(file_name)} is empty.")
+            time.sleep(1)
             continue
 
         # Construct the destination path in the backup folder
