@@ -131,10 +131,6 @@ def start_http_server():
     http_server_command = os.path.join(exe_dir, 'nodejs', 'node.exe')
     http_server_script = os.path.join(exe_dir, 'node_modules', 'http-server', 'bin', 'http-server')
 
-    # # Debug: Print paths
-    # print("Node.js Path:", http_server_command)
-    # print("HTTP Server Path:", http_server_script)
-
     # Check if node.exe and http-server exist
     if not os.path.isfile(http_server_command) or not os.path.isfile(http_server_script):
         print("Error: Node.js or http-server not found.")
@@ -144,11 +140,11 @@ def start_http_server():
     try:
         tasklist_output = subprocess.check_output('tasklist /FI "IMAGENAME eq node.exe" 2>NUL', shell=True).decode('utf-8')
         if "node.exe" in tasklist_output:
-            print("http-server is already running. Stopping it...")
-            subprocess.call('taskkill /F /IM "node.exe" /T >NUL', shell=True)
-            time.sleep(2)
+            print("http-server is already running.")
+            time.sleep(1)
+            return  # Reuse the running instance
     except subprocess.CalledProcessError:
-        print("Error: Failed to check tasklist.")
+        print("No running http-server instance found. Starting a new one...")
 
     # Properly quote the paths to handle spaces
     http_server_command = f'"{http_server_command}"'
@@ -156,39 +152,15 @@ def start_http_server():
 
     # Combine the command to run http-server
     command = f'{http_server_command} {http_server_script}'
-    # print("Command to Run:", command)  # Debug: Print command
-
-    # Run the http-server command in a new console window (with proper quoting)
     subprocess.Popen(f'start \"\" /min cmd /k \"{command}\"', shell=True)
-
-
-# def open_browser():
-
-#     print(f"Customizing Your Vouchers Now...")
-#     time.sleep(2)
     
-#     # Open the URL in the default browser
-#     subprocess.Popen('start "" "http://localhost:8080/app/PrintVoucher.html"', shell=True)
 
-#     # Allocate 3 seconds loading time to make sure web form has been rendered completely, allocate higher value for slow internet connection
-#     time.sleep(3)
-
-#     # Create WScript Shell Object to access filesystem.
-#     WshShell = win32.Dispatch("WScript.Shell")
-
-#     # Select, or bring Focus to a window named `Google Chrome`
-#     WshShell.AppActivate("Google Chrome")
-
-#     # Wait for 2 sec then press Ctrl+P to open print window
-#     time.sleep(2)
-#     WshShell.SendKeys("^p")
-    
 def open_browser():
     """
     Opens the browser to the http-server URL with a cache-bypass query string.
     """
-    print(f"Customizing Your Vouchers Now...")
-    time.sleep(2)
+    print(f"Customizing your vouchers now...")
+    time.sleep(1)
     # Add a unique query string to bypass the browser cache
     timestamp = int(time.time())  # Generate a unique timestamp
     url = f"http://localhost:8080/app/PrintVoucher.html?cache_bypass={timestamp}"
