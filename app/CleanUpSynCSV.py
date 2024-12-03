@@ -9,17 +9,13 @@ from tkinter import messagebox
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
-from utils import exe_dir, FILE_PATHS
+from utils import exe_dir, FILE_PATHS, check_file_exists
 
 # List to store error messages and actions to take
 error_messages = []
 actions_to_take = []
 
 # Utility Functions
-def check_file_exists(file_path, error_message):
-    if not os.path.isfile(file_path):
-        error_messages.append(error_message)
-
 def check_non_empty(file_path, error_message, additional_action=None):
     if not os.path.isfile(file_path):  # Check if the file exists
         error_messages.append(f"File not found: {file_path}")
@@ -41,7 +37,9 @@ def open_in_notepad(file_path):
     return lambda: subprocess.run(['notepad.exe', file_path], check=True)
 
 # Check 1: Check if "service_account.json" is present
-check_file_exists(FILE_PATHS["service_account"], "Please execute 'RUN INITIAL CONFIG' first.")
+error_message = check_file_exists(FILE_PATHS["service_account"], "Please execute 'RUN INITIAL CONFIG' first.")
+if error_message:
+    error_messages.append(error_message)  # Append the error message to the list
 
 # Check 2: Check if "put_folder_id_here.txt" is not empty
 folder_id = check_non_empty(
