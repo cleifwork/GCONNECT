@@ -72,7 +72,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 -   Export List: Voucher Codes  
     - Format: CSV 
     - Portal: _"Voucher WiFi Portal Name"_ 
-    - Save file to _**'..GCONNECT\app\raw_csv'**_
+    - Save file to _**'..GCONNECT/app/raw_csv'**_
 
 **3. SHOULD HAVE A GOOGLE ACCOUNT**
 > [!TIP]
@@ -105,7 +105,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 	-   Key type: **JSON** 
 	-   CREATE _(file will be downloaded)_
 	-   Rename file to _"service_account"_ (.json)
-	-   Save to _**'..\GCONNECT\app'**_
+	-   Save to _**'../GCONNECT/app'**_
 
 -   **API Key Creation:**
     -   Go back to +CREATE CREDENTIALS
