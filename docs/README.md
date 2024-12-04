@@ -204,12 +204,11 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 
 > [!TIP]
-> **Looks like this:** _**"https://trigger.macrodroid.com/{DEVICE_ID}/sync_vouchers"**_
-- [Webhook URL Sample](https://www.facebook.com/photo/?fbid=1057719152807995&set=gm.1949664338834842&idorvanity=1776872022780742) 
+> **Looks like this:** _["https://trigger.macrodroid.com/{DEVICE_ID}/sync_vouchers"](https://www.facebook.com/photo/?fbid=1057719152807995&set=gm.1949664338834842&idorvanity=1776872022780742) _
 
--   (PC) Put the URL inside this text file _**'put_md_url_here.txt'**_
--   (MD) Tap on the import button **(≡+)** then enable the macro  
--   (GCONNECT APP) Click **EXTRUP & SYNC**
+- (PC) Put the URL inside this text file _**'put_md_url_here.txt'**_
+- (MD) Tap on the import button **(≡+)** then enable the macro  
+- (GCONNECT APP) Click **EXTRUP & SYNC**
 
 
 ## Running Tests
