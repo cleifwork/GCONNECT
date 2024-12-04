@@ -77,48 +77,48 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 **3. SHOULD HAVE A GOOGLE ACCOUNT**
 > [!TIP]
 > **How to create [Service Account & API Key](https://www.youtube.com/watch?v=1Afr24gCKOo)**
--   Login to to your google account
--   Enable [Google Drive API](https://console.cloud.google.com/)
--   Create a **NEW PROJECT** 
+- Login to to your google account
+- Enable [Google Drive API](https://console.cloud.google.com/)
+- Create a **NEW PROJECT** 
 > [!TIP]
 > You may use your Voucher WiFi Portal Name as project name
--   Goto APIs & Services
-    -   ENABLE APIS & SERVICES 
-    -   Select Google Drive
-    -   ENABLE
+- Goto APIs & Services
+    - ENABLE APIS & SERVICES 
+    - Select Google Drive
+    - ENABLE
 
 **> CREDENTIALS CONFIGURATION**
--   **Service Account Creation:**
-    -   Goto _"Credentials"_ (with the key icon)
-    -   Click **"+CREATE CREDENTIALS"**
-	-   Select Service Account
-	-   Give it Account Name **(REQUIRED)**
-	-   Give it Account ID **(REQUIRED - _Auto Generated_)**
-	-   Give it Description _(OPTIONAL)_
-	-   CREATE AND CONTINUE
-	-   Give it an **"Owner"** role
-	-   DONE
-    -   Click the newly created Service Account
-	-   Goto **"KEYS"** tab
-	-   Click ADD KEY
-	-   Create new key
-	-   Key type: **JSON** 
-	-   CREATE _(file will be downloaded)_
-	-   Rename file to _"service_account"_ (.json)
-	-   Save to _" .. / GCONNECT / app "_
+- **Service Account Creation:**
+    - Goto _"Credentials"_ (with the key icon)
+    - Click **"+CREATE CREDENTIALS"**
+	- Select Service Account
+	- Give it Account Name **(REQUIRED)**
+	- Give it Account ID **(REQUIRED - _Auto Generated_)**
+	- Give it Description _(OPTIONAL)_
+	- CREATE AND CONTINUE
+	- Give it an **"Owner"** role
+	- DONE
+    - Click the newly created Service Account
+	- Goto **"KEYS"** tab
+	- Click ADD KEY
+	- Create new key
+	- Key type: **JSON** 
+	- CREATE _(file will be downloaded)_
+	- Rename file to _"service_account"_ (.json)
+	- Save to _" .. / GCONNECT / app "_
 
--   **API Key Creation:**
-    -   Go back to +CREATE CREDENTIALS
-    -   Select API KEY
-    -   Copy API KEY first
-    -   Click _"Edit API key"_ in the pop-up window
-    -   Select _"Restrict API key"_ under API restrictions
-    -   Check Google Drive API > OK > SAVE
-    -   Paste API KEY to this file _**'put_api_key_here.txt'**_      
+- **API Key Creation:**
+    - Go back to +CREATE CREDENTIALS
+    - Select API KEY
+    - Copy API KEY first
+    - Click _"Edit API key"_ in the pop-up window
+    - Select _"Restrict API key"_ under API restrictions
+    - Check Google Drive API > OK > SAVE
+    - Paste API KEY to this file _**'put_api_key_here.txt'**_      
    
 **> GCONNECT INITIALIZATION**  
--   Input your voucher code length in _**'put_vcodlen_here.txt'**_ (OPTIONAL)
--   (GCONNECT APP) Click **"RUN INITIAL CONFIG"** button
+- Input your voucher code length in _**'put_vcodlen_here.txt'**_ (OPTIONAL)
+- (GCONNECT APP) Click **"RUN INITIAL CONFIG"** button
 
 > [!NOTE]
 > Wait for the browser to open, showing the macro file and voucher folder
@@ -212,15 +212,15 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 
 ## Running Tests
--   (MD) Click on **'Local Variables'** to verify if the voucher codes have been successfully added to their respective voucher variables.
--   Send amount to the Server Phone's registered e-wallet (Gcash | Maya) number.
-    -   Sender should receive WiFi Voucher via SMS. 
+- (MD) Click on **'Local Variables'** to verify if the voucher codes have been successfully added to their respective voucher variables.
+- Send amount to the Server Phone's registered e-wallet (Gcash | Maya) number.
+    - Sender should receive WiFi Voucher via SMS. 
 
 
 ## Optimizations
 - Added checks for all required columns (Code, Price, Duration, Type)
 - Optimized and refactored error handling 
-- Adding utility script for common paths and functions
+- Added utility script for common paths and functions
 - The app is now portable no python and node.js intallation needed (launch anywhere)
 - Re-use running http-server instead of launching a new instance (performance boost)
 
