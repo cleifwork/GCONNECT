@@ -81,7 +81,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 -   Enable [Google Drive API](https://console.cloud.google.com/)
 -   Create a **NEW PROJECT** 
 > [!TIP]
-> You can use your voucher wifi portal as project name
+> You may use your Voucher WiFi Portal Name as project name
 -   Goto APIs & Services
     -   ENABLE APIS & SERVICES 
     -   Select Google Drive
