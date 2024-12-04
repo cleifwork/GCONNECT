@@ -57,9 +57,12 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - Extract main folder to your Desktop
 - Launch the app thru _'LaunchPad.bat'_.
 
-> [!NOTE] 
-> If _"Windows protected..."_ SmartScreen window pops
-- Click _"More info"_ > Run anyway
+
+> [!TIP]
+> During installation or first run, you may encounter security prompts:
+- If the _"Windows protected..."_ SmartScreen window appears, click _"More info"_ and select _"Run anyway"_.
+- If the _"Windows Security Alert"_ window appears, click _"Allow access"_.
+
 
 **2. OMADA CLOUD CONTROLLER ACCOUNT**
 > [!NOTE] 
