@@ -238,8 +238,8 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 
 ## Tech Stack
-**Client:** Python, HTML, Batch, JavaScript
-**Server:** Node.JS, GDrive, MacroDroid
+#### **Client:** Python, HTML, Batch, JS
+#### **Server:** Node.JS, GDrive, MacroDroid
 
 
 ## Related
