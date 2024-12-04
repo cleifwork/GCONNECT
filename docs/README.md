@@ -57,12 +57,10 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - Extract main folder to your Desktop
 - Launch the app thru _'LaunchPad.bat'_.
 
-
 > [!TIP]
 > During installation or first run, you may encounter security prompts:
 - If the _"Windows protected..."_ SmartScreen window appears, click _"More info"_ and select _"Run anyway"_.
 - If the _"Windows Security Alert"_ window appears, click _"Allow access"_.
-
 
 **2. OMADA CLOUD CONTROLLER ACCOUNT**
 > [!NOTE] 
@@ -74,7 +72,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 -   Export List: Voucher Codes  
     - Format: CSV 
     - Portal: _"Voucher WiFi Portal Name"_ 
-    - Save file to _**'%USERPROFILE%\Desktop\GCONNECT\raw_csv'**_
+    - Save file to _**'%USERPROFILE%\Desktop\GCONNECT\app\raw_csv'**_
 
 **3. SHOULD HAVE A GOOGLE ACCOUNT**
 > [!TIP]
