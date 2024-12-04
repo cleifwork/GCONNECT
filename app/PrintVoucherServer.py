@@ -11,14 +11,18 @@ from utils import FILE_PATHS, exe_dir
 
 
 def check_voucher_list():
-    # Check if VoucherList.csv is present in the root folder
-    if not FILE_PATHS["voucher_list"]:
-        # If not found, check the raw_csv folder
-        raw_csv_path = os.path.join(FILE_PATHS["csv_folder"], "VoucherList.csv")
-        if not os.path.isfile(raw_csv_path):
-            # If still not found, display an error message
-            messagebox.showerror("Error", "No 'VoucherList.csv' file found! \nPlease run 'EXTRUP & SYNC' first.")
-            sys.exit()
+    # Check in the root folder
+    if os.path.isfile(FILE_PATHS["voucher_list"]):
+        return FILE_PATHS["voucher_list"]  # Return path if found in the root folder
+
+    # Check in the raw_csv folder
+    raw_csv_path = os.path.join(FILE_PATHS["csv_folder"], "VoucherList.csv")
+    if os.path.isfile(raw_csv_path):
+        return raw_csv_path  # Return path if found in the raw_csv folder
+
+    # If not found in either location, display an error and exit
+    messagebox.showerror("Error", "No 'VoucherList.csv' file found! \nPlease run 'EXTRUP & SYNC' first.")
+    sys.exit()
 
 
 def remove_background_and_crop(image_path, output_path):
@@ -183,6 +187,7 @@ def open_browser():
 
 
 def main():
+    # Check if VoucherList exist
     check_voucher_list()
 
     # Define the base directory path
