@@ -72,7 +72,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 -   Export List: Voucher Codes  
     - Format: CSV 
     - Portal: _"Voucher WiFi Portal Name"_ 
-    - Save file to _**'%USERPROFILE%\Desktop\GCONNECT\app\raw_csv'**_
+    - Save file to _**'..\GCONNECT\app\raw_csv'**_
 
 **3. SHOULD HAVE A GOOGLE ACCOUNT**
 > [!TIP]
