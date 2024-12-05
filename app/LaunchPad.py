@@ -1,5 +1,4 @@
 import os
-import threading 
 import customtkinter
 import subprocess as sub
 from PIL import Image
@@ -52,7 +51,7 @@ class App(customtkinter.CTk):
         self.button_1 = customtkinter.CTkButton(
             self,
             text="RUN INITIAL CONFIG",
-            command=lambda: self.run_in_thread(self.ini_config),
+            command=self.ini_config,
             **self.button_styles,  # Apply reusable styles
         )
         self.button_1.grid(row=1, column=0, padx=10, pady=5, sticky="ew")
@@ -60,7 +59,7 @@ class App(customtkinter.CTk):
         self.button_4 = customtkinter.CTkButton(
             self,
             text="EXTRUP & SYNC",
-            command=lambda: self.run_in_thread(self.upsync_csv),
+            command=self.upsync_csv,
             **self.button_styles,  # Apply reusable styles
         )
         self.button_4.grid(row=4, column=0, padx=10, pady=5, sticky="ew")
@@ -68,7 +67,7 @@ class App(customtkinter.CTk):
         self.button_5 = customtkinter.CTkButton(
             self,
             text="PRINT VOUCHERS",
-            command=lambda: self.run_in_thread(self.print_voucher),
+            command=self.print_voucher,
             **self.button_styles,  # Apply reusable styles
         )
         self.button_5.grid(row=5, column=0, padx=10, pady=5, sticky="ew")
@@ -84,51 +83,25 @@ class App(customtkinter.CTk):
         )
         self.footer_label.pack()
 
-        self.lock = threading.Lock()  # Lock to prevent concurrent execution
-        
-    def toggle_buttons(self, state):
-        self.button_1.configure(state=state)
-        self.button_4.configure(state=state)
-        self.button_5.configure(state=state)
 
-    def run_in_thread(self, func):
-        if self.lock.locked():
-            return
-
-        self.toggle_buttons("disabled")  # Disable buttons
-        thread = threading.Thread(target=lambda: [func(), self.toggle_buttons("normal")])
-        thread.start()        
-
-    def execute_script(self, script_path):
-        with self.lock:
-            try:
-                # Use Popen to execute the script
-                process = sub.Popen(
-                    [python_exe, script_path],
-                    stdout=sub.PIPE,
-                    stderr=sub.PIPE,
-                    text=True,
-                )
-
-                # Stream the output in real-time
-                for line in process.stdout:
-                    print(line.strip())
-
-                process.wait()  # Wait for the process to complete
-                if process.returncode != 0:
-                    print(f"Script error: {process.stderr.read().strip()}")
-
-            except FileNotFoundError as e:
-                print(f"Error: {e}")
+    def execute_script(self, script_name):
+        try:
+            # Construct the full script path
+            script_path = os.path.join(exe_dir, script_name)
+            sub.run([python_exe, script_path], check=True)
+        except FileNotFoundError as e:
+            print(f"Error: {e}")
+        except sub.CalledProcessError as e:
+            print(f"Script error: {e}")
 
     def ini_config(self):
-        self.execute_script(os.path.join(exe_dir, "IniConfig.py"))
+        self.execute_script("IniConfig.py")
 
     def upsync_csv(self):
-        self.execute_script(os.path.join(exe_dir, "CleanUpSynCSV.py"))
+        self.execute_script("CleanUpSynCSV.py")
 
     def print_voucher(self):
-        self.execute_script(os.path.join(exe_dir, "PrintVoucherServer.py"))
+        self.execute_script("PrintVoucherServer.py")
 
 
 app = App()
