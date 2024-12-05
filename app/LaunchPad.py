@@ -27,7 +27,7 @@ class App(customtkinter.CTk):
 
         # Define reusable fonts
         try:
-            self.button_font = customtkinter.CTkFont(family="Arial Rounded MT Bold", size=15)
+            self.button_font = customtkinter.CTkFont(family="Arial Rounded MT Bold", size=13)
         except Exception:  # Fallback if Arial Rounded MT Bold isn't available
             self.button_font = customtkinter.CTkFont(family="Arial", size=15)
 
@@ -85,14 +85,19 @@ class App(customtkinter.CTk):
         self.footer_label.pack()
 
         self.lock = threading.Lock()  # Lock to prevent concurrent execution
+        
+    def toggle_buttons(self, state):
+        self.button_1.configure(state=state)
+        self.button_4.configure(state=state)
+        self.button_5.configure(state=state)
 
     def run_in_thread(self, func):
         if self.lock.locked():
-            print("Another script is already running. Please wait.")
             return
 
-        thread = threading.Thread(target=func)
-        thread.start()
+        self.toggle_buttons("disabled")  # Disable buttons
+        thread = threading.Thread(target=lambda: [func(), self.toggle_buttons("normal")])
+        thread.start()        
 
     def execute_script(self, script_path):
         with self.lock:
