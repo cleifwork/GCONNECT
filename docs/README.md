@@ -124,7 +124,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 > Wait for the browser to open, showing the macro file and voucher folder
 -   Download the macro file then transfer to your android phone
 > [!NOTE]
-> Below are applicable **ONLY IF** you're using the same Google Acount in your PC & Android, and you already have MacroDroid installed in your phone.
+> The following instructions apply **ONLY IF** you are using the same Google account on both your PC and Android device, and already installed MacroDroid & GDrive on your phone.
 -   (ANDROID) Launch Google Drive App
 -   (ANDROID) Goto _"Shared"_ tab
 -   (ANDROID) Go inside **"GCONNECT"** folder
