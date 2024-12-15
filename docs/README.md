@@ -181,10 +181,15 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - Give app admin rights (Android Settings)
 - Disable battery optimization (MD Settings)
 - Enable MacroDroid in Accessibility (MD Settings)
-- Allow background autostart (Android Settings)
+- Allow _"Background autostart"_ (Android Settings)
 - Give app notification access (App Settings)
+- Disable _"Pause app activity if unused"_ (Infinix models)
+- Notification: Reminder Intensity = Follow App (Infinix models)
+- Disable Do-Not-Disturb mode (or Allow app in DND mode)
+- Enable _"Background data"_
+- Enable _"Unrestricted data usage"_
 - Lock app in recent app tray (Recent App Tray)
-- Intall MacroDroid Helper (Play Store)
+- Intall MacroDroid Helper from Play Store (OPTIONAL)
 - Grant MacroDroid WRITE_SECURE_SETTINGS (OPTIONAL)
 ```
 
