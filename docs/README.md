@@ -141,9 +141,9 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - Phone must have available service (signal)
 - Phone must have SMS credits (load for texting)
 - Phone must be connected to the internet always (Data or WiFi)
-- Phone is recommended to have separate GCash account (not a must)
+- Phone is recommended to have separate GCash account (OPTIONAL)
 - Phone must be able to receive GCash | Maya push notification
-- Phone must be running Android 9 and up (recommended) 
+- Phone must be running Android 9 and up (RECOMMENDED) 
 ```
 > [!NOTE] 
 > What is _**'Push Notification'**_ ?
