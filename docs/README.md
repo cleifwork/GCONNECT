@@ -185,6 +185,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - Give app notification access (App Settings)
 - Disable "Pause app activity if unused" (Infinix models)
 - Notification: Reminder Intensity = Follow App (Infinix models)
+- Select "Show notification content" (Lockscreen settings)
 - Disable Do-Not-Disturb mode (or Allow app in DND mode)
 - Enable "Background data"
 - Enable "Unrestricted data usage"
