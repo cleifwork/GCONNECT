@@ -189,7 +189,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 ```
 
 > [!IMPORTANT]
-> E-WALLET APPS RECOMMENDED PERMISSION/SETTINGS: (Gcash, Maya)
+> E-WALLET APPS RECOMMENDED PERMISSIONS/SETTINGS: (Gcash, Maya)
 ```
 - Give app notification access (App Settings)
 - Disable "Pause app activity if unused" (Infinix models)
