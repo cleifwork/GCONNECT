@@ -189,7 +189,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - Disable Do-Not-Disturb mode (or Allow app in DND mode)
 - Enable "Background data"
 - Enable "Unrestricted data usage"
-- Lock app in recent app tray (Recent App Tray)
+- Lock app in recent app tray (OPTIONAL)
 - Intall MacroDroid Helper from Play Store (OPTIONAL)
 - Grant MacroDroid WRITE_SECURE_SETTINGS (OPTIONAL)
 ```
