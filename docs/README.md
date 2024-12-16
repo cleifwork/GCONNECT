@@ -176,7 +176,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 **Install MacroDroid (Google Play Store)**
 > [!IMPORTANT]
-> RECOMMENDED PERMISSIONS:
+> RECOMMENDED PERMISSIONS/SETTINGS:
 ```
 - Give app admin rights (Android Settings)
 - Disable battery optimization (MD Settings)
@@ -189,7 +189,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 ```
 
 > [!IMPORTANT]
-> E-WALLET RECOMMENDED PERMISSIONS: (Gcash, Maya)
+> E-WALLET APPS RECOMMENDED PERMISSION/SETTINGS: (Gcash, Maya)
 ```
 - Give app notification access (App Settings)
 - Disable "Pause app activity if unused" (Infinix models)
