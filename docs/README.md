@@ -218,7 +218,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 
 ## Running Tests
-- (MD) Click on **'Local Variables'** to verify if the voucher codes have been successfully added to their respective voucher variables.
+- (MD) Click on **'Local Variables'** to verify if the voucher codes have been successfully added to their respective amounts.
 - Send amount to the Server Phone's registered e-wallet (Gcash | Maya) number.
     - Sender should receive WiFi Voucher via SMS. 
 
