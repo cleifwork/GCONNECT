@@ -194,12 +194,15 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 > E-WALLET APPS RECOMMENDED PERMISSIONS/SETTINGS: (Gcash, Maya)
 ```
 - Enable Notification Access (App Info Settings)
-- Disable "Pause app activity if unused" (Infinix models)
-- Notification: Reminder Intensity = Follow App (Infinix models)
-- Select "Show notification content" (Lockscreen settings)
+- Disable "Pause app activity if unused" (Infinix Models)
+- Notification: Reminder Intensity = Follow App (Infinix Models)
 - Disable Do-Not-Disturb mode (or Allow app in DND mode)
-- Enable "Background data"
-- Enable "Unrestricted data usage"
+- Enable "Background data" (App Info Settings)
+- Enable "Unrestricted data usage" (App Info Settings)
+- Notifications & Status Bar: Smart Reminder (Disabled)
+- Notifications & Status Bar: Lock Screen > Display Rule = Show notification content
+- Notifications & Status Bar: Lock Screen > Wake Screen > Allow apps to wake screen
+- Notifications & Status Bar: Lock Screen > Show notifications
 ```
 
 > [!TIP]
