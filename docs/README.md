@@ -176,9 +176,8 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 **Install MacroDroid (Google Play Store)**
 > [!IMPORTANT]
-> RECOMMENDED PERMISSIONS/SETTINGS:
+> MACRODROID & ANDROID RECOMMENDED PERMISSIONS/SETTINGS:
 ```
-
 - Ignore Battery Optimizations (MD Settings)
 - Keep Accessibility Services Running (MD Settings)
 - Set MacroDroid as Admin (Android Settings)
