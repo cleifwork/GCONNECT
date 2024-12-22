@@ -178,20 +178,22 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 > [!IMPORTANT]
 > RECOMMENDED PERMISSIONS/SETTINGS:
 ```
-- Give app admin rights (Android Settings)
-- Disable battery optimization (MD Settings)
-- Enable MacroDroid in Accessibility (MD Settings)
-- Allow "Background autostart" (Android Settings)
-- Give app notification access (App Settings)
-- Lock app in recent app tray (OPTIONAL)
+
+- Ignore Battery Optimizations (MD Settings)
+- Keep Accessibility Services Running (MD Settings)
+- Set MacroDroid as Admin (Android Settings)
+- Enable MacroDroid in Accessibility (Android Settings)
+- Allow "Background Autostart" (Android Settings)
+- Enable Notification Access (App Info Settings)
+- Lock MacroDroid in recent app tray (OPTIONAL)
 - Intall MacroDroid Helper from Play Store (OPTIONAL)
-- Grant MacroDroid WRITE_SECURE_SETTINGS (OPTIONAL)
+- Grant MacroDroid WRITE_SECURE_SETTINGS using ADB Hack (OPTIONAL)
 ```
 
 > [!IMPORTANT]
 > E-WALLET APPS RECOMMENDED PERMISSIONS/SETTINGS: (Gcash, Maya)
 ```
-- Give app notification access (App Settings)
+- Enable Notification Access (App Info Settings)
 - Disable "Pause app activity if unused" (Infinix models)
 - Notification: Reminder Intensity = Follow App (Infinix models)
 - Select "Show notification content" (Lockscreen settings)
