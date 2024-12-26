@@ -177,6 +177,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 **Install MacroDroid (Google Play Store)**
 > [!IMPORTANT]
 > MACRODROID & ANDROID RECOMMENDED PERMISSIONS/SETTINGS:
+> [ADB Hack](https://www.macrodroidforum.com/index.php?threads/adb-hack-granting-extra-capabilities-via-the-adb-tool.48/)
 ```
 - Ignore Battery Optimizations (MD Settings)
 - Keep Accessibility Services Running (MD Settings)
