@@ -386,119 +386,76 @@ if __name__ == "__main__":
     print("Voucher files successfully uploaded!")
     time.sleep(1)
 
-
     # 3RD TASK
+    def get_max_strlen_from_csv(csv_file_path):
+        """Reads the 'Code' column from the CSV file and calculates the maximum string length."""
+        with open(csv_file_path, 'r') as file:  # Open the CSV file for reading
+            reader = csv.DictReader(file)  # Create a dictionary reader for the CSV
+            return max(len(row["Code"].strip()) for row in reader)  # Find and return the maximum string length in the 'Code' column
+
     def check_file_vcodlen(filename):
-        # Check if the specified file exists
-        if os.path.isfile(filename):
-            # Open the file and read its content
-            with open(filename, 'r') as file:
-                content = file.read().strip()
-                
-                # Check if the content is empty
-                if not content:
-                    print("The file 'put_vcodlen_here.txt' is empty. \nProceed checking for exported vouchers in CSV file...")
-                    time.sleep(1)
-                    check_csv_file()
-                # Check if the content is a digit and within the range 6-9
-                elif content.isdigit() and 6 <= int(content) <= 9:
-                    # Call the function replace_str_in_temp_macro with the content as an argument
-                    replace_str_in_temp_macro(content)
-                # Check if the content is a digit and equals 10
-                elif content.isdigit() and int(content) == 10:
-                    # Ignore and proceed to the next process (do nothing)
-                    pass
-                # If the content is not a valid voucher code length, show an error message
-                else:
-                    messagebox.showerror("Error", "Specify valid voucher code length in 'put_vcodlen_here.txt'.")
-                    # Open the file before exiting
-                    os.startfile(code_length_path)
-                    sys.exit()
-        
-        # If the specified file does not exist
-        else:
-            # Print a message and proceed to check for exported vouchers CSV file
+        """Checks the specified file for voucher code length and takes appropriate actions."""
+        if os.path.isfile(filename):  # Check if the file exists
+            with open(filename, 'r') as file:  # Open the file for reading
+                content = file.read().strip()  # Read and strip whitespace from the file content
+
+            # Check if the file is empty or its content does not match max_strlen
+            if not content or (content.isdigit() and int(content) != max_strlen):
+                print("The file 'put_vcodlen_here.txt' is empty or incorrect. \nProceed checking for exported vouchers in CSV file...")
+                time.sleep(1)  # Pause execution for 1 second
+                check_csv_file()  # Call the function to check for exported vouchers
+            elif content.isdigit() and (6 <= int(content) <= 9):  # If the content is a digit between 6 and 9
+                replace_str_in_temp_macro(content)  # Replace the macro placeholder with the content
+            elif content.isdigit() and int(content) == 10:  # If the content is 10
+                pass  # Do nothing
+            else:  # If the content is invalid
+                messagebox.showerror("Error", "Specify valid voucher code length in 'put_vcodlen_here.txt'.")  # Show error
+                os.startfile(code_length_path)  # Open the file for editing
+                sys.exit()  # Exit the script
+        else:  # If the file does not exist
             print("The file 'put_vcodlen_here.txt' does not exist. \nProceed checking for exported vouchers in CSV file...")
-            time.sleep(1)
-            check_csv_file()
+            time.sleep(1)  # Pause execution for 1 second
+            check_csv_file()  # Call the function to check for exported vouchers
 
 
     def replace_str_in_temp_macro(value):
-        with open(modified_macro_file_path, 'r') as temp_file:
-            content = temp_file.read()
-            updated_content = content.replace(r"\w{10}", fr"\w{{{value}}}")
-        
-        with open(modified_macro_file_path, 'w') as temp_file:
-            temp_file.write(updated_content)
+        """Replaces the placeholder in the macro file with the specified value."""
+        with open(modified_macro_file_path, 'r') as temp_file:  # Open the macro file for reading
+            updated_content = temp_file.read().replace(r"\w{10}", fr"\w{{{value}}}")  # Replace placeholder with the value
+
+        with open(modified_macro_file_path, 'w') as temp_file:  # Open the macro file for writing
+            temp_file.write(updated_content)  # Write the updated content to the file
 
 
-    # Function to check the first CSV file found in a specific folder
     def check_csv_file():
-        # Construct the path to the folder containing the CSV files
-        csv_folder_path = FILE_PATHS['csv_folder']
+        """Finds the latest CSV file in the folder and processes it."""
+        csv_folder_path = FILE_PATHS['csv_folder']  # Get the path to the folder containing CSV files
 
-        # Check if the CSV folder exists
-        if os.path.exists(csv_folder_path):
-            # Find all CSV files in the folder
-            csv_files = [f for f in os.listdir(csv_folder_path) if f.endswith('.csv')]
+        if not os.path.exists(csv_folder_path):  # Check if the folder exists
+            print("Error: CSV folder path does not exist!")  # Print an error message if the folder does not exist
+            sys.exit()  # Exit the script
 
-            # Check if CSV files are found
-            if csv_files:
-                # Get the full paths of CSV files
-                csv_files_paths = [os.path.join(csv_folder_path, f) for f in csv_files]
+        csv_files = [f for f in os.listdir(csv_folder_path) if f.endswith('.csv')]  # List all CSV files in the folder
+        if not csv_files:  # If no CSV files are found
+            print("Error: No .csv file found!")  # Print an error message
+            sys.exit()  # Exit the script
 
-                # Sort CSV files based on modification time (most recent first)
-                csv_files_paths.sort(key=os.path.getmtime, reverse=True)
-
-                # Select the latest CSV file
-                csv_file = csv_files_paths[0]
-
-                # Call the function to check the specific CSV file
-                check_csv_str_len(csv_file)
-            else:
-                # Display an error message if no CSV files are found
-                print("Error: No .csv file found!")
-                sys.exit()
-        else:
-            # Print an error message if the CSV folder path does not exist
-            print("Error: CSV folder path does not exist!")
-            sys.exit()
+        latest_csv_file = max(csv_files, key=lambda f: os.path.getmtime(os.path.join(csv_folder_path, f)))  # Get the most recently modified CSV file
+        check_csv_str_len(os.path.join(csv_folder_path, latest_csv_file))  # Check the string lengths in the latest CSV file
 
 
-    # Function to check the max length of voucher code in the csv file
-    def check_csv_str_len(csv_file):
-        # Construct the full path to the CSV file
-        csv_file_path = os.path.join(FILE_PATHS["csv_folder"], csv_file)
+    def check_csv_str_len(csv_file_path):
+        """Calculates the maximum string length in the CSV and updates relevant files."""
+        max_strlen = get_max_strlen_from_csv(csv_file_path)  # Get the maximum string length from the CSV file
 
-        codes = []
+        with open(code_length_path, 'w') as length_file:  # Open the code length file for writing
+            length_file.write(str(max_strlen))  # Write the maximum string length to the file
 
-        # Read all lines of the "Code" column in the CSV file
-        with open(csv_file_path, 'r') as file:
-            reader = csv.DictReader(file)
-            for row in reader:
-                code = row["Code"].strip()
-                codes.append(code)
+        replace_str_in_temp_macro(max_strlen)  # Update the macro file with the maximum string length
+        FILE_PATHS["vcodlen"] = str(max_strlen)  # Update the global file paths dictionary with the string length as a string
 
-        # Determine the maximum string length
-        max_strlen = max(len(code) for code in codes)
-
-        # Write the max length found to the specified path
-        with open(code_length_path, 'w') as length_file:
-            length_file.write(str(max_strlen))        
-
-        # Check if a maximum length is found
-        if max_strlen:
-            # Read the content of the "temp.macro" file
-            with open(modified_macro_file_path, 'r') as temp_file:
-                content = temp_file.read()
-
-                # Update the content by replacing a specific pattern
-                updated_content = content.replace(r"\w{10}", fr"\w{{{max_strlen}}}")
-
-            # Write the updated content back to the "temp.macro" file
-            with open(modified_macro_file_path, 'w') as temp_file:
-                temp_file.write(updated_content)
-
+    csv_file_path = os.path.join(FILE_PATHS["csv_folder"], csv_file)  # Construct the full path to the CSV file
+    max_strlen = get_max_strlen_from_csv(csv_file_path)  
 
     # 3rd Task : Function to read lines from a file and handle FileNotFoundError
     def read_file_lines(file_path):
