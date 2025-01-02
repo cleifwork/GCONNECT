@@ -393,30 +393,6 @@ if __name__ == "__main__":
             reader = csv.DictReader(file)  # Create a dictionary reader for the CSV
             return max(len(row["Code"].strip()) for row in reader)  # Find and return the maximum string length in the 'Code' column
 
-    def check_file_vcodlen(filename):
-        """Checks the specified file for voucher code length and takes appropriate actions."""
-        if os.path.isfile(filename):  # Check if the file exists
-            with open(filename, 'r') as file:  # Open the file for reading
-                content = file.read().strip()  # Read and strip whitespace from the file content
-
-            # Check if the file is empty or its content does not match max_strlen
-            if not content or (content.isdigit() and int(content) != max_strlen):
-                print("The file 'put_vcodlen_here.txt' is empty or incorrect. \nProceed checking for exported vouchers in CSV file...")
-                time.sleep(1)  # Pause execution for 1 second
-                check_csv_file()  # Call the function to check for exported vouchers
-            elif content.isdigit() and (6 <= int(content) <= 9):  # If the content is a digit between 6 and 9
-                replace_str_in_temp_macro(content)  # Replace the macro placeholder with the content
-            elif content.isdigit() and int(content) == 10:  # If the content is 10
-                pass  # Do nothing
-            else:  # If the content is invalid
-                messagebox.showerror("Error", "Specify valid voucher code length in 'put_vcodlen_here.txt'.")  # Show error
-                os.startfile(code_length_path)  # Open the file for editing
-                sys.exit()  # Exit the script
-        else:  # If the file does not exist
-            print("The file 'put_vcodlen_here.txt' does not exist. \nProceed checking for exported vouchers in CSV file...")
-            time.sleep(1)  # Pause execution for 1 second
-            check_csv_file()  # Call the function to check for exported vouchers
-
 
     def replace_str_in_temp_macro(value):
         """Replaces the placeholder in the macro file with the specified value."""
@@ -592,7 +568,8 @@ if __name__ == "__main__":
         with open(modified_macro_file_path, "w", encoding="utf-8") as modified_file:
             modified_file.write(modified_content)
 
-        check_file_vcodlen(FILE_PATHS["vcodlen"]) 
+        # Check voucher code length from the CSV file
+        check_csv_file()
 
         print("Macro configuration completed successfully!")
         time.sleep(1)    
