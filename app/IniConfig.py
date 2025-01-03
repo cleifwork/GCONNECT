@@ -323,36 +323,37 @@ if __name__ == "__main__":
 
     # 1ST TASK
     # Define the path to main_folder_name.txt, which contains the name of the main folder to be created
-    main_folder_name_file = FILE_PATHS["main_folder_name"]
+    def read_file_content(file_path):
+        """Reads and returns the content of a file if it exists; otherwise, raises an error."""
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as file:
+                return file.read().strip()  # Strip extra whitespace or newline characters
+        else:
+            raise FileNotFoundError(f"Error: The file {file_path} does not exist.")
 
-    # Initialize the variable that will hold the main folder name
-    main_folder_name = None
+    try:
+        # Read folder names from respective files
+        main_folder_name = read_file_content(FILE_PATHS["main_folder_name"])
+        vouchers_folder_name = read_file_content(FILE_PATHS["sub_folder_name"])
 
-    # Check if the main_folder_name.txt file exists
-    if os.path.exists(main_folder_name_file):
-        # If the file exists, open it and read the folder name from it
-        with open(main_folder_name_file, 'r') as file:
-            main_folder_name = file.read().strip()  # Strip any extra whitespace or newline characters
-    else:
-        # If the file does not exist, print an error message and handle the error (e.g., exit the program)
-        print(f"Error: The file {main_folder_name_file} does not exist.")
+        # Create main folder on Google Drive and share with write permissions
+        main_folder_id = manager.create_and_share_folder(main_folder_name, role='writer')
 
-    # Define the name for the subfolder to be created inside the main folder
-    vouchers_folder_name = "vouchers"
+        # Create subfolder inside the main folder
+        subfolder_id = manager.create_and_share_folder(vouchers_folder_name, parent_id=main_folder_id)
 
-    # Create the main folder on Google Drive and share it with write permissions (role='writer')
-    # The function returns the folder ID for the newly created main folder
-    main_folder_id = manager.create_and_share_folder(main_folder_name, role='writer')
+        # Save folder IDs to respective files
+        manager.save_folder_id_to_file(subfolder_id, FILE_PATHS["sub_folder_id"])
+        manager.save_folder_id_to_file(main_folder_id, FILE_PATHS["main_folder_id"])
 
-    # Create the subfolder (vouchers folder) inside the main folder, using the main folder's ID as the parent
-    subfolder_id = manager.create_and_share_folder(vouchers_folder_name, parent_id=main_folder_id)
+        print(f"{main_folder_name} folder and {vouchers_folder_name} folder successfully created!\n")
+        time.sleep(1)
 
-    # Save the folder IDs (subfolder and main folder) to the respective files
-    manager.save_folder_id_to_file(subfolder_id, FILE_PATHS["sub_folder_id"])
-    manager.save_folder_id_to_file(main_folder_id, FILE_PATHS["main_folder_id"])
+    except FileNotFoundError as e:
+        print(e)
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
-    print(f"{main_folder_name} folder and {vouchers_folder_name} folder successfully created!\n")
-    time.sleep(1)
 
     # 2ND TASK
     credentials_file = FILE_PATHS["service_account"]

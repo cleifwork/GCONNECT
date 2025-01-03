@@ -22,6 +22,7 @@ FILE_PATHS = {
     "modified_macro": os.path.join(exe_dir, 'GConnect_-_GCash_-_Maya.macro'),
     "main_folder_name": os.path.join(exe_dir, 'main_folder_name.txt'),
     "main_folder_id": os.path.join(exe_dir, 'main_folder_id.txt'),
+    "sub_folder_name": os.path.join(exe_dir, 'put_folder_name_here.txt'),
     "sub_folder_id": os.path.join(exe_dir, 'put_folder_id_here.txt'),
     "file_ids": os.path.join(exe_dir, 'put_file_ids_here.txt')
 }
