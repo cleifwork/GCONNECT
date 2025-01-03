@@ -433,7 +433,8 @@ if __name__ == "__main__":
     csv_file_path = os.path.join(FILE_PATHS["csv_folder"], csv_file)  # Construct the full path to the CSV file
     max_strlen = get_max_strlen_from_csv(csv_file_path)  
 
-    # 3rd Task : Function to read lines from a file and handle FileNotFoundError
+
+    # Function to read lines from a file and handle FileNotFoundError
     def read_file_lines(file_path):
         try:
             with open(file_path, 'r', encoding="utf-8") as file:
