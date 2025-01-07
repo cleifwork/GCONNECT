@@ -117,7 +117,6 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
     - Paste API KEY to this file _**'put_api_key_here.txt'**_      
    
 **> GCONNECT INITIALIZATION**  
-- Input your voucher code length in _**'put_vcodlen_here.txt'**_ (OPTIONAL)
 - (GCONNECT APP) Click **"RUN INITIAL CONFIG"** button
 
 > [!NOTE]
