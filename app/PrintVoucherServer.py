@@ -170,8 +170,9 @@ def open_browser():
     # Open the URL in the default browser
     subprocess.Popen(f'start "" "{url}"', shell=True)
 
-    # Allocate 3 seconds loading time to make sure web form has been rendered completely, allocate higher value for slow internet connection
-    time.sleep(3)
+    # Allocate 5 seconds loading time to make sure web form has been rendered completely
+    # Allocate higher value for slow internet connection
+    time.sleep(5)
 
     # Create WScript Shell Object to access filesystem
     WshShell = win32.Dispatch("WScript.Shell")

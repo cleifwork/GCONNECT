@@ -67,6 +67,20 @@
                 .catch(() => false);
         }        
     
+        // Fetch function with cache-busting
+        function fetchVoucherList(filePath) {
+            // Add a cache-busting query parameter with a unique timestamp
+            const cacheBustedUrl = `${filePath}?nocache=${new Date().getTime()}`;
+
+            return fetch(cacheBustedUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to fetch ${filePath}`);
+                    }
+                    return response.text(); // Assuming the CSV is text-based
+                });
+        }
+
         // Fetch the CSV file from the root folder
         fetchVoucherList("VoucherList.csv")
             .catch(error => {
