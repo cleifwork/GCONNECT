@@ -17,21 +17,19 @@ error_messages = []
 actions_to_take = []
 
 # Initial Checks
-for file_name in ["service_account.json", "put_api_key_here.txt"]:
-    # Construct the absolute file path
-    file_path = os.path.join(exe_dir, file_name)
-    
-    if not os.path.isfile(file_path):
-        error_messages.append(f"Please add '{file_name}' to your root folder.")
-        actions_to_take.append(lambda: os.startfile(exe_dir))
+for file_name, file_path in FILE_PATHS.items():
+    if file_name == "service_account" or file_name == "api_key":  # Only check specific files
+        if not os.path.isfile(file_path):
+            error_messages.append(f"Please add '{os.path.basename(file_path)}' to your root folder.")
+            actions_to_take.append(lambda: os.startfile(exe_dir))
 
-    elif file_name == "put_api_key_here.txt":  # Compare with just the filename
-        with open(file_path, "r") as api_key_file:  # Use the absolute file path
-            api_key = api_key_file.read().strip()
+        elif file_name == "api_key":  # Check if 'put_api_key_here.txt' is empty
+            with open(file_path, "r") as api_key_file:
+                api_key = api_key_file.read().strip()
 
-        if not api_key:
-            error_messages.append("Please add your GDrive API Key to 'put_api_key_here.txt'")
-            actions_to_take.append(lambda: subprocess.run(['notepad.exe', file_path], check=True))
+            if not api_key:
+                error_messages.append("Please add your GDrive API Key to 'put_api_key_here.txt'")
+                actions_to_take.append(lambda: subprocess.run(['notepad.exe', file_path], check=True))
 
 # Display all error messages in a single prompt
 if error_messages:
