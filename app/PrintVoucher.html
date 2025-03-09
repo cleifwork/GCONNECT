@@ -137,7 +137,7 @@
                     const price = row['Price'] ? row['Price'].replace("PHP", "₱") : ""; // Replace "PHP" with "₱"
                     const notes = row['Notes'] ? row['Notes'].trim() : "";
                     const duration = row['Duration'] ? row['Duration'].replace(".0", " ") : "";
-                    const type = row['Type'];
+                    const type = `Valid for ${row['Type'].replace(/\D/g, '')} User(s)`; 
                     const ssid = row['Portals'] ? row['Portals'].replace("[", "").replace("]", "") : "";
     
                     // Check if the voucher should be displayed
