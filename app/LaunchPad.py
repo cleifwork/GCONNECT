@@ -78,7 +78,7 @@ class App(customtkinter.CTk):
 
         self.footer_label = customtkinter.CTkLabel(
             self.footer_frame,
-            text="\nCopyright © 2024 Toto's Digital Services Ltd. \nAll rights reserved. \n",
+            text="\nCopyright © 2025 GConnect Solutions Inc. \nAll rights reserved. \n",
             font=("Arial", 9),
         )
         self.footer_label.pack()
