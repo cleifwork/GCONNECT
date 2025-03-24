@@ -50,23 +50,6 @@
             return code;
         }
     
-        function fetchVoucherList(path) {
-            return fetch(path)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`${path} file not found`);
-                    }
-                    return response.text();
-                });
-        }
-    
-        // Function to check if an image exists IF NOT use the static background
-        function imageExists(url) {
-            return fetch(url, { method: 'HEAD' })
-                .then(response => response.ok)
-                .catch(() => false);
-        }        
-    
         // Fetch function with cache-busting
         function fetchVoucherList(filePath) {
             // Add a cache-busting query parameter with a unique timestamp
@@ -80,16 +63,30 @@
                     return response.text(); // Assuming the CSV is text-based
                 });
         }
+    
+        // Function to check if an image exists IF NOT use the static background
+        function imageExists(url) {
+            return fetch(url, { method: 'HEAD' })
+                .then(response => response.ok)
+                .catch(() => false);
+        }        
+
+        // Function to create a DOM element with text content
+        function createElement(tag, className, textContent = "") {
+            const element = document.createElement(tag);
+            if (className) element.classList.add(className);
+            if (textContent) element.textContent = textContent;
+            return element;
+        }
 
         // Fetch the CSV file from the root folder
         fetchVoucherList("VoucherList.csv")
-            .catch(error => {
-                console.log(error.message);
-                // If not found, fetch the CSV file from the raw_csv folder
+            .catch(() => {
+                // If "VoucherList.csv" is not found in the root folder, try to fetch from the "raw_csv" folder
                 return fetchVoucherList("./raw_csv/VoucherList.csv");
             })
             .then(csvData => {
-                // Read the voucher code length from "put_vcodlen_here.txt"
+                // Fetch the voucher code length from "put_vcodlen_here.txt"
                 return fetch("put_vcodlen_here.txt")
                     .then(response => {
                         if (!response.ok) {
@@ -98,133 +95,114 @@
                         return response.text();
                     })
                     .then(vcodeLengthStr => {
-                        const vcodeLength = parseInt(vcodeLengthStr.trim());
-                        return { csvData, vcodeLength };
+                        // Parse the voucher code length and return both CSV data and length
+                        return { csvData, vcodeLength: parseInt(vcodeLengthStr.trim()) };
                     });
             })
             .then(({ csvData, vcodeLength }) => {
-                // Split the CSV data by line breaks
+                // Split the CSV data into rows
                 const rows = csvData.split("\n");
-    
-                // Get the container element for vouchers
-                const vouchersContainer = document.getElementById("vouchers-container");
-    
-                // Extract the headers
-                const headers = rows[0].split(',');
-    
-                // Specify the headers you need
+
+                // Extract headers from the first row
+                const headers = rows[0].split(",");
                 const neededHeaders = ['Code', 'Price', 'Notes', 'Duration', 'Type', 'Portals'];
-    
-                // Find the indices of the needed headers
+
+                // Find the indices of the headers that are required
                 const neededIndices = neededHeaders.map(header => headers.indexOf(header)).filter(index => index !== -1);
-    
-                // Mapping between price and background image filename, ENABLE TO USE DYNAMIC BG IMAGE
-                const priceImageMap = {};        
-    
-                // Iterate over each row (excluding the header)
-                for (let i = 1; i < rows.length; i++) {
-                    // Split the row by commas
-                    const columns = rows[i].split(",");
-                    
-                    // Create an object to hold the row data
-                    const row = {};
-                    neededHeaders.forEach((header, index) => {
-                        row[header] = columns[neededIndices[index]] ? columns[neededIndices[index]].replace(/"/g, "") : "";
+
+                // Check for valid printable vouchers
+                const hasPrintableVouchers = rows.slice(1).some(row => {
+                    const columns = row.split(",");
+                    const data = {};
+
+                    // Extract only the necessary columns based on needed headers
+                    neededHeaders.forEach((header, i) => {
+                        data[header] = columns[neededIndices[i]]?.replace(/"/g, "") || "";
                     });
-    
-                    // Extract the necessary information using the header names
-                    let code = row['Code'];
-                    const price = row['Price'] ? row['Price'].replace("PHP", "₱") : ""; // Replace "PHP" with "₱"
-                    const notes = row['Notes'] ? row['Notes'].trim() : "";
-                    const duration = row['Duration'] ? row['Duration'].replace(".0", " ") : "";
-                    const type = `Valid for ${row['Type'].replace(/\D/g, '')} User(s)`; 
-                    const ssid = row['Portals'] ? row['Portals'].replace("[", "").replace("]", "") : "";
-    
-                    // Check if the voucher should be displayed
-                    if (notes === "PRINT VOUCHER" && type !== "Expired") {
-                        // Add price to the priceImageMap if it doesn't exist
-                        if (!(price in priceImageMap)) {
-                            priceImageMap[price] = `vlogo${Object.keys(priceImageMap).length + 1}.png`;
+
+                    // Determine if the row meets the criteria
+                    return data['Notes'] === "PRINT VOUCHER" && data['Type'] !== "Expired";
+                });
+
+                // Prompt if no printable vouchers exist
+                if (!hasPrintableVouchers) {
+                    alert("VoucherList.csv is empty or contains no printable vouchers.");
+                    return; // Exit early
+                }
+
+                // Get the container element where vouchers will be displayed
+                const vouchersContainer = document.getElementById("vouchers-container");
+
+                // Map to store price and corresponding background image filenames
+                const priceImageMap = {};
+
+                // Loop through each row, starting from the second row (data rows)
+                rows.slice(1).forEach(row => {
+                    const columns = row.split(",");
+                    const data = {};
+
+                    // Extract only the necessary columns based on needed headers
+                    neededHeaders.forEach((header, i) => {
+                        data[header] = columns[neededIndices[i]]?.replace(/"/g, "") || "";
+                    });
+
+                    // Check if the voucher meets the criteria to be displayed
+                    if (data['Notes'] === "PRINT VOUCHER" && data['Type'] !== "Expired") {
+                        // Assign a unique background image to each price if not already mapped
+                        if (!(data['Price'] in priceImageMap)) {
+                            priceImageMap[data['Price']] = `vlogo${Object.keys(priceImageMap).length + 1}.png`;
                         }
-    
-                        // Pad the voucher code with leading zeroes if its length is less than the specified value
-                        if (code.length < vcodeLength) {
-                            code = padWithZeroes(code, vcodeLength);
-                        }
-    
+
                         // Create the voucher element
-                        const voucher = document.createElement("div");
-                        voucher.classList.add("voucher");
-    
-                        // Add background image based on price, ENABLE TO USE DYNAMIC BG IMAGE          
-                        if (price in priceImageMap) {
-                            const imagePath = `./img/vlogo/${priceImageMap[price]}`;
+                        const voucher = createElement("div", "voucher");
+
+                        // Dynamically set the background image for the voucher based on the price
+                        if (data['Price'] in priceImageMap) {
+                            const imagePath = `./img/vlogo/${priceImageMap[data['Price']]}`;
                             imageExists(imagePath).then(exists => {
                                 if (exists) {
                                     voucher.style.backgroundImage = `url(${imagePath})`;
                                 }
                             });
-                        }                                                           
-    
-                        // Add the voucher content
-                        const voucherTitle = document.createElement("div");
-                        voucherTitle.classList.add("voucher-title");
-                        voucherTitle.textContent = `${price} Voucher`; // Display price in title
-                        voucher.appendChild(voucherTitle);
-    
-                        const voucherCode = document.createElement("div");
-                        voucherCode.classList.add("voucher-code");
-                        voucherCode.textContent = code;
-                        voucher.appendChild(voucherCode);
-    
-                        const voucherDetails1 = document.createElement("div");
-                        voucherDetails1.classList.add("voucher-details");
-    
-                        // Check if the duration is divisible by 24
-                        if (duration.endsWith("Hours") && parseInt(duration) > 24 && parseInt(duration) % 24 === 0) {
-                            const days = parseInt(duration) / 24;
-                            voucherDetails1.textContent = "Duration: " + days.toString().replace(".0", "") + " Days";
-                        } else {
-                            voucherDetails1.textContent = "Duration: " + duration;
                         }
-    
-                        voucher.appendChild(voucherDetails1);
-    
-                        const voucherDetails2 = document.createElement("div");
-                        voucherDetails2.classList.add("voucher-details");
-                        voucherDetails2.textContent = "Type: " + type;
-                        voucher.appendChild(voucherDetails2);
-    
-                        const voucherDetails3 = document.createElement("div");
-                        voucherDetails3.classList.add("voucher-details");
-    
-                        // Create a span for the WiFi Name
-                        const wifiNameSpan = document.createElement("span");
-                        wifiNameSpan.style.color = "#000";
-                        wifiNameSpan.textContent = "WiFi Name: ";
-    
-                        // Create a strong element for the SSID and apply the bold style
-                        const ssidStrong = document.createElement("strong");
-                        ssidStrong.style.color = "#000";
-                        ssidStrong.textContent = ssid;
-    
-                        // Append the strong element to the span
+
+                        // Add title showing the price of the voucher
+                        voucher.appendChild(createElement("div", "voucher-title", `${data['Price'].replace("PHP", "₱")} Voucher`));
+
+                        // Add the voucher code, padded with leading zeroes if necessary
+                        voucher.appendChild(createElement("div", "voucher-code", padWithZeroes(data['Code'], vcodeLength)));
+
+                        // Add details about the duration
+                        let durationText = data['Duration'] ? data['Duration'].replace(".0", " ") : "";
+
+                        // Handle durations divisible by 24 hours
+                        if (durationText.endsWith("Hours") && parseInt(durationText) % 24 === 0) {
+                            durationText = `${parseInt(durationText) / 24} Days`;
+                        }
+
+                        voucher.appendChild(createElement("div", "voucher-details", `Duration: ${durationText}`));
+
+                        // Add details about the type of voucher
+                        voucher.appendChild(createElement("div", "voucher-details", `Type: Valid for ${data['Type'].replace(/\D/g, '')} User(s)`));
+
+                        // Add WiFi name details
+                        const wifiNameSpan = createElement("span", "", "WiFi Name: ");
+                        const ssidStrong = createElement("strong", "", data['Portals'].replace("[", "").replace("]", ""));
                         wifiNameSpan.appendChild(ssidStrong);
-    
-                        // Append wifiNameSpan (containing WiFi Name and SSID) to voucherDetails3
-                        voucherDetails3.appendChild(wifiNameSpan);
-    
-                        voucher.appendChild(voucherDetails3);
-    
-                        // Append the voucher to the container
+                        const wifiDetails = createElement("div", "voucher-details");
+                        wifiDetails.appendChild(wifiNameSpan);
+                        voucher.appendChild(wifiDetails);
+
+                        // Append the voucher element to the container
                         vouchersContainer.appendChild(voucher);
                     }
-                }
+                });
             })
             .catch(error => {
+                // Display an alert in case of any errors
                 alert(error.message);
             });
-    </script>   
+    </script>
 
 </body>
 
