@@ -40,6 +40,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 `put_md_url_here.txt` (File should contain MacroDroid WebHook URL)
 
+`creds.json` (File should contain your Omada Cloud Controller credentials)
 
 ## Installation & Configuration
 **INVOLVED APPS:**
