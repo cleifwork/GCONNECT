@@ -116,11 +116,7 @@ def refresh_access_token():
         "grant_type": "refresh_token",
     }
 
-    # headers = {"Content-Type": "application/json"}
-
     try:
-        # Use `data=json.dumps(payload)` instead of `json=payload`
-        # response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False)
         response = requests.post(url, params=params, verify=False)
  
         if response.status_code == 200:
