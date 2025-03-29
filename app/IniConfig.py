@@ -6,11 +6,15 @@ import time
 import shutil
 import subprocess
 import webbrowser
+import GConnectAPI
 from tkinter import messagebox
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 from utils import exe_dir, FILE_PATHS, check_file_exists
+
+# Call the main function from GConnectAPI.py to ensure the latest CSV is fetched
+GConnectAPI.main()
 
 # List to store error messages and actions
 error_messages = []
@@ -43,7 +47,7 @@ if error_messages:
     sys.exit()
 
 # Continue with the rest of your script if all checks pass
-print("All initial checks passed. Proceeding...\n")
+print("\nAll initial checks passed. Proceeding...\n")
 time.sleep(1)
 
 
