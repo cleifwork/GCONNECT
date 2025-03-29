@@ -1,5 +1,5 @@
 > [!IMPORTANT] 
-> _UNDER CONSTRUCTION_
+> _STILL UNDER CONSTRUCTION_
 
 # GCONNECT APP: Wi-Fi Voucher Automation Middleware
 > [!NOTE] 
