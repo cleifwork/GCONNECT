@@ -24,7 +24,9 @@ FILE_PATHS = {
     "main_folder_id": os.path.join(exe_dir, 'main_folder_id.txt'),
     "sub_folder_name": os.path.join(exe_dir, 'put_folder_name_here.txt'),
     "sub_folder_id": os.path.join(exe_dir, 'put_folder_id_here.txt'),
-    "file_ids": os.path.join(exe_dir, 'put_file_ids_here.txt')
+    "file_ids": os.path.join(exe_dir, 'put_file_ids_here.txt'),
+    "tokens": os.path.join(exe_dir, 'token.json'),
+    "creds": os.path.join(exe_dir, 'creds.json')
 }
 
 def check_file_exists(file_path, error_message=None):
