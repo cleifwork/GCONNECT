@@ -189,6 +189,8 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - Lock MacroDroid in recent app tray (OPTIONAL)
 - Intall MacroDroid Helper from Play Store (OPTIONAL)
 - Grant MacroDroid WRITE_SECURE_SETTINGS using ADB Hack (OPTIONAL)
+- Enable Extended Unlock or Smart Unlock (OPTIONAL)
+- Screen Pin MacroDroid (OPTIONAL)
 ```
 
 > [!IMPORTANT]
