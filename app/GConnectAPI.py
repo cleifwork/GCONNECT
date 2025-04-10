@@ -3,10 +3,15 @@ import time
 import json
 import requests
 import logging
+import warnings
+from urllib3.exceptions import InsecureRequestWarning
 from utils import FILE_PATHS
 
 # Suppress logs from googleapiclient.discovery_cache
 logging.getLogger("googleapiclient.discovery_cache").setLevel(logging.ERROR)
+
+# Suppress only InsecureRequestWarnings globally
+warnings.filterwarnings("ignore", category=InsecureRequestWarning)
 
 # Configure logging
 class CustomStreamHandler(logging.StreamHandler):
@@ -24,6 +29,10 @@ logging.basicConfig(
         CustomStreamHandler()  # Use custom stream handler for console output
     ]
 )
+
+# Ensure urllib3 logs InsecureRequestWarnings to the log file only
+urllib3_logger = logging.getLogger("urllib3")
+urllib3_logger.setLevel(logging.WARNING)  # Log warnings but don't display in the console
 
 # File paths
 TOKEN_FILE = FILE_PATHS["tokens"]
@@ -162,8 +171,9 @@ def is_file_fresh(file_path):
 
 # Fetch CSV data
 def fetch_csv_from_api():
-    omadac_id = "8663e0ef7add5a56bfc9dabe5adc9b14"
-    site_id = "647eb8d0fb5fdb303898f445"
+    creds = load_credentials()
+    omadac_id = creds.get("omadac_id")
+    site_id = creds.get("site_id")
     api_url = f"https://aps1-omada-northbound.tplinkcloud.com/openapi/v1/{omadac_id}/files/hotspot/sites/{site_id}/vouchers/export"
 
     headers = {
