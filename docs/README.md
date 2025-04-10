@@ -245,7 +245,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - Optimized and refactored error handling 
 - Added utility script for common paths and functions
 - The app is now portable no python and node.js intallation needed (launch anywhere)
-- Implemented cache-busting in PRINT VOUCHER function (no need to clear cache when loading new source file)
+- Implemented cache-busting in PRINT VOUCHER function (no need to clear cache when loading new csv file)
 - Optimized code in "PrintVoucher.html" (for modularization and readability) 
 - Added Voucher API integration (directly fetching "VoucherList.csv" from the controller)
 
