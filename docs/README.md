@@ -249,7 +249,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 
 ## Screenshots
-![App Screenshot](https://drive.google.com/uc?export=view&id=1e4YSlZMKv2KPSJopF8owPT_tNJgetqAF)
+![App Screenshot](https://drive.google.com/uc?export=view&id=1WJ4y4uSUbzCsRefyo24yspFGiteloGoM)
 
 
 ## Support
