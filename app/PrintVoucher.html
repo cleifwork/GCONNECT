@@ -64,12 +64,13 @@
                 });
         }
     
-        // Function to check if an image exists IF NOT use the static background
+        // Function to check if an image exists with cache-busting
         function imageExists(url) {
-            return fetch(url, { method: 'HEAD' })
+            const cacheBustedUrl = `${url}?nocache=${new Date().getTime()}`;
+            return fetch(cacheBustedUrl, { method: 'HEAD' })
                 .then(response => response.ok)
                 .catch(() => false);
-        }        
+        }
 
         // Function to create a DOM element with text content
         function createElement(tag, className, textContent = "") {
@@ -161,6 +162,7 @@
                             const imagePath = `./img/vlogo/${priceImageMap[data['Price']]}`;
                             imageExists(imagePath).then(exists => {
                                 if (exists) {
+                                    const cacheBustedUrl = `${imagePath}?nocache=${new Date().getTime()}`;
                                     voucher.style.backgroundImage = `url(${imagePath})`;
                                 }
                             });

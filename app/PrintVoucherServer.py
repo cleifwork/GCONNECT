@@ -174,9 +174,9 @@ def combine_images_from_tmp(base_dir):
                     # print(f"Combined image saved as {output_image_path}")
                 except Exception as e:
                     print(f"Error combining images {tmp_image_path} and {voucher_logo_path}: {e}")
-            else:
-                print(f"Image {tmp_image_path} does not exist.")
-
+            # else:
+            #     print(f"Image {tmp_image_path} does not exist.")
+            #     pass
 
 def start_http_server():
     # Construct paths to node.exe and http-server
@@ -213,7 +213,8 @@ def open_browser():
     print(f"Customizing your vouchers now...")
     time.sleep(1)
 
-    url = f"http://localhost:8080/app/PrintVoucher.html"
+    timestamp = int(time.time())  # Cache-busting timestamp
+    url = f"http://localhost:8080/app/PrintVoucher.html?nocache={timestamp}"
 
     # Open the URL in the default browser
     subprocess.Popen(f'start "" "{url}"', shell=True)
