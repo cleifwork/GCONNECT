@@ -9,6 +9,8 @@ from PIL import Image
 from tkinter import messagebox
 from utils import FILE_PATHS, exe_dir
 
+# Define the base directory path
+base_dir = os.path.join(exe_dir, 'img')
 
 def check_voucher_list():
     # Check in the root folder
@@ -130,6 +132,44 @@ def resize_and_center(image, box_width, box_height):
     return centered_image
 
 
+def combine_images_from_tmp(base_dir):
+    """
+    Combines images from the 'tmp' subfolder with 'voucher_logo.png' and saves them in the 'vlogo' subfolder.
+    
+    :param base_dir: The base directory where the 'vlogo', 'tmp', and 'img' folders are located.
+    """
+    # Define subfolder paths relative to the base directory
+    vlogo_path = os.path.join(base_dir, 'vlogo')
+    tmp_path = os.path.join(base_dir, 'vlogo', 'tmp')
+    img_path = base_dir
+
+    # Check if folder exists and is not empty
+    if os.path.exists(vlogo_path) and len(os.listdir(vlogo_path)) > 0:
+        # Loop through the images in the tmp folder
+        for i in range(1, 10):  # Assuming there are 9 images named png_1.png, png_2.png, etc.
+            tmp_image_path = os.path.join(tmp_path, f"png_{i}.png")
+            voucher_logo_path = os.path.join(img_path, "voucher_logo.png")
+            output_image_path = os.path.join(vlogo_path, f"vlogo{i}.png")
+
+            # Check if the tmp image exists
+            if os.path.exists(tmp_image_path):
+                try:
+                    # Open the two images (overlay and base)
+                    base_image = Image.open(voucher_logo_path).convert("RGBA")
+                    overlay_image = Image.open(tmp_image_path).convert("RGBA")
+
+                    # Combine the images by alpha compositing
+                    combined_image = Image.alpha_composite(base_image, overlay_image)
+
+                    # Save the combined image in the vlogo folder
+                    combined_image.save(output_image_path, "PNG")
+                    print(f"Combined image saved as {output_image_path}")
+                except Exception as e:
+                    print(f"Error combining images {tmp_image_path} and {voucher_logo_path}: {e}")
+            else:
+                print(f"Image {tmp_image_path} does not exist.")
+
+
 def start_http_server():
     # Construct paths to node.exe and http-server
     http_server_command = os.path.join(exe_dir, 'nodejs', 'node.exe')
@@ -189,26 +229,24 @@ def main():
     # Check if VoucherList exist
     check_voucher_list()
 
-    # Define the base directory path
-    base_dir = os.path.join(exe_dir, 'img')
-
     # Define subfolder paths relative to the base directory
-    subfolder_path = os.path.join(base_dir, 'put_qr_logo_here')
+    qr_logo_path = os.path.join(base_dir, 'put_qr_logo_here')
 
      # Define file paths
-    qr_code_path = os.path.join(subfolder_path, 'qr_code.png')
-    logo_path = os.path.join(subfolder_path, 'logo.png')   
+    qr_code_path = os.path.join(qr_logo_path, 'qr_code.png')
+    logo_path = os.path.join(qr_logo_path, 'logo.png')   
 
     # Check if "put_qr_logo_here" folder exists or if qr_code.png or logo.png are missing
-    if not os.path.exists(subfolder_path) or not os.path.isfile(qr_code_path) or not os.path.isfile(logo_path):
+    if not os.path.exists(qr_logo_path) or not os.path.isfile(qr_code_path) or not os.path.isfile(logo_path):
+        combine_images_from_tmp(base_dir)
         start_http_server()
         open_browser()
         return
 
     # Define file paths for cropped images and the temp image
-    qr_code_cropped_path = os.path.join(subfolder_path, 'qr_code_cropped.png')
-    logo_cropped_path = os.path.join(subfolder_path, 'logo_cropped.png')
-    qr_logo_temp_path = os.path.join(subfolder_path, 'qr_logo_temp.png')
+    qr_code_cropped_path = os.path.join(qr_logo_path, 'qr_code_cropped.png')
+    logo_cropped_path = os.path.join(qr_logo_path, 'logo_cropped.png')
+    qr_logo_temp_path = os.path.join(qr_logo_path, 'qr_logo_temp.png')
 
     # Remove background and crop QR code and logo images
     remove_background_and_crop(qr_code_path, qr_code_cropped_path)
@@ -253,8 +291,9 @@ def main():
 
     # Rename the folder
     new_folder_path = os.path.join(base_dir, 'put_qr_logo_here_UPDATED')
-    os.rename(subfolder_path, new_folder_path)    
+    os.rename(qr_logo_path, new_folder_path)    
 
+    combine_images_from_tmp(base_dir)
     start_http_server()
     open_browser()
 
