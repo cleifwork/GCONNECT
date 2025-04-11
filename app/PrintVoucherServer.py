@@ -145,41 +145,37 @@ def combine_images_from_tmp(base_dir):
     # Check if all expected images are already in the vlogo folder
     expected_images = [os.path.join(vlogo_path, f"vlogo{i}.png") for i in range(1, 10)]
     if all(os.path.exists(image) for image in expected_images):
-        print("All combined images already exist. Exiting function.")
+        # print("All combined images already exist. Exiting function.")
         return
+    else:
+        # Loop through the images in the tmp folder
+        for i in range(1, 10):  # Assuming there are 9 images named png_1.png, png_2.png, etc.
+            tmp_image_path = os.path.join(tmp_path, f"png_{i}.png")
+            voucher_logo_path = os.path.join(img_path, "voucher_logo.png")
+            output_image_path = os.path.join(vlogo_path, f"vlogo{i}.png")
 
-    # Ensure the vlogo folder exists
-    if not os.path.exists(vlogo_path):
-        os.makedirs(vlogo_path)
+            # Skip if the output image already exists
+            if os.path.exists(output_image_path):
+                # print(f"Image {output_image_path} already exists. Skipping.")
+                continue
 
-    # Loop through the images in the tmp folder
-    for i in range(1, 10):  # Assuming there are 9 images named png_1.png, png_2.png, etc.
-        tmp_image_path = os.path.join(tmp_path, f"png_{i}.png")
-        voucher_logo_path = os.path.join(img_path, "voucher_logo.png")
-        output_image_path = os.path.join(vlogo_path, f"vlogo{i}.png")
+            # Check if the tmp image exists
+            if os.path.exists(tmp_image_path):
+                try:
+                    # Open the two images (overlay and base)
+                    base_image = Image.open(voucher_logo_path).convert("RGBA")
+                    overlay_image = Image.open(tmp_image_path).convert("RGBA")
 
-        # Skip if the output image already exists
-        if os.path.exists(output_image_path):
-            # print(f"Image {output_image_path} already exists. Skipping.")
-            continue
+                    # Combine the images by alpha compositing
+                    combined_image = Image.alpha_composite(base_image, overlay_image)
 
-        # Check if the tmp image exists
-        if os.path.exists(tmp_image_path):
-            try:
-                # Open the two images (overlay and base)
-                base_image = Image.open(voucher_logo_path).convert("RGBA")
-                overlay_image = Image.open(tmp_image_path).convert("RGBA")
-
-                # Combine the images by alpha compositing
-                combined_image = Image.alpha_composite(base_image, overlay_image)
-
-                # Save the combined image in the vlogo folder
-                combined_image.save(output_image_path, "PNG")
-                # print(f"Combined image saved as {output_image_path}")
-            except Exception as e:
-                print(f"Error combining images {tmp_image_path} and {voucher_logo_path}: {e}")
-        else:
-            print(f"Image {tmp_image_path} does not exist.")
+                    # Save the combined image in the vlogo folder
+                    combined_image.save(output_image_path, "PNG")
+                    # print(f"Combined image saved as {output_image_path}")
+                except Exception as e:
+                    print(f"Error combining images {tmp_image_path} and {voucher_logo_path}: {e}")
+            else:
+                print(f"Image {tmp_image_path} does not exist.")
 
 
 def start_http_server():
