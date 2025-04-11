@@ -248,7 +248,8 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - Implemented cache-busting in PRINT VOUCHER function (no need to clear cache when loading new csv file)
 - Optimized code in "PrintVoucher.html" (for modularization and readability) 
 - Added app logger to quickly identify newly encountered issues
-- Added Voucher API integration (directly fetching "VoucherList.csv" from the controller)
+- Added voucher API integration (directly fetching "VoucherList.csv" from the controller)
+- Added option to add pokemon icons in your vouchers
 
 
 ## Screenshots
