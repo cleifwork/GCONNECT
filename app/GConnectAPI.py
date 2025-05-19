@@ -76,11 +76,9 @@ def save_tokens(access_token, refresh_token, expires_in):
     except Exception as e:
         logging.error(f"Failed to save tokens: {e}")
 
-
-
 def generate_new_tokens():
     creds = load_credentials()
-    url = "https://aps1-omada-northbound.tplinkcloud.com/openapi/authorize/token?grant_type=client_credentials"
+    url = f"{creds.get('interface_access_url')}/openapi/authorize/token?grant_type=client_credentials"
     payload = {
         "omadacId": creds.get("omadac_id"),
         "client_id": creds.get("client_id"),
@@ -104,7 +102,6 @@ def generate_new_tokens():
         logging.error(f"Failed to connect to API: {e}")
     return None
 
-
 # Refresh the access token using the refresh token
 def refresh_access_token():
     creds = load_credentials()
@@ -115,7 +112,7 @@ def refresh_access_token():
         logging.warning("No refresh token found! Re-authenticating...")
         return generate_new_tokens()
 
-    url = "https://aps1-omada-northbound.tplinkcloud.com/openapi/authorize/token"
+    url = f"{creds.get('interface_access_url')}/openapi/authorize/token"
 
     # Request payload (mimicking cURL format)
     params = {
@@ -149,7 +146,6 @@ def refresh_access_token():
     logging.warning("Refresh token failed, attempting full re-authentication...")
     return generate_new_tokens()
 
-
 # Get a valid access token, refreshing or generating if necessary
 def get_access_token():
     tokens = load_tokens()
@@ -174,7 +170,7 @@ def fetch_csv_from_api():
     creds = load_credentials()
     omadac_id = creds.get("omadac_id")
     site_id = creds.get("site_id")
-    api_url = f"https://aps1-omada-northbound.tplinkcloud.com/openapi/v1/{omadac_id}/files/hotspot/sites/{site_id}/vouchers/export"
+    api_url = f"{creds.get('interface_access_url')}/openapi/v1/{omadac_id}/files/hotspot/sites/{site_id}/vouchers/export"
 
     headers = {
         "Authorization": f"AccessToken={get_access_token()}",
