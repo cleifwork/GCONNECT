@@ -1,6 +1,3 @@
-> [!IMPORTANT] 
-> _STILL UNDER CONSTRUCTION_
-
 # GCONNECT APP: Wi-Fi Voucher Automation Middleware
 > [!NOTE] 
 > _A Macro Generating Solution for MacroDroid. A tool to automate E-Wallet payments (GCash, Maya). A WiFi Voucher Print-out Customizer for Omada Controllers **(With Omada Cloud Controller Voucher API Integration)**_
@@ -42,7 +39,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 `put_md_url_here.txt` (File should contain MacroDroid WebHook URL)
 
-`creds.json` (File should contain your Omada Cloud Controller credentials)
+`creds.json` (File should contain your Omada Cloud-Based Controller credentials)
 
 ## Installation & Configuration
 **INVOLVED APPS:**
@@ -71,13 +68,33 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 > [!NOTE] 
 > Although not tested with SDN and OC200, it should still function properly as long as their exported CSV file adheres to the [Cloud-Based Controller format](https://www.facebook.com/photo?fbid=122120593298569233&set=gm.1987184375082838&idorvanity=1776872022780742).
 - Login to your [Omada Cloud Controller](https://omada.tplinkcloud.com/)
--   Launch your Controller
--   Go to Settings (Global)
--   Select Export Data
--   Export List: Voucher Codes  
-    - Format: CSV 
-    - Portal: _"Voucher WiFi Portal Name"_ 
-    - Save file to _" .. / GCONNECT / app / raw_csv "_
+- Launch your Controller (Global View)
+- Go to Settings
+- Select Platform Integration
+- Click **+Add New App**
+    - App Name: **GConnect App**
+    - Mode: Client
+    - Role: Admin
+    - Site Privileges: Sites
+    - Select your site name
+    - Click **Create**
+- Click show icon under ACTION column
+    - Obtain **"Interface Access Address"** and **"Omada ID"**
+    - Copy & paste these credentials to **"..GCONNECT / app / creds.json"**
+    - INFO: You can open **"creds.json"** file via notepad
+    - Click OK
+    - Obtain **"Client ID"** and **"CLIENT SECRET"**
+    - Copy & paste these credentials to **"..GCONNECT / app / creds.json"**
+- Click **Global View** drop down then select your site name
+- Click **Hotspot** module from the side panel
+    - INFO: This will open a new tab
+    - Click **Vouchers** dropdown
+    - Click **Voucher Groups** 
+    - NOTES: If you have existing vouchers already proceed below (IF NONE create one first)
+        - Click the **"Print Unused Vouchers"** icon under ACTION column
+        - Obtain **Site ID** from the URL of the voucher print preview
+        - INFO: Side ID is the string in between **?site=** and **&omadacId**
+        - Copy & paste this to **"..GCONNECT / app / creds.json"**
 
 **3. SHOULD HAVE A GOOGLE ACCOUNT**
 > [!TIP]
