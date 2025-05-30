@@ -470,10 +470,8 @@ if __name__ == "__main__":
         for file_id in file_ids:
             modified_content = modified_content.replace("PASTE_FILE_ID_HERE", file_id, 1)
 
-        # Replace each occurrence of PASTE_API_KEY_HERE with a different API key
-        for i in range(len(file_ids)):
-            api_key_to_use = api_key[i % len(api_key)]  # Use modulo to cycle through the available API keys
-            modified_content = modified_content.replace("PASTE_API_KEY_HERE", api_key_to_use, 1)
+        # Replace all PASTE_API_KEY_HERE placeholder occurence at once         
+        modified_content = modified_content.replace("PASTE_API_KEY_HERE", api_key[0])
 
         duration_string = '","variable":{"textValue":"0 minutes'
         type_string = '","variable":{"textValue":"0'
