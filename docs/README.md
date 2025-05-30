@@ -81,19 +81,19 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - Click show icon under ACTION column
     - Obtain **"Interface Access Address"** and **"Omada ID"**
     - Copy & paste these credentials to **"..GCONNECT / app / creds.json"**
-    - INFO: You can open **"creds.json"** file via notepad
+    - INFO: _You can open **"creds.json"** file via notepad_
     - Click OK
     - Obtain **"Client ID"** and **"CLIENT SECRET"**
     - Copy & paste these credentials to **"..GCONNECT / app / creds.json"**
 - Click **Global View** drop down then select your site name
 - Click **Hotspot** module from the side panel
-    - INFO: This will open a new tab
+    - INFO: _This will open a new tab_
     - Click **Vouchers** dropdown
     - Click **Voucher Groups** 
-    - NOTES: If you have existing vouchers already proceed below (IF NONE create one first)
+    - NOTES: _If you have existing vouchers already proceed below (IF NONE create one first)_
         - Click the **"Print Unused Vouchers"** icon under ACTION column
         - Obtain **Site ID** from the URL of the voucher print preview
-        - INFO: Side ID is the string in between **?site=** and **&omadacId**
+        - INFO: _Site ID is the string in between **"?site="** and **"&omadacId"**_
         - Copy & paste this to **"..GCONNECT / app / creds.json"**
 
 **3. SHOULD HAVE A GOOGLE ACCOUNT**
