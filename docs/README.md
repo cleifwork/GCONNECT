@@ -263,6 +263,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - Added app logger to quickly identify newly encountered issues
 - Added voucher API integration (directly fetching "VoucherList.csv" from the controller)
 - Added option to add pokemon icons in your vouchers
+- Updated macro template for optimized amount filtering
 
 
 ## Screenshots
