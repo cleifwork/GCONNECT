@@ -1,4 +1,5 @@
 import os
+import re
 import csv
 import sys
 import glob
@@ -470,8 +471,10 @@ if __name__ == "__main__":
         for file_id in file_ids:
             modified_content = modified_content.replace("PASTE_FILE_ID_HERE", file_id, 1)
 
-        # Replace all PASTE_API_KEY_HERE placeholder occurence at once         
-        modified_content = modified_content.replace("PASTE_API_KEY_HERE", api_key[0])
+        # Replace each occurrence of PASTE_API_KEY_HERE with the API key
+        for i in range(len(file_ids)): 
+            api_key_to_use = api_key[i % len(api_key)]  # Use modulo to cycle through the available API keys
+            modified_content = modified_content.replace("PASTE_API_KEY_HERE", api_key_to_use, 1)
 
         duration_string = '","variable":{"textValue":"0 minutes'
         type_string = '","variable":{"textValue":"0'
@@ -495,10 +498,14 @@ if __name__ == "__main__":
         macro_action2_path = os.path.join(FILE_PATHS["macro_mod"], 'action_2')
 
         replacements = {}  # Initialize the replacements dictionary
+        amount_ids = []  # Initialize list to collect price IDs
 
         with open(voucher_amt_path, "r", encoding="utf-8") as amount_file:
             for i, line in enumerate(amount_file, start=1):
                 price, duration, type = line.strip().split(',')  # Assuming the tuple is Price, Duration, Type
+
+                amount_ids.append(price)  # Collect price (1st column)
+
                 replacements.update({
                     f"VCOD_0{i}": f"VCOD_{price}" if i <= len(voucher_amounts) else f"VCOD_0{i}",
                     f"0{i}PHP": f"{price}PHP" if i <= len(voucher_amounts) else f"0{i}PHP",
@@ -510,6 +517,11 @@ if __name__ == "__main__":
                     f"PHP0{i}": f"PHP{price}" if i <= len(voucher_amounts) else f"PHP0{i}"
                 })
             loop_stopped = i + 1    
+
+            # Perform the final regex replacement after collecting all amount_ids and finishing all content replacements
+            if amount_ids:
+                new_group = f"({'|'.join(amount_ids)})"
+                modified_content = re.sub(r"\((?:\d+\|?)+\)", new_group, modified_content)
 
 
             def replace_content_in_file(search_path, main_content):
