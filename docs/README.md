@@ -54,7 +54,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 > [!NOTE] 
 > _Tested in Windows 10 and Windows 11_
 		
-- Download the **[GCONNECT-V3](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-V3)**
+- Download the **[GCONNECT-V3.5](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-V3.5)**
 - Click Code > Download Zip
 - Extract main folder to your Desktop
 - Launch the app thru _'LaunchPad.bat'_.
@@ -95,6 +95,8 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
         - Obtain **Site ID** from the URL of the voucher print preview
         - INFO: _Site ID is the string in between **"?site="** and **"&omadacId"**_
         - Copy & paste this to **"..GCONNECT / app / creds.json"**
+> [!TIP]
+> **How to obtain [Omada Cloud-Based Controller Credentials](https://www.youtube.com/watch?v=OeC7AGvm3iY)**
 
 **3. SHOULD HAVE A GOOGLE ACCOUNT**
 > [!TIP]
