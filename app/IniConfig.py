@@ -14,8 +14,15 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 from utils import exe_dir, FILE_PATHS, check_file_exists
 
-# Call the main function from GConnectAPI.py to ensure the latest CSV is fetched
-GConnectAPI.main()
+# Check if any file in csv_folder contains file that ends with .csv
+csv_files = glob.glob(os.path.join(FILE_PATHS["csv_folder"], '*.csv'))
+skip_api_call = bool(csv_files)
+
+if skip_api_call:
+    print("VoucherList CSV already exists. Skipping API call.")
+else:
+    print("No VoucherList CSV found. Running GConnectAPI...")
+    GConnectAPI.main()
 
 # List to store error messages and actions
 error_messages = []
