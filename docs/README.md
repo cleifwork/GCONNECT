@@ -266,6 +266,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - Added voucher API integration (directly fetching "VoucherList.csv" from the controller)
 - Added option to add pokemon icons in your vouchers
 - Updated macro template for optimized amount filtering
+- Making file source hybrid (local or API)
 
 
 ## Screenshots
