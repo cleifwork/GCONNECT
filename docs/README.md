@@ -1,10 +1,10 @@
 # GCONNECT APP: Wi-Fi Voucher Automation Middleware
 > [!NOTE] 
-> _A Macro Generating Solution for MacroDroid. A tool that can automate E-Wallet payments (GCash, Maya) without the need of third-party payment gateways, therefore, no subscription needed. A WiFi Voucher Print-out Customizer for Omada Controllers **(With Omada Cloud Controller Voucher API Integration)**_
+> _**A Macro Generating Solution for MacroDroid**. A versatile tool that automates E-Wallet payments (GCash, Maya) without relying on third-party payment gateways—no subscriptions required. With its hybrid design, the app works seamlessly whether connected to **Omada Controllers via API** or operating in a **Non-Omada setup through local CSV files**. It also features a **Wi-Fi Voucher Print-out Customizer**._
 
 The **GCONNECT APP** is a powerful middleware solution designed to streamline the voucher management process between Omada Cloud Controller exports and MacroDroid's pre-configured macros. This application acts as a bridge, automating the segregation of voucher data based on pricing and facilitating seamless transmission to MacroDroid.
 
-**MacroDroid** then effortlessly utilizes **SMS and push notifications from e-wallet apps** to activate predefined actions, creating a flexible and responsive system for managing vouchers.
+**MacroDroid** then effortlessly utilizes **Push Notifications from e-wallet apps** to activate predefined actions, creating a flexible and responsive system for managing vouchers.
 ## Key Features
 
 - **Automated Voucher Segregation:** GCONNECT intelligently categorizes, and segregates voucher data exported from Omada Cloud Controller, ensuring efficient organization based on pricing tiers.
