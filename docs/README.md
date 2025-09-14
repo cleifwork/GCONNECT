@@ -284,8 +284,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 ## Related
 > [!TIP] 
-> **Ideal Voucher Printing Preference**
-> _This can print up to 32 vouchers in a single page_
+> **Ideal Voucher Printing Preference** _(This can print up to 32 vouchers in a single page)_
 - Layout              : **Landscape**
 - Paper Size          : **Letter** _(short)_
 - Margin              : **None**   
