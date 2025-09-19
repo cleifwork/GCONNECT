@@ -266,7 +266,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 - Added voucher API integration (directly fetching "VoucherList.csv" from the controller)
 - Added option to add pokemon icons in your vouchers
 - Updated macro template for optimized amount filtering
-- Making file source hybrid (local or API)
+- Making file source hybrid (local or API) for non-omada users
 
 
 ## Screenshots
@@ -284,13 +284,12 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 ## Related
 > [!TIP] 
-> **Ideal Voucher Printing Preference**
+> **Ideal Voucher Printing Preference** _(This can print up to 32 vouchers in a single page)_
 - Layout              : **Landscape**
 - Paper Size          : **Letter** _(short)_
 - Margin              : **None**   
 - Scale               : **Custom (93%)**
 - Headers & Footers   : **Unchecked (disabled)**
 - Background Graphics : **Checked** _(if you have logo)_
-> [!NOTE]
-> _This can print up to 32 vouchers in a single page_
+
 
