@@ -38,7 +38,7 @@ class App(customtkinter.CTk):
             "hover_color": "#0057b0",
         }
 
-        self.title("GConnect V3.5")
+        self.title("GConnect V3.5.1")
         self.geometry("300x600")
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
