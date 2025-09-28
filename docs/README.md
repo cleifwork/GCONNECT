@@ -22,7 +22,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 ## Demo
 -   [GConnect App Demo](https://www.youtube.com/watch?v=eXLdvv9VYJA)
--   [GConnect Installation & Configuration](https://www.youtube.com/watch?v=O_8u0-8A6Nk)
+-   [GConnect Installation & Configuration](https://www.youtube.com/watch?v=tGytgRnkHoY)
 
 
 ## Authors
@@ -260,13 +260,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 
 ## Optimizations
-- Implemented cache-busting in PRINT VOUCHER function (no need to clear cache when loading new csv file)
-- Optimized code in "PrintVoucher.html" (for modularization and readability) 
-- Added app logger to quickly identify newly encountered issues
-- Added voucher API integration (directly fetching "VoucherList.csv" from the controller)
-- Added option to add pokemon icons in your vouchers
-- Updated macro template for optimized amount filtering
-- Making file source hybrid (local or API) for non-omada users
+- Implemented new temp.macro ditching the need of API Key
 
 
 ## Screenshots
