@@ -22,7 +22,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 ## Demo
 -   [GConnect App Demo](https://www.youtube.com/watch?v=eXLdvv9VYJA)
--   [GConnect Installation & Configuration](https://www.youtube.com/watch?v=O_8u0-8A6Nk)
+-   [GConnect Installation & Configuration](https://www.youtube.com/watch?v=tGytgRnkHoY)
 
 
 ## Authors
