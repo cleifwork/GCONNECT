@@ -10,8 +10,6 @@ FILE_PATHS = {
     "backup_folder": os.path.join(exe_dir, 'backup'),
     "csv_folder": os.path.join(exe_dir, 'raw_csv'),
     "macro_mod": os.path.join(exe_dir, 'macro_mod'),
-    "service_account": os.path.join(exe_dir, 'service_account.json'),
-    "api_key": os.path.join(exe_dir, 'put_api_key_here.txt'),
     "md_url": os.path.join(exe_dir, 'put_md_url_here.txt'),
     "voucher_amt": os.path.join(exe_dir, 'put_voucher_amt_here.txt'),
     "vcodlen": os.path.join(exe_dir, 'put_vcodlen_here.txt'),

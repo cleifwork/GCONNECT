@@ -5,11 +5,12 @@ import sys
 import glob
 import time
 import shutil
-import subprocess
 import webbrowser
 import GConnectAPI
 from tkinter import messagebox
-from google.oauth2 import service_account
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 from utils import exe_dir, FILE_PATHS, check_file_exists
@@ -24,38 +25,32 @@ else:
     print("No VoucherList CSV found. Running GConnectAPI...")
     GConnectAPI.main()
 
-# List to store error messages and actions
+# --- OAuth credential check ---
 error_messages = []
 actions_to_take = []
 
-# Initial Checks
-for file_name, file_path in FILE_PATHS.items():
-    if file_name == "service_account" or file_name == "api_key":  # Only check specific files
-        if not os.path.isfile(file_path):
-            error_messages.append(f"Please add '{os.path.basename(file_path)}' to your root folder.")
-            actions_to_take.append(lambda: os.startfile(exe_dir))
+client_secret_path = os.path.join(exe_dir, "client_secret.json")
+token_path = os.path.join(exe_dir, "token.json")
 
-        elif file_name == "api_key":  # Check if 'put_api_key_here.txt' is empty
-            with open(file_path, "r") as api_key_file:
-                api_key = api_key_file.read().strip()
+# Check for the required client_secret.json
+if not os.path.isfile(client_secret_path):
+    error_messages.append("Missing 'client_secret.json' file.\n\n"
+                          "Download it from Google Cloud Console (OAuth Client ID - Desktop App)\n"
+                          "and place it in your application folder.")
+    actions_to_take.append(lambda: os.startfile(exe_dir))
 
-            if not api_key:
-                error_messages.append("Please add your GDrive API Key to 'put_api_key_here.txt'")
-                actions_to_take.append(lambda: subprocess.run(['notepad.exe', file_path], check=True))
+# Optional: Warn if token.json is missing (not an error, but first-time login)
+if not os.path.isfile(token_path):
+    print("⚠️ 'token.json' not found — first-time login will be required.")
 
-# Display all error messages in a single prompt
+# Display error messages and handle
 if error_messages:
-    error_message = "\n".join(error_messages)
-    messagebox.showerror("Error", error_message)
-
-    # Execute actions
+    messagebox.showerror("Error", "\n\n".join(error_messages))
     for action in actions_to_take:
         action()
-
     sys.exit()
 
-# Continue with the rest of your script if all checks pass
-print("\nAll initial checks passed. Proceeding...\n")
+print("\n✅ All initial checks passed. Proceeding...\n")
 time.sleep(1)
 
 
@@ -66,8 +61,6 @@ def manage_backup_folder():
     os.makedirs(backup_folder, exist_ok=True)
 
     files_to_backup = [
-        FILE_PATHS["service_account"],
-        FILE_PATHS["api_key"],
         FILE_PATHS["main_folder_id"],
         FILE_PATHS["sub_folder_id"],
         FILE_PATHS["file_ids"],
@@ -228,36 +221,57 @@ print("Voucher files and logger created successfully!")
 class GoogleDriveManager:
 
     def __init__(self, file_paths):
-        # Reference the credentials path from FILE_PATHS
-        self.credentials_path = file_paths["service_account"]
-  
         self.SCOPES = ['https://www.googleapis.com/auth/drive.file']
         self.API_VERSION = 'v3'
 
-        # Load credentials from the service account file
-        self.credentials = service_account.Credentials.from_service_account_file(self.credentials_path, scopes=self.SCOPES)
-        
-        # Create the Google Drive service
+        # 🔹 Load credentials or trigger browser login
+        self.credentials = self.get_user_credentials()
+
+        # 🔹 Create the Google Drive service
         self.drive_service = build('drive', self.API_VERSION, credentials=self.credentials)
 
+    def get_user_credentials(self):
+        """Handles OAuth login flow (only once, refreshes automatically)."""
+        creds = None
+        token_path = os.path.join(exe_dir, 'token.json')  # Save token near your app
+
+        # Load existing token if available
+        if os.path.exists(token_path):
+            creds = Credentials.from_authorized_user_file(token_path, self.SCOPES)
+
+        # If no valid credentials, start OAuth flow
+        if not creds or not creds.valid:
+            if creds and creds.expired and creds.refresh_token:
+                creds.refresh(Request())
+                print("🔄 Token refreshed automatically.")
+            else:
+                print("🌐 Launching browser for first-time Google login...")
+                flow = InstalledAppFlow.from_client_secrets_file(
+                    os.path.join(exe_dir, 'client_secret.json'),
+                    self.SCOPES
+                )
+                creds = flow.run_local_server(port=0)
+                print("✅ Login successful! Token saved locally.")
+
+            # Save token for future silent logins
+            with open(token_path, 'w') as token_file:
+                token_file.write(creds.to_json())
+
+        return creds
 
     def create_and_share_folder(self, folder_name, parent_id=None, role='writer'):
         folder_id = self.find_folder_id(folder_name, parent_id)
         if not folder_id:
             folder_id = self.create_folder(folder_name, parent_id)
-
         self.share_folder(folder_id, role=role)
         return folder_id
-
 
     def find_folder_id(self, folder_name, parent_id=None):
         query = f"name='{folder_name}' and mimeType='application/vnd.google-apps.folder'"
         if parent_id:
             query += f" and '{parent_id}' in parents"
-
         folders = self.drive_service.files().list(q=query).execute().get('files', [])
         return folders[0]['id'] if folders else None
-
 
     def create_folder(self, folder_name, parent_id=None):
         folder_metadata = {
@@ -265,10 +279,8 @@ class GoogleDriveManager:
             'mimeType': 'application/vnd.google-apps.folder',
             'parents': [parent_id] if parent_id else None
         }
-
         folder = self.drive_service.files().create(body=folder_metadata, fields='id').execute()
         return folder.get('id')
-
 
     def share_folder(self, folder_id, role='writer'):
         self.drive_service.permissions().create(
@@ -277,41 +289,20 @@ class GoogleDriveManager:
             fields='id'
         ).execute()
 
-
     def save_folder_id_to_file(self, folder_id, file_name):
         with open(file_name, 'w') as file:
             file.write(folder_id)
 
-
-    def create_drive_service(self, credentials_file):
-        # Ensure the credentials file path is absolute
-        credentials_file_path = os.path.join(exe_dir, credentials_file)
-
-        # Check if the credentials file exists
-        if not os.path.isfile(credentials_file_path):
-            raise FileNotFoundError(f"Service account file not found: {credentials_file_path}")
-
-        # Load credentials and create the Drive service
-        credentials = service_account.Credentials.from_service_account_file(
-            credentials_file_path,
-            scopes=["https://www.googleapis.com/auth/drive"])
-        return build("drive", "v3", credentials=credentials)
-
-
     def upload_file(self, service, file_path, folder_id):
         file_name = os.path.basename(file_path)
         existing_file_id = self.get_file_id(service, file_name, folder_id)
+        media = MediaFileUpload(file_path, resumable=True)
 
         if existing_file_id:
-            media = MediaFileUpload(file_path, resumable=True)
             file = service.files().update(fileId=existing_file_id, media_body=media).execute()
             print(f"Updated '{file_name}' in GDrive with ID: {file['id']}")
         else:
-            file_metadata = {
-                "name": file_name,
-                "parents": [folder_id]
-            }
-            media = MediaFileUpload(file_path, resumable=True)
+            file_metadata = {"name": file_name, "parents": [folder_id]}
             file = service.files().create(body=file_metadata, media_body=media, fields="id").execute()
             print(f"Uploaded '{file_name}' to GDrive with ID: {file['id']}")
 
@@ -322,11 +313,19 @@ class GoogleDriveManager:
         ).execute()
         return file['id']
 
+    def get_file_id(self, service, file_name, folder_id):
+        results = service.files().list(
+            q=f"'{folder_id}' in parents and name = '{file_name}'",
+            fields="files(id)"
+        ).execute()
+        items = results.get('files', [])
+        return items[0]['id'] if items else None
 
     def get_file_id(self, service, file_name, folder_id):
         results = service.files().list(q=f"'{folder_id}' in parents and name = '{file_name}'", fields="files(id)").execute()
         items = results.get('files', [])
         return items[0]['id'] if items else None
+    
 
 if __name__ == "__main__":
     manager = GoogleDriveManager(FILE_PATHS)
@@ -365,12 +364,22 @@ if __name__ == "__main__":
         print(f"An unexpected error occurred: {e}")
 
 
-    # 2ND TASK
-    credentials_file = FILE_PATHS["service_account"]
-    with open(FILE_PATHS["sub_folder_id"], 'r') as file:
+    # 2ND TASK        
+    # Check if the folder ID file exists
+    sub_folder_path = FILE_PATHS["sub_folder_id"]
+    
+    if not os.path.isfile(sub_folder_path):
+        raise FileNotFoundError(
+            f"Missing folder ID file: {sub_folder_path}. "
+            f"Please create it and paste your Google Drive folder ID inside."
+        )
+
+    # Read the Drive folder ID from the file
+    with open(sub_folder_path, 'r') as file:
         destination_folder_id = file.read().strip()
 
-    service = manager.create_drive_service(credentials_file)
+    # Create Drive service using keyless authentication
+    service = manager.drive_service
 
     # Read voucher filenames from voucher_logger.txt
     voucher_filenames_file = FILE_PATHS["voucher_log"]
@@ -456,7 +465,6 @@ if __name__ == "__main__":
         
     # File paths for source files and destination macro file (Construct absolute paths)
     file_ids_path = FILE_PATHS["file_ids"]
-    api_key_path = FILE_PATHS["api_key"]
     voucher_amt_path = FILE_PATHS["voucher_amt"]
     code_length_path = FILE_PATHS["vcodlen"]
     source_file_path = FILE_PATHS["macro_file"]
@@ -464,12 +472,11 @@ if __name__ == "__main__":
 
     # Read content from source files
     file_ids = read_file_lines(file_ids_path)
-    api_key = read_file_lines(api_key_path)
     original_content = read_file_lines(source_file_path)
     voucher_amounts = read_file_lines(voucher_amt_path)
 
     # Check if all source files exist
-    if not (file_ids and api_key and original_content and voucher_amounts):
+    if not (file_ids and original_content and voucher_amounts):
         messagebox.showwarning("Error", "One or more source files do not exist!")
     else:
         modified_content = original_content[0]

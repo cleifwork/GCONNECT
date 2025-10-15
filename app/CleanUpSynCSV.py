@@ -6,10 +6,12 @@ import time
 import requests
 import subprocess
 from tkinter import messagebox
-from google.oauth2 import service_account
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
-from utils import exe_dir, FILE_PATHS, check_file_exists
+from utils import exe_dir, FILE_PATHS
 
 # List to store error messages and actions to take
 error_messages = []
@@ -36,10 +38,11 @@ def check_non_empty(file_path, error_message, additional_action=None):
 def open_in_notepad(file_path):
     return lambda: subprocess.run(['notepad.exe', file_path], check=True)
 
-# Check 1: Check if "service_account.json" is present
-error_message = check_file_exists(FILE_PATHS["service_account"], "Please execute 'RUN INITIAL CONFIG' first.")
-if error_message:
-    error_messages.append(error_message)  # Append the error message to the list
+# Check 1: Check if "client_secret.json" is present
+client_secret_path = os.path.join(exe_dir, "client_secret.json")
+if not os.path.isfile(client_secret_path):
+    error_messages.append("Missing 'client_secret.json'. Please download it from Google Cloud Console and place it in your app folder.")
+    actions_to_take.append(lambda: os.startfile(exe_dir))
 
 # Check 2: Check if "put_folder_id_here.txt" is not empty
 folder_id = check_non_empty(
@@ -77,22 +80,51 @@ if error_messages:
     sys.exit()
 
 # Continue with the rest of your script if all checks pass
-print("All initial checks passed. Proceeding...\n")
+print("\n✅ All initial checks passed. Proceeding...\n")
 time.sleep(1)
-
-# Replace 'credentials.json' with the path to your service account key JSON file
-credentials_file = FILE_PATHS["service_account"]
 
 # Open the text file and read the content
 with open(FILE_PATHS["sub_folder_id"], 'r') as file:
     # Read the content and remove any leading or trailing whitespace
     destination_folder_id = file.read().strip()
 
-
 # Define the function to authenticate and create a Drive service
 def create_drive_service():
-    credentials = service_account.Credentials.from_service_account_file(credentials_file, scopes=["https://www.googleapis.com/auth/drive"])
-    return build("drive", "v3", credentials=credentials)
+    """Authenticate user using OAuth2 (InstalledAppFlow) and return Drive service."""
+    SCOPES = ["https://www.googleapis.com/auth/drive"]
+    creds = None
+
+    client_secret_path = os.path.join(exe_dir, "client_secret.json")
+    token_path = os.path.join(exe_dir, "token.json")
+
+    # --- Check if client_secret.json exists ---
+    if not os.path.isfile(client_secret_path):
+        messagebox.showerror(
+            "Missing File",
+            "Missing 'client_secret.json'.\n\nDownload it from Google Cloud Console and place it in your app folder."
+        )
+        sys.exit()
+
+    # --- Load existing credentials if present ---
+    if os.path.exists(token_path):
+        creds = Credentials.from_authorized_user_file(token_path, SCOPES)
+
+    # --- If no valid creds, run browser login flow ---
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+            print("🔄 Token refreshed automatically.")
+        else:
+            print("🌐 Launching browser for first-time Google login...")
+            flow = InstalledAppFlow.from_client_secrets_file(client_secret_path, SCOPES)
+            creds = flow.run_local_server(port=0)
+            print("✅ Login successful! Token saved locally.")
+        with open(token_path, 'w') as token_file:
+            token_file.write(creds.to_json())
+
+    # --- Create Drive API service ---
+    return build("drive", "v3", credentials=creds)
+
 
 # Get the folder name from the file
 main_folder_name_file = FILE_PATHS["main_folder_name"]
@@ -192,6 +224,7 @@ def main():
     Main function to upload voucher files to Google Drive.
     """
     service = create_drive_service()
+    print("✅ Google Drive service authenticated successfully.\n")
 
     # Read the destination folder ID
     with open(FILE_PATHS["sub_folder_id"], 'r') as file:
@@ -264,3 +297,4 @@ try:
     print("Webhook triggered successfully!")
 except requests.exceptions.RequestException as e:
     print(f"Error triggering webhook: {e}")
+    
