@@ -243,15 +243,15 @@ class GoogleDriveManager:
         if not creds or not creds.valid:
             if creds and creds.expired and creds.refresh_token:
                 creds.refresh(Request())
-                print("🔄 Token refreshed automatically.")
+                print("Token refreshed automatically.")
             else:
-                print("🌐 Launching browser for first-time Google login...")
+                print("\n Launching browser for first-time Google login...")
                 flow = InstalledAppFlow.from_client_secrets_file(
                     os.path.join(exe_dir, 'client_secret.json'),
                     self.SCOPES
                 )
                 creds = flow.run_local_server(port=0)
-                print("✅ Login successful! Token saved locally.")
+                print("\n✅ Login successful! Token saved locally.")
 
             # Save token for future silent logins
             with open(token_path, 'w') as token_file:
