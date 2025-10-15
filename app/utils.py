@@ -23,7 +23,7 @@ FILE_PATHS = {
     "sub_folder_name": os.path.join(exe_dir, 'put_folder_name_here.txt'),
     "sub_folder_id": os.path.join(exe_dir, 'put_folder_id_here.txt'),
     "file_ids": os.path.join(exe_dir, 'put_file_ids_here.txt'),
-    "tokens": os.path.join(exe_dir, 'token.json'),
+    "tokens": os.path.join(exe_dir, 'omada_token.json'),
     "creds": os.path.join(exe_dir, 'creds.json')
 }
 

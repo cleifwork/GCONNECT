@@ -245,7 +245,7 @@ class GoogleDriveManager:
                 creds.refresh(Request())
                 print("Token refreshed automatically.")
             else:
-                print("\n Launching browser for first-time Google login...")
+                print("\nLaunching browser for first-time Google login...")
                 flow = InstalledAppFlow.from_client_secrets_file(
                     os.path.join(exe_dir, 'client_secret.json'),
                     self.SCOPES
