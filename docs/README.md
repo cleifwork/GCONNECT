@@ -274,7 +274,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 ## Tech Stack
 - **Client:** Python, HTML, Batch, JS
-- **Server:** Node.JS, GDrive, MacroDroid
+- **Server:** Node.JS, GDrive, MacroDroid, Omada CBC API
 
 
 ## Related
