@@ -33,9 +33,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 > [!IMPORTANT] 
 > To run this project, you will need to add the following environment variables to your _**" .. / GCONNECT / app "**_ folder.
 
-`put_api_key_here.txt` (File should contain GDrive API KEY)
-
-`service_account.json` (File should contain GDrive Service Account)
+`client_secret.json` (File should contain Google OAuth2.0 key)
 
 `put_md_url_here.txt` (File should contain MacroDroid WebHook URL)
 
