@@ -261,6 +261,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 ## Optimizations
 - Implemented new temp.macro ditching the need of API Key
+- Implemented OAuth2.0 validation ditching Service Account
 
 
 ## Screenshots
