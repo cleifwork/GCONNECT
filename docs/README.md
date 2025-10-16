@@ -139,7 +139,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 	- This file stores your refresh token — you won’t need to log in again next time.
 
    
-**🧩 GConnect Initialization**  
+**🧩 GCONNECT INITIALIZATION**  
 - (GCONNECT APP) Click **"RUN INITIAL CONFIG"** button
 
 > [!NOTE]
