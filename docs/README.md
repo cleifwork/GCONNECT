@@ -148,7 +148,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 > [!NOTE]
 > The following instructions apply **ONLY IF** you are using the same Google account on both your PC and Android device, and already installed MacroDroid & GDrive on your phone.
 -   (ANDROID) Launch Google Drive App
--   (ANDROID) Goto _"Shared"_ tab
+-   (ANDROID) Goto _"My Drive"_ tab
 -   (ANDROID) Go inside **"GCONNECT"** folder
 -   (ANDROID) Tap more option **(⋮)** beside the macro file
 -   (ANDROID) Tap _"Open with"_ (should open with MacroDroid automatically)
