@@ -96,18 +96,17 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 > [!TIP]
 > **How to obtain [Omada Cloud-Based Controller Credentials](https://www.youtube.com/watch?v=OeC7AGvm3iY)**
 
-
  **3. SHOULD HAVE A GOOGLE ACCOUNT
 > [!TIP]
-> **[How to create OAuth 2.0 Credentials (Client Secret)](https://www.youtube.com/watch?v=1Afr24gCKOo)**
+> **How to create [OAuth 2.0 Credentials (Client Secret)](https://www.youtube.com/watch?v=1Afr24gCKOo)**
 > This replaces the old Service Account & API Key setup.
 > You only need to create one OAuth Client and download the `client_secret.json` file.
 
 **⚙️ Step 1: Login & Enable Google Drive API**
 - Login to your Google Account.
-	- 🔗 [Google Cloud Console](https://www.youtube.com/watch?v=1Afr24gCKOo)
+	- 🔗 [Google Cloud Console](https://console.cloud.google.com)
 - Create a NEW PROJECT
-	- 💡 You may use your Voucher WiFi Portal Name as your project name.
+	- 💡 You may use your Voucher WiFi Business Name as your project name.
 - Go to APIs & Services → **ENABLE APIS & SERVICES**
 - Search for Google Drive API
 - Click Enable
