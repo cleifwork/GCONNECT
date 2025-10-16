@@ -52,7 +52,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 > [!NOTE] 
 > _Tested in Windows 10 and Windows 11_
 		
-- Download the **[GCONNECT-V3.5](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-V3.5.1)**
+- Download the **[GCONNECT-V3.5.1](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-V3.5.1)**
 - Click Code > Download Zip
 - Extract main folder to your Desktop
 - Launch the app thru _'LaunchPad.bat'_.
