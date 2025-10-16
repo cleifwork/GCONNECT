@@ -96,47 +96,52 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 > [!TIP]
 > **How to obtain [Omada Cloud-Based Controller Credentials](https://www.youtube.com/watch?v=OeC7AGvm3iY)**
 
-**3. SHOULD HAVE A GOOGLE ACCOUNT**
-> [!TIP]
-> **How to create [Service Account & API Key](https://www.youtube.com/watch?v=1Afr24gCKOo)**
-- Login to to your google account
-- Enable [Google Drive API](https://console.cloud.google.com/)
-- Create a **NEW PROJECT** 
-> [!TIP]
-> You may use your Voucher WiFi Portal Name as project name
-- Goto APIs & Services
-    - ENABLE APIS & SERVICES 
-    - Select Google Drive
-    - ENABLE
 
-**> CREDENTIALS CONFIGURATION**
-- **Service Account Creation:**
-    - Goto _"Credentials"_ (with the key icon)
-    - Click **"+CREATE CREDENTIALS"**
-	- Select Service Account
-	- Give it Account Name **(REQUIRED)**
-	- Give it Account ID **(REQUIRED - _Auto Generated_)**
-	- Give it Description _(OPTIONAL)_
-	- CREATE AND CONTINUE
-	- Give it an **"Owner"** role
-	- DONE
-    - Click the newly created Service Account
-	- Goto **"KEYS"** tab
-	- Click ADD KEY
-	- Create new key
-	- Key type: **JSON** 
-	- CREATE _(file will be downloaded)_
-	- Rename file to _"service_account"_ (.json)
-	- Save to _" .. / GCONNECT / app "_
+ **3. SHOULD HAVE A GOOGLE ACCOUNT
 
-- **API Key Creation:**
-    - Go back to +CREATE CREDENTIALS
-    - Select API KEY
-    - Copy API KEY first
-    - Click _"Edit API key"_ in the pop-up window
-    - Select _"Restrict API key"_ under API restrictions
-    - Check Google Drive API > OK > SAVE
-    - Paste API KEY to this file _**'put_api_key_here.txt'**_      
+[!TIP]
+> **How to create OAuth 2.0 Credentials (Client Secret)[OAuth 2.0 Credentials](https://www.youtube.com/watch?v=1Afr24gCKOo)**
+> This replaces the old Service Account & API Key setup.
+> You only need to create one OAuth Client and download the `client_secret.json` file.
+
+**⚙️ Step 1: Login & Enable Google Drive API**
+- Login to your Google Account.
+	- 🔗 Google Cloud Console [Google Cloud Console](https://www.youtube.com/watch?v=1Afr24gCKOo)** 
+- Create a NEW PROJECT
+	- 💡 You may use your Voucher WiFi Portal Name as your project name.
+- Go to APIs & Services → ENABLE APIS & SERVICES
+- Search for Google Drive API
+- Click Enable
+
+**🔐 Step 2: Configure OAuth 2.0 Credentials**
+- Go to APIs & Services → Credentials
+- Click + CREATE CREDENTIALS → OAuth Client ID
+- If prompted to set up a Consent Screen, do this first:
+- Select External (recommended for personal use)
+- Set App Name, User Email, and Developer Contact Info
+- Click Save and Continue (you can skip Scopes and Test Users for now)
+- Return to Create Credentials → OAuth Client ID
+- Select Application Type:
+	- 🔘 Desktop App
+- Name it something like:
+	- 👉 GCONNECT_OAuth_Client
+- Click Create
+	- A popup will appear — click Download JSON
+	- The file is named like: client_secret_1234567890abcd.json
+
+- Rename this file to:
+	- 📄 client_secret.json
+
+- Save it inside your app folder:
+	- 📁 ..\GCONNECT\app\
+
+**✅ Step 3: Verify and Test**
+- When you first run your app, a browser window will open.
+- Log in using your Google account and allow access to Google Drive.
+- After successful login:
+	- A local file named token.json will be automatically created.
+	- This file stores your refresh token — you won’t need to log in again next time.
+
    
 **> GCONNECT INITIALIZATION**  
 - (GCONNECT APP) Click **"RUN INITIAL CONFIG"** button
