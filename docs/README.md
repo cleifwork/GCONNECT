@@ -98,18 +98,17 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 
  **3. SHOULD HAVE A GOOGLE ACCOUNT
-
-[!TIP]
-> **How to create OAuth 2.0 Credentials (Client Secret)[OAuth 2.0 Credentials](https://www.youtube.com/watch?v=1Afr24gCKOo)**
+> [!TIP]
+> **[How to create OAuth 2.0 Credentials (Client Secret)](https://www.youtube.com/watch?v=1Afr24gCKOo)**
 > This replaces the old Service Account & API Key setup.
 > You only need to create one OAuth Client and download the `client_secret.json` file.
 
 **⚙️ Step 1: Login & Enable Google Drive API**
 - Login to your Google Account.
-	- 🔗 Google Cloud Console [Google Cloud Console](https://www.youtube.com/watch?v=1Afr24gCKOo)** 
+	- 🔗 [Google Cloud Console](https://www.youtube.com/watch?v=1Afr24gCKOo)
 - Create a NEW PROJECT
 	- 💡 You may use your Voucher WiFi Portal Name as your project name.
-- Go to APIs & Services → ENABLE APIS & SERVICES
+- Go to APIs & Services → **ENABLE APIS & SERVICES**
 - Search for Google Drive API
 - Click Enable
 
@@ -127,11 +126,9 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 	- 👉 GCONNECT_OAuth_Client
 - Click Create
 	- A popup will appear — click Download JSON
-	- The file is named like: client_secret_1234567890abcd.json
-
+	- The file is named like: `client_secret_1234567890abcd.json`
 - Rename this file to:
 	- 📄 client_secret.json
-
 - Save it inside your app folder:
 	- 📁 ..\GCONNECT\app\
 
