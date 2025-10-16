@@ -64,7 +64,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 **2. OMADA CLOUD CONTROLLER ACCOUNT**
 > [!NOTE] 
-> Although not tested with the Omada Software Controller (SDN) and Omada Hardware Controller (OC200), it should still work as long as their exported CSV file follows the [Cloud-Based Controller format](https://www.facebook.com/photo?fbid=122120593298569233&set=gm.1987184375082838&idorvanity=1776872022780742).
+> _Although not tested with the Omada Software Controller (SDN) and Omada Hardware Controller (OC200), it should still work as long as their exported CSV file follows the [Cloud-Based Controller format](https://www.facebook.com/photo?fbid=122120593298569233&set=gm.1987184375082838&idorvanity=1776872022780742)._
 - Login to your [Omada Cloud Controller](https://omada.tplinkcloud.com/)
 - Launch your Controller (Global View)
 - Go to Settings
