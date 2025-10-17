@@ -98,7 +98,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
  **3. SHOULD HAVE A GOOGLE ACCOUNT
 > [!TIP]
-> **How to create [OAuth 2.0 Credentials (Client Secret)](https://www.youtube.com/watch?v=1Afr24gCKOo)**
+> **How to create [OAuth 2.0 Credentials (Client Secret)](https://www.youtube.com/watch?v=ZXquBJcdkpQ)**
 > This replaces the old Service Account & API Key setup.
 > You only need to create one OAuth Client and download the `client_secret.json` file.
 
