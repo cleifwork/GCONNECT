@@ -33,7 +33,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 > [!IMPORTANT] 
 > To run this project, you will need to add the following environment variables to your _**" .. / GCONNECT / app "**_ folder.
 
-`client_secret.json` (File should contain Google OAuth2.0 key)
+`client_secret.json` (File should contain Google OAuth2.0 Client Secret Key)
 
 `put_md_url_here.txt` (File should contain MacroDroid WebHook URL)
 
@@ -78,8 +78,8 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
     - Click **Create**
 - Click show icon under ACTION column
     - Obtain **"Interface Access Address"** and **"Omada ID"**
-    - Copy & paste these credentials to **"..GCONNECT / app / creds.json"**
-    - INFO: _You can open **"creds.json"** file via notepad_
+    - Copy & paste these credentials to **"..GCONNECT / app / omada_creds.json"**
+    - INFO: _You can open **"omada_creds.json"** file via notepad_
     - Click OK
     - Obtain **"Client ID"** and **"CLIENT SECRET"**
     - Copy & paste these credentials to **"..GCONNECT / app / creds.json"**
