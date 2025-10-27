@@ -1,4 +1,4 @@
-# GCONNECT APP: Wi-Fi Voucher Automation Middleware
+# GCONNECT APP: WiFi Voucher Automation Utility App
 > [!NOTE] 
 > _**A Macro Generating Solution for MacroDroid**. A versatile tool that automates E-Wallet payments (GCash, Maya) without relying on third-party payment gateways—no subscriptions required. With its hybrid design, the app works seamlessly whether connected to **Omada Controllers via API** or operating in a **Non-Omada setup through local CSV files**. It also features a **custom Wi-Fi Voucher Print-out**._
 
@@ -33,9 +33,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 > [!IMPORTANT] 
 > To run this project, you will need to add the following environment variables to your _**" .. / GCONNECT / app "**_ folder.
 
-`put_api_key_here.txt` (File should contain GDrive API KEY)
-
-`service_account.json` (File should contain GDrive Service Account)
+`client_secret.json` (File should contain Google OAuth2.0 Client Secret Key)
 
 `put_md_url_here.txt` (File should contain MacroDroid WebHook URL)
 
@@ -54,7 +52,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 > [!NOTE] 
 > _Tested in Windows 10 and Windows 11_
 		
-- Download the **[GCONNECT-V3.5](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-V3.5)**
+- Download the **[GCONNECT-V3.5.1](https://github.com/cleifwork/GCONNECT/tree/GCONNECT-V3.5.1)**
 - Click Code > Download Zip
 - Extract main folder to your Desktop
 - Launch the app thru _'LaunchPad.bat'_.
@@ -66,7 +64,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 **2. OMADA CLOUD CONTROLLER ACCOUNT**
 > [!NOTE] 
-> Although not tested with SDN and OC200, it should still function properly as long as their exported CSV file adheres to the [Cloud-Based Controller format](https://www.facebook.com/photo?fbid=122120593298569233&set=gm.1987184375082838&idorvanity=1776872022780742).
+> _Although not tested with the Omada Software Controller (SDN) and Omada Hardware Controller (OC200), it should still work as long as their exported CSV file follows the [Cloud-Based Controller format](https://www.facebook.com/photo?fbid=122120593298569233&set=gm.1987184375082838&idorvanity=1776872022780742)._
 - Login to your [Omada Cloud Controller](https://omada.tplinkcloud.com/)
 - Launch your Controller (Global View)
 - Go to Settings
@@ -80,8 +78,8 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
     - Click **Create**
 - Click show icon under ACTION column
     - Obtain **"Interface Access Address"** and **"Omada ID"**
-    - Copy & paste these credentials to **"..GCONNECT / app / creds.json"**
-    - INFO: _You can open **"creds.json"** file via notepad_
+    - Copy & paste these credentials to **"..GCONNECT / app / omada_creds.json"**
+    - INFO: _You can open **"omada_creds.json"** file via notepad_
     - Click OK
     - Obtain **"Client ID"** and **"CLIENT SECRET"**
     - Copy & paste these credentials to **"..GCONNECT / app / creds.json"**
@@ -98,49 +96,50 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 > [!TIP]
 > **How to obtain [Omada Cloud-Based Controller Credentials](https://www.youtube.com/watch?v=OeC7AGvm3iY)**
 
-**3. SHOULD HAVE A GOOGLE ACCOUNT**
+ **3. SHOULD HAVE A GOOGLE ACCOUNT
 > [!TIP]
-> **How to create [Service Account & API Key](https://www.youtube.com/watch?v=1Afr24gCKOo)**
-- Login to to your google account
-- Enable [Google Drive API](https://console.cloud.google.com/)
-- Create a **NEW PROJECT** 
-> [!TIP]
-> You may use your Voucher WiFi Portal Name as project name
-- Goto APIs & Services
-    - ENABLE APIS & SERVICES 
-    - Select Google Drive
-    - ENABLE
+> **How to create [OAuth 2.0 Credentials (Client Secret)](https://www.youtube.com/watch?v=ZXquBJcdkpQ)**
+> This replaces the old Service Account & API Key setup.
+> You only need to create one OAuth Client and download the `client_secret.json` file.
 
-**> CREDENTIALS CONFIGURATION**
-- **Service Account Creation:**
-    - Goto _"Credentials"_ (with the key icon)
-    - Click **"+CREATE CREDENTIALS"**
-	- Select Service Account
-	- Give it Account Name **(REQUIRED)**
-	- Give it Account ID **(REQUIRED - _Auto Generated_)**
-	- Give it Description _(OPTIONAL)_
-	- CREATE AND CONTINUE
-	- Give it an **"Owner"** role
-	- DONE
-    - Click the newly created Service Account
-	- Goto **"KEYS"** tab
-	- Click ADD KEY
-	- Create new key
-	- Key type: **JSON** 
-	- CREATE _(file will be downloaded)_
-	- Rename file to _"service_account"_ (.json)
-	- Save to _" .. / GCONNECT / app "_
+**⚙️ Step 1: Login & Enable Google Drive API**
+- Login to your Google Account.
+	- 🔗 [Google Cloud Console](https://console.cloud.google.com)
+- Create a NEW PROJECT
+	- 💡 You may use your Voucher WiFi Business Name as your project name.
+- Go to APIs & Services → **ENABLE APIS & SERVICES**
+- Search for Google Drive API
+- Click Enable
 
-- **API Key Creation:**
-    - Go back to +CREATE CREDENTIALS
-    - Select API KEY
-    - Copy API KEY first
-    - Click _"Edit API key"_ in the pop-up window
-    - Select _"Restrict API key"_ under API restrictions
-    - Check Google Drive API > OK > SAVE
-    - Paste API KEY to this file _**'put_api_key_here.txt'**_      
+**🔐 Step 2: Configure OAuth 2.0 Credentials**
+- Go to APIs & Services → Credentials
+- Click + CREATE CREDENTIALS → OAuth Client ID
+- If prompted to set up a Consent Screen, do this first:
+- Select External (recommended for personal use)
+- Set App Name, User Email, and Developer Contact Info
+- Click Save and Continue (you can skip Scopes and Test Users for now)
+- Return to Create Credentials → OAuth Client ID
+- Select Application Type:
+	- 🔘 Desktop App
+- Name it something like:
+	- 👉 GCONNECT_OAuth_Client
+- Click Create
+	- A popup will appear — click Download JSON
+	- The file is named like: `client_secret_1234567890abcd.json`
+- Rename this file to:
+	- 📄 client_secret.json
+- Save it inside your app folder:
+	- 📁 ..\GCONNECT\app\
+
+**✅ Step 3: Verify and Test**
+- When you first run your app, a browser window will open.
+- Log in using your Google account and allow access to Google Drive.
+- After successful login:
+	- A local file named token.json will be automatically created.
+	- This file stores your refresh token — you won’t need to log in again next time.
+
    
-**> GCONNECT INITIALIZATION**  
+**🧩 GCONNECT INITIALIZATION**  
 - (GCONNECT APP) Click **"RUN INITIAL CONFIG"** button
 
 > [!NOTE]
@@ -149,7 +148,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 > [!NOTE]
 > The following instructions apply **ONLY IF** you are using the same Google account on both your PC and Android device, and already installed MacroDroid & GDrive on your phone.
 -   (ANDROID) Launch Google Drive App
--   (ANDROID) Goto _"Shared"_ tab
+-   (ANDROID) Goto _"My Drive"_ tab
 -   (ANDROID) Go inside **"GCONNECT"** folder
 -   (ANDROID) Tap more option **(⋮)** beside the macro file
 -   (ANDROID) Tap _"Open with"_ (should open with MacroDroid automatically)
@@ -261,6 +260,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 ## Optimizations
 - Implemented new temp.macro ditching the need of API Key
+- Implemented OAuth2.0 validation ditching Service Account
 
 
 ## Screenshots
@@ -273,7 +273,7 @@ _Experience unparalleled automation and efficiency with the GCONNECT APP, your g
 
 ## Tech Stack
 - **Client:** Python, HTML, Batch, JS
-- **Server:** Node.JS, GDrive, MacroDroid
+- **Server:** Node.JS, GDrive, MacroDroid, Omada CBC API
 
 
 ## Related
