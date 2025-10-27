@@ -112,10 +112,13 @@ def create_drive_service():
     # --- If no valid creds, run browser login flow ---
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
+            # creds.refresh(Request())
             creds.refresh(Request())
-            print("🔄 Token refreshed automatically.")
+            if not set(SCOPES).issubset(set(creds.scopes or [])):
+                raise Exception("⚠️ Scope mismatch — delete token.json to regenerate new credentials.")
+            print("Token refreshed automatically.")
         else:
-            print("🌐 Launching browser for first-time Google login...")
+            print("Launching browser for first-time Google login...")
             flow = InstalledAppFlow.from_client_secrets_file(client_secret_path, SCOPES)
             creds = flow.run_local_server(port=0)
             print("✅ Login successful! Token saved locally.")
@@ -294,7 +297,8 @@ with open(FILE_PATHS["md_url"], 'r') as file:
 try:
     response = requests.get(webhook_url)
     response.raise_for_status()  # Will raise an HTTPError for bad responses
-    print("Webhook triggered successfully!")
+    # print("Webhook triggered successfully!")
+    print(f"Webhook triggered successfully → {webhook_url}")
 except requests.exceptions.RequestException as e:
     print(f"Error triggering webhook: {e}")
     
